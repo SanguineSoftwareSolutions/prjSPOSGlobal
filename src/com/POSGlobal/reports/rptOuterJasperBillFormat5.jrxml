@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="570" leftMargin="25" rightMargin="0" topMargin="5" bottomMargin="10" uuid="f0f420c3-c6f1-498c-b2be-ea00d445843a">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dsForItemDetail" uuid="ac9c5034-69b9-4ba9-8862-a8b8f5865c5a">
+		<parameter name="listOfItemDtl" class="java.lang.String"/>
+		<parameter name="user" class="java.lang.String"/>
+		<parameter name="dblAllBillGrandTotal" class="java.lang.Double"/>
+		<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+		<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
+			<parameterDescription><![CDATA[]]></parameterDescription>
+		</parameter>
+		<queryString language="SQL">
+			<![CDATA[select * from tblbilldtl;]]>
+		</queryString>
+		<field name="strItemName" class="java.lang.String"/>
+		<field name="dblQuantity" class="java.lang.Double"/>
+		<field name="dblAmount" class="java.lang.Double"/>
+		<variable name="totalAmt" class="java.lang.Double" calculation="Sum">
+			<variableExpression><![CDATA[$F{dblAmount}]]></variableExpression>
+			<initialValueExpression><![CDATA[new Double(0.00)]]></initialValueExpression>
+		</variable>
+	</subDataset>
+	<parameter name="listOfFooterDtl" class="java.util.List"/>
+	<parameter name="user" class="java.lang.String"/>
+	<parameter name="listSummaryBillDtl" class="java.util.Collection"/>
+	<parameter name="grandTotal" class="java.lang.Double"/>
+	<parameter name="dblAllBillGrandTotal" class="java.lang.Double"/>
+	<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+	<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<variable name="variable1" class="java.lang.String"/>
+	<variable name="grandToal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="141">
+			<componentElement>
+				<reportElement uuid="f6ff2509-a370-4847-b368-98e00c05cd80" stretchType="RelativeToTallestObject" x="0" y="88" width="187" height="39" isPrintWhenDetailOverflows="true"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="dsForItemDetail" uuid="81a0e0cd-2e6f-4e56-b2a9-e9c9a840bb6f">
+						<datasetParameter name="listOfItemDtl">
+							<datasetParameterExpression><![CDATA[$P{listOfFooterDtl}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="user">
+							<datasetParameterExpression><![CDATA[$P{user}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="dblAllBillGrandTotal">
+							<datasetParameterExpression><![CDATA[$P{dblAllBillGrandTotal}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="decimalFormaterForDoubleValue">
+							<datasetParameterExpression><![CDATA[$P{decimalFormaterForDoubleValue}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listOfFooterDtl})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column uuid="699aa6e8-7173-4756-80bb-149d043a40b0" width="217">
+						<jr:detailCell height="25" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" stretchType="RelativeToTallestObject" x="0" y="0" width="200" height="25" isRemoveLineWhenBlank="true"/>
+								<textElement textAlignment="Left">
+									<font fontName="Trebuchet MS"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<textField>
+				<reportElement uuid="178bb1b0-9ede-4a25-b2e6-4c5d490a42f6" x="0" y="127" width="187" height="14"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{user}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement uuid="f6ff2509-a370-4847-b368-98e00c05cd80" stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="0" y="18" width="187" height="70" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="dsForItemDetail" uuid="81a0e0cd-2e6f-4e56-b2a9-e9c9a840bb6f">
+						<datasetParameter name="listOfItemDtl">
+							<datasetParameterExpression><![CDATA[$P{listOfFooterDtl}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="user">
+							<datasetParameterExpression><![CDATA[$P{user}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="dblAllBillGrandTotal">
+							<datasetParameterExpression><![CDATA[$P{dblAllBillGrandTotal}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="decimalFormaterForIntegerValue">
+							<datasetParameterExpression><![CDATA[$P{decimalFormaterForDoubleValue}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listSummaryBillDtl})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column uuid="699aa6e8-7173-4756-80bb-149d043a40b0" width="217">
+						<jr:columnFooter height="23" rowSpan="1">
+							<line>
+								<reportElement uuid="1d6958de-7baf-478d-a19a-a97c9ecaeb30" x="0" y="0" width="217" height="1"/>
+							</line>
+							<textField>
+								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="0" y="1" width="76" height="21"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Trebuchet MS" size="12" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA["Grand Total"]]></textFieldExpression>
+							</textField>
+							<textField pattern="###0.0">
+								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="76" y="1" width="61" height="21"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font fontName="Trebuchet MS" size="12" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{dblAllBillGrandTotal}]]></textFieldExpression>
+								<patternExpression><![CDATA[$P{decimalFormaterForDoubleValue}]]></patternExpression>
+							</textField>
+							<line>
+								<reportElement uuid="3fd1902d-ef2f-4cea-94b9-75bc95d4c72d" x="0" y="22" width="217" height="1"/>
+							</line>
+						</jr:columnFooter>
+						<jr:detailCell height="16" rowSpan="1">
+							<textField>
+								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="0" y="0" width="76" height="16"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Trebuchet MS" size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="76" y="0" width="61" height="16"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font fontName="Trebuchet MS" size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{dblAmount}]]></textFieldExpression>
+								<patternExpression><![CDATA[$P{decimalFormaterForDoubleValue}]]></patternExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement uuid="8a47f52b-b5cb-48c2-9243-3e54eb999670" x="0" y="0" width="63" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Summary]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

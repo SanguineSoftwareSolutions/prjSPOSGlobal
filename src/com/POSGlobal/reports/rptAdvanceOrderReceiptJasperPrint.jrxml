@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="570" leftMargin="5" rightMargin="20" topMargin="5" bottomMargin="20" uuid="09d581b8-6808-433c-ae28-a09814c49c57">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dsForAdvOrderItemDtl" uuid="77cb2a69-a1d1-49dd-8a85-bd719225dbf0">
+		<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
+			<parameterDescription><![CDATA[]]></parameterDescription>
+		</parameter>
+		<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[select  *  from tblbilldtl;]]>
+		</queryString>
+		<field name="dblAmount" class="java.lang.Double"/>
+		<field name="dblQuantity" class="java.lang.Double"/>
+		<field name="strItemName" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="dsForAdvOrderHeaderDtl" uuid="bd0bc186-f0d8-4b7a-b32b-455f421fade2">
+		<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
+			<parameterDescription><![CDATA[]]></parameterDescription>
+		</parameter>
+		<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[select * from tblbilldtl;]]>
+		</queryString>
+		<field name="strItemCode" class="java.lang.String"/>
+		<field name="strItemName" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="dsForAdvOrderTiltleDtl" uuid="fe7dfe7b-d9f3-46ee-b03a-c4f19dc20efe">
+		<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
+			<parameterDescription><![CDATA[]]></parameterDescription>
+		</parameter>
+		<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[select * from tblbilldtl;]]>
+		</queryString>
+		<field name="strItemName" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="dsForAdvOrderAmountDtl" uuid="9aa157d2-2f3e-42fd-a568-de872c970a67">
+		<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
+			<parameterDescription><![CDATA[]]></parameterDescription>
+		</parameter>
+		<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[select * from tblbilldtl;]]>
+		</queryString>
+		<field name="dblAmount" class="java.lang.Double"/>
+		<field name="strItemName" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Table Dataset 1" uuid="d786bace-6045-44bc-94cb-3c25c122395d">
+		<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
+			<parameterDescription><![CDATA[]]></parameterDescription>
+		</parameter>
+		<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Table Dataset 2" uuid="00090db3-7bef-4c02-a8cf-196b3eb761f0">
+		<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
+			<parameterDescription><![CDATA[]]></parameterDescription>
+		</parameter>
+		<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="listOfAdvanceOrderItemDtl" class="java.util.List"/>
+	<parameter name="listOfFooterDtl" class="java.util.List"/>
+	<parameter name="listOfHeaderDtl" class="java.util.List"/>
+	<parameter name="listOfTitleDtl" class="java.util.List"/>
+	<parameter name="listOfFooterAmountDtl" class="java.util.List"/>
+	<parameter name="listOfNormalOrderDtl" class="java.util.List"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="24" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="eddeaaa9-57cf-467f-b54d-13c58a109ce8" x="1" y="3" width="200" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="dsForAdvOrderTiltleDtl" uuid="716aa3b8-b888-44c0-9d17-54402373d79e">
+						<datasetParameter name="decimalFormaterForDoubleValue">
+							<datasetParameterExpression><![CDATA[$P{decimalFormaterForDoubleValue}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listOfTitleDtl})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column uuid="1cb1ed88-3301-4cd1-b260-df72f9a0ed70" width="201">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:tableFooter height="4" rowSpan="1">
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="2" width="201" height="1"/>
+							</line>
+						</jr:tableFooter>
+						<jr:columnHeader height="0" rowSpan="1"/>
+						<jr:columnFooter height="0" rowSpan="1"/>
+						<jr:detailCell height="17" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="121fe599-0820-474f-8146-982e433f8cab" x="0" y="0" width="200" height="16" isRemoveLineWhenBlank="true"/>
+								<textElement textAlignment="Center">
+									<font fontName="Trebuchet MS" size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="d9d47823-22aa-47cf-b001-9ade1e6ca10c" x="1" y="3" width="200" height="30"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="dsForAdvOrderHeaderDtl" uuid="1300390d-2d74-4ed3-9685-66ebca16953c">
+						<datasetParameter name="decimalFormaterForDoubleValue">
+							<datasetParameterExpression><![CDATA[$P{decimalFormaterForDoubleValue}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listOfHeaderDtl})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column uuid="079ef062-e35b-4067-ad59-744147d5bd3f" width="94">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:tableFooter height="23" rowSpan="1">
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="0" width="94" height="1"/>
+							</line>
+							<staticText>
+								<reportElement uuid="a413dd1d-56de-4c29-a962-e9a72ee1c6b9" x="0" y="4" width="94" height="16"/>
+								<textElement textAlignment="Right">
+									<font fontName="Trebuchet MS" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ORDER ]]></text>
+							</staticText>
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="21" width="94" height="1"/>
+							</line>
+						</jr:tableFooter>
+						<jr:columnHeader height="0" rowSpan="1"/>
+						<jr:columnFooter height="0" rowSpan="1"/>
+						<jr:detailCell height="16" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="4700b253-d7ff-43eb-9509-7b1753e5e3ef" x="0" y="0" width="94" height="15"/>
+								<textElement>
+									<font fontName="Trebuchet MS" size="10" isBold="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{strItemCode}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="a6da9047-39c5-44f4-ab96-d6b9d6c740ea" width="107">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:tableFooter height="23" rowSpan="1">
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="0" width="107" height="1"/>
+							</line>
+							<staticText>
+								<reportElement uuid="43ae4495-67ae-459d-92a2-1cca5359d477" x="0" y="4" width="107" height="16"/>
+								<textElement>
+									<font fontName="Trebuchet MS" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ DETAILS]]></text>
+							</staticText>
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="21" width="107" height="1"/>
+							</line>
+						</jr:tableFooter>
+						<jr:columnHeader height="0" rowSpan="1"/>
+						<jr:columnFooter height="0" rowSpan="1"/>
+						<jr:detailCell height="16" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement uuid="9c4071b4-28e5-4711-8b40-6276cbb34287" x="0" y="0" width="107" height="15"/>
+								<textElement>
+									<font fontName="Trebuchet MS" size="10" isBold="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="7">
+			<componentElement>
+				<reportElement uuid="f4733157-f2ca-4f02-8e78-af9902c1cc76" x="1" y="2" width="200" height="5"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="dsForAdvOrderHeaderDtl" uuid="3c4853ab-f59e-475c-b9a7-6957c20a7750">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listOfNormalOrderDtl})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column uuid="a49ab627-893d-4495-8f96-1f7d3aec0fa8" width="76">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:tableFooter height="1" rowSpan="1"/>
+						<jr:columnHeader height="0" rowSpan="1"/>
+						<jr:columnFooter height="3" rowSpan="1"/>
+						<jr:detailCell height="13" rowSpan="1">
+							<textField>
+								<reportElement uuid="e763387d-7a34-46c7-87c3-4f4452d9b187" x="0" y="0" width="76" height="12"/>
+								<textElement>
+									<font fontName="Trebuchet MS"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{strItemCode}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="a37b224f-a290-4c92-9164-917fbc34a354" width="90">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:tableFooter height="1" rowSpan="1"/>
+						<jr:columnHeader height="0" rowSpan="1"/>
+						<jr:columnFooter height="3" rowSpan="1"/>
+						<jr:detailCell height="13" rowSpan="1"/>
+					</jr:column>
+					<jr:column uuid="8ad77a31-12a6-464f-a4a1-f29b5c559fc0" width="116">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:tableFooter height="1" rowSpan="1"/>
+						<jr:columnHeader height="0" rowSpan="1"/>
+						<jr:columnFooter height="3" rowSpan="1"/>
+						<jr:detailCell height="13" rowSpan="1">
+							<textField>
+								<reportElement uuid="23c81d94-cc28-4273-8b24-9f2c05a01052" x="0" y="0" width="116" height="12"/>
+								<textElement>
+									<font fontName="Trebuchet MS"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="34">
+			<componentElement>
+				<reportElement uuid="7b032bcd-cfa6-42bb-8c69-95d6e2fae70d" x="1" y="3" width="200" height="30"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="dsForAdvOrderItemDtl" uuid="f4de175c-372c-4061-bd17-aa6fd42c17b6">
+						<datasetParameter name="decimalFormaterForDoubleValue">
+							<datasetParameterExpression><![CDATA[$P{decimalFormaterForDoubleValue}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listOfAdvanceOrderItemDtl})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column uuid="0386dff9-5eb2-4970-9a3f-ef202de99bc7" width="23">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:tableFooter height="2" rowSpan="1">
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="1" width="23" height="1"/>
+							</line>
+						</jr:tableFooter>
+						<jr:columnHeader height="20" rowSpan="1">
+							<staticText>
+								<reportElement uuid="2ff3711a-f26d-42c7-bcc7-8913c067b85c" x="0" y="0" width="22" height="18"/>
+								<textElement textAlignment="Right">
+									<font fontName="Trebuchet MS" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Qty]]></text>
+							</staticText>
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="18" width="23" height="1"/>
+							</line>
+						</jr:columnHeader>
+						<jr:columnFooter height="2" rowSpan="1"/>
+						<jr:detailCell height="15" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="3f37cc5c-b4a7-4b16-b172-2bea14a19fbe" x="0" y="0" width="22" height="15">
+									<printWhenExpression><![CDATA[$F{dblQuantity}>0.0]]></printWhenExpression>
+								</reportElement>
+								<textElement textAlignment="Right">
+									<font fontName="Trebuchet MS"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{dblQuantity}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="5de626dd-8749-46bd-b196-a6c723e49aa1" width="142">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:tableFooter height="2" rowSpan="1">
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="1" width="142" height="1"/>
+							</line>
+						</jr:tableFooter>
+						<jr:columnHeader height="20" rowSpan="1">
+							<staticText>
+								<reportElement uuid="2ff3711a-f26d-42c7-bcc7-8913c067b85c" x="4" y="0" width="138" height="18"/>
+								<textElement textAlignment="Left">
+									<font fontName="Trebuchet MS" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Item Name]]></text>
+							</staticText>
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="18" width="142" height="1"/>
+							</line>
+						</jr:columnHeader>
+						<jr:columnFooter height="2" rowSpan="1"/>
+						<jr:detailCell height="15" rowSpan="1">
+							<textField>
+								<reportElement uuid="96037488-ccb6-47d9-97a0-69e4a108069f" x="4" y="0" width="138" height="15"/>
+								<textElement textAlignment="Left">
+									<font fontName="Trebuchet MS"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="57bd24f5-2157-4aa1-b8d5-c864b0cd45a5" width="38">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:tableFooter height="2" rowSpan="1">
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="1" width="38" height="1"/>
+							</line>
+						</jr:tableFooter>
+						<jr:columnHeader height="20" rowSpan="1">
+							<staticText>
+								<reportElement uuid="73a3e560-f23a-475d-96df-f600cf0675ba" x="0" y="0" width="38" height="18"/>
+								<textElement textAlignment="Right">
+									<font fontName="Trebuchet MS" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Amt]]></text>
+							</staticText>
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="18" width="38" height="1"/>
+							</line>
+						</jr:columnHeader>
+						<jr:columnFooter height="2" rowSpan="1"/>
+						<jr:detailCell height="15" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="d2d0f2a9-f2b9-4646-a3a6-b760539d48c6" x="0" y="0" width="38" height="15">
+									<printWhenExpression><![CDATA[$F{dblAmount}>0.0]]></printWhenExpression>
+								</reportElement>
+								<textElement textAlignment="Right">
+									<font fontName="Trebuchet MS"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{dblAmount}]]></textFieldExpression>
+								<patternExpression><![CDATA[$P{decimalFormaterForDoubleValue}]]></patternExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="41">
+			<componentElement>
+				<reportElement uuid="a95ca2d6-672f-46e4-88a9-b0020da5a5a1" x="1" y="0" width="200" height="40"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="dsForAdvOrderAmountDtl" uuid="f80751b7-d713-4e86-b7d1-ffc5f4a740ef">
+						<datasetParameter name="decimalFormaterForDoubleValue">
+							<datasetParameterExpression><![CDATA[$P{decimalFormaterForDoubleValue}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listOfFooterAmountDtl})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column uuid="b78e7a85-dc7d-4690-87c5-153441b7ecf3" width="160">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:tableFooter height="4" rowSpan="1">
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="0" width="160" height="1"/>
+							</line>
+						</jr:tableFooter>
+						<jr:columnHeader height="0" rowSpan="1"/>
+						<jr:columnFooter height="0" rowSpan="1"/>
+						<jr:detailCell height="16" rowSpan="1">
+							<textField isBlankWhenNull="false">
+								<reportElement uuid="88184374-ff08-4ce8-8d27-22d95d21bb52" x="0" y="0" width="158" height="15"/>
+								<textElement>
+									<font fontName="Trebuchet MS" size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="2246fbcb-17c8-4cf9-87bb-8878ac537aec" width="42">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:tableFooter height="4" rowSpan="1">
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="0" width="42" height="1"/>
+							</line>
+						</jr:tableFooter>
+						<jr:columnHeader height="0" rowSpan="1"/>
+						<jr:columnFooter height="0" rowSpan="1"/>
+						<jr:detailCell height="16" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="955e46a3-ac23-47e5-b36e-27c8cae49d6b" x="0" y="0" width="41" height="15"/>
+								<textElement textAlignment="Right">
+									<font fontName="Trebuchet MS" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{dblAmount}]]></textFieldExpression>
+								<patternExpression><![CDATA[
+$P{decimalFormaterForDoubleValue}]]></patternExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="30">
+			<componentElement>
+				<reportElement uuid="25c869a9-b653-421e-921f-46e87d6a3361" x="1" y="0" width="200" height="30" isRemoveLineWhenBlank="true"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="dsForAdvOrderTiltleDtl" uuid="0478e084-eea2-44de-92f4-d1db15a437ef">
+						<datasetParameter name="decimalFormaterForDoubleValue">
+							<datasetParameterExpression><![CDATA[$P{decimalFormaterForDoubleValue}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listOfFooterDtl})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column uuid="aa720c05-cfe0-4ef8-925b-121f5bd40a85" width="200">
+						<jr:tableHeader height="2" rowSpan="1"/>
+						<jr:columnHeader height="1" rowSpan="1"/>
+						<jr:detailCell height="15" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="63a29ff3-7764-4d35-b7a3-71f9146cba21" x="0" y="0" width="200" height="15"/>
+								<textElement textAlignment="Center">
+									<font fontName="Trebuchet MS" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

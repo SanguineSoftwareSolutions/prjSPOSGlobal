@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="800" columnWidth="593" leftMargin="1" rightMargin="1" topMargin="10" bottomMargin="5" uuid="e06fc829-861a-4097-8acd-d9c65c0d0a3b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="dsKOTDtl" uuid="ac9c5034-69b9-4ba9-8862-a8b8f5865c5a">
+		<parameter name="listOfItemDtl" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[select * from tblbilldtl;]]>
+		</queryString>
+		<field name="strItemName" class="java.lang.String"/>
+		<field name="dblQuantity" class="java.lang.Double"/>
+		<field name="dblAmount" class="java.lang.Double"/>
+		<variable name="totalAmt" class="java.lang.Double" calculation="Sum">
+			<variableExpression><![CDATA[$F{dblAmount}]]></variableExpression>
+			<initialValueExpression><![CDATA[new Double(0.00)]]></initialValueExpression>
+		</variable>
+	</subDataset>
+	<parameter name="duplicate" class="java.lang.String"/>
+	<parameter name="voidedBill" class="java.lang.String"/>
+	<parameter name="posName" class="java.lang.String"/>
+	<parameter name="ADDRESS1" class="java.lang.String"/>
+	<parameter name="ClientName" class="java.lang.String"/>
+	<parameter name="POS" class="java.lang.String"/>
+	<parameter name="BillNo" class="java.lang.String"/>
+	<parameter name="DATE_TIME" class="java.lang.String"/>
+	<parameter name="SUB TOTAL" class="java.lang.String"/>
+	<parameter name="costCenter" class="java.lang.String"/>
+	<parameter name="KOTType" class="java.lang.String"/>
+	<parameter name="KOT From" class="java.lang.String"/>
+	<parameter name="PAX" class="java.lang.String"/>
+	<parameter name="tableNo" class="java.lang.String"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="KOT" class="java.lang.String"/>
+	<parameter name="dublicate" class="java.lang.String"/>
+	<parameter name="KOTorNC" class="java.lang.String"/>
+	<parameter name="CounterName" class="java.lang.String"/>
+	<parameter name="waiterName" class="java.lang.String"/>
+	<parameter name="listOfItemDtl" class="java.util.List"/>
+	<parameter name="124.001" class="java.lang.String"/>
+	<parameter name="kotByUser" class="java.lang.String"/>
+	<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+	<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="64" splitType="Stretch">
+			<line>
+				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="19" y="14" width="195" height="1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="93" y="15" width="61" height="17"/>
+				<textElement>
+					<font fontName="Trebuchet MS" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tableNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="22" y="17" width="70" height="15"/>
+				<textElement>
+					<font fontName="Trebuchet MS" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Table No        :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="92" y="49" width="123" height="15"/>
+				<textElement>
+					<font fontName="Trebuchet MS" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATE_TIME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="20" y="49" width="70" height="15"/>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<text><![CDATA[DATE & TIME  :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="fe4c7c79-9d68-417c-933d-8493ae16181f" x="79" y="0" width="75" height="15" isRemoveLineWhenBlank="true"/>
+				<textElement textAlignment="Center">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{KOTType}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="92" y="31" width="123" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[!$P{waiterName}.isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Trebuchet MS" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{waiterName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="20" y="32" width="70" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[!$P{waiterName}.isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<text><![CDATA[Waiter           :]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="f6ff2509-a370-4847-b368-98e00c05cd80" x="20" y="2" width="195" height="26"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="dsKOTDtl" uuid="81a0e0cd-2e6f-4e56-b2a9-e9c9a840bb6f">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listOfItemDtl})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column uuid="699aa6e8-7173-4756-80bb-149d043a40b0" width="27">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:columnHeader height="20" rowSpan="1">
+							<staticText>
+								<reportElement uuid="2ff3711a-f26d-42c7-bcc7-8913c067b85c" x="1" y="0" width="25" height="18"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Trebuchet MS" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Qty]]></text>
+							</staticText>
+							<line>
+								<reportElement uuid="143a6a1d-cd77-4f1e-b2ca-96ee704d77d2" x="0" y="19" width="26" height="1"/>
+							</line>
+						</jr:columnHeader>
+						<jr:detailCell height="19" rowSpan="1">
+							<textField pattern="#.###" isBlankWhenNull="true">
+								<reportElement uuid="06914f88-ab30-4c05-b4aa-eae84be9e674" x="0" y="0" width="25" height="18">
+									<printWhenExpression><![CDATA[$F{dblQuantity}>0.0]]></printWhenExpression>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Trebuchet MS" size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{dblQuantity}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="55886318-c2f3-4bf7-911f-72caa1809e0f" width="171">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:columnHeader height="20" rowSpan="1">
+							<staticText>
+								<reportElement uuid="2ff3711a-f26d-42c7-bcc7-8913c067b85c" x="0" y="0" width="171" height="18"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Trebuchet MS" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[  Item Name]]></text>
+							</staticText>
+							<line>
+								<reportElement uuid="143a6a1d-cd77-4f1e-b2ca-96ee704d77d2" x="0" y="19" width="171" height="1"/>
+							</line>
+						</jr:columnHeader>
+						<jr:detailCell height="19" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement uuid="06914f88-ab30-4c05-b4aa-eae84be9e674" x="0" y="0" width="159" height="18"/>
+								<textElement textAlignment="Left">
+									<font fontName="Trebuchet MS" size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<line>
+				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="18" y="1" width="197" height="1"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

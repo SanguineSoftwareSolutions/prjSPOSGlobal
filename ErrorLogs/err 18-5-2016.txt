@@ -1,0 +1,35 @@
+Date Time= 18-5-2016 18:24:47
+java.io.FileNotFoundException: D:\SANGUINE\Projects\POS\prjSPOSGlobal\DBConfigFile.txt (The system cannot find the file specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileReader.<init>(FileReader.java:72)
+	at com.POSGlobal.controller.clsPosConfigFile.<init>(clsPosConfigFile.java:30)
+	at com.POSGlobal.controller.clsDatabaseConnection.<init>(clsDatabaseConnection.java:20)
+	at com.POSGlobal.controller.clsDatabaseConnection.main(clsDatabaseConnection.java:128)
+
+Date Time= 18-5-2016 18:24:50
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Cannot load connection class because of underlying exception: 'java.lang.NumberFormatException: For input string: "null"'.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1013)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:987)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:982)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:927)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:314)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at com.POSGlobal.controller.clsDatabaseConnection.open(clsDatabaseConnection.java:43)
+	at com.POSGlobal.controller.clsDatabaseConnection.main(clsDatabaseConnection.java:129)
+Caused by: java.lang.NumberFormatException: For input string: "null"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mysql.jdbc.NonRegisteringDriver.port(NonRegisteringDriver.java:831)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:305)
+	... 4 more
+

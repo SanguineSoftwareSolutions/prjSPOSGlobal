@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptBillFormat5" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f0f420c3-c6f1-498c-b2be-ea00d445843a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="subReportDirectory" class="java.io.InputStream"/>
+	<parameter name="foodBillDtl" class="java.util.Collection"/>
+	<parameter name="listOfHomeDeliveryDtl" class="java.util.List"/>
+	<parameter name="listOfTaxDtl" class="java.util.List"/>
+	<parameter name="SUB TOTAL" class="java.lang.String"/>
+	<parameter name="FullAddress" class="java.lang.String"/>
+	<parameter name="ClientAddress2" class="java.lang.String"/>
+	<parameter name="HOME DELIVERY" class="java.lang.String"/>
+	<parameter name="ClientName" class="java.lang.String"/>
+	<parameter name="NAME" class="java.lang.String"/>
+	<parameter name="listOfSettlementDetail" class="java.util.List"/>
+	<parameter name="MOBILE_NO" class="java.lang.String"/>
+	<parameter name="EMAIL ID" class="java.lang.String"/>
+	<parameter name="GSTNo" class="java.lang.String"/>
+	<parameter name="waiterName" class="java.lang.String"/>
+	<parameter name="TABLE NAME" class="java.lang.String"/>
+	<parameter name="listOfDiscountDtl" class="java.util.List"/>
+	<parameter name="subReportDirectory_1" class="java.io.InputStream"/>
+	<parameter name="Line" class="java.lang.String"/>
+	<parameter name="ClientCity" class="java.lang.String"/>
+	<parameter name="TAX_INVOICE" class="java.lang.String"/>
+	<parameter name="duplicate" class="java.lang.String"/>
+	<parameter name="orderNo" class="java.lang.String"/>
+	<parameter name="imgBillLogo" class="java.lang.String"/>
+	<parameter name="user" class="java.lang.String"/>
+	<parameter name="listOfGrandTotalDtl" class="java.util.List"/>
+	<parameter name="ClientAddress3" class="java.lang.String"/>
+	<parameter name="DELV BOY" class="java.lang.String"/>
+	<parameter name="BillType" class="java.lang.String"/>
+	<parameter name="listOfServiceVatDetail" class="java.util.List"/>
+	<parameter name="ch" class="java.lang.String"/>
+	<parameter name="BillNo" class="java.lang.String"/>
+	<parameter name="POS" class="java.lang.String"/>
+	<parameter name="foodBillDtl_1" class="java.util.Collection"/>
+	<parameter name="TEL NO" class="java.lang.String"/>
+	<parameter name="voidedBill" class="java.lang.String"/>
+	<parameter name="posName" class="java.lang.String"/>
+	<parameter name="listOfFooterDtl" class="java.util.List"/>
+	<parameter name="posWiseHeading" class="java.lang.String"/>
+	<parameter name="listOfItemDtl" class="java.util.List"/>
+	<parameter name="liquorBillDtl" class="java.util.Collection"/>
+	<parameter name="ClientAddress1" class="java.lang.String"/>
+	<parameter name="DATE_TIME" class="java.lang.String"/>
+	<parameter name="isForLiquorSubReport" class="java.io.InputStream"/>
+	<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+	<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<subreport isUsingCache="true">
+				<reportElement uuid="68fec8b5-1daf-4a46-8426-115f29d60ae0" x="0" y="0" width="260" height="37"/>
+				<subreportParameter name="TEL NO">
+					<subreportParameterExpression><![CDATA[$P{TEL NO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FullAddress">
+					<subreportParameterExpression><![CDATA[$P{FullAddress}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="GSTNo">
+					<subreportParameterExpression><![CDATA[$P{GSTNo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfGrandTotalDtl">
+					<subreportParameterExpression><![CDATA[$P{listOfGrandTotalDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="waiterName">
+					<subreportParameterExpression><![CDATA[$P{waiterName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ClientCity">
+					<subreportParameterExpression><![CDATA[$P{ClientCity}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUB TOTAL">
+					<subreportParameterExpression><![CDATA[$P{SUB TOTAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="imgBillLogo">
+					<subreportParameterExpression><![CDATA[$P{imgBillLogo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DELV BOY">
+					<subreportParameterExpression><![CDATA[$P{DELV BOY}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="voidedBill">
+					<subreportParameterExpression><![CDATA[$P{voidedBill}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="foodBillDtl">
+					<subreportParameterExpression><![CDATA[$P{foodBillDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ClientName">
+					<subreportParameterExpression><![CDATA[$P{ClientName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BillNo">
+					<subreportParameterExpression><![CDATA[$P{BillNo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfHomeDeliveryDtl">
+					<subreportParameterExpression><![CDATA[$P{listOfHomeDeliveryDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="HOME DELIVERY">
+					<subreportParameterExpression><![CDATA[$P{HOME DELIVERY}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfSettlementDetail">
+					<subreportParameterExpression><![CDATA[$P{listOfSettlementDetail}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BillType">
+					<subreportParameterExpression><![CDATA[$P{BillType}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="posName">
+					<subreportParameterExpression><![CDATA[$P{posName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="orderNo">
+					<subreportParameterExpression><![CDATA[$P{orderNo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfServiceVatDetail">
+					<subreportParameterExpression><![CDATA[$P{listOfServiceVatDetail}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ch">
+					<subreportParameterExpression><![CDATA[$P{ch}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="duplicate">
+					<subreportParameterExpression><![CDATA[$P{duplicate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subReportDirectory">
+					<subreportParameterExpression><![CDATA[$P{subReportDirectory}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfItemDtl">
+					<subreportParameterExpression><![CDATA[$P{listOfItemDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NAME">
+					<subreportParameterExpression><![CDATA[$P{NAME}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Line">
+					<subreportParameterExpression><![CDATA[$P{Line}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfFooterDtl">
+					<subreportParameterExpression><![CDATA[$P{listOfFooterDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MOBILE_NO">
+					<subreportParameterExpression><![CDATA[$P{MOBILE_NO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfDiscountDtl">
+					<subreportParameterExpression><![CDATA[$P{listOfDiscountDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="liquorBillDtl">
+					<subreportParameterExpression><![CDATA[$P{liquorBillDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="POS">
+					<subreportParameterExpression><![CDATA[$P{POS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subReportDirectory_1">
+					<subreportParameterExpression><![CDATA[$P{subReportDirectory_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ClientAddress2">
+					<subreportParameterExpression><![CDATA[$P{ClientAddress2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="posWiseHeading">
+					<subreportParameterExpression><![CDATA[$P{posWiseHeading}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ClientAddress1">
+					<subreportParameterExpression><![CDATA[$P{ClientAddress1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfTaxDtl">
+					<subreportParameterExpression><![CDATA[$P{listOfTaxDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TABLE NAME">
+					<subreportParameterExpression><![CDATA[$P{TABLE NAME}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ClientAddress3">
+					<subreportParameterExpression><![CDATA[$P{ClientAddress3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_TIME">
+					<subreportParameterExpression><![CDATA[$P{DATE_TIME}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="EMAIL ID">
+					<subreportParameterExpression><![CDATA[$P{EMAIL ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="user">
+					<subreportParameterExpression><![CDATA[$P{user}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TAX_INVOICE">
+					<subreportParameterExpression><![CDATA[$P{TAX_INVOICE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="foodBillDtl_1">
+					<subreportParameterExpression><![CDATA[$P{foodBillDtl_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{foodBillDtl})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subReportDirectory}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="37">
+			<subreport isUsingCache="true">
+				<reportElement uuid="68fec8b5-1daf-4a46-8426-115f29d60ae0" x="0" y="0" width="260" height="37"/>
+				<subreportParameter name="TEL NO">
+					<subreportParameterExpression><![CDATA[$P{TEL NO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FullAddress">
+					<subreportParameterExpression><![CDATA[$P{FullAddress}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="GSTNo">
+					<subreportParameterExpression><![CDATA[$P{GSTNo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfGrandTotalDtl">
+					<subreportParameterExpression><![CDATA[$P{listOfGrandTotalDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="waiterName">
+					<subreportParameterExpression><![CDATA[$P{waiterName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ClientCity">
+					<subreportParameterExpression><![CDATA[$P{ClientCity}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUB TOTAL">
+					<subreportParameterExpression><![CDATA[$P{SUB TOTAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="imgBillLogo">
+					<subreportParameterExpression><![CDATA[$P{imgBillLogo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DELV BOY">
+					<subreportParameterExpression><![CDATA[$P{DELV BOY}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="voidedBill">
+					<subreportParameterExpression><![CDATA[$P{voidedBill}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="foodBillDtl">
+					<subreportParameterExpression><![CDATA[$P{foodBillDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ClientName">
+					<subreportParameterExpression><![CDATA[$P{ClientName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BillNo">
+					<subreportParameterExpression><![CDATA[$P{BillNo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfHomeDeliveryDtl">
+					<subreportParameterExpression><![CDATA[$P{listOfHomeDeliveryDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="HOME DELIVERY">
+					<subreportParameterExpression><![CDATA[$P{HOME DELIVERY}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfSettlementDetail">
+					<subreportParameterExpression><![CDATA[$P{listOfSettlementDetail}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BillType">
+					<subreportParameterExpression><![CDATA[$P{BillType}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="posName">
+					<subreportParameterExpression><![CDATA[$P{posName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="orderNo">
+					<subreportParameterExpression><![CDATA[$P{orderNo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfServiceVatDetail">
+					<subreportParameterExpression><![CDATA[$P{listOfServiceVatDetail}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ch">
+					<subreportParameterExpression><![CDATA[$P{ch}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="duplicate">
+					<subreportParameterExpression><![CDATA[$P{duplicate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subReportDirectory">
+					<subreportParameterExpression><![CDATA[$P{subReportDirectory}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfItemDtl">
+					<subreportParameterExpression><![CDATA[$P{listOfItemDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NAME">
+					<subreportParameterExpression><![CDATA[$P{NAME}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Line">
+					<subreportParameterExpression><![CDATA[$P{Line}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfFooterDtl">
+					<subreportParameterExpression><![CDATA[$P{listOfFooterDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MOBILE_NO">
+					<subreportParameterExpression><![CDATA[$P{MOBILE_NO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfDiscountDtl">
+					<subreportParameterExpression><![CDATA[$P{listOfDiscountDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="liquorBillDtl">
+					<subreportParameterExpression><![CDATA[$P{liquorBillDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="POS">
+					<subreportParameterExpression><![CDATA[$P{POS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subReportDirectory_1">
+					<subreportParameterExpression><![CDATA[$P{subReportDirectory_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ClientAddress2">
+					<subreportParameterExpression><![CDATA[$P{ClientAddress2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="posWiseHeading">
+					<subreportParameterExpression><![CDATA[$P{posWiseHeading}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ClientAddress1">
+					<subreportParameterExpression><![CDATA[$P{ClientAddress1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="listOfTaxDtl">
+					<subreportParameterExpression><![CDATA[$P{listOfTaxDtl}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TABLE NAME">
+					<subreportParameterExpression><![CDATA[$P{TABLE NAME}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ClientAddress3">
+					<subreportParameterExpression><![CDATA[$P{ClientAddress3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_TIME">
+					<subreportParameterExpression><![CDATA[$P{DATE_TIME}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="EMAIL ID">
+					<subreportParameterExpression><![CDATA[$P{EMAIL ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="user">
+					<subreportParameterExpression><![CDATA[$P{user}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TAX_INVOICE">
+					<subreportParameterExpression><![CDATA[$P{TAX_INVOICE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="foodBillDtl_1">
+					<subreportParameterExpression><![CDATA[$P{foodBillDtl_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{liquorBillDtl})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{isForLiquorSubReport}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

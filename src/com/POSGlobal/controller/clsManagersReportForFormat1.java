@@ -4597,7 +4597,8 @@ public class clsManagersReportForFormat1
 	    sqlVoidBillBuilder.append(" select DATE_FORMAT(a.dteReceiptDate,'%d/%m/%y'),c.strCustomerName,a.strReceiptNo,a.dblReceiptAmt,a.strSettlementName "
 		    + "from tblqcreditbillreceipthd a,tblbillhd b,tblcustomermaster c "
 		    + "where a.strBillNo=b.strBillNo "
-		    + "and b.strCustomerCode=c.strCustomerCode ");
+		    + "and b.strCustomerCode=c.strCustomerCode "
+		    + "and DATE(a.dteReceiptDate) BETWEEN '" + fromDate + "' AND '" + toDate + "' ");
 	    if (!POSCode.equalsIgnoreCase("All"))
 	    {
 		sqlVoidBillBuilder.append("AND a.strPosCode='" + POSCode + "' ");
@@ -4622,7 +4623,8 @@ public class clsManagersReportForFormat1
 	    sqlVoidBillBuilder.append(" select DATE_FORMAT(a.dteReceiptDate,'%d/%m/%y'),c.strCustomerName,a.strReceiptNo,a.dblReceiptAmt,a.strSettlementName "
 		    + "from tblqcreditbillreceipthd a,tblqbillhd b,tblcustomermaster c "
 		    + "where a.strBillNo=b.strBillNo "
-		    + "and b.strCustomerCode=c.strCustomerCode ");
+		    + "and b.strCustomerCode=c.strCustomerCode "
+		    + "and DATE(a.dteReceiptDate) BETWEEN '" + fromDate + "' AND '" + toDate + "' ");
 	    if (!POSCode.equalsIgnoreCase("All"))
 	    {
 		sqlVoidBillBuilder.append("AND a.strPosCode='" + POSCode + "' ");

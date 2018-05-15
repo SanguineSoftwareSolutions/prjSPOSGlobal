@@ -3094,24 +3094,26 @@ public class clsUtility implements Cloneable
 	    clsGlobalVarClass.dbMysql.execute(sql);
 
 	    sql = "UPDATE tbldayendprocess SET dblNetSale = IFNULL((SELECT SUM(a.dblSubTotal)-SUM(a.dblDiscountAmt) as NetTotal "
-		    + " FROM tblbillhd a,tblbillsettlementdtl b "
-		    + " WHERE a.strBillNo=b.strBillNo AND DATE(a.dteBillDate) = '" + posDate + "' "
+		    + " FROM tblbillhd a "
+		    + " WHERE DATE(a.dteBillDate) = '" + posDate + "' "
 		    + " AND  a.strPOSCode = '" + posCode + "' AND a.intShiftCode='" + shiftNo + "'),0) "
 		    + " WHERE DATE(dtePOSDate)='" + posDate + "' AND strPOSCode = '" + posCode + "' AND intShiftCode=" + shiftNo;
-	    clsGlobalVarClass.dbMysql.execute(sql);
-
-	    sql = "UPDATE tbldayendprocess SET dblGrossSale = IFNULL(( "
-		    + " SELECT    SUM(a.dblSubTotal) as GrossTotal "
-		    + " FROM tblbillhd a,tblbillsettlementdtl b "
-		    + " WHERE a.strBillNo=b.strBillNo AND DATE(a.dteBillDate) = '" + posDate + "' "
-		    + " AND  a.strPOSCode = '" + posCode + "' AND a.intShiftCode='" + shiftNo + "'),0) "
-		    + " WHERE DATE(dtePOSDate)='" + posDate + "'  AND strPOSCode = '" + posCode + "' AND intShiftCode=" + shiftNo;
+	    clsGlobalVarClass.dbMysql.execute(sql);	   
+	    
+	    
+	    sql = "update tbldayendprocess set dblGrossSale = IFNULL((select sum(b.dblSettlementAmt) "
+		    + "TotalSale from tblbillhd a,tblbillsettlementdtl b "
+		    + "where a.strBillNo=b.strBillNo and date(a.dteBillDate) = '" + posDate + "' and "
+		    + "a.strPOSCode = '" + posCode + "' and a.intShiftCode=" + shiftNo + "),0)"
+		    + " where date(dtePOSDate)='" + posDate + "' and strPOSCode = '" + posCode + "'"
+		    + " and intShiftCode=" + shiftNo;
+	    //System.out.println("UpdateDayEndQuery_1=="+sql);
 	    clsGlobalVarClass.dbMysql.execute(sql);
 
 	    sql = "UPDATE tbldayendprocess SET dblAPC = IFNULL(( "
 		    + " SELECT SUM(a.dblGrandTotal)/SUM(a.intPaxNo) as APC"
-		    + " FROM tblbillhd a,tblbillsettlementdtl b "
-		    + " WHERE a.strBillNo=b.strBillNo AND DATE(a.dteBillDate) = '" + posDate + "' "
+		    + " FROM tblbillhd a "
+		    + " WHERE  DATE(a.dteBillDate) = '" + posDate + "' "
 		    + " AND  a.strPOSCode = '" + posCode + "' AND a.intShiftCode='" + shiftNo + "'),0) "
 		    + " WHERE DATE(dtePOSDate)='" + posDate + "' AND strPOSCode = '" + posCode + "' AND intShiftCode=" + shiftNo;
 	    clsGlobalVarClass.dbMysql.execute(sql);

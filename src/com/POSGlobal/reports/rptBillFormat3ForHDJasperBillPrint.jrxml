@@ -156,7 +156,7 @@
 				<textFieldExpression><![CDATA[$P{ClientAddress1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="47" y="124" width="132" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="50" y="124" width="150" height="15"/>
 				<textElement textAlignment="Left">
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
@@ -170,7 +170,7 @@
 				<textFieldExpression><![CDATA[$P{ClientCity}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="46" y="141" width="133" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="50" y="141" width="150" height="15"/>
 				<textElement textAlignment="Left">
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
@@ -184,14 +184,14 @@
 				<textFieldExpression><![CDATA[$P{TAX_INVOICE}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="1" y="124" width="45" height="15"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="4" y="124" width="45" height="15"/>
 				<textElement textAlignment="Left">
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
-				<text><![CDATA[Tel No    :]]></text>
+				<text><![CDATA[Tel No   :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="1" y="141" width="45" height="15"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="4" y="141" width="45" height="15"/>
 				<textElement textAlignment="Left">
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
@@ -208,7 +208,7 @@
 				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="227" width="200" height="1"/>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="130" y="209" width="60" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="130" y="209" width="70" height="15"/>
 				<textElement>
 					<font fontName="Trebuchet MS" size="11" isBold="true"/>
 				</textElement>
@@ -229,11 +229,11 @@
 				<textFieldExpression><![CDATA[$P{DATE_TIME}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="1" y="209" width="30" height="15"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="4" y="209" width="27" height="15"/>
 				<textElement>
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
-				<text><![CDATA[Date  :]]></text>
+				<text><![CDATA[Date:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="c6a470e3-2ea5-4e52-bbc2-02cc122b5214" x="39" y="31" width="110" height="15"/>
@@ -253,16 +253,16 @@
 				<textFieldExpression><![CDATA[$P{ClientAddress3}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="0" y="157" width="45" height="15" isRemoveLineWhenBlank="true">
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="4" y="157" width="45" height="15" isRemoveLineWhenBlank="true">
 					<printWhenExpression><![CDATA[$P{TABLE NAME}!=null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Left">
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
-				<text><![CDATA[TABLE :]]></text>
+				<text><![CDATA[TABLE   :]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="45" y="157" width="133" height="15" isRemoveLineWhenBlank="true">
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="50" y="157" width="150" height="15" isRemoveLineWhenBlank="true">
 					<printWhenExpression><![CDATA[$P{TABLE NAME}!=null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -271,14 +271,14 @@
 				<textFieldExpression><![CDATA[$P{TABLE NAME}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="0" y="172" width="58" height="15" isRemoveLineWhenBlank="true"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="4" y="172" width="54" height="15" isRemoveLineWhenBlank="true"/>
 				<textElement textAlignment="Left">
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
 				<text><![CDATA[STEWARD :]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="58" y="172" width="120" height="15" isRemoveLineWhenBlank="true"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="58" y="172" width="142" height="15" isRemoveLineWhenBlank="true"/>
 				<textElement textAlignment="Left">
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
@@ -699,10 +699,10 @@
 						<jr:detailCell height="20" rowSpan="1">
 							<staticText>
 								<reportElement uuid="b1739041-a1ff-4ef5-8452-320476b3cc0f" x="0" y="1" width="153" height="18"/>
-								<textElement>
+								<textElement verticalAlignment="Middle">
 									<font fontName="Trebuchet MS" size="11" isBold="false"/>
 								</textElement>
-								<text><![CDATA[TOTAL(ROUNDED)]]></text>
+								<text><![CDATA[   TOTAL(ROUNDED)]]></text>
 							</staticText>
 						</jr:detailCell>
 					</jr:column>
@@ -718,7 +718,7 @@
 						<jr:detailCell height="20" rowSpan="1">
 							<textField>
 								<reportElement uuid="cc40c981-6a31-4c56-973c-f88f11c3c2a2" x="1" y="0" width="50" height="18"/>
-								<textElement textAlignment="Right">
+								<textElement textAlignment="Right" verticalAlignment="Middle">
 									<font fontName="Trebuchet MS" size="11" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{dblAmount}]]></textFieldExpression>
@@ -747,8 +747,8 @@
 						<jr:columnFooter height="1" rowSpan="1"/>
 						<jr:detailCell height="16" rowSpan="1">
 							<textField isStretchWithOverflow="true">
-								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="0" y="0" width="177" height="16"/>
-								<textElement textAlignment="Left">
+								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="10" y="0" width="167" height="16"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
 									<font fontName="Trebuchet MS"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
@@ -776,8 +776,8 @@
 						</jr:columnFooter>
 						<jr:detailCell height="18" rowSpan="1">
 							<textField isStretchWithOverflow="true">
-								<reportElement uuid="2a5172aa-c4e6-4bb4-a869-1d50494a6c9f" x="0" y="4" width="129" height="14"/>
-								<textElement>
+								<reportElement uuid="2a5172aa-c4e6-4bb4-a869-1d50494a6c9f" x="10" y="0" width="119" height="18"/>
+								<textElement verticalAlignment="Middle">
 									<font fontName="Trebuchet MS"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
@@ -795,8 +795,8 @@
 						</jr:columnFooter>
 						<jr:detailCell height="18" rowSpan="1">
 							<textField>
-								<reportElement uuid="cc40c981-6a31-4c56-973c-f88f11c3c2a2" x="2" y="4" width="67" height="14"/>
-								<textElement textAlignment="Right">
+								<reportElement uuid="cc40c981-6a31-4c56-973c-f88f11c3c2a2" x="2" y="0" width="67" height="18"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
 									<font fontName="Trebuchet MS"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{dblAmount}]]></textFieldExpression>
@@ -819,17 +819,10 @@
 						<jr:columnHeader height="0" rowSpan="1"/>
 						<jr:columnFooter height="1" rowSpan="1"/>
 						<jr:detailCell height="16" rowSpan="1">
-							<staticText>
-								<reportElement uuid="b1739041-a1ff-4ef5-8452-320476b3cc0f" x="0" y="0" width="129" height="10"/>
-								<textElement>
-									<font size="7" isBold="true"/>
-								</textElement>
-								<text><![CDATA[]]></text>
-							</staticText>
 							<textField>
-								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="0" y="2" width="177" height="12"/>
-								<textElement>
-									<font fontName="Trebuchet MS" size="10"/>
+								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="10" y="0" width="167" height="16"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Trebuchet MS"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
 							</textField>
@@ -854,21 +847,13 @@
 					</datasetRun>
 					<jr:column uuid="699aa6e8-7173-4756-80bb-149d043a40b0" width="177">
 						<jr:tableHeader height="0" rowSpan="1"/>
-						<jr:tableFooter height="2" rowSpan="1"/>
 						<jr:columnHeader height="0" rowSpan="1"/>
 						<jr:columnFooter height="2" rowSpan="1"/>
 						<jr:detailCell height="17" rowSpan="1">
-							<staticText>
-								<reportElement uuid="b1739041-a1ff-4ef5-8452-320476b3cc0f" x="0" y="0" width="129" height="10"/>
-								<textElement>
-									<font size="7" isBold="true"/>
-								</textElement>
-								<text><![CDATA[]]></text>
-							</staticText>
 							<textField>
-								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="0" y="3" width="177" height="12"/>
-								<textElement textAlignment="Left">
-									<font fontName="Trebuchet MS" size="10"/>
+								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="10" y="0" width="167" height="17"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="Trebuchet MS"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
 							</textField>

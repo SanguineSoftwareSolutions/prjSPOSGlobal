@@ -197,7 +197,7 @@
 		</band>
 		<band height="204">
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="45" y="80" width="141" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="45" y="80" width="141" height="15" isRemoveLineWhenBlank="true"/>
 				<textElement textAlignment="Left">
 					<font fontName="Trebuchet MS" size="10" isBold="false"/>
 				</textElement>
@@ -211,7 +211,7 @@
 				<textFieldExpression><![CDATA[$P{ClientCity}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="44" y="95" width="142" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="44" y="95" width="142" height="15" isRemoveLineWhenBlank="true"/>
 				<textElement textAlignment="Left">
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
@@ -225,14 +225,18 @@
 				<textFieldExpression><![CDATA[$P{TAX_INVOICE}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="0" y="80" width="44" height="15"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="0" y="80" width="44" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[!$P{TEL NO}.isEmpty()]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Left">
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
 				<text><![CDATA[Tel No    :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="0" y="95" width="44" height="15"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="0" y="95" width="44" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[!$P{EMAIL ID}.isEmpty()]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Left">
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
@@ -246,7 +250,7 @@
 				<textFieldExpression><![CDATA[$P{ClientAddress2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="36" y="173" width="152" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="36" y="173" width="152" height="15" isRemoveLineWhenBlank="true"/>
 				<textElement>
 					<font fontName="Trebuchet MS" size="11" isBold="true"/>
 				</textElement>
@@ -260,14 +264,16 @@
 				<text><![CDATA[Bill No:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="36" y="188" width="152" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="36" y="188" width="152" height="15" isRemoveLineWhenBlank="true"/>
 				<textElement>
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{DATE_TIME}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="0" y="188" width="36" height="15"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="0" y="188" width="36" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{DATE_TIME}!=null]]></printWhenExpression>
+				</reportElement>
 				<textElement>
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
@@ -294,7 +300,7 @@
 			</staticText>
 			<staticText>
 				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="0" y="110" width="44" height="15" isRemoveLineWhenBlank="true">
-					<printWhenExpression><![CDATA[$P{TABLE NAME}!=null]]></printWhenExpression>
+					<printWhenExpression><![CDATA[!$P{TABLE NAME}.isEmpty()]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Left">
 					<font fontName="Trebuchet MS" size="10"/>
@@ -320,14 +326,16 @@
 				<textFieldExpression><![CDATA[$P{waiterName}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="36" y="158" width="152" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="36" y="158" width="152" height="15" isRemoveLineWhenBlank="true"/>
 				<textElement>
 					<font fontName="Trebuchet MS" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{POS}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="-1" y="158" width="37" height="15"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="-1" y="158" width="37" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{POS}!=null]]></printWhenExpression>
+				</reportElement>
 				<textElement>
 					<font fontName="Trebuchet MS" size="10" isBold="false"/>
 				</textElement>

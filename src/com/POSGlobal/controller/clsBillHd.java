@@ -87,462 +87,501 @@ public class clsBillHd
     private double dblGrandTotalRoundOffBy;
 
     private int intBillSeriesPaxNo;
-    
+
     private String strDiscOnType;
-    
+
     private String strDiscOnValue;
-    
+
     private double dbldiscountOnAmt;
-    
+
     private int intLastOrderNo;
-    
-     private String strCRMRewardId;
+
+    private String strCRMRewardId;
+
+    private String strKOTToBillNote;
+
+    private String strOnlineOrderNo;
+
+    private double dblUSDConvertionRate;
 
     public String getStrDiscountRemark()
     {
-        return strDiscountRemark;
+	return strDiscountRemark;
     }
 
     public void setStrDiscountRemark(String strDiscountRemark)
     {
-        this.strDiscountRemark = strDiscountRemark;
+	this.strDiscountRemark = strDiscountRemark;
     }
 
     public String getStrTransactionType()
     {
-        return strTransactionType;
+	return strTransactionType;
     }
 
     public void setStrTransactionType(String strTransactionType)
     {
-        this.strTransactionType = strTransactionType;
+	this.strTransactionType = strTransactionType;
     }
 
     public String getStrAreaCode()
     {
-        return strAreaCode;
+	return strAreaCode;
     }
 
     public String getStrDiscountOn()
     {
-        return strDiscountOn;
+	return strDiscountOn;
     }
 
     public void setStrDiscountOn(String strDiscountOn)
     {
-        this.strDiscountOn = strDiscountOn;
+	this.strDiscountOn = strDiscountOn;
     }
 
     public void setStrAreaCode(String strAreaCode)
     {
-        this.strAreaCode = strAreaCode;
+	this.strAreaCode = strAreaCode;
     }
 
     public String getStrBillNo()
     {
-        return strBillNo;
+	return strBillNo;
     }
 
     public void setStrBillNo(String strBillNo)
     {
-        this.strBillNo = strBillNo;
+	this.strBillNo = strBillNo;
     }
 
     public String getStrAdvBookingNo()
     {
-        return strAdvBookingNo;
+	return strAdvBookingNo;
     }
 
     public void setStrAdvBookingNo(String strAdvBookingNo)
     {
-        this.strAdvBookingNo = strAdvBookingNo;
+	this.strAdvBookingNo = strAdvBookingNo;
     }
 
     public String getDteBillDate()
     {
-        return dteBillDate;
+	return dteBillDate;
     }
 
     public void setDteBillDate(String dteBillDate)
     {
-        this.dteBillDate = dteBillDate;
+	this.dteBillDate = dteBillDate;
     }
 
     public String getStrPOSCode()
     {
-        return strPOSCode;
+	return strPOSCode;
     }
 
     public void setStrPOSCode(String strPOSCode)
     {
-        this.strPOSCode = strPOSCode;
+	this.strPOSCode = strPOSCode;
     }
 
     public String getStrSettelmentMode()
     {
-        return strSettelmentMode;
+	return strSettelmentMode;
     }
 
     public void setStrSettelmentMode(String strSettelmentMode)
     {
-        this.strSettelmentMode = strSettelmentMode;
+	this.strSettelmentMode = strSettelmentMode;
     }
 
     public double getDblDiscountAmt()
     {
-        return dblDiscountAmt;
+	return dblDiscountAmt;
     }
 
     public void setDblDiscountAmt(double dblDiscountAmt)
     {
-        this.dblDiscountAmt = dblDiscountAmt;
+	this.dblDiscountAmt = dblDiscountAmt;
     }
 
     public double getDblDiscountPer()
     {
-        return dblDiscountPer;
+	return dblDiscountPer;
     }
 
     public void setDblDiscountPer(double dblDiscountPer)
     {
-        this.dblDiscountPer = dblDiscountPer;
+	this.dblDiscountPer = dblDiscountPer;
     }
 
     public double getDblTaxAmt()
     {
-        return dblTaxAmt;
+	return dblTaxAmt;
     }
 
     public void setDblTaxAmt(double dblTaxAmt)
     {
-        this.dblTaxAmt = dblTaxAmt;
+	this.dblTaxAmt = dblTaxAmt;
     }
 
     public double getDblSubTotal()
     {
-        return dblSubTotal;
+	return dblSubTotal;
     }
 
     public void setDblSubTotal(double dblSubTotal)
     {
-        this.dblSubTotal = dblSubTotal;
+	this.dblSubTotal = dblSubTotal;
     }
 
     public double getDblGrandTotal()
     {
-        return dblGrandTotal;
+	return dblGrandTotal;
     }
 
     public void setDblGrandTotal(double dblGrandTotal)
     {
-        this.dblGrandTotal = dblGrandTotal;
+	this.dblGrandTotal = dblGrandTotal;
     }
 
     public String getStrTakeAway()
     {
-        return strTakeAway;
+	return strTakeAway;
     }
 
     public void setStrTakeAway(String strTakeAway)
     {
-        this.strTakeAway = strTakeAway;
+	this.strTakeAway = strTakeAway;
     }
 
     public String getStrOperationType()
     {
-        return strOperationType;
+	return strOperationType;
     }
 
     public void setStrOperationType(String strOperationType)
     {
-        this.strOperationType = strOperationType;
+	this.strOperationType = strOperationType;
     }
 
     public String getStrUserCreated()
     {
-        return strUserCreated;
+	return strUserCreated;
     }
 
     public void setStrUserCreated(String strUserCreated)
     {
-        this.strUserCreated = strUserCreated;
+	this.strUserCreated = strUserCreated;
     }
 
     public String getStrUserEdited()
     {
-        return strUserEdited;
+	return strUserEdited;
     }
 
     public void setStrUserEdited(String strUserEdited)
     {
-        this.strUserEdited = strUserEdited;
+	this.strUserEdited = strUserEdited;
     }
 
     public String getDteDateCreated()
     {
-        return dteDateCreated;
+	return dteDateCreated;
     }
 
     public void setDteDateCreated(String dteDateCreated)
     {
-        this.dteDateCreated = dteDateCreated;
+	this.dteDateCreated = dteDateCreated;
     }
 
     public String getDteDateEdited()
     {
-        return dteDateEdited;
+	return dteDateEdited;
     }
 
     public void setDteDateEdited(String dteDateEdited)
     {
-        this.dteDateEdited = dteDateEdited;
+	this.dteDateEdited = dteDateEdited;
     }
 
     public String getStrClientCode()
     {
-        return strClientCode;
+	return strClientCode;
     }
 
     public void setStrClientCode(String strClientCode)
     {
-        this.strClientCode = strClientCode;
+	this.strClientCode = strClientCode;
     }
 
     public String getStrTableNo()
     {
-        return strTableNo;
+	return strTableNo;
     }
 
     public void setStrTableNo(String strTableNo)
     {
-        this.strTableNo = strTableNo;
+	this.strTableNo = strTableNo;
     }
 
     public String getStrWaiterNo()
     {
-        return strWaiterNo;
+	return strWaiterNo;
     }
 
     public void setStrWaiterNo(String strWaiterNo)
     {
-        this.strWaiterNo = strWaiterNo;
+	this.strWaiterNo = strWaiterNo;
     }
 
     public String getStrCustomerCode()
     {
-        return strCustomerCode;
+	return strCustomerCode;
     }
 
     public void setStrCustomerCode(String strCustomerCode)
     {
-        this.strCustomerCode = strCustomerCode;
+	this.strCustomerCode = strCustomerCode;
     }
 
     public String getStrManualBillNo()
     {
-        return strManualBillNo;
+	return strManualBillNo;
     }
 
     public void setStrManualBillNo(String strManualBillNo)
     {
-        this.strManualBillNo = strManualBillNo;
+	this.strManualBillNo = strManualBillNo;
     }
 
     public int getIntShiftCode()
     {
-        return intShiftCode;
+	return intShiftCode;
     }
 
     public void setIntShiftCode(int intShiftCode)
     {
-        this.intShiftCode = intShiftCode;
+	this.intShiftCode = intShiftCode;
     }
 
     public int getIntPaxNo()
     {
-        return intPaxNo;
+	return intPaxNo;
     }
 
     public void setIntPaxNo(int intPaxNo)
     {
-        this.intPaxNo = intPaxNo;
+	this.intPaxNo = intPaxNo;
     }
 
     public String getStrDataPostFlag()
     {
-        return strDataPostFlag;
+	return strDataPostFlag;
     }
 
     public void setStrDataPostFlag(String strDataPostFlag)
     {
-        this.strDataPostFlag = strDataPostFlag;
+	this.strDataPostFlag = strDataPostFlag;
     }
 
     public String getStrReasonCode()
     {
-        return strReasonCode;
+	return strReasonCode;
     }
 
     public void setStrReasonCode(String strReasonCode)
     {
-        this.strReasonCode = strReasonCode;
+	this.strReasonCode = strReasonCode;
     }
 
     public String getStrRemarks()
     {
-        return strRemarks;
+	return strRemarks;
     }
 
     public void setStrRemarks(String strRemarks)
     {
-        this.strRemarks = strRemarks;
+	this.strRemarks = strRemarks;
     }
 
     public double getDblTipAmount()
     {
-        return dblTipAmount;
+	return dblTipAmount;
     }
 
     public void setDblTipAmount(double dblTipAmount)
     {
-        this.dblTipAmount = dblTipAmount;
+	this.dblTipAmount = dblTipAmount;
     }
 
     public String getDteSettleDate()
     {
-        return dteSettleDate;
+	return dteSettleDate;
     }
 
     public void setDteSettleDate(String dteSettleDate)
     {
-        this.dteSettleDate = dteSettleDate;
+	this.dteSettleDate = dteSettleDate;
     }
 
     public String getStrCounterCode()
     {
-        return strCounterCode;
+	return strCounterCode;
     }
 
     public void setStrCounterCode(String strCounterCode)
     {
-        this.strCounterCode = strCounterCode;
+	this.strCounterCode = strCounterCode;
     }
 
     public double getDblDeliveryCharges()
     {
-        return dblDeliveryCharges;
+	return dblDeliveryCharges;
     }
 
     public void setDblDeliveryCharges(double dblDeliveryCharges)
     {
-        this.dblDeliveryCharges = dblDeliveryCharges;
+	this.dblDeliveryCharges = dblDeliveryCharges;
     }
 
     public String getStrCouponCode()
     {
-        return strCouponCode;
+	return strCouponCode;
     }
 
     public void setStrCouponCode(String strCouponCode)
     {
-        this.strCouponCode = strCouponCode;
+	this.strCouponCode = strCouponCode;
     }
 
     public String getStrTakeAwayRemarks()
     {
-        return strTakeAwayRemarks;
+	return strTakeAwayRemarks;
     }
 
     public void setStrTakeAwayRemarks(String strTakeAwayRemarks)
     {
-        this.strTakeAwayRemarks = strTakeAwayRemarks;
+	this.strTakeAwayRemarks = strTakeAwayRemarks;
     }
 
     public String getStrCardNo()
     {
-        return strCardNo;
+	return strCardNo;
     }
 
     public void setStrCardNo(String strCardNo)
     {
-        this.strCardNo = strCardNo;
+	this.strCardNo = strCardNo;
     }
 
     public double getDblGrandTotalRoundOffBy()
     {
-        return dblGrandTotalRoundOffBy;
+	return dblGrandTotalRoundOffBy;
     }
 
     public void setDblGrandTotalRoundOffBy(double dblGrandTotalRoundOffBy)
     {
-        this.dblGrandTotalRoundOffBy = dblGrandTotalRoundOffBy;
+	this.dblGrandTotalRoundOffBy = dblGrandTotalRoundOffBy;
     }
 
     public double getDblRoundOff()
     {
-        return dblRoundOff;
+	return dblRoundOff;
     }
 
     public void setDblRoundOff(double dblRoundOff)
     {
-        this.dblRoundOff = dblRoundOff;
+	this.dblRoundOff = dblRoundOff;
     }
 
     public int getIntBillSeriesPaxNo()
     {
-        return intBillSeriesPaxNo;
+	return intBillSeriesPaxNo;
     }
 
     public void setIntBillSeriesPaxNo(int intBillSeriesPaxNo)
     {
-        this.intBillSeriesPaxNo = intBillSeriesPaxNo;
+	this.intBillSeriesPaxNo = intBillSeriesPaxNo;
     }
 
-    public String getStrDiscOnType() {
-        return strDiscOnType;
+    public String getStrDiscOnType()
+    {
+	return strDiscOnType;
     }
 
-    public void setStrDiscOnType(String strDiscOnType) {
-        this.strDiscOnType = strDiscOnType;
+    public void setStrDiscOnType(String strDiscOnType)
+    {
+	this.strDiscOnType = strDiscOnType;
     }
 
-    public String getStrDiscOnValue() {
-        return strDiscOnValue;
+    public String getStrDiscOnValue()
+    {
+	return strDiscOnValue;
     }
 
-    public void setStrDiscOnValue(String strDiscOnValue) {
-        this.strDiscOnValue = strDiscOnValue;
+    public void setStrDiscOnValue(String strDiscOnValue)
+    {
+	this.strDiscOnValue = strDiscOnValue;
     }
 
-    public double getDbldiscountOnAmt() {
-        return dbldiscountOnAmt;
+    public double getDbldiscountOnAmt()
+    {
+	return dbldiscountOnAmt;
     }
 
-    public void setDbldiscountOnAmt(double dbldiscountOnAmt) {
-        this.dbldiscountOnAmt = dbldiscountOnAmt;
+    public void setDbldiscountOnAmt(double dbldiscountOnAmt)
+    {
+	this.dbldiscountOnAmt = dbldiscountOnAmt;
     }
 
     public int getIntLastOrderNo()
     {
-        return intLastOrderNo;
+	return intLastOrderNo;
     }
 
     public void setIntLastOrderNo(int intLastOrderNo)
     {
-        this.intLastOrderNo = intLastOrderNo;
+	this.intLastOrderNo = intLastOrderNo;
     }
 
     public String getStrCRMRewardId()
     {
-        return strCRMRewardId;
+	return strCRMRewardId;
     }
 
     public void setStrCRMRewardId(String strCRMRewardId)
     {
-        this.strCRMRewardId = strCRMRewardId;
+	this.strCRMRewardId = strCRMRewardId;
     }
 
-    
-    
-    
+    public String getStrKOTToBillNote()
+    {
+	return strKOTToBillNote;
+    }
+
+    public void setStrKOTToBillNote(String strKOTToBillNote)
+    {
+	this.strKOTToBillNote = strKOTToBillNote;
+    }
+
+    public String getStrOnlineOrderNo()
+    {
+	return strOnlineOrderNo;
+    }
+
+    public void setStrOnlineOrderNo(String strOnlineOrderNo)
+    {
+	this.strOnlineOrderNo = strOnlineOrderNo;
+    }
+
+    public double getDblUSDConvertionRate()
+    {
+	return dblUSDConvertionRate;
+    }
+
+    public void setDblUSDConvertionRate(double dblUSDConvertionRate)
+    {
+	this.dblUSDConvertionRate = dblUSDConvertionRate;
+    }
+
 }

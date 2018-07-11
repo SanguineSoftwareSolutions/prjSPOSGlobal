@@ -11,6 +11,8 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -63,6 +65,9 @@ public class clsManagersReport
 
 	//SALE BY TAX CATEGORY
 	funGroupWiseTaxationData(fromDate, toDate, POSCode, pw);
+
+	//new added for discount
+	funGroupWiseDiscountTaxBifurcationData(fromDate, toDate, POSCode, pw);
 
 	//SALE BY SHIFT
 	funShiftWiseTaxationData(fromDate, toDate, POSCode, pw);
@@ -5970,7 +5975,7 @@ public class clsManagersReport
 				    String taxCode = taxEntry.getKey();
 				    clsManagerReportBean objTax = taxEntry.getValue();
 				    double taxAmtForThisSettlement = 0;
-				    if (objAllGroupsDtl.getDblNetTotal() > 0)
+				    if (objAllGroupsDtl.getDblNetTotal() > 0 && isApplicableTaxOnGroup(taxCode, groupCode))
 				    {
 					taxAmtForThisSettlement = (objTax.getDblTaxAmt() / objAllGroupsDtl.getDblNetTotal()) * netTotalAmtForThisSettlement;
 				    }
@@ -6167,7 +6172,7 @@ public class clsManagersReport
 
 				mapAllTaxes.put(taxDesc, taxDesc);
 			    }
-//			pw.print(objUtility.funPrintTextWithAlignment(horizontalTotalLabel, horizontalTotalLabel.length(), "Left"));
+//			pw.print(objUtility.funPrintTextWithAlignmesnt(horizontalTotalLabel, horizontalTotalLabel.length(), "Left"));
 
 			    /**
 			     * print settlement wise data
@@ -6252,19 +6257,19 @@ public class clsManagersReport
 					isTaxApplicableOnGroup = isApplicableTaxOnGroup(taxCode, groupCode);
 				    }
 
-//                                if (taxWiseGroupTotal > 0 && isTaxApplicableOnGroup)
-//                                {
-//                                    taxAmtForThisTax = (taxAmt / taxWiseGroupTotal) * groupSubTotalForThisSettlement;
-//                                }
-				    if (mapDateWiseGroupWiseSettlementWiseTaxData.containsKey(billDate))
-				    {
-					Map<String, clsManagerReportBean> mapTaxes = mapDateWiseGroupWiseSettlementWiseTaxData.get(billDate);
-					if (mapTaxes.containsKey(groupCode + "!" + settlementCode + "!" + taxCode))
-					{
-					    clsManagerReportBean objTax = mapTaxes.get(groupCode + "!" + settlementCode + "!" + taxCode);
-					    taxAmtForThisTax = objTax.getDblTaxAmt();
-					}
-				    }
+                                if (taxWiseGroupTotal > 0 && isTaxApplicableOnGroup)
+                                {
+                                    taxAmtForThisTax = (taxAmt / taxWiseGroupTotal) * groupSubTotalForThisSettlement;
+                                }
+//				    if (mapDateWiseGroupWiseSettlementWiseTaxData.containsKey(billDate))
+//				    {
+//					Map<String, clsManagerReportBean> mapTaxes = mapDateWiseGroupWiseSettlementWiseTaxData.get(billDate);
+//					if (mapTaxes.containsKey(groupCode + "!" + settlementCode + "!" + taxCode))
+//					{
+//					    clsManagerReportBean objTax = mapTaxes.get(groupCode + "!" + settlementCode + "!" + taxCode);
+//					    taxAmtForThisTax = objTax.getDblTaxAmt();
+//					}
+//				    }
 				    horizontalSettlementTotalAmt += taxAmtForThisTax;
 //				pw.print(objUtility.funPrintTextWithAlignment(String.valueOf(Math.rint(taxAmtForThisTax)) + "|", labelTaxDesc.length(), "Right"));
 
@@ -6604,7 +6609,7 @@ public class clsManagersReport
 		 * print All Groups Concolidated
 		 */
 		pw.println();
-		pw.print(operationType+" TOTAL");
+		pw.print(operationType + " TOTAL");
 
 		pw.println();
 		for (int i = 0; i < grandTotalLines; i++)
@@ -6639,7 +6644,7 @@ public class clsManagersReport
 
 	    }
 	}
-	
+
 	pw.println("");
 	pw.println("");
 	pw.println("END OF Operation Type By Settlement,Group,Tax breakup");
@@ -6774,6 +6779,974 @@ public class clsManagersReport
 	{
 	    return taxWiseGroupTotal;
 	}
+    }
+
+    // Group Wise Taxation
+    private int funGroupWiseDiscountTaxBifurcationData(String fromDate, String toDate, String POSCode, PrintWriter pw) throws Exception
+    {
+	pw.println();
+	pw.println();
+	pw.println("SALE BY GROUP DISCOUNT TAX BIFURCATION ");
+	pw.println("---------------------------------------------");
+
+	clsUtility objUtility = new clsUtility();
+	int cntLine = 0;
+	StringBuilder sbSqlLiveFile = new StringBuilder();
+	StringBuilder sbSqlQFile = new StringBuilder();
+	sbSqlLiveFile.setLength(0);
+	sbSqlQFile.setLength(0);
+	StringBuilder sbSql = new StringBuilder();
+	sbSql.setLength(0);
+
+	class StringComparator implements Comparator<String>
+	{
+
+	    private List<Comparator<String>> listComparators;
+
+	    @SafeVarargs
+	    public StringComparator(Comparator<String>... comparators)
+	    {
+		this.listComparators = Arrays.asList(comparators);
+	    }
+
+	    @Override
+	    public int compare(String o1, String o2)
+	    {
+		for (Comparator<String> comparator : listComparators)
+		{
+		    int result = comparator.compare(o1, o2);
+		    if (result != 0)
+		    {
+			return result;
+		    }
+		}
+		return 0;
+	    }
+	}
+
+	Comparator<String> dateComparator = new Comparator<String>()
+	{
+	    @Override
+	    public int compare(String o1, String o2)
+	    {
+		String date1 = o1.split("!")[0];
+		String date2 = o2.split("!")[0];
+
+		return date1.compareToIgnoreCase(date2);
+	    }
+	};
+
+	Comparator<String> groupNameComparator = new Comparator<String>()
+	{
+	    @Override
+	    public int compare(String o1, String o2)
+	    {
+		String group1 = o1.split("!")[1];
+		String group2 = o2.split("!")[1];
+
+		return group1.compareToIgnoreCase(group2);
+	    }
+	};
+
+	Map<Integer, String> mapTaxHeaders = new TreeMap<Integer, String>();
+	Map<String, Map<String, Double>> hmGroupWiseData = new TreeMap<String, Map<String, Double>>(new StringComparator(dateComparator, groupNameComparator));
+
+	int cntTax = 1;
+	String sqlTax = "select c.strTaxCode "
+		+ " from tblbillhd a,tblbilltaxdtl b,tbltaxhd c "
+		+ " where a.strBillNo=b.strBillNo "
+		+ " and b.strTaxCode=c.strTaxCode "
+		+ " and date(a.dteBillDate)=date(b.dteBillDate) "
+		+ " and a.strClientCode=b.strClientCode "
+		+ " and date(a.dteBillDate) between '" + fromDate + "' and '" + toDate + "' ";
+
+	if (!POSCode.equalsIgnoreCase(
+		"All"))
+	{
+	    sqlTax += " and a.strPOSCode='" + POSCode + "' ";
+	}
+	sqlTax += " group by date(a.dteBillDate),c.strTaxCode";
+	ResultSet rsTaxDtl1 = clsGlobalVarClass.dbMysql.executeResultSet(sqlTax);
+
+	while (rsTaxDtl1.next())
+	{
+	    mapTaxHeaders.put(cntTax, rsTaxDtl1.getString(1));
+	    cntTax++;
+	}
+
+	rsTaxDtl1.close();
+
+	sqlTax = "select c.strTaxCode "
+		+ " from tblqbillhd a,tblqbilltaxdtl b,tbltaxhd c "
+		+ " where a.strBillNo=b.strBillNo "
+		+ " and b.strTaxCode=c.strTaxCode "
+		+ " and date(a.dteBillDate)=date(b.dteBillDate) "
+		+ " and a.strClientCode=b.strClientCode "
+		+ " and date(a.dteBillDate) between '" + fromDate + "' and '" + toDate + "' ";
+
+	if (!POSCode.equalsIgnoreCase(
+		"All"))
+	{
+	    sqlTax += " and a.strPOSCode='" + POSCode + "' ";
+	}
+	sqlTax += " group by date(a.dteBillDate),c.strTaxCode";
+	rsTaxDtl1 = clsGlobalVarClass.dbMysql.executeResultSet(sqlTax);
+
+	while (rsTaxDtl1.next())
+	{
+	    if (!mapTaxHeaders.containsValue(rsTaxDtl1.getString(1)))
+	    {
+		mapTaxHeaders.put(cntTax, rsTaxDtl1.getString(1));
+		cntTax++;
+	    }
+	}
+
+	rsTaxDtl1.close();
+
+	sbSqlLiveFile.append(
+		" select e.strGroupName,sum(b.dblAmount)-sum(b.dblDiscountAmt),e.strGroupCode,sum(b.dblDiscountAmt),date(a.dteBillDate) "
+		+ " from tblbillhd a,tblbilldtl b,tblitemmaster c,tblsubgrouphd d,tblgrouphd e "
+		+ " where a.strBillNo=b.strBillNo "
+		+ " and date(a.dteBillDate)=date(b.dteBillDate) "
+		+ " and b.strItemCode=c.strItemCode "
+		+ " and c.strSubGroupCode=d.strSubGroupCode "
+		+ " and d.strGroupCode=e.strGroupCode "
+		+ " and a.strClientCode=b.strClientCode "
+		+ " and date(a.dteBillDate) between '" + fromDate + "' and '" + toDate + "' "
+		+ "  ");
+	if (!POSCode.equalsIgnoreCase(
+		"All"))
+	{
+	    sbSqlLiveFile.append(" and a.strPOSCode='" + POSCode + "' ");
+	}
+
+	sbSqlLiveFile.append(
+		" group by date(a.dteBillDate),e.strGroupCode ");
+	System.out.println(sbSqlLiveFile);
+	ResultSet rsGroupWise = clsGlobalVarClass.dbMysql.executeResultSet(sbSqlLiveFile.toString());
+
+	while (rsGroupWise.next())
+	{
+	    Map<String, Double> hmGroupWiseDtlData = new HashMap<String, Double>();
+	    double groupAmt = rsGroupWise.getDouble(2);
+	    double groupDiscAmt = rsGroupWise.getDouble(4);
+
+	    sbSql.setLength(0);
+	    sbSql.append("select f.strGroupName,sum(c.dblAmount)-sum(c.dblDiscAmt),e.strGroupCode, SUM(c.dblDiscAmt) "
+		    + " from tblbillhd a,tblbillmodifierdtl c,tblitemmaster d,tblsubgrouphd e,tblgrouphd f "
+		    + " where a.strBillNo=c.strBillNo "
+		    + " and date(a.dteBillDate)=date(c.dteBillDate) "
+		    + " and left(c.strItemCode,7)=d.strItemCode  "
+		    + " and d.strSubGroupCode=e.strSubGroupCode "
+		    + " and e.strGroupCode=f.strGroupCode "
+		    + " and date(a.dteBillDate)='" + rsGroupWise.getString(5) + "' "
+		    + " and a.strClientCode=c.strClientCode "
+		    + " and f.strGroupCode='" + rsGroupWise.getString(3) + "' "
+		    + "  ");
+	    if (!POSCode.equalsIgnoreCase("All"))
+	    {
+		sbSql.append(" and a.strPOSCode='" + POSCode + "' ");
+	    }
+	    sbSql.append(" group by date(a.dteBillDate),f.strGroupCode");
+	    ResultSet rsGroupModData = clsGlobalVarClass.dbMysql.executeResultSet(sbSql.toString());
+	    if (rsGroupModData.next())
+	    {
+		groupAmt += rsGroupModData.getDouble(2);
+		groupDiscAmt += rsGroupModData.getDouble(4);
+	    }
+	    rsGroupModData.close();
+
+	    if (hmGroupWiseDtlData.containsKey(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1)))
+	    {
+		hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + "Amount", hmGroupWiseDtlData.get(rsGroupWise.getString(5) + "!" + "Amount") + groupAmt);
+	    }
+	    else
+	    {
+		hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + "Amount", groupAmt);
+	    }
+
+	    if (hmGroupWiseDtlData.containsKey(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1)))
+	    {
+		hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + "Discount", hmGroupWiseDtlData.get(rsGroupWise.getString(5) + "!" + "Discount") + groupDiscAmt);
+	    }
+	    else
+	    {
+		hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + "Discount", groupDiscAmt);
+	    }
+
+	    Map<String, String> hmTaxDtl = new HashMap<String, String>();
+	    sbSql.setLength(0);
+	    sbSql.append("select sum(b.dblTaxAmount),sum(b.dblTaxableAmount),c.strTaxCode,c.strTaxIndicator "
+		    + ",c.strTaxOnTax,c.strTaxOnTaxCode,c.strTaxOnGD,c.strOperationType,dblPercent,date(a.dteBillDate) "
+		    + " from tblbillhd a,tblbilltaxdtl b,tbltaxhd c "
+		    + " where a.strBillNo=b.strBillNo "
+		    + " and date(a.dteBillDate)=date(b.dteBillDate) "
+		    + " and b.strTaxCode=c.strTaxCode "
+		    + " and a.strClientCode=b.strClientCode "
+		    + " and date(a.dteBillDate) between '" + fromDate + "' and '" + toDate + "' "
+		    + "  ");
+	    if (!POSCode.equalsIgnoreCase("All"))
+	    {
+		sbSql.append(" and a.strPOSCode='" + POSCode + "' ");
+	    }
+	    sbSql.append(" group by date(a.dteBillDate),b.strTaxCode "
+		    + " order by c.strTaxOnTax");
+	    ResultSet rsTax = clsGlobalVarClass.dbMysql.executeResultSet(sbSql.toString());
+	    while (rsTax.next())
+	    {
+		String tacCode = rsTax.getString(3);
+		double taxPer = rsTax.getDouble(9);
+
+		String sql = "select a.strTaxCode,a.strTaxDesc,b.strGroupCode,b.strGroupName,b.strApplicable "
+			+ "from tbltaxhd a,tbltaxongroup b,tbltaxposdtl c "
+			+ "where a.strTaxCode=b.strTaxCode "
+			+ "and a.strTaxCode=c.strTaxCode ";
+		if (!POSCode.equalsIgnoreCase("All"))
+		{
+		    sql = sql + " and c.strPOSCode='" + POSCode + "' ";
+		}
+		sql += "and b.strGroupCode='" + rsGroupWise.getString(3) + "' "
+			+ "and a.strTaxCode='" + rsTax.getString(3) + "' "
+			+ "and b.strApplicable='true' "
+			+ "group by a.strTaxCode,b.strGroupCode";
+		ResultSet rsTaxOnGroup = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+		if (rsTaxOnGroup.next())
+		{
+		    double taxAmt = rsTax.getDouble(1);
+		    double taxableAmt = rsTax.getDouble(2);
+
+		    String[] arrTaxOperationTypes = rsTax.getString(8).split(",");
+		    String taxOpTypes = "'DirectBiller'";
+		    for (int cn = 0; cn < arrTaxOperationTypes.length; cn++)
+		    {
+			String opType = "";
+			if (arrTaxOperationTypes[cn].equals("DineIn"))
+			{
+			    opType = "DineIn";
+			}
+			else if (arrTaxOperationTypes[cn].equals("HomeDelivery"))
+			{
+			    opType = "HomeDelivery";
+			}
+			else if (arrTaxOperationTypes[cn].equals("TakeAway"))
+			{
+			    opType = "TakeAway";
+			}
+
+			taxOpTypes += ",'" + opType + "'";
+		    }
+
+		    if (!rsTax.getString(4).isEmpty())
+		    {
+			sbSql.setLength(0);
+			sbSql.append("select e.strGroupName,e.strGroupCode,sum(b.dblAmount)-sum(b.dblDiscountAmt) "
+				+ " from tblbillhd a,tblbilldtl b,tblitemmaster c,tblsubgrouphd d,tblgrouphd e "
+				+ " where a.strBillNo=b.strBillNo "
+				+ " and date(a.dteBillDate)=date(b.dteBillDate) "
+				+ " and b.strItemCode=c.strItemCode "
+				+ " and c.strSubGroupCode=d.strSubGroupCode "
+				+ " and d.strGroupCode=e.strGroupCode  "
+				+ " and c.strTaxIndicator='" + rsTax.getString(4) + "' "
+				+ " and a.strClientCode=b.strClientCode "
+				+ " and e.strGroupCode='" + rsGroupWise.getString(3) + "' "
+				+ " and a.strOperationType in (" + taxOpTypes + ") "
+				+ " and date(a.dteBillDate)='" + rsGroupWise.getString(5) + "' "
+				+ " and a.strAreaCode in " + funGetAreaCodes(rsTax.getString(3)) + " "
+				+ " and a.strBillNo in (select strBillNo from tblbilltaxdtl) ");
+			if (!POSCode.equalsIgnoreCase("All"))
+			{
+			    sbSql.append(" and a.strPOSCode='" + POSCode + "' ");
+			}
+			sbSql.append(" group by date(a.dteBillDate),e.strGroupCode");
+			ResultSet rsGrpWiseTax = clsGlobalVarClass.dbMysql.executeResultSet(sbSql.toString());
+			if (rsGrpWiseTax.next())
+			{
+			    double tempGroupWiseTaxIndAmt = rsGrpWiseTax.getDouble(3);
+			    double groupWiseTaxIndAmt = rsGrpWiseTax.getDouble(3);
+
+			    sbSql.setLength(0);
+			    sbSql.append("select e.strGroupName,e.strGroupCode,sum(b.dblAmount)-sum(b.dblDiscAmt) "
+				    + " from tblbillhd a,tblbillmodifierdtl b,tblitemmaster c,tblsubgrouphd d,tblgrouphd e "
+				    + " where a.strBillNo=b.strBillNo "
+				    + " and date(a.dteBillDate)=date(b.dteBillDate) "
+				    + " and left(b.strItemCode,7)=c.strItemCode "
+				    + " and c.strSubGroupCode=d.strSubGroupCode "
+				    + " and d.strGroupCode=e.strGroupCode "
+				    + " and c.strTaxIndicator='" + rsTax.getString(4) + "' "
+				    + " and e.strGroupCode='" + rsGroupWise.getString(3) + "' "
+				    + " and a.strOperationType in (" + taxOpTypes + ") "
+				    + " and date(a.dteBillDate)='" + rsGroupWise.getString(5) + "' "
+				    + " and a.strClientCode=b.strClientCode "
+				    + " and e.strGroupCode='" + rsGrpWiseTax.getString(2) + "' "
+				    + " ");
+			    if (!POSCode.equalsIgnoreCase("All"))
+			    {
+				sbSql.append(" and a.strPOSCode='" + POSCode + "' ");
+			    }
+			    sbSql.append(" group by date(a.dteBillDate),e.strGroupCode");
+			    ResultSet rsGrpModWise = clsGlobalVarClass.dbMysql.executeResultSet(sbSql.toString());
+			    if (rsGrpModWise.next())
+			    {
+				tempGroupWiseTaxIndAmt += rsGrpModWise.getDouble(3);
+				groupWiseTaxIndAmt += rsGrpModWise.getDouble(3);
+			    }
+			    rsGrpModWise.close();
+
+			    if (rsTax.getString(5).equalsIgnoreCase("Yes"))
+			    {
+				String taxOnTaxCode = rsTax.getString(6);
+				String[] arrSpTaxonTaxCodes = taxOnTaxCode.split(",");
+				for (int cntTot = 0; cntTot < arrSpTaxonTaxCodes.length; cntTot++)
+				{
+				    if (hmTaxDtl.containsKey(arrSpTaxonTaxCodes[cntTot]))
+				    {
+					String taxDtl = hmTaxDtl.get(arrSpTaxonTaxCodes[cntTot]);
+					double totTaxAmt = Double.parseDouble(taxDtl.split("!")[1]);
+					double totTaxableAmt = Double.parseDouble(taxDtl.split("!")[0]);
+					if (totTaxableAmt > 0)
+					{
+					    double totTaxableIndAmt = (totTaxAmt / totTaxableAmt) * tempGroupWiseTaxIndAmt;
+					    groupWiseTaxIndAmt += totTaxableIndAmt;
+					}
+				    }
+				}
+			    }
+			    double groupWiseTaxAmt = (taxPer / 100) * groupWiseTaxIndAmt;
+//                            if (taxableAmt > 0)
+//                            {
+//                                groupWiseTaxAmt = ((taxAmt / taxableAmt) * groupWiseTaxIndAmt);
+//                            }
+
+			    System.out.println("Grp Wise Taxable Amt=" + groupWiseTaxIndAmt + "\tTax Amt=" + taxAmt + "\tTaxable Amt=" + taxableAmt + "\tGrp Tax Amt=" + groupWiseTaxAmt);
+
+			    hmTaxDtl.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), groupWiseTaxIndAmt + "!" + groupWiseTaxAmt);
+			    if (hmGroupWiseData.containsKey(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1)))
+			    {
+				hmGroupWiseDtlData = hmGroupWiseData.get(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1));
+				hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), hmGroupWiseDtlData.get(rsGroupWise.getString(5) + "!" + rsTax.getString(3)) + groupWiseTaxAmt);
+			    }
+			    else
+			    {
+				hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), groupWiseTaxAmt);
+			    }
+			}
+			rsGrpWiseTax.close();
+		    }
+		    else
+		    {
+			sbSql.setLength(0);
+			sbSql.append("select e.strGroupName,e.strGroupCode,sum(b.dblAmount)-sum(b.dblDiscountAmt) "
+				+ " from tblbillhd a,tblbilldtl b,tblitemmaster c,tblsubgrouphd d,tblgrouphd e "
+				+ " where a.strBillNo=b.strBillNo "
+				+ " and date(a.dteBillDate)=date(b.dteBillDate) "
+				+ " and b.strItemCode=c.strItemCode "
+				+ " and c.strSubGroupCode=d.strSubGroupCode "
+				+ " and d.strGroupCode=e.strGroupCode "
+				+ " and a.strClientCode=b.strClientCode "
+				+ " and e.strGroupCode='" + rsGroupWise.getString(3) + "' "
+				+ " and a.strOperationType in (" + taxOpTypes + ") "
+				+ " and date(a.dteBillDate)='" + rsGroupWise.getString(5) + "' "
+				+ " and a.strAreaCode in " + funGetAreaCodes(rsTax.getString(3)) + " "
+				+ " and a.strBillNo in (select strBillNo from tblbilltaxdtl) ");
+			if (!POSCode.equalsIgnoreCase("All"))
+			{
+			    sbSql.append(" and a.strPOSCode='" + POSCode + "' ");
+			}
+			sbSql.append(" group by date(a.dteBillDate),e.strGroupCode");
+			System.out.println(sbSql);
+			ResultSet rsGrpWiseTax = clsGlobalVarClass.dbMysql.executeResultSet(sbSql.toString());
+			if (rsGrpWiseTax.next())
+			{
+			    double groupWiseTaxIndAmt = rsGrpWiseTax.getDouble(3);
+
+			    sbSql.setLength(0);
+			    sbSql.append("select e.strGroupName,e.strGroupCode,sum(b.dblAmount)-sum(b.dblDiscAmt) "
+				    + " from tblbillhd a,tblbillmodifierdtl b,tblitemmaster c,tblsubgrouphd d,tblgrouphd e "
+				    + " where a.strBillNo=b.strBillNo "
+				    + " and date(a.dteBillDate)=date(b.dteBillDate) "
+				    + " and left(b.strItemCode,7)=c.strItemCode "
+				    + " and c.strSubGroupCode=d.strSubGroupCode "
+				    + " and d.strGroupCode=e.strGroupCode "
+				    + " and e.strGroupCode='" + rsGroupWise.getString(3) + "' "
+				    + " and a.strOperationType in (" + taxOpTypes + ") "
+				    + " and a.strClientCode=b.strClientCode "
+				    + " and date(a.dteBillDate)='" + rsGroupWise.getString(5) + "'  "
+				    + " and e.strGroupCode='" + rsGrpWiseTax.getString(2) + "' "
+				    + " and a.strAreaCode in " + funGetAreaCodes(rsTax.getString(3)) + " "
+				    + " and a.strBillNo in (select strBillNo from tblbilltaxdtl) ");
+			    if (!POSCode.equalsIgnoreCase("All"))
+			    {
+				sbSql.append(" and a.strPOSCode='" + POSCode + "' ");
+			    }
+			    sbSql.append(" group by date(a.dteBillDate),e.strGroupCode");
+			    ResultSet rsGrpModWise = clsGlobalVarClass.dbMysql.executeResultSet(sbSql.toString());
+			    if (rsGrpModWise.next())
+			    {
+				groupWiseTaxIndAmt += rsGrpModWise.getDouble(3);
+			    }
+			    rsGrpModWise.close();
+
+			    if (rsTax.getString(5).equalsIgnoreCase("Yes"))
+			    {
+				String taxOnTaxCode = rsTax.getString(6);
+				String[] arrSpTaxonTaxCodes = taxOnTaxCode.split(",");
+				for (int cntTot = 0; cntTot < arrSpTaxonTaxCodes.length; cntTot++)
+				{
+				    if (hmTaxDtl.containsKey(arrSpTaxonTaxCodes[cntTot]))
+				    {
+					String taxDtl = hmTaxDtl.get(arrSpTaxonTaxCodes[cntTot]);
+					double totTaxAmt = Double.parseDouble(taxDtl.split("!")[1]);
+					groupWiseTaxIndAmt += totTaxAmt;
+				    }
+				}
+			    }
+
+			    double groupWiseTaxAmt = (taxPer / 100) * groupWiseTaxIndAmt;
+//                            if (taxableAmt > 0)
+//                            {
+//                                groupWiseTaxAmt = ((taxAmt / taxableAmt) * groupWiseTaxIndAmt);
+//                            }
+			    hmTaxDtl.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), groupWiseTaxIndAmt + "!" + groupWiseTaxAmt);
+			    if (hmGroupWiseData.containsKey(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1)))
+			    {
+				hmGroupWiseDtlData = hmGroupWiseData.get(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1));
+				if (hmGroupWiseDtlData.containsKey(rsGroupWise.getString(5) + "!" + rsTax.getString(3)))
+				{
+				    hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), hmGroupWiseDtlData.get(rsGroupWise.getString(5) + "!" + rsTax.getString(3)) + groupWiseTaxAmt);
+				}
+				else
+				{
+				    hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), groupWiseTaxAmt);
+				}
+			    }
+			    else
+			    {
+				hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), groupWiseTaxAmt);
+			    }
+			}
+		    }
+		}
+	    }
+	    rsTax.close();
+
+	    hmGroupWiseData.put(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1), hmGroupWiseDtlData);
+	}
+
+	rsGroupWise.close();
+
+	sbSqlQFile.append(
+		" select e.strGroupName,sum(b.dblAmount)-sum(b.dblDiscountAmt),e.strGroupCode, SUM(b.dblDiscountAmt),date(a.dteBillDate) "
+		+ " from tblqbillhd a,tblqbilldtl b,tblitemmaster c,tblsubgrouphd d,tblgrouphd e "
+		+ " where a.strBillNo=b.strBillNo "
+		+ " and date(a.dteBillDate)=date(b.dteBillDate) "
+		+ " and b.strItemCode=c.strItemCode "
+		+ " and a.strClientCode=b.strClientCode "
+		+ " and c.strSubGroupCode=d.strSubGroupCode "
+		+ " and d.strGroupCode=e.strGroupCode "
+		+ " and date(a.dteBillDate) between '" + fromDate + "' and '" + toDate + "' "
+		+ "  ");
+	if (!POSCode.equalsIgnoreCase(
+		"All"))
+	{
+	    sbSqlQFile.append(" and a.strPOSCode='" + POSCode + "' ");
+	}
+
+	sbSqlQFile.append(
+		" group by date(a.dteBillDate),e.strGroupCode ");
+	System.out.println(sbSqlQFile);
+	rsGroupWise = clsGlobalVarClass.dbMysql.executeResultSet(sbSqlQFile.toString());
+
+	while (rsGroupWise.next())
+	{
+	    Map<String, Double> hmGroupWiseDtlData = new HashMap<String, Double>();
+	    if (hmGroupWiseData.containsKey(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1)))
+	    {
+		hmGroupWiseDtlData = hmGroupWiseData.get(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1));
+	    }
+	    double groupAmt = rsGroupWise.getDouble(2);
+	    double groupDiscAmt = rsGroupWise.getDouble(4);
+
+	    sbSql.setLength(0);
+	    sbSql.append("select f.strGroupName,sum(c.dblAmount)-sum(c.dblDiscAmt),e.strGroupCode, SUM(c.dblDiscAmt) "
+		    + " from tblqbillhd a,tblqbillmodifierdtl c,tblitemmaster d,tblsubgrouphd e,tblgrouphd f "
+		    + " where a.strBillNo=c.strBillNo "
+		    + " and date(a.dteBillDate)=date(c.dteBillDate) "
+		    + " and left(c.strItemCode,7)=d.strItemCode "
+		    + " and d.strSubGroupCode=e.strSubGroupCode "
+		    + " and e.strGroupCode=f.strGroupCode "
+		    + " and date(a.dteBillDate)='" + rsGroupWise.getString(5) + "' "
+		    + " and a.strClientCode=c.strClientCode "
+		    + " and f.strGroupCode='" + rsGroupWise.getString(3) + "' "
+		    + "  ");
+	    if (!POSCode.equalsIgnoreCase("All"))
+	    {
+		sbSql.append(" and a.strPOSCode='" + POSCode + "' ");
+	    }
+	    sbSql.append(" group by date(a.dteBillDate),f.strGroupCode");
+	    ResultSet rsGroupModData = clsGlobalVarClass.dbMysql.executeResultSet(sbSql.toString());
+	    if (rsGroupModData.next())
+	    {
+		groupAmt += rsGroupModData.getDouble(2);
+		groupDiscAmt += rsGroupModData.getDouble(4);
+	    }
+	    rsGroupModData.close();
+
+	    if (hmGroupWiseDtlData.containsKey(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1)))
+	    {
+		if (hmGroupWiseDtlData.containsKey(rsGroupWise.getString(5) + "!" + "Amount"))
+		{
+		    hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + "Amount", hmGroupWiseDtlData.get(rsGroupWise.getString(5) + "!" + "Amount") + groupAmt);
+		}
+		else
+		{
+		    hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + "Amount", groupAmt);
+		}
+	    }
+	    else
+	    {
+		hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + "Amount", groupAmt);
+	    }
+
+	    if (hmGroupWiseDtlData.containsKey(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1)))
+	    {
+		if (hmGroupWiseDtlData.containsKey(rsGroupWise.getString(5) + "!" + "Discount"))
+		{
+		    hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + "Discount", hmGroupWiseDtlData.get(rsGroupWise.getString(5) + "!" + "Discount") + groupDiscAmt);
+		}
+		else
+		{
+		    hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + "Discount", groupDiscAmt);
+		}
+	    }
+	    else
+	    {
+		hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + "Discount", groupDiscAmt);
+	    }
+
+	    Map<String, String> hmTaxDtl = new HashMap<String, String>();
+	    sbSql.setLength(0);
+	    sbSql.append("select sum(b.dblTaxAmount),sum(b.dblTaxableAmount),c.strTaxCode,c.strTaxIndicator"
+		    + ",c.strTaxOnTax,c.strTaxOnTaxCode,c.strTaxOnGD,c.strOperationType,dblPercent,date(a.dteBillDate) "
+		    + " from tblqbillhd a,tblqbilltaxdtl b,tbltaxhd c "
+		    + " where a.strBillNo=b.strBillNo "
+		    + " and date(a.dteBillDate)=date(b.dteBillDate) "
+		    + " and b.strTaxCode=c.strTaxCode "
+		    + "and a.strClientCode=b.strClientCode "
+		    + " and date(a.dteBillDate)='" + rsGroupWise.getString(5) + "' ");
+	    if (!POSCode.equalsIgnoreCase("All"))
+	    {
+		sbSql.append(" and a.strPOSCode='" + POSCode + "' ");
+	    }
+	    sbSql.append(" group by date(a.dteBillDate),b.strTaxCode "
+		    + " order by c.strTaxOnTax");
+	    ResultSet rsTax = clsGlobalVarClass.dbMysql.executeResultSet(sbSql.toString());
+	    while (rsTax.next())
+	    {
+		String taxCode = rsTax.getString(3);
+		double taxPer = rsTax.getDouble(9);
+
+		String sql = "select a.strTaxCode,a.strTaxDesc,b.strGroupCode,b.strGroupName,b.strApplicable "
+			+ "from tbltaxhd a,tbltaxongroup b,tbltaxposdtl c "
+			+ "where a.strTaxCode=b.strTaxCode "
+			+ "and a.strTaxCode=c.strTaxCode ";
+		if (!POSCode.equalsIgnoreCase("All"))
+		{
+		    sql = sql + " and c.strPOSCode='" + POSCode + "' ";
+		}
+		sql += "and b.strGroupCode='" + rsGroupWise.getString(3) + "' "
+			+ "and a.strTaxCode='" + rsTax.getString(3) + "' "
+			+ "and b.strApplicable='true' "
+			+ "group by a.strTaxCode,b.strGroupCode";
+		ResultSet rsTaxOnGroup = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+		if (rsTaxOnGroup.next())
+		{
+		    double taxAmt = rsTax.getDouble(1);
+		    double taxableAmt = rsTax.getDouble(2);
+		    String[] arrTaxOperationTypes = rsTax.getString(8).split(",");
+		    String taxOpTypes = "'DirectBiller'";
+		    for (int cn = 0; cn < arrTaxOperationTypes.length; cn++)
+		    {
+			String opType = "";
+			if (arrTaxOperationTypes[cn].equals("DineIn"))
+			{
+			    opType = "DineIn";
+			}
+			else if (arrTaxOperationTypes[cn].equals("HomeDelivery"))
+			{
+			    opType = "HomeDelivery";
+			}
+			else if (arrTaxOperationTypes[cn].equals("TakeAway"))
+			{
+			    opType = "TakeAway";
+			}
+			taxOpTypes += ",'" + opType + "'";
+		    }
+
+		    if (!rsTax.getString(4).isEmpty())
+		    {
+			sbSql.setLength(0);
+			sbSql.append("select e.strGroupName,e.strGroupCode,sum(b.dblAmount)-sum(b.dblDiscountAmt) "
+				+ " from tblqbillhd a,tblqbilldtl b,tblitemmaster c,tblsubgrouphd d,tblgrouphd e "
+				+ " where a.strBillNo=b.strBillNo "
+				+ " and date(a.dteBillDate)=date(b.dteBillDate) "
+				+ " and b.strItemCode=c.strItemCode "
+				+ " and c.strSubGroupCode=d.strSubGroupCode "
+				+ " and d.strGroupCode=e.strGroupCode "
+				+ " and c.strTaxIndicator='" + rsTax.getString(4) + "' "
+				+ " and a.strClientCode=b.strClientCode "
+				+ " and e.strGroupCode='" + rsGroupWise.getString(3) + "' "
+				+ " and a.strOperationType in (" + taxOpTypes + ") "
+				+ " and date(a.dteBillDate) ='" + rsGroupWise.getString(5) + "' "
+				+ " and a.strAreaCode in " + funGetAreaCodes(rsTax.getString(3)) + " "
+				+ " and a.strBillNo in (select strBillNo from tblqbilltaxdtl) ");
+			if (!POSCode.equalsIgnoreCase("All"))
+			{
+			    sbSql.append(" and a.strPOSCode='" + POSCode + "' ");
+			}
+			sbSql.append(" group by date(a.dteBillDate),e.strGroupCode");
+			System.out.println(sbSql);
+			ResultSet rsGrpWiseTax = clsGlobalVarClass.dbMysql.executeResultSet(sbSql.toString());
+			if (rsGrpWiseTax.next())
+			{
+			    double tempGroupWiseTaxIndAmt = rsGrpWiseTax.getDouble(3);
+			    double groupWiseTaxIndAmt = rsGrpWiseTax.getDouble(3);
+
+			    sbSql.setLength(0);
+			    sbSql.append("select e.strGroupName,e.strGroupCode,sum(b.dblAmount)-sum(b.dblDiscAmt) "
+				    + " from tblqbillhd a,tblqbillmodifierdtl b,tblitemmaster c,tblsubgrouphd d,tblgrouphd e "
+				    + " where a.strBillNo=b.strBillNo "
+				    + " and date(a.dteBillDate)=date(b.dteBillDate) "
+				    + " and left(b.strItemCode,7)=c.strItemCode "
+				    + " and c.strSubGroupCode=d.strSubGroupCode "
+				    + " and d.strGroupCode=e.strGroupCode "
+				    + " and c.strTaxIndicator='" + rsTax.getString(4) + "' "
+				    + " and a.strClientCode=b.strClientCode "
+				    + " and e.strGroupCode='" + rsGroupWise.getString(3) + "' "
+				    + " and a.strOperationType in (" + taxOpTypes + ") "
+				    + " and date(a.dteBillDate)='" + rsGroupWise.getString(5) + "' "
+				    + " and e.strGroupCode='" + rsGrpWiseTax.getString(2) + "' "
+				    + " and a.strAreaCode in " + funGetAreaCodes(rsTax.getString(3)) + " "
+				    + " and a.strBillNo in (select strBillNo from tblqbilltaxdtl) ");
+			    if (!POSCode.equalsIgnoreCase("All"))
+			    {
+				sbSql.append(" and a.strPOSCode='" + POSCode + "' ");
+			    }
+			    sbSql.append(" group by date(a.dteBillDate),e.strGroupCode");
+			    ResultSet rsGrpModWise = clsGlobalVarClass.dbMysql.executeResultSet(sbSql.toString());
+			    if (rsGrpModWise.next())
+			    {
+				tempGroupWiseTaxIndAmt += rsGrpModWise.getDouble(3);
+				groupWiseTaxIndAmt += rsGrpModWise.getDouble(3);
+			    }
+			    rsGrpModWise.close();
+
+			    if (rsTax.getString(5).equalsIgnoreCase("Yes"))
+			    {
+				String taxOnTaxCode = rsTax.getString(6);
+				String[] arrSpTaxonTaxCodes = taxOnTaxCode.split(",");
+				for (int cntTot = 0; cntTot < arrSpTaxonTaxCodes.length; cntTot++)
+				{
+				    if (hmTaxDtl.containsKey(arrSpTaxonTaxCodes[cntTot]))
+				    {
+					String taxDtl = hmTaxDtl.get(arrSpTaxonTaxCodes[cntTot]);
+					double totTaxAmt = Double.parseDouble(taxDtl.split("!")[1]);
+					double totTaxableAmt = Double.parseDouble(taxDtl.split("!")[0]);
+					if (totTaxableAmt > 0)
+					{
+					    double totTaxableIndAmt = (totTaxAmt / totTaxableAmt) * tempGroupWiseTaxIndAmt;
+					    groupWiseTaxIndAmt += totTaxableIndAmt;
+					}
+				    }
+				}
+			    }
+
+			    double groupWiseTaxAmt = (taxPer / 100) * groupWiseTaxIndAmt;
+//                            if (taxableAmt > 0)
+//                            {
+//                                groupWiseTaxAmt = ((taxAmt / taxableAmt) * groupWiseTaxIndAmt);
+//                            }
+			    System.out.println("Grp Wise Taxable Amt=" + groupWiseTaxIndAmt + "\tTax Amt=" + taxAmt + "\tTaxable Amt=" + taxableAmt + "\tGrp Tax Amt=" + groupWiseTaxAmt);
+
+			    hmTaxDtl.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), groupWiseTaxIndAmt + "!" + groupWiseTaxAmt);
+			    if (hmGroupWiseData.containsKey(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1)))
+			    {
+				hmGroupWiseDtlData = hmGroupWiseData.get(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1));
+				if (hmGroupWiseDtlData.containsKey(rsGroupWise.getString(5) + "!" + rsTax.getString(3)))
+				{
+				    hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), hmGroupWiseDtlData.get(rsGroupWise.getString(5) + "!" + rsTax.getString(3)) + groupWiseTaxAmt);
+				}
+				else
+				{
+				    hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), groupWiseTaxAmt);
+				}
+			    }
+			    else
+			    {
+				hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), groupWiseTaxAmt);
+			    }
+			}
+			rsGrpWiseTax.close();
+		    }
+		    else
+		    {
+			sbSql.setLength(0);
+			sbSql.append("select e.strGroupName,e.strGroupCode,sum(b.dblAmount)-sum(b.dblDiscountAmt),date(a.dteBillDate) "
+				+ " from tblqbillhd a,tblqbilldtl b,tblitemmaster c,tblsubgrouphd d,tblgrouphd e "
+				+ " where a.strBillNo=b.strBillNo "
+				+ " and date(a.dteBillDate)=date(b.dteBillDate) "
+				+ " and b.strItemCode=c.strItemCode "
+				+ " and c.strSubGroupCode=d.strSubGroupCode "
+				+ " and d.strGroupCode=e.strGroupCode "
+				+ " and a.strClientCode=b.strClientCode "
+				+ " and e.strGroupCode='" + rsGroupWise.getString(3) + "' "
+				+ " and a.strOperationType in (" + taxOpTypes + ") "
+				+ " and date(a.dteBillDate)='" + rsGroupWise.getString(5) + "' "
+				+ " and a.strAreaCode in " + funGetAreaCodes(rsTax.getString(3)) + " "
+				+ " and a.strBillNo in (select strBillNo from tblqbilltaxdtl) ");
+			if (!POSCode.equalsIgnoreCase("All"))
+			{
+			    sbSql.append(" and a.strPOSCode='" + POSCode + "' ");
+			}
+			sbSql.append(" group by date(a.dteBillDate),e.strGroupCode");
+			System.out.println(sbSql);
+			ResultSet rsGrpWiseTax = clsGlobalVarClass.dbMysql.executeResultSet(sbSql.toString());
+			if (rsGrpWiseTax.next())
+			{
+			    double groupWiseTaxIndAmt = rsGrpWiseTax.getDouble(3);
+			    sbSql.setLength(0);
+			    sbSql.append("select e.strGroupName,e.strGroupCode,sum(b.dblAmount)-sum(b.dblDiscAmt) "
+				    + " from tblqbillhd a,tblqbillmodifierdtl b,tblitemmaster c,tblsubgrouphd d,tblgrouphd e "
+				    + " where a.strBillNo=b.strBillNo "
+				    + " and date(a.dteBillDate)=date(b.dteBillDate) "
+				    + " and left(b.strItemCode,7)=c.strItemCode "
+				    + " and c.strSubGroupCode=d.strSubGroupCode "
+				    + " and d.strGroupCode=e.strGroupCode "
+				    + " and e.strGroupCode='" + rsGroupWise.getString(3) + "' "
+				    + " and a.strOperationType in (" + taxOpTypes + ") "
+				    + " and a.strClientCode=b.strClientCode "
+				    + " and date(a.dteBillDate)='" + rsGroupWise.getString(5) + "' "
+				    + " and e.strGroupCode='" + rsGrpWiseTax.getString(2) + "' "
+				    + " and a.strAreaCode in " + funGetAreaCodes(rsTax.getString(3)) + " "
+				    + " and a.strBillNo in (select strBillNo from tblqbilltaxdtl) ");
+			    if (!POSCode.equalsIgnoreCase("All"))
+			    {
+				sbSql.append(" and a.strPOSCode='" + POSCode + "' ");
+			    }
+			    sbSql.append(" group by date(a.dteBillDate),e.strGroupCode");
+			    ResultSet rsGrpModWise = clsGlobalVarClass.dbMysql.executeResultSet(sbSql.toString());
+			    if (rsGrpModWise.next())
+			    {
+				groupWiseTaxIndAmt += rsGrpModWise.getDouble(3);
+			    }
+			    rsGrpModWise.close();
+
+			    if (rsTax.getString(5).equalsIgnoreCase("Yes"))
+			    {
+				String taxOnTaxCode = rsTax.getString(6);
+				String[] arrSpTaxonTaxCodes = taxOnTaxCode.split(",");
+				for (int cntTot = 0; cntTot < arrSpTaxonTaxCodes.length; cntTot++)
+				{
+				    if (hmTaxDtl.containsKey(arrSpTaxonTaxCodes[cntTot]))
+				    {
+					String taxDtl = hmTaxDtl.get(arrSpTaxonTaxCodes[cntTot]);
+					double totTaxAmt = Double.parseDouble(taxDtl.split("!")[1]);
+					groupWiseTaxIndAmt += totTaxAmt;
+				    }
+				}
+			    }
+
+			    double groupWiseTaxAmt = (taxPer / 100) * groupWiseTaxIndAmt;
+//                            if (taxableAmt > 0)
+//                            {
+//                                groupWiseTaxAmt = ((taxAmt / taxableAmt) * groupWiseTaxIndAmt);
+//                            }
+			    hmTaxDtl.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), groupWiseTaxIndAmt + "!" + groupWiseTaxAmt);
+			    if (hmGroupWiseData.containsKey(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1)))
+			    {
+				hmGroupWiseDtlData = hmGroupWiseData.get(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1));
+				if (hmGroupWiseDtlData.containsKey(rsGroupWise.getString(5) + "!" + rsTax.getString(3)))
+				{
+				    hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), hmGroupWiseDtlData.get(rsGroupWise.getString(5) + "!" + rsTax.getString(3)) + groupWiseTaxAmt);
+				}
+				else
+				{
+				    hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), groupWiseTaxAmt);
+				}
+			    }
+			    else
+			    {
+				hmGroupWiseDtlData.put(rsGroupWise.getString(5) + "!" + rsTax.getString(3), groupWiseTaxAmt);
+			    }
+			}
+		    }
+		}
+	    }
+	    rsTax.close();
+
+	    hmGroupWiseData.put(rsGroupWise.getString(5) + "!" + rsGroupWise.getString(1), hmGroupWiseDtlData);
+	}
+
+	rsGroupWise.close();
+
+	Map<String, Double> mapVerticalTotal = new HashMap<String, Double>();
+	//Map<Integer ,String> mapSequence=new TreeMap<Integer,String>();
+	cntLine += 20;
+	cntLine += 27;
+
+	pw.print(objUtility.funPrintTextWithAlignment("Group Name|", 20, "Right"));
+	pw.print(objUtility.funPrintTextWithAlignment("Amount|", 27, "Right"));
+
+	String sql = "";
+	for (Map.Entry<Integer, String> entry
+		: mapTaxHeaders.entrySet())
+	{
+	    sql = "select strTaxDesc,strTaxShortName from tbltaxhd where strTaxCode='" + entry.getValue() + "' ";
+
+	    ResultSet rsTaxDescDtl = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+	    while (rsTaxDescDtl.next())
+	    {
+		pw.print(objUtility.funPrintTextWithAlignment(rsTaxDescDtl.getString(2) + "|", 27, "Right"));
+		cntLine += 27;
+	    }
+	    rsTaxDescDtl.close();
+	}
+
+	pw.print(objUtility.funPrintTextWithAlignment("Discount|", 20, "Right"));
+	pw.print(objUtility.funPrintTextWithAlignment("Total|", 27, "Right"));
+	pw.println();
+
+	cntLine += 20;
+	cntLine += 27;
+	cntLine += 27;
+	for (int cn = 0;
+		cn < cntLine;
+		cn++)
+	{
+	    pw.print("-");
+	}
+
+	pw.println();
+
+	double totalGroupAmt = 0, totalDiscAmt = 0;
+	String date = "";
+	for (Map.Entry<String, Map<String, Double>> entry : hmGroupWiseData.entrySet())
+	{
+	    double totalVerticalAmt = 0;
+	    String key = entry.getKey();
+	    String groupName = key.split("!")[1];
+
+	    if (date.isEmpty())
+	    {
+		date = key.split("!")[0];
+		
+
+		pw.println(date);
+		pw.println("----------");		
+		pw.println();
+	    }
+	    else
+	    {
+		if (date.equalsIgnoreCase(key.split("!")[0]))
+		{
+
+		}
+		else
+		{
+		    date = key.split("!")[0];
+		    
+		    pw.println(date);
+		    pw.println("----------");		   
+		    pw.println();
+		}
+	    }
+
+	    pw.print(objUtility.funPrintTextWithAlignment(groupName + "|", 20, "Right"));
+	    pw.print(objUtility.funPrintTextWithAlignment(decFormatter.format(entry.getValue().get(date + "!" + "Amount")) + "|", 27, "Right"));
+	    totalGroupAmt += entry.getValue().get(date + "!" + "Amount");
+	    totalVerticalAmt += entry.getValue().get(date + "!" + "Amount");
+
+	    int count = 1;
+	    for (Map.Entry<Integer, String> entryTax : mapTaxHeaders.entrySet())
+	    {
+		if (entry.getValue().containsKey(date + "!" + entryTax.getValue()))
+		{
+		    pw.print(objUtility.funPrintTextWithAlignment(decFormatter.format(entry.getValue().get(date + "!" + entryTax.getValue())) + "|", 27, "Right"));
+		    totalVerticalAmt += entry.getValue().get(date + "!" + entryTax.getValue());
+
+		    if (mapVerticalTotal.containsKey(entryTax.getValue()))
+		    {
+			double tempTaxAmt = mapVerticalTotal.get(entryTax.getValue());
+			mapVerticalTotal.put(entryTax.getValue(), entry.getValue().get(date + "!" + entryTax.getValue()) + tempTaxAmt);
+		    }
+		    else
+		    {
+			mapVerticalTotal.put(entryTax.getValue(), entry.getValue().get(date + "!" + entryTax.getValue()));
+		    }
+		    //mapSequence.put(count,entryTax.getValue());
+		    count++;
+		}
+		else
+		{
+		    //mapVerticalTotal.put(entryTax.getValue(), 0.00);
+		    pw.print(objUtility.funPrintTextWithAlignment("0.0|", 27, "Right"));
+		}
+	    }
+
+	    pw.print(objUtility.funPrintTextWithAlignment(decFormatter.format(entry.getValue().get(date + "!" + "Discount")) + "|", 20, "Right"));
+	    totalDiscAmt += entry.getValue().get(date + "!" + "Discount");
+
+	    if (mapVerticalTotal.containsKey("TotalHorizontalAmt"))
+	    {
+		mapVerticalTotal.put("TotalHorizontalAmt", mapVerticalTotal.get("TotalHorizontalAmt") + totalVerticalAmt);
+	    }
+	    else
+	    {
+		mapVerticalTotal.put("TotalHorizontalAmt", totalVerticalAmt);
+	    }
+
+	    pw.print(objUtility.funPrintTextWithAlignment(decFormatter.format(totalVerticalAmt) + "|", 27, "Right"));
+	    pw.println();
+	}
+
+	mapVerticalTotal.put(
+		"TotalAmount", totalGroupAmt);
+
+	for (int cn = 0;
+		cn < cntLine;
+		cn++)
+	{
+	    pw.print("-");
+	}
+
+	pw.println();
+
+	pw.print(objUtility.funPrintTextWithAlignment("Total|", 20, "Right"));
+	pw.print(objUtility.funPrintTextWithAlignment(String.valueOf(decFormatter.format(mapVerticalTotal.get("TotalAmount"))) + "|", 27, "Right"));
+
+	for (Map.Entry<Integer, String> entry
+		: mapTaxHeaders.entrySet())
+	{
+	    System.out.println(entry.getKey() + "   " + entry.getValue());
+	    if (mapVerticalTotal.containsKey(entry.getValue()))
+	    {
+		pw.print(objUtility.funPrintTextWithAlignment(String.valueOf(decFormatter.format(mapVerticalTotal.get(entry.getValue()))) + "|", 27, "Right"));
+	    }
+	}
+
+	pw.print(objUtility.funPrintTextWithAlignment(decFormatter.format(totalDiscAmt) + "|", 20, "Right"));
+	if (mapVerticalTotal.get(
+		"TotalHorizontalAmt") == null)
+	{
+	    mapVerticalTotal.put("TotalHorizontalAmt", 0.00);
+	}
+
+	pw.print(objUtility.funPrintTextWithAlignment(String.valueOf(decFormatter.format(mapVerticalTotal.get("TotalHorizontalAmt"))) + "|", 27, "Right"));
+
+	pw.println();
+
+	pw.println();
+
+	return 1;
     }
 
 }

@@ -8719,7 +8719,7 @@ public class frmSalesReports extends javax.swing.JFrame
 		    /**
 		     * save reprint audit
 		     */
-		   // objUtility2.funSaveReprintAudit("Reprint", "Bill", "", "Reprint the bill from sales flash", "", billNo, "");
+		    // objUtility2.funSaveReprintAudit("Reprint", "Bill", "", "Reprint the bill from sales flash", "", billNo, "");
 		}
 	    }
 	    catch (Exception e)
@@ -9244,7 +9244,7 @@ public class frmSalesReports extends javax.swing.JFrame
 		    sb.append(" and a.strPOSCode='" + pos + "' ");
 		}
 		sb.append("  group by month(date(dteBillDate))"
-			+ " order by month(date(dteBillDate)) ");
+			+ " order by year(date(dteBillDate)),month(date(dteBillDate)) ");
 
 		List<clsCommonBeanDtl> arrListOfMonth = new ArrayList<>();
 

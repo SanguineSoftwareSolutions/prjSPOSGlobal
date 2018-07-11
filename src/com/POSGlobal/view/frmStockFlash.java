@@ -260,6 +260,9 @@ public class frmStockFlash extends javax.swing.JFrame
 	    String posCode = cmbPosCode.getSelectedItem().toString();
 	    String itemType = cmbItemType.getSelectedItem().toString();
 	    String reportType = cmbReportType.getSelectedItem().toString();
+	 
+	    
+	    
 	    int cal = clsGlobalVarClass.funCalculateStock(dteFromDate.getDate(), dteToDate.getDate(), posCode, itemType, reportType);
 
 	    dm = new javax.swing.table.DefaultTableModel(

@@ -167,7 +167,7 @@
 									<printWhenExpression><![CDATA[$F{dblQuantity}>0.0]]></printWhenExpression>
 								</reportElement>
 								<textElement textAlignment="Right">
-									<font fontName="Trebuchet MS" size="8" isBold="true"/>
+									<font fontName="Trebuchet MS" size="10" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{dblQuantity}]]></textFieldExpression>
 							</textField>
@@ -194,7 +194,7 @@
 							<textField isStretchWithOverflow="true">
 								<reportElement uuid="06914f88-ab30-4c05-b4aa-eae84be9e674" x="5" y="0" width="140" height="15"/>
 								<textElement textAlignment="Left">
-									<font fontName="Trebuchet MS" size="8" isBold="true"/>
+									<font fontName="Trebuchet MS" size="10" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
 							</textField>

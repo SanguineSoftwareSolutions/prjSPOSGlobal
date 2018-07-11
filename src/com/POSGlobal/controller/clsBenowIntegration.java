@@ -68,7 +68,7 @@ public class clsBenowIntegration
 	    jObjInnerPayLoad.put("merchantCode", clsGlobalVarClass.gBenowMerchantCode);//from property setup
 	    jObjInnerPayLoad.put("amount", amount);
 	    jObjInnerPayLoad.put("refNumber", billNo);
-	    jObjInnerPayLoad.put("paymentMethod", "BHARAT_QR");//BHARAT_QR/UPI
+	    jObjInnerPayLoad.put("paymentMethod", "UPI");//BHARAT_QR/UPI
 	    jObjInnerPayLoad.put("remarks", "Payment for BillNo = " + billNo);
 	    // salt from proprty setup "abcd"
 	    String encString = encrypt(clsGlobalVarClass.gBenowSalt, jObjInnerPayLoad.toString());

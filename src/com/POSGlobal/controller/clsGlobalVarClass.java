@@ -139,15 +139,16 @@ public class clsGlobalVarClass
     public static Logger gLog;
     public static boolean gNewBillSeriesForNewDay, gAreaWisePromotions, gPrintItemsOnMoveKOTMoveTable;
     public static boolean gShowOnlyLoginPOSReports, gEnableDineIn;
-    public static boolean gAutoAreaSelectionInMakeKOT, gShowUnSettletmentForm, gPrintOpenItemsOnBill, gPrintHomeDeliveryYN;
+    public static boolean gAutoAreaSelectionInMakeKOT, gShowUnSettletmentForm, gPrintOpenItemsOnBill, gPrintHomeDeliveryYN, gWERAOnlineOrderIntegration;
     public static boolean gShowPurRateInDirectBiller;
     public static String gConsolidatedKOTPrinterPort = "", gMMSSalesDataPostEffectCostOrLoc, gEffectOfSales = "No";
     public static double gRoundOffTo = 0.00;
-    public static boolean gAutoShowPopItems, gPOSWiseItemToMMSProductLinkUpYN, gEnableMasterDiscount, gEnableNFCInterface, gEnableLockTables;
-    public static String gPlayZonePOS = "", gRemoveSCTaxCode;
+    public static boolean gAutoShowPopItems, gPOSWiseItemToMMSProductLinkUpYN, gEnableMasterDiscount, gEnableNFCInterface, gEnableLockTables, gFireCommunication;
+    public static String gPlayZonePOS = "", gRemoveSCTaxCode, gWERAMerchantOutletId, gWERAAuthenticationAPIKey;
     public static String gDineInAreaForDirectBiller, gHomeDeliveryAreaForDirectBiller, gTakeAwayAreaForDirectBiller;
     public static boolean gRoundOffBillFinalAmount, gSendDBBackUpOnClientMail, gPrintOrderNoOnBillYN, gPrintDeviceAndUserDtlOnKOTYN, gAutoAddKOTToBill, gAreaWiseCostCenterKOTPrinting;
     public static int gNoOfDecimalPlace = 2, gNoOfDaysReportsView = 0;
+    public static double gUSDConvertionRate;
 
 // Constructor to initialize property setup parameters.
     public clsGlobalVarClass(String posCode) throws Exception
@@ -2132,12 +2133,12 @@ public class clsGlobalVarClass
 	}
     }
 
-    public static String funPostItemSalesData(String posCode, String fromDate, String toDate)
+    public static boolean funPostItemSalesData(String posCode, String fromDate, String toDate)
     {
 	String WSStockAdjustmentCode = "";
 	clsSynchronizePOSDataToHO objSynchSalesData = new clsSynchronizePOSDataToHO();
-	WSStockAdjustmentCode = objSynchSalesData.funPostPOSItemSalesDataAuto(gItemType, posCode, fromDate, toDate);
-	return WSStockAdjustmentCode;
+	boolean isPosted = objSynchSalesData.funPostPOSItemSalesDataAuto(gItemType, posCode, fromDate, toDate);
+	return isPosted;
     }
 
     public static void funPostDayEndData(String newStartDate, int shiftCode)
@@ -3273,6 +3274,22 @@ public class clsGlobalVarClass
 	    {
 		gAreaWiseCostCenterKOTPrinting = true;
 	    }
+
+	    gWERAOnlineOrderIntegration = false;
+	    if (rs.getString(215).equalsIgnoreCase("Y"))
+	    {
+		gWERAOnlineOrderIntegration = true;
+	    }
+	    gWERAMerchantOutletId = rs.getString(216);
+	    gWERAAuthenticationAPIKey = rs.getString(217);
+
+	    gFireCommunication = false;
+	    if (rs.getString(218).equalsIgnoreCase("Y"))
+	    {
+		gFireCommunication = true;
+	    }
+
+	    gUSDConvertionRate = rs.getDouble(219);
 
 	}
 	else

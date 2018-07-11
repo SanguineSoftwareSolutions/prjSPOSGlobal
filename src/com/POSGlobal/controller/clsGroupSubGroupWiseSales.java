@@ -29,6 +29,8 @@ public class clsGroupSubGroupWiseSales
     private String strWaiterShortName;
     private int intNoOfBills;
     private double dblGroupWiseAIPBAvg;
+    
+    private String strAreaName;
 
     public clsGroupSubGroupWiseSales()
     {
@@ -229,5 +231,17 @@ public class clsGroupSubGroupWiseSales
     {
         this.dblGroupWiseAIPBAvg = dblGroupWiseAIPBAvg;
     }
+
+    public String getStrAreaName()
+    {
+	return strAreaName;
+    }
+
+    public void setStrAreaName(String strAreaName)
+    {
+	this.strAreaName = strAreaName;
+    }
+    
+    
 
 }

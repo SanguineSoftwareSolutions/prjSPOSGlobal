@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="590" leftMargin="4" rightMargin="1" topMargin="5" bottomMargin="20" uuid="e06fc829-861a-4097-8acd-d9c65c0d0a3b">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="587" leftMargin="7" rightMargin="1" topMargin="5" bottomMargin="20" uuid="e06fc829-861a-4097-8acd-d9c65c0d0a3b">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -134,6 +134,8 @@
 		<parameterDescription><![CDATA[]]></parameterDescription>
 	</parameter>
 	<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+	<parameter name="imgBHIMAppLogo" class="java.lang.String"/>
+	<parameter name="imgUPILogo" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -875,10 +877,25 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="101">
-			<image>
-				<reportElement uuid="7ad2b2f0-6421-4aab-af35-13c84693a11d" x="1" y="0" width="212" height="101"/>
+		<band height="118">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement uuid="7ad2b2f0-6421-4aab-af35-13c84693a11d" x="1" y="20" width="129" height="89"/>
 				<imageExpression><![CDATA[$P{qrCodeImgPath}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="b078e4b7-9965-44aa-8883-4ea88915a937" x="1" y="109" width="128" height="9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Trebuchet MS" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Scan & Pay]]></text>
+			</staticText>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement uuid="7ad2b2f0-6421-4aab-af35-13c84693a11d" x="19" y="0" width="50" height="20"/>
+				<imageExpression><![CDATA[$P{imgBHIMAppLogo}]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement uuid="7ad2b2f0-6421-4aab-af35-13c84693a11d" x="71" y="0" width="38" height="20"/>
+				<imageExpression><![CDATA[$P{imgUPILogo}]]></imageExpression>
 			</image>
 		</band>
 	</detail>

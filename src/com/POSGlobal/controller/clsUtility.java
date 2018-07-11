@@ -1797,6 +1797,7 @@ public class clsUtility implements Cloneable
 		if (compareType.equals("CardString"))
 		{
 		    sql = "select b.strStatus,date(a.dteExpiryDt),a.strSetExpiryDt,DATE_ADD(date(b.dteDateCreated),interval a.intValidityDays day)dteExpiryDtForCard "
+			    + ",a.intValidityDays,a.strSetExpiryTime,a.intExpiryTime "
 			    + " from tbldebitcardtype a,tbldebitcardmaster b "
 			    + " where a.strCardTypeCode=b.strCardTypeCode and b.strCardString='" + debitCardNo + "' ";
 		    //+ " and date(a.dteExpiryDt) >= '"+clsGlobalVarClass.gPOSDateForTransaction+"'";
@@ -1804,6 +1805,7 @@ public class clsUtility implements Cloneable
 		else
 		{
 		    sql = "select b.strStatus,date(a.dteExpiryDt),a.strSetExpiryDt,DATE_ADD(date(b.dteDateCreated),interval a.intValidityDays day)dteExpiryDtForCard  "
+			    + ",a.intValidityDays,a.strSetExpiryTime,a.intExpiryTime "
 			    + " from tbldebitcardtype a,tbldebitcardmaster b "
 			    + " where a.strCardTypeCode=b.strCardTypeCode and b.strCardNo='" + debitCardNo + "' ";
 		    //+ " and date(a.dteExpiryDt) >= '"+clsGlobalVarClass.gPOSDateForTransaction+"'";
@@ -1837,6 +1839,12 @@ public class clsUtility implements Cloneable
 				cardStatus = "Card is Not Active";
 			    }
 			}
+			String isSetExpirayTime = rsCardStatus.getString(6);
+			if (isSetExpirayTime.equalsIgnoreCase("Y"))
+			{
+			    cardStatus = funIsCardTimeExpire(debitCardNo);
+			}
+
 		    }
 		    else
 		    {
@@ -1847,6 +1855,12 @@ public class clsUtility implements Cloneable
 			else
 			{
 			    cardStatus = "Card is Not Active";
+			}
+
+			String isSetExpirayTime = rsCardStatus.getString(6);
+			if (isSetExpirayTime.equalsIgnoreCase("Y"))
+			{
+			    cardStatus = funIsCardTimeExpire(debitCardNo);
 			}
 		    }
 		}
@@ -2374,7 +2388,7 @@ public class clsUtility implements Cloneable
 		    }
 		    else if (clsGlobalVarClass.gPostSalesDataToMMS)
 		    {
-			String WSStockAdjustmentCode = clsGlobalVarClass.funPostItemSalesData(posCode, posDate, posDate);
+			boolean isPosted = clsGlobalVarClass.funPostItemSalesData(posCode, posDate, posDate);
 			String exbillGenCode = clsGlobalVarClass.funPostItemSalesDataExcise(posCode, posDate, posDate);
 		    }
 
@@ -2550,7 +2564,7 @@ public class clsUtility implements Cloneable
 		    // Post POS Item Sale Data to MMS.
 		    if (clsGlobalVarClass.gPostSalesDataToMMS)
 		    {
-			String WSStockAdjustmentCode = clsGlobalVarClass.funPostItemSalesData(posCode, posDate, posDate);
+			boolean isPosted = clsGlobalVarClass.funPostItemSalesData(posCode, posDate, posDate);
 //                        sql = "update tbldayendprocess set strWSStockAdjustmentNo='" + WSStockAdjustmentCode + "'" + " where date(dtePOSDate)='" + posDate + "' and strPOSCode='" + posCode + "' and intShiftCode=" + shiftNo;
 //                        clsGlobalVarClass.dbMysql.execute(sql);
 			String exbillGenCode = clsGlobalVarClass.funPostItemSalesDataExcise(posCode, posDate, posDate);
@@ -2636,7 +2650,6 @@ public class clsUtility implements Cloneable
 		totalSales = totalSales + (Double.parseDouble(rsSettlementAmt.getString(2).toString()));
 	    }
 
-	    gTotalCashSales = totalSales;
 	    rsSettlementAmt.close();
 
 	    sql = "SELECT count(strBillNo),sum(dblDiscountAmt) FROM tblbillhd "
@@ -2762,7 +2775,6 @@ public class clsUtility implements Cloneable
 		totalSales = totalSales + (Double.parseDouble(rsSettlementAmt.getString(2).toString()));
 	    }
 
-	    gTotalCashSales = totalSales;
 	    rsSettlementAmt.close();
 
 	    sql = "SELECT count(strBillNo),sum(dblDiscountAmt) FROM tblqbillhd "
@@ -3098,9 +3110,8 @@ public class clsUtility implements Cloneable
 		    + " WHERE DATE(a.dteBillDate) = '" + posDate + "' "
 		    + " AND  a.strPOSCode = '" + posCode + "' AND a.intShiftCode='" + shiftNo + "'),0) "
 		    + " WHERE DATE(dtePOSDate)='" + posDate + "' AND strPOSCode = '" + posCode + "' AND intShiftCode=" + shiftNo;
-	    clsGlobalVarClass.dbMysql.execute(sql);	   
-	    
-	    
+	    clsGlobalVarClass.dbMysql.execute(sql);
+
 	    sql = "update tbldayendprocess set dblGrossSale = IFNULL((select sum(b.dblSettlementAmt) "
 		    + "TotalSale from tblbillhd a,tblbillsettlementdtl b "
 		    + "where a.strBillNo=b.strBillNo and date(a.dteBillDate) = '" + posDate + "' and "
@@ -7421,6 +7432,7 @@ public class clsUtility implements Cloneable
 	{
 
 	    String hoURL = webServiceURL + "/POSIntegration/funInvokeHOWebService";
+
 	    URL url = new URL(hoURL);
 	    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	    conn.setRequestMethod("GET");
@@ -7997,6 +8009,50 @@ public class clsUtility implements Cloneable
 	}
 
 	return outputString;
+    }
+
+    public String funIsCardTimeExpire(String debitCardNo)
+    {
+	String cardStatus = "Active";
+	try
+	{
+	    String sqlExpiryTime = "select a.intRechargeNo,a.strCardTypeCode,a.strCardString,a.dblRechargeAmount,a.strPOSCode "
+		    + ",TIME_FORMAT(time(a.dteDateCreated),'%h:%i %p')RechargeTime,CURRENT_TIME() CurrTime,TIMEDIFF(CURRENT_TIME(),time(a.dteDateCreated))TimeDifference "
+		    + ",b.strSetExpiryTime,b.intExpiryTime,time(DATE_ADD(a.dteDateCreated,INTERVAL b.intExpiryTime minute)) ValidTillTime "
+		    + ",if(CURRENT_TIME()>time(DATE_ADD(a.dteDateCreated,INTERVAL b.intExpiryTime minute)),true,false)IsExpire "
+		    + "from tbldebitcardrecharge a,tbldebitcardtype b "
+		    + "where a.strCardTypeCode=b.strCardTypeCode "
+		    + "and a.strCardString='" + debitCardNo + "' "
+		    + "order by a.dteDateCreated desc "
+		    + "limit 1 ";
+	    ResultSet rsExpiryTime = clsGlobalVarClass.dbMysql.executeResultSet(sqlExpiryTime);
+	    if (rsExpiryTime.next())
+	    {
+		String lastRechargeNo = rsExpiryTime.getString(1);
+		String lastRechargeAmt = rsExpiryTime.getString(4);
+		String lastRechargeTime = rsExpiryTime.getString(6);
+		int intIsExpire = rsExpiryTime.getInt(12);
+		if (intIsExpire == 0)//not expire
+		{
+
+		}
+		else//1 means expire
+		{
+		    cardStatus = "Card Time Expired" + "!" + lastRechargeNo + "!" + lastRechargeAmt + "!" + lastRechargeTime;
+		    //new frmOkPopUp(null, "<html>Recharge No:" + lastRechargeNo + "<br>Recharge Amt:" + lastRechargeAmt + "<br>Recharge Time:" + lastRechargeTime + "</html>", "Card Time Expired", 3).setVisible(true);				    				   
+		}
+
+	    }
+	    rsExpiryTime.close();
+	}
+	catch (Exception e)
+	{
+	    e.printStackTrace();
+	}
+	finally
+	{
+	    return cardStatus;
+	}
     }
 
 }

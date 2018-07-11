@@ -1501,7 +1501,7 @@ public class frmPropertySetup extends javax.swing.JFrame
 		    {
 			chkAutoAddKOTToBill.setSelected(false);
 		    }
-		    
+
 		    String areaWiseCostCenterKOTPrinting = rs.getString(214);
 		    if (areaWiseCostCenterKOTPrinting.equalsIgnoreCase("Y"))
 		    {
@@ -1512,6 +1512,30 @@ public class frmPropertySetup extends javax.swing.JFrame
 			chkAreaWiseCostCenterKOTPrinting.setSelected(false);
 		    }
 
+		    String weraOnlineOrderIntegration = rs.getString(215);
+		    if (weraOnlineOrderIntegration.equalsIgnoreCase("Y"))
+		    {
+			cmbWeraIntegrationYN.setSelectedItem("Yes");
+		    }
+		    else
+		    {
+			cmbWeraIntegrationYN.setSelectedItem("No");
+		    }
+
+		    txtWeraMerchantOutletId.setText(rs.getString(216));
+		    txtWeraAuthenticationAPIKey.setText(rs.getString(217));
+
+		    String fireCommunication = rs.getString(218);
+		    if (fireCommunication.equalsIgnoreCase("Y"))
+		    {
+			chkFireCommunication.setSelected(true);
+		    }
+		    else
+		    {
+			chkFireCommunication.setSelected(false);
+		    }
+
+		    txtUSDCrrencyConverionRate.setText(rs.getString(219));
 		}
 		rs.close();
 		dteEndChooser.setEnabled(false);
@@ -2225,6 +2249,9 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblRemoveServiceChargeTaxCode = new javax.swing.JLabel();
         chkAutoAddKOTToBill = new javax.swing.JCheckBox();
         chkAreaWiseCostCenterKOTPrinting = new javax.swing.JCheckBox();
+        chkFireCommunication = new javax.swing.JCheckBox();
+        lblUSDCrrencyConverionRate = new javax.swing.JLabel();
+        txtUSDCrrencyConverionRate = new javax.swing.JTextField();
         panelEmailSetup = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -2379,6 +2406,13 @@ public class frmPropertySetup extends javax.swing.JFrame
         btnAuthorize = new javax.swing.JButton();
         btnOK = new javax.swing.JButton();
         txtOTP = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        lblWeraIntegration = new javax.swing.JLabel();
+        cmbWeraIntegrationYN = new javax.swing.JComboBox();
+        lblWeraMerchantCode = new javax.swing.JLabel();
+        txtWeraMerchantOutletId = new javax.swing.JTextField();
+        lblAuthenticationAPIKey = new javax.swing.JLabel();
+        txtWeraAuthenticationAPIKey = new javax.swing.JTextField();
         btnNew = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         lblPOS = new javax.swing.JLabel();
@@ -4273,6 +4307,32 @@ public class frmPropertySetup extends javax.swing.JFrame
             }
         });
 
+        chkFireCommunication.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        chkFireCommunication.setText("Fire Communication                 :  ");
+        chkFireCommunication.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        chkFireCommunication.setOpaque(false);
+        chkFireCommunication.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                chkFireCommunicationActionPerformed(evt);
+            }
+        });
+
+        lblUSDCrrencyConverionRate.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblUSDCrrencyConverionRate.setText("USD Currency Convertion Rate  : ");
+
+        txtUSDCrrencyConverionRate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtUSDCrrencyConverionRate.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtUSDCrrencyConverionRate.setText("0.00");
+        txtUSDCrrencyConverionRate.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtUSDCrrencyConverionRateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelPOSSetup4Layout = new javax.swing.GroupLayout(panelPOSSetup4);
         panelPOSSetup4.setLayout(panelPOSSetup4Layout);
         panelPOSSetup4Layout.setHorizontalGroup(
@@ -4280,6 +4340,7 @@ public class frmPropertySetup extends javax.swing.JFrame
             .addGroup(panelPOSSetup4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chkFireCommunication)
                     .addComponent(chkPrintOrderNoOnBill)
                     .addComponent(chkSendDBBackupOnMail)
                     .addGroup(panelPOSSetup4Layout.createSequentialGroup()
@@ -4303,11 +4364,15 @@ public class frmPropertySetup extends javax.swing.JFrame
                                 .addComponent(cmbHomeDeliAreaForDirectBiller, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(chkAreaWiseCostCenterKOTPrinting)))
                     .addComponent(chkPrintDeviceUserDtlOnKOT)
+                    .addComponent(chkAutoAddKOTToBill)
                     .addGroup(panelPOSSetup4Layout.createSequentialGroup()
                         .addComponent(lblRemoveServiceChargeTaxCode, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cmbRemoveServiceChargeTaxCode, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(chkAutoAddKOTToBill))
+                    .addGroup(panelPOSSetup4Layout.createSequentialGroup()
+                        .addComponent(lblUSDCrrencyConverionRate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtUSDCrrencyConverionRate, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(206, Short.MAX_VALUE))
         );
         panelPOSSetup4Layout.setVerticalGroup(
@@ -4347,7 +4412,13 @@ public class frmPropertySetup extends javax.swing.JFrame
                     .addComponent(lblRemoveServiceChargeTaxCode, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chkAutoAddKOTToBill, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(chkFireCommunication, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUSDCrrencyConverionRate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUSDCrrencyConverionRate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("POS Setup 4", panelPOSSetup4);
@@ -5920,6 +5991,79 @@ public class frmPropertySetup extends javax.swing.JFrame
 
         tabbedPane.addTab("Benow Integration", jLayeredPane2);
 
+        jPanel1.setOpaque(false);
+
+        lblWeraIntegration.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblWeraIntegration.setText("WERA Integration Y/N    :");
+
+        cmbWeraIntegrationYN.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cmbWeraIntegrationYN.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Yes" }));
+
+        lblWeraMerchantCode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblWeraMerchantCode.setText("Outlet Id/WERA Merchant ");
+
+        txtWeraMerchantOutletId.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtWeraMerchantOutletId.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtWeraMerchantOutletIdActionPerformed(evt);
+            }
+        });
+
+        lblAuthenticationAPIKey.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblAuthenticationAPIKey.setText("Authentication API Key   :");
+
+        txtWeraAuthenticationAPIKey.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtWeraAuthenticationAPIKey.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtWeraAuthenticationAPIKeyActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblWeraIntegration, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(cmbWeraIntegrationYN, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblWeraMerchantCode, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtWeraMerchantOutletId, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblAuthenticationAPIKey, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtWeraAuthenticationAPIKey, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbWeraIntegrationYN, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblWeraIntegration, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAuthenticationAPIKey, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtWeraAuthenticationAPIKey, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblWeraMerchantCode, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtWeraMerchantOutletId, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(394, Short.MAX_VALUE))
+        );
+
+        tabbedPane.addTab("<html>WERA Online<br>Order Integration</html>", jPanel1);
+
         btnNew.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnNew.setForeground(new java.awt.Color(255, 255, 255));
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn1.png"))); // NOI18N
@@ -6297,13 +6441,29 @@ public class frmPropertySetup extends javax.swing.JFrame
 	    {
 		autoAddKOTToBill = "Y";
 	    }
-	    
+
 	    String areaWiseCostCenterKOTPrinting = "N";
 	    if (chkAreaWiseCostCenterKOTPrinting.isSelected())
 	    {
 		areaWiseCostCenterKOTPrinting = "Y";
 	    }
 
+	    String weraOnlineOrderIntegrationYN = "N";
+	    if (cmbWeraIntegrationYN.getSelectedItem().toString().equalsIgnoreCase("Yes"))
+	    {
+		weraOnlineOrderIntegrationYN = "Y";
+	    }
+	    String weraMerchantOutletId = txtWeraMerchantOutletId.getText().trim();
+
+	    String weraAuthenticationAPIKey = txtWeraAuthenticationAPIKey.getText().trim();
+
+	    String fireCommunication = "N";
+	    if (chkFireCommunication.isSelected())
+	    {
+		fireCommunication = "Y";
+	    }
+
+	    String usdCurrencyConvertionRate = txtUSDCrrencyConverionRate.getText().trim();
 	    /**
 	     *
 	     *
@@ -7218,7 +7378,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 					+ ",strAutoShowPopItems,intShowPopItemsOfDays,strPostSalesCostOrLoc,strEffectOfSales,strPOSWiseItemToMMSProductLinkUpYN,strEnableMasterDiscount"//197
 					+ ",strEnableNFCInterface,strBenowIntegrationYN,strXEmail,strMerchantCode,strAuthenticationKey,strSalt,strEnableLockTable"//204
 					+ ",strHomeDeliveryAreaForDirectBiller,strTakeAwayAreaForDirectBiller,strRoundOffBillFinalAmt,dblNoOfDecimalPlace,strSendDBBackupOnClientMail,strPrintOrderNoOnBillYN,strPrintDeviceAndUserDtlOnKOTYN "//211
-					+ ",strRemoveSCTaxCode,strAutoAddKOTToBill,strAreaWiseCostCenterKOTPrintingYN)"//214
+					+ ",strRemoveSCTaxCode,strAutoAddKOTToBill,strAreaWiseCostCenterKOTPrintingYN,strWERAOnlineOrderIntegration,strWERAMerchantOutletId,strWERAAuthenticationAPIKey"//217
+					+ ",strFireCommunication,dblUSDConverionRate )"//219
 					+ "values('" + txtClientCode.getText() + "','" + txtClientName.getText() + "','" + txtShopAddressLine1.getText() + "','" + txtShopAddressLine2.getText() + "' "
 					+ ",'" + txtShopAddressLine3.getText() + "','" + txtEmailAddress.getText() + "','" + txtBillFooter.getText() + "','" + longFooter + "','" + cmbBillPaperSize.getSelectedItem().toString() + "' "
 					+ ",'" + negBilling + "','" + dayEnd + "','" + cmbPrintMode.getSelectedItem().toString() + "','" + discount + "','" + cityName + "' "
@@ -7261,7 +7422,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 					+ ",'" + effectOfSales + "','" + posWiseItemLinkedUpToMMSProduct + "','" + enableMasterDiscount + "','" + enableNFCInterface + "'" //198
 					+ ",'" + strBenowIntegrationYN + "','" + txtXEmail.getText() + "','" + txtMerchantCode.getText() + "','" + txtAuthenticationKey.getText() + "','" + txtSalt.getText() + "','" + enableLockTables + "'"//204
 					+ ",'" + homeDeliveryAreaForDirectBiller + "','" + takeAwayAreaForDirectBiller + "','" + roundOffFinalBillAmount + "','" + dblNoOfDecimalPlace + "','" + sendDBBackupOnClientMail + "','" + printOrderNoOnBillYN + "','" + printDeviceAndUserDtlOnKOTYN + "'" //211
-					+ ",'" + removeSCTaxCode + "','" + autoAddKOTToBill + "','"+areaWiseCostCenterKOTPrinting+"' )";//214
+					+ ",'" + removeSCTaxCode + "','" + autoAddKOTToBill + "','" + areaWiseCostCenterKOTPrinting + "','" + weraOnlineOrderIntegrationYN + "','" + weraMerchantOutletId + "','" + weraAuthenticationAPIKey + "' "
+					+ ",'" + fireCommunication + "','" + usdCurrencyConvertionRate + "')";//219
 			    }
 
 			    //You should change POS master for this
@@ -7310,7 +7472,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 				    + ",strAutoShowPopItems,intShowPopItemsOfDays,strPostSalesCostOrLoc,strEffectOfSales,strPOSWiseItemToMMSProductLinkUpYN,strEnableMasterDiscount"//197
 				    + ",strEnableNFCInterface,strBenowIntegrationYN,strXEmail,strMerchantCode,strAuthenticationKey,strSalt,strEnableLockTable"//204
 				    + ",strHomeDeliveryAreaForDirectBiller,strTakeAwayAreaForDirectBiller,strRoundOffBillFinalAmt,dblNoOfDecimalPlace,strSendDBBackupOnClientMail,strPrintOrderNoOnBillYN,strPrintDeviceAndUserDtlOnKOTYN "//211
-				    + ",strRemoveSCTaxCode,strAutoAddKOTToBill,strAreaWiseCostCenterKOTPrintingYN )"//214
+				    + ",strRemoveSCTaxCode,strAutoAddKOTToBill,strAreaWiseCostCenterKOTPrintingYN,strWERAOnlineOrderIntegration,strWERAMerchantOutletId,strWERAAuthenticationAPIKey"//217
+				    + ",strFireCommunication,dblUSDConverionRate )"//219
 				    + "values('" + txtClientCode.getText() + "','" + txtClientName.getText().replace("'", "\\'") + "','" + txtShopAddressLine1.getText().replaceAll("'", "\\'") + "','" + txtShopAddressLine2.getText().replaceAll("'", "\\'") + "' "
 				    + ",'" + txtShopAddressLine3.getText().replaceAll("'", "\\'") + "','" + txtEmailAddress.getText() + "','" + txtBillFooter.getText().replaceAll("'", "\\'") + "','" + longFooter + "','" + cmbBillPaperSize.getSelectedItem().toString() + "' "
 				    + ",'" + negBilling + "','" + dayEnd + "','" + cmbPrintMode.getSelectedItem().toString() + "','" + discount + "','" + cityName + "' "
@@ -7352,7 +7515,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 				    + ",'" + autoShowPopItems + "','" + intPOPItemsOfDays + "','" + postMMSDataCostCenterWiseOrLocWise + "','" + effectOfSales + "','" + posWiseItemLinkedUpToMMSProduct + "','" + enableMasterDiscount + "'"
 				    + ",'" + enableNFCInterface + "','" + strBenowIntegrationYN + "','" + txtXEmail.getText() + "','" + txtMerchantCode.getText() + "','" + txtAuthenticationKey.getText() + "','" + txtSalt.getText() + "','" + enableLockTables + "'"//204
 				    + ",'" + homeDeliveryAreaForDirectBiller + "','" + takeAwayAreaForDirectBiller + "','" + roundOffFinalBillAmount + "','" + dblNoOfDecimalPlace + "','" + sendDBBackupOnClientMail + "','" + printOrderNoOnBillYN + "','" + printDeviceAndUserDtlOnKOTYN + "' "//211
-				    + ",'" + removeSCTaxCode + "','" + autoAddKOTToBill + "','"+areaWiseCostCenterKOTPrinting+"' )";//214
+				    + ",'" + removeSCTaxCode + "','" + autoAddKOTToBill + "','" + areaWiseCostCenterKOTPrinting + "','" + weraOnlineOrderIntegrationYN + "','" + weraMerchantOutletId + "','" + weraAuthenticationAPIKey + "' "//217
+				    + ",'" + fireCommunication + "','" + usdCurrencyConvertionRate + "')";//219
 			}
 			//You should change POS master for this
 
@@ -8235,7 +8399,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 				    + ",strAutoShowPopItems,intShowPopItemsOfDays,strPostSalesCostOrLoc,strEffectOfSales,strPOSWiseItemToMMSProductLinkUpYN,strEnableMasterDiscount"//197
 				    + ",strEnableNFCInterface,strBenowIntegrationYN,strXEmail,strMerchantCode,strAuthenticationKey,strSalt,strEnableLockTable"//206
 				    + ",strHomeDeliveryAreaForDirectBiller,strTakeAwayAreaForDirectBiller,strRoundOffBillFinalAmt,dblNoOfDecimalPlace,strSendDBBackupOnClientMail,strPrintOrderNoOnBillYN,strPrintDeviceAndUserDtlOnKOTYN "//211
-				    + ",strRemoveSCTaxCode,strAutoAddKOTToBill,strAreaWiseCostCenterKOTPrintingYN)"//214
+				    + ",strRemoveSCTaxCode,strAutoAddKOTToBill,strAreaWiseCostCenterKOTPrintingYN,strWERAOnlineOrderIntegration,strWERAMerchantOutletId,strWERAAuthenticationAPIKey"//217
+				    + ",strFireCommunication,dblUSDConverionRate )"//219
 				    + "values('" + rsLikePOS.getString(1) + "','" + rsLikePOS.getString(2) + "','" + rsLikePOS.getString(3) + "','" + rsLikePOS.getString(4) + "' "
 				    + ",'" + rsLikePOS.getString(5) + "','" + rsLikePOS.getString(6) + "','" + rsLikePOS.getString(7) + "','" + rsLikePOS.getString(8) + "','" + rsLikePOS.getString(9) + "' "
 				    + ",'" + rsLikePOS.getString(10) + "','" + rsLikePOS.getString(11) + "','" + rsLikePOS.getString(12) + "','" + rsLikePOS.getString(13) + "','" + rsLikePOS.getString(14) + "' "
@@ -8280,7 +8445,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 				    + ",'" + rsLikePOS.getString(192) + "','" + rsLikePOS.getString(193) + "','" + rsLikePOS.getString(194) + "','" + rsLikePOS.getString(195) + "','" + rsLikePOS.getString(196) + "','" + rsLikePOS.getString(197) + "'"//197
 				    + ",'" + rsLikePOS.getString(198) + "','" + rsLikePOS.getString(199) + "','" + rsLikePOS.getString(200) + "','" + rsLikePOS.getString(201) + "','" + rsLikePOS.getString(202) + "','" + rsLikePOS.getString(203) + "','" + rsLikePOS.getString(204) + "'"//204
 				    + ",'" + rsLikePOS.getString(205) + "','" + rsLikePOS.getString(206) + "','" + rsLikePOS.getString(207) + "','" + rsLikePOS.getString(208) + "','" + rsLikePOS.getString(209) + "','" + rsLikePOS.getString(210) + "','" + rsLikePOS.getString(211) + "' "//211
-				    + ",'" + rsLikePOS.getString(212) + "','" + rsLikePOS.getString(213) + "','" + rsLikePOS.getString(214) + "')";//214
+				    + ",'" + rsLikePOS.getString(212) + "','" + rsLikePOS.getString(213) + "','" + rsLikePOS.getString(214) + "','" + rsLikePOS.getString(215) + "','" + rsLikePOS.getString(216) + "','" + rsLikePOS.getString(217) + "'"//217
+				    + ",'" + rsLikePOS.getString(218) + "','" + rsLikePOS.getString(219) + "')";//219
 			}
 
 			if (cnt > 0)
@@ -8364,7 +8530,9 @@ public class frmPropertySetup extends javax.swing.JFrame
 				+ ",strBenowIntegrationYN=?,strXEmail=?,strMerchantCode=?,strAuthenticationKey=?,strSalt=?,strEnableLockTable=? "
 				+ ",strHomeDeliveryAreaForDirectBiller=?,strTakeAwayAreaForDirectBiller=?,strRoundOffBillFinalAmt=?,dblNoOfDecimalPlace=? "
 				+ ",strSendDBBackupOnClientMail=?,strPrintOrderNoOnBillYN=?,strPrintDeviceAndUserDtlOnKOTYN=?,strRemoveSCTaxCode=? "
-				+ ",strAutoAddKOTToBill=?,strAreaWiseCostCenterKOTPrintingYN=? "
+				+ ",strAutoAddKOTToBill=?,strAreaWiseCostCenterKOTPrintingYN=?"
+				+ ",strWERAOnlineOrderIntegration=?,strWERAMerchantOutletId=?,strWERAAuthenticationAPIKey=? "
+				+ ",strFireCommunication=?,dblUSDConverionRate=? "
 				+ "WHERE strClientCode =? and strPOSCode=? ;";
 
 			PreparedStatement objPstmt = clsGlobalVarClass.conPrepareStatement.prepareStatement(sqlUpdate);
@@ -8608,9 +8776,14 @@ public class frmPropertySetup extends javax.swing.JFrame
 			objPstmt.setString(205, removeSCTaxCode);
 			objPstmt.setString(206, autoAddKOTToBill);
 			objPstmt.setString(207, areaWiseCostCenterKOTPrinting);
+			objPstmt.setString(208, weraOnlineOrderIntegrationYN);
+			objPstmt.setString(209, weraMerchantOutletId);
+			objPstmt.setString(210, weraAuthenticationAPIKey);
+			objPstmt.setString(211, fireCommunication);
+			objPstmt.setString(212, usdCurrencyConvertionRate);
 
-			objPstmt.setString(208, txtClientCode.getText());
-			objPstmt.setString(209, newPropertyPOSCode);
+			objPstmt.setString(213, txtClientCode.getText());
+			objPstmt.setString(214, newPropertyPOSCode);
 
 			int affected = objPstmt.executeUpdate();
 
@@ -10333,8 +10506,28 @@ public class frmPropertySetup extends javax.swing.JFrame
 
     private void chkAreaWiseCostCenterKOTPrintingActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkAreaWiseCostCenterKOTPrintingActionPerformed
     {//GEN-HEADEREND:event_chkAreaWiseCostCenterKOTPrintingActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_chkAreaWiseCostCenterKOTPrintingActionPerformed
+
+    private void txtWeraMerchantOutletIdActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtWeraMerchantOutletIdActionPerformed
+    {//GEN-HEADEREND:event_txtWeraMerchantOutletIdActionPerformed
+	// TODO add your handling code here:
+    }//GEN-LAST:event_txtWeraMerchantOutletIdActionPerformed
+
+    private void txtWeraAuthenticationAPIKeyActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtWeraAuthenticationAPIKeyActionPerformed
+    {//GEN-HEADEREND:event_txtWeraAuthenticationAPIKeyActionPerformed
+	// TODO add your handling code here:
+    }//GEN-LAST:event_txtWeraAuthenticationAPIKeyActionPerformed
+
+    private void chkFireCommunicationActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkFireCommunicationActionPerformed
+    {//GEN-HEADEREND:event_chkFireCommunicationActionPerformed
+	// TODO add your handling code here:
+    }//GEN-LAST:event_chkFireCommunicationActionPerformed
+
+    private void txtUSDCrrencyConverionRateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtUSDCrrencyConverionRateActionPerformed
+    {//GEN-HEADEREND:event_txtUSDCrrencyConverionRateActionPerformed
+	// TODO add your handling code here:
+    }//GEN-LAST:event_txtUSDCrrencyConverionRateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -10383,6 +10576,7 @@ public class frmPropertySetup extends javax.swing.JFrame
     private javax.swing.JCheckBox chkEnablePMSIntegration;
     private javax.swing.JCheckBox chkEnableSettleBtnForDirectBillerBill;
     private javax.swing.JCheckBox chkExpDateForCreditCardBillYN;
+    private javax.swing.JCheckBox chkFireCommunication;
     private javax.swing.JCheckBox chkGenrateMI;
     private javax.swing.JCheckBox chkHomeDelSMS;
     private javax.swing.JCheckBox chkItemQtyNumpad;
@@ -10506,6 +10700,7 @@ public class frmPropertySetup extends javax.swing.JFrame
     private javax.swing.JComboBox cmbState;
     private javax.swing.JComboBox cmbStockInOption;
     private javax.swing.JComboBox cmbTakeAwayAreaForDirectBiller;
+    private javax.swing.JComboBox cmbWeraIntegrationYN;
     private com.toedter.calendar.JDateChooser dteHOServerDate;
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
@@ -10535,6 +10730,7 @@ public class frmPropertySetup extends javax.swing.JFrame
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -10547,6 +10743,7 @@ public class frmPropertySetup extends javax.swing.JFrame
     private javax.swing.JLabel lbXEmail;
     private javax.swing.JLabel lblApplyDiscountOn;
     private javax.swing.JLabel lblAuditSMS;
+    private javax.swing.JLabel lblAuthenticationAPIKey;
     private javax.swing.JLabel lblAuthenticationKey;
     private javax.swing.JLabel lblAutoShowPopularItemsOf;
     private javax.swing.JLabel lblBillFormat;
@@ -10655,9 +10852,12 @@ public class frmPropertySetup extends javax.swing.JFrame
     private javax.swing.JLabel lblSuperMerchantCode;
     private javax.swing.JLabel lblTakeAwayAreaForDirectBiller;
     private javax.swing.JLabel lblTelePhoneFax;
+    private javax.swing.JLabel lblUSDCrrencyConverionRate;
     private javax.swing.JLabel lblUserCode;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JLabel lblWSClientCode;
+    private javax.swing.JLabel lblWeraIntegration;
+    private javax.swing.JLabel lblWeraMerchantCode;
     private javax.swing.JLabel lblformName;
     private javax.swing.JPanel panelBillSetup;
     private javax.swing.JPanel panelCMSIntegration;
@@ -10735,10 +10935,13 @@ public class frmPropertySetup extends javax.swing.JFrame
     private javax.swing.JTextField txtShowPopularItemsOfNDays;
     private javax.swing.JTextField txtSuperMerchantCode;
     private javax.swing.JTextField txtTelephone;
+    private javax.swing.JTextField txtUSDCrrencyConverionRate;
     private javax.swing.JTextField txtUserName;
     private javax.swing.JTextField txtVatNo;
     private javax.swing.JTextField txtWSClientCode;
     private javax.swing.JTextField txtWebServiceLink;
+    private javax.swing.JTextField txtWeraAuthenticationAPIKey;
+    private javax.swing.JTextField txtWeraMerchantOutletId;
     private javax.swing.JTextField txtXEmail;
     // End of variables declaration//GEN-END:variables
 

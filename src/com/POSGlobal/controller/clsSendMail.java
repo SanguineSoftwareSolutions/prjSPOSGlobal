@@ -74,7 +74,7 @@ public class clsSendMail
 		    message.addRecipient(Message.RecipientType.TO, new InternetAddress(arrRecipient[cnt]));
 		}
 	    }
-	    message.setSubject("DAY END REPORT " + clsGlobalVarClass.gPOSName + " " + clsGlobalVarClass.gPOSDate);
+	    message.setSubject("DAY END REPORT " +posName + " " + posDate);
 	    String amount1 = "Total Sales=";
 	    amount1 = amount1 + String.valueOf(totalSales);
 	    String amount2 = "\n" + "Total Discount=";

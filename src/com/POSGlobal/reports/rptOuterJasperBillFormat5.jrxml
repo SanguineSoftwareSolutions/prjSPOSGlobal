@@ -100,16 +100,16 @@
 								<reportElement uuid="1d6958de-7baf-478d-a19a-a97c9ecaeb30" x="0" y="0" width="217" height="1"/>
 							</line>
 							<textField>
-								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="0" y="1" width="76" height="21"/>
+								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="0" y="1" width="91" height="21"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle">
-									<font fontName="Trebuchet MS" size="12" isBold="true"/>
+									<font fontName="Trebuchet MS" size="14" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA["Grand Total"]]></textFieldExpression>
 							</textField>
 							<textField pattern="###0.0">
-								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="76" y="1" width="61" height="21"/>
+								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="91" y="1" width="61" height="21"/>
 								<textElement textAlignment="Right" verticalAlignment="Middle">
-									<font fontName="Trebuchet MS" size="12" isBold="true"/>
+									<font fontName="Trebuchet MS" size="14" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$P{dblAllBillGrandTotal}]]></textFieldExpression>
 								<patternExpression><![CDATA[$P{decimalFormaterForDoubleValue}]]></patternExpression>
@@ -120,14 +120,14 @@
 						</jr:columnFooter>
 						<jr:detailCell height="16" rowSpan="1">
 							<textField>
-								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="0" y="0" width="76" height="16"/>
+								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="0" y="0" width="91" height="16"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle">
 									<font fontName="Trebuchet MS" size="10" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{strItemName}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="76" y="0" width="61" height="16"/>
+								<reportElement uuid="6c36fcfb-2ab8-481e-a9ba-e7a2d98185a0" x="91" y="0" width="61" height="16"/>
 								<textElement textAlignment="Right" verticalAlignment="Middle">
 									<font fontName="Trebuchet MS" size="10" isBold="true"/>
 								</textElement>
@@ -143,7 +143,7 @@
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Summary]]></text>
+				<text><![CDATA[SUMMARY]]></text>
 			</staticText>
 		</band>
 	</summary>

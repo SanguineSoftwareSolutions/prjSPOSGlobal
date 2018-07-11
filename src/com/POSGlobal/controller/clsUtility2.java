@@ -1256,22 +1256,22 @@ public class clsUtility2
 
     public boolean isCheckedInMembers(String posCode)
     {
-	boolean isCheckedInMembers=false;
+	boolean isCheckedInMembers = false;
 	try
 	{
 	    String sql = "select a.strRegisterCode,a.strPOSCode,a.strIn,a.strOut "
 		    + "from tblregisterinoutplayzone a "
 		    + "where a.strOut='N' "
-		    + "and a.strPOSCode='"+posCode+"' ";
-	    ResultSet rsCheckedInMembers=clsGlobalVarClass.dbMysql.executeResultSet(sql);
-	    if(rsCheckedInMembers.next())
+		    + "and a.strPOSCode='" + posCode + "' ";
+	    ResultSet rsCheckedInMembers = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+	    if (rsCheckedInMembers.next())
 	    {
-		isCheckedInMembers=true;
+		isCheckedInMembers = true;
 	    }
 	    rsCheckedInMembers.close();
-	    
+
 	}
-	catch(Exception e)
+	catch (Exception e)
 	{
 	    e.printStackTrace();
 	}
@@ -1527,11 +1527,11 @@ public class clsUtility2
 
 	    if (transactionName.equalsIgnoreCase("KOT"))
 	    {
-		if (selectedKOT.equalsIgnoreCase("Dina"))
+		if (selectedKOT.trim().length() > 0)
 		{
 		    docNo = selectedKOT;
 		}
-		else
+		if (selectedBill.trim().length() > 0)
 		{
 		    docNo = selectedBill;
 		}
@@ -2092,14 +2092,14 @@ public class clsUtility2
 	boolean isDayEndHappend = false;
 	try
 	{
-	    	    	    
+
 	    String sql = "select a.strPOSCode,date(a.dtePOSDate),a.strDayEnd "
 		    + "from tbldayendprocess a "
 		    + "where a.strDayEnd='Y' "
-		    + "and a.strPOSCode='"+clsGlobalVarClass.gPOSCode+"' "
-		    + "and date(a.dtePOSDate)='"+toDate+"' ";
-	    ResultSet rsDayEnd=clsGlobalVarClass.dbMysql.executeResultSet(sql);
-	    if(rsDayEnd.next())
+		    + "and a.strPOSCode='" + clsGlobalVarClass.gPOSCode + "' "
+		    + "and date(a.dtePOSDate)='" + toDate + "' ";
+	    ResultSet rsDayEnd = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+	    if (rsDayEnd.next())
 	    {
 		isDayEndHappend = true;
 	    }
@@ -2114,6 +2114,37 @@ public class clsUtility2
 	finally
 	{
 	    return isDayEndHappend;
+	}
+    }
+
+    public boolean funIsAllItemFired(String tableNo)
+    {
+
+	boolean isAllItemsFired = true;
+	try
+	{
+	    String sql = "select sum(a.dblItemQuantity)totalItemQty,sum(a.dblFiredQty)totalFireQty,sum(a.dblItemQuantity)-sum(a.dblFiredQty)pendingQty "
+		    + "from tblitemrtemp a "
+		    + "where a.strTableNo='" + tableNo + "' "
+		    + "and a.strPOSCode='" + clsGlobalVarClass.gPOSCode + "' ";
+	    ResultSet rs = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+	    if (rs.next())
+	    {
+		int pendingQty = rs.getInt(3);
+		if (pendingQty > 0)
+		{
+		    isAllItemsFired = false;
+		}
+	    }
+	    rs.close();
+	}
+	catch (Exception e)
+	{
+	    e.printStackTrace();
+	}
+	finally
+	{
+	    return isAllItemsFired;
 	}
     }
 

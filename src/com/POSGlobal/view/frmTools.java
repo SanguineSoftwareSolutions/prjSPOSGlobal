@@ -6,7 +6,7 @@
 package com.POSGlobal.view;
 
 import com.POSGlobal.controller.clsGlobalVarClass;
-import com.POSGlobal.controller.clsStructureUpdate;
+import com.POSGlobal.controller.clsStructureUpdater;
 import com.sanguine.forms.frmConfigSettings;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -276,7 +276,7 @@ public class frmTools extends javax.swing.JFrame
         frmOkPopUp objOkPopUp = new frmOkPopUp(this, "It Will Take Some Time..! Press Ok To Countinue", "Message!!", 2);
         objOkPopUp.setVisible(true);
 
-        clsStructureUpdate ob = new clsStructureUpdate();
+        clsStructureUpdater ob = new clsStructureUpdater();
         ob.structup();
         lblUpdateStructure.setEnabled(true);
         if ("startup".equals(callingType))

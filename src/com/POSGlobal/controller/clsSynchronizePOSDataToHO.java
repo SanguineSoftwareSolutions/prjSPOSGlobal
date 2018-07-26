@@ -7901,7 +7901,7 @@ public class clsSynchronizePOSDataToHO
 		    + "AND b.strItemCode=c.strItemCode "
 		    + "AND a.strPOSCode=d.strPosCode  "
 		    + "and b.strItemCode=e.strItemCode "
-		    + "and a.strPOSCode=e.strPOSCode "
+		    + "and (a.strPOSCode=e.strPOSCode or e.strPOSCode='All') "
 		    + "and LENGTH(e.strWSProductCode)<3   "
 		    + filter1;
 	    if (!itemType.equals("Both"))
@@ -7916,7 +7916,7 @@ public class clsSynchronizePOSDataToHO
 		    + "AND b.strItemCode=c.strItemCode "
 		    + "AND a.strPOSCode=d.strPosCode  "
 		    + "and b.strItemCode=e.strItemCode "
-		    + "and a.strPOSCode=e.strPOSCode "
+		    + "and (a.strPOSCode=e.strPOSCode or e.strPOSCode='All') "
 		    + "and LENGTH(e.strWSProductCode)<3   "
 		    + filter1;
 	    if (!itemType.equals("Both"))

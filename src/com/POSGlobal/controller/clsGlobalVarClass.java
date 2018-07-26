@@ -99,7 +99,7 @@ public class clsGlobalVarClass
     public static String gCMSWebServiceURL = "", gWebBooksWebServiceURL = "", gWebMMSWebServiceURL = "", gWebExciseWebServiceURL = "";
     public static String gCMSPOSCode, gWSClientCode, gCMSPostingType, gDayEnd;
     public static String gSelectedModule, gUserPOSCode, gChangeModule, gCMSMemberCodeForKOTJPOS, gCMSMemberCodeForKOTMPOS;
-    public static String gAdvReceiptPrinterPort, gClientTelNo, gPrinterQueueStatus, gReceiverEmailIds;
+    public static String gAdvReceiptPrinterPort, gClientTelNo, gPrinterQueueStatus, gReceiverEmailIds, gDBBackupReceiverEmailIds;
     public static String gItemType, gFTPAddress, gFTPServerUserName, gFTPServerPass, gAllowToCalculateItemWeight, gShowBillsType;
     public static String gPrintTaxInvoice, gPrintInclusiveOfAllTaxes, gApplyDiscountOn, gMemberCodeForKotInMposByCardSwipe;
     public static String gPrintVatNoPOS, gPrintServiceTaxNoPOS, gPOSVatNo, gPOSServiceTaxNo;
@@ -2430,11 +2430,11 @@ public class clsGlobalVarClass
 			+ "and b.strGroupCode=c.strGroupCode ";
 		if (itemType.equals("Raw Material"))
 		{
-		    sql1 += "and strRawMaterial='Y'";
+		    sql1 += "and strRawMaterial='Y' ";
 		}
 		else if (itemType.equals("Menu Item"))
 		{
-		    sql1 += "and strRawMaterial='N'";
+		    sql1 += "and strItemForSale='Y' ";
 		}
 		System.out.println(sql1);
 		clsGlobalVarClass.dbMysql.execute(sql1);
@@ -3290,6 +3290,7 @@ public class clsGlobalVarClass
 	    }
 
 	    gUSDConvertionRate = rs.getDouble(219);
+	    gDBBackupReceiverEmailIds = rs.getString(220);
 
 	}
 	else

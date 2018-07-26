@@ -1102,7 +1102,8 @@ public class frmStockFlash extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         pnlhead = new javax.swing.JPanel();
         lblProductName = new javax.swing.JLabel();
@@ -1113,8 +1114,10 @@ public class frmStockFlash extends javax.swing.JFrame
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         lblDate = new javax.swing.JLabel();
         lblHOSign = new javax.swing.JLabel();
-        pnlbackground = new JPanel() {
-            public void paintComponent(Graphics g) {
+        pnlbackground = new JPanel()
+        {
+            public void paintComponent(Graphics g)
+            {
                 Image img = Toolkit.getDefaultToolkit().getImage(
                     getClass().getResource("/com/POSGlobal/images/imgBGJPOS.png"));
                 g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
@@ -1151,11 +1154,14 @@ public class frmStockFlash extends javax.swing.JFrame
         setExtendedState(MAXIMIZED_BOTH);
         setMinimumSize(new java.awt.Dimension(800, 600));
         setUndecorated(true);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosed(java.awt.event.WindowEvent evt)
+            {
                 formWindowClosed(evt);
             }
-            public void windowClosing(java.awt.event.WindowEvent evt) {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
                 formWindowClosing(evt);
             }
         });
@@ -1210,21 +1216,26 @@ public class frmStockFlash extends javax.swing.JFrame
 
         tblStock.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tblStock.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Item Code", "Item Name", "Opening Stock", "Stock Out", "Stock In", "Sale", "Bal"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false, false, false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
@@ -1233,10 +1244,12 @@ public class frmStockFlash extends javax.swing.JFrame
 
         tblTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tblTotal.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
@@ -1250,13 +1263,17 @@ public class frmStockFlash extends javax.swing.JFrame
         btnBack.setToolTipText("Close Window");
         btnBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnBack.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn2.png"))); // NOI18N
-        btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnBack.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnBackMouseClicked(evt);
             }
         });
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnBackActionPerformed(evt);
             }
         });
@@ -1268,13 +1285,10 @@ public class frmStockFlash extends javax.swing.JFrame
         btnStockView.setToolTipText("View Report");
         btnStockView.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnStockView.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn2.png"))); // NOI18N
-        btnStockView.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnStockViewMouseClicked(evt);
-            }
-        });
-        btnStockView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnStockView.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnStockViewActionPerformed(evt);
             }
         });
@@ -1286,8 +1300,10 @@ public class frmStockFlash extends javax.swing.JFrame
         lblItemType.setText("Type");
 
         cmbPosCode.setToolTipText("Select POS");
-        cmbPosCode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmbPosCode.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmbPosCodeActionPerformed(evt);
             }
         });
@@ -1303,13 +1319,17 @@ public class frmStockFlash extends javax.swing.JFrame
         btnPrint.setToolTipText("Print Report");
         btnPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPrint.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn2.png"))); // NOI18N
-        btnPrint.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnPrint.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnPrintMouseClicked(evt);
             }
         });
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPrint.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPrintActionPerformed(evt);
             }
         });
@@ -1327,21 +1347,27 @@ public class frmStockFlash extends javax.swing.JFrame
         btnExport.setToolTipText("Export File");
         btnExport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnExport.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn2.png"))); // NOI18N
-        btnExport.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnExport.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnExportMouseClicked(evt);
             }
         });
-        btnExport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExport.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnExportActionPerformed(evt);
             }
         });
 
         cmbReportType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Stock", "ReOrder" }));
         cmbReportType.setToolTipText("Select Report Type");
-        cmbReportType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmbReportType.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmbReportTypeActionPerformed(evt);
             }
         });
@@ -1356,13 +1382,17 @@ public class frmStockFlash extends javax.swing.JFrame
         btnProductionOrder.setToolTipText("Production");
         btnProductionOrder.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnProductionOrder.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn2.png"))); // NOI18N
-        btnProductionOrder.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnProductionOrder.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnProductionOrderMouseClicked(evt);
             }
         });
-        btnProductionOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnProductionOrder.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnProductionOrderActionPerformed(evt);
             }
         });
@@ -1372,8 +1402,10 @@ public class frmStockFlash extends javax.swing.JFrame
 
         cmbGroupWise.setModel(new javax.swing.DefaultComboBoxModel(new String[] {  }));
         cmbGroupWise.setPreferredSize(new java.awt.Dimension(66, 20));
-        cmbGroupWise.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmbGroupWise.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmbGroupWiseActionPerformed(evt);
             }
         });
@@ -1516,22 +1548,6 @@ public class frmStockFlash extends javax.swing.JFrame
 	// TODO add your handling code here:
 	dispose();
     }//GEN-LAST:event_btnBackMouseClicked
-    /**
-     * Stock Report
-     *
-     * @param evt
-     */
-    private void btnStockViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStockViewMouseClicked
-
-	if (cmbReportType.getSelectedItem().toString().equals("Stock"))
-	{
-	    funShowStockFlash();
-	}
-	else
-	{
-	    funShowReOrderFlash();
-	}
-    }//GEN-LAST:event_btnStockViewMouseClicked
 
     private void cmbPosCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPosCodeActionPerformed
 

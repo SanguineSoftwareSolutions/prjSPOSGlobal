@@ -820,7 +820,7 @@ public class clsUtility2
 	    message.setFrom(new InternetAddress(from));//change accordingly
 	    if (clsGlobalVarClass.gSendDBBackUpOnClientMail)
 	    {
-		to = to + "," + clsGlobalVarClass.gReceiverEmailIds;
+		to = to + "," + clsGlobalVarClass.gDBBackupReceiverEmailIds;
 	    }
 
 	    String[] arrRecipient = to.split(",");

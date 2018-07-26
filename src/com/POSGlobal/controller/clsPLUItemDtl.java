@@ -82,6 +82,7 @@ public class clsPLUItemDtl
             String sqlItemDtl = "SELECT strItemCode,strItemName,'',0,0,0,0,0,0,0,'','','','','','','','','' "
                     + ",strStockInEnable,dblPurchaseRate,'' "
                     + "FROM tblitemmaster "
+		    + "where strOperationalYN='Y' "
                     + "ORDER BY strItemName ASC";
             ResultSet rsItemInfo = clsGlobalVarClass.dbMysql.executeResultSet(sqlItemDtl);
 
@@ -127,6 +128,7 @@ public class clsPLUItemDtl
                         + " and a.strMenuCode=c.strMenuCode and c.strCounterCode='" + counterCode + "' "
                         + " and (a.strPosCode='" + clsGlobalVarClass.gPOSCode + "' or a.strPosCode='All') "
                         + " and date(a.dteFromDate)<='" + posDateForPrice + "' and date(a.dteToDate)>='" + posDateForPrice + "' "
+			+ " and b.strOperationalYN='Y' "
                         + " ORDER BY b.strItemName ASC";
             }
             else if (clsGlobalVarClass.gPlayZonePOS.equals("Y"))
@@ -141,6 +143,7 @@ public class clsPLUItemDtl
                         + "and date(a.dteFromDate)<='" + posDateForPrice + "' and date(a.dteToDate)>='" + posDateForPrice + "' "
                         + "and Time(CURRENT_TIME()) between b.dteFromTime and b.dteToTime "
                         + "and a.strPosCode='" + clsGlobalVarClass.gPOSCode + "' "
+			+ "and c.strOperationalYN='Y' "
                         + "ORDER BY b.dteFromTime";
             }
             else
@@ -155,6 +158,7 @@ public class clsPLUItemDtl
                         + " and a.strHourlyPricing='NO' "
                         + " and (a.strPosCode='" + clsGlobalVarClass.gPOSCode + "' or a.strPosCode='All') "
                         + " and date(a.dteFromDate)<='" + posDateForPrice + "' and date(a.dteToDate)>='" + posDateForPrice + "' "
+			+ " and b.strOperationalYN='Y' "
                         + " ORDER BY b.strItemName ASC";
             }
 
@@ -215,6 +219,7 @@ public class clsPLUItemDtl
                                 + " and a.strMenuCode=c.strMenuCode and c.strCounterCode='" + counterCode + "' "
                                 + " and (a.strPosCode='" + clsGlobalVarClass.gPOSCode + "' or a.strPosCode='All')"
                                 + " and date(a.dteFromDate)<='" + posDateForPrice + "' and date(a.dteToDate)>='" + posDateForPrice + "' "
+				+ " and b.strOperationalYN='Y' "
                                 + " ORDER BY b.strItemName ASC";
                     }
                     else if (clsGlobalVarClass.gPlayZonePOS.equals("Y"))
@@ -228,7 +233,8 @@ public class clsPLUItemDtl
                                 + "and a.strItemCode=c.strItemCode \n"
                                 + "and date(a.dteFromDate)<='" + posDateForPrice + "' and date(a.dteToDate)>='" + posDateForPrice + "' "
                                 + "and Time(CURRENT_TIME()) between b.dteFromTime and b.dteToTime "
-                                + "and a.strPosCode='" + clsGlobalVarClass.gPOSCode + "' and a.strAreaCode='" + areaCode + "'"
+                                + "and a.strPosCode='" + clsGlobalVarClass.gPOSCode + "' and a.strAreaCode='" + areaCode + "' "
+				+ "and c.strOperationalYN='Y' "
                                 + "ORDER BY b.dteFromTime";
                     }
                     else
@@ -244,6 +250,7 @@ public class clsPLUItemDtl
                                 + " and a.strHourlyPricing='NO'  "
                                 + " and (a.strPosCode='" + clsGlobalVarClass.gPOSCode + "' or a.strPosCode='All')"
                                 + " and date(a.dteFromDate)<='" + posDateForPrice + "' and date(a.dteToDate)>='" + posDateForPrice + "' "
+				+ " and b.strOperationalYN='Y' "
                                 + " ORDER BY b.strItemName ASC";
                     }
 

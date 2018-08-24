@@ -352,7 +352,7 @@ public class clsBenowIntegration
 	    String charset = "UTF-8"; // or "ISO-8859-1"
 	    Map hintMap = new HashMap();
 	    hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-	    createQRCode(QRString, filePath, charset, hintMap, 135, 135);
+	    createQRCode(QRString, filePath, charset, hintMap, 300, 300);
 	    System.out.println("QR Code image created successfully!");
 	    System.out.println("Data read from QR Code: " + readQRCode(filePath, charset, hintMap));
 	    funCopyImageIfPresent(new File(filePath));

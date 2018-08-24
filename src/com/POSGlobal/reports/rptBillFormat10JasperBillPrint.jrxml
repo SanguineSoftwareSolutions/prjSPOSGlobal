@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="587" leftMargin="7" rightMargin="1" topMargin="5" bottomMargin="20" uuid="e06fc829-861a-4097-8acd-d9c65c0d0a3b">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="132"/>
+	<property name="ireport.y" value="275"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -942,13 +942,13 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="118">
-			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle" onErrorType="Blank">
-				<reportElement uuid="7ad2b2f0-6421-4aab-af35-13c84693a11d" x="1" y="20" width="129" height="89"/>
+		<band height="119">
+			<image scaleImage="RealSize" hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement uuid="7ad2b2f0-6421-4aab-af35-13c84693a11d" x="19" y="20" width="90" height="90"/>
 				<imageExpression><![CDATA[$P{qrCodeImgPath}]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement uuid="b078e4b7-9965-44aa-8883-4ea88915a937" x="1" y="109" width="128" height="9"/>
+				<reportElement uuid="b078e4b7-9965-44aa-8883-4ea88915a937" x="1" y="110" width="128" height="9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Trebuchet MS" size="6" isBold="false"/>
 				</textElement>

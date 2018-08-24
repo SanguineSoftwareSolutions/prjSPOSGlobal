@@ -434,10 +434,10 @@ public class clsCRMInterface
 	    OutputStream os = conn.getOutputStream();
 	    os.write(objData.toString().getBytes());
 	    os.flush();
-	    if (conn.getResponseCode() != HttpsURLConnection.HTTP_CREATED)
-	    {
-		throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-	    }
+//	    if (conn.getResponseCode() != HttpsURLConnection.HTTP_CREATED)
+//	    {
+//		throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+//	    }
 	    BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 	    String output = "", op = "";
 
@@ -519,10 +519,10 @@ public class clsCRMInterface
 	    OutputStream os = conn.getOutputStream();
 	    os.write(objRootJSON.toString().getBytes());
 	    os.flush();
-	    if (conn.getResponseCode() != HttpsURLConnection.HTTP_CREATED)
-	    {
-		throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-	    }
+//	    if (conn.getResponseCode() != HttpsURLConnection.HTTP_CREATED)
+//	    {
+//		throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+//	    }
 	    BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 	    String output = "", op = "";
 

@@ -29,6 +29,10 @@ public class clsTaxCalculationDtls
     private String dteBillDate;
     
     private String strBillNo;
+    
+    private String strTaxOnTaxCode;
+    
+    private String isTaxOnTax;
 
     public String getStrBillNo() {
         return strBillNo;
@@ -125,6 +129,26 @@ public class clsTaxCalculationDtls
     public void setTaxAmount(double taxAmount)
     {
         this.taxAmount = taxAmount;
+    }
+
+    public String getStrTaxOnTaxCode()
+    {
+	return strTaxOnTaxCode;
+    }
+
+    public void setStrTaxOnTaxCode(String strTaxOnTaxCode)
+    {
+	this.strTaxOnTaxCode = strTaxOnTaxCode;
+    }
+
+    public String isIsTaxOnTax()
+    {
+	return isTaxOnTax;
+    }
+
+    public void setIsTaxOnTax(String isTaxOnTax)
+    {
+	this.isTaxOnTax = isTaxOnTax;
     }
     
     

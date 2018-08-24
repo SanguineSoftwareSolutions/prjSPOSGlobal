@@ -2649,8 +2649,7 @@ public class frmClearTransaction extends javax.swing.JFrame
             clsGlobalVarClass.dbMysql.execute("truncate tblqbillsettlementdtl ");
             clsGlobalVarClass.dbMysql.execute("truncate tblqbilltaxdtl ");
             clsGlobalVarClass.dbMysql.execute("truncate tblqcreditbillreceipthd ");
-            clsGlobalVarClass.dbMysql.execute("truncate tblrecipedtl ");
-            clsGlobalVarClass.dbMysql.execute("truncate tblrecipehd ");
+            
             clsGlobalVarClass.dbMysql.execute("truncate tblreorderdtl ");
             clsGlobalVarClass.dbMysql.execute("truncate tblreorderhd ");
             clsGlobalVarClass.dbMysql.execute("truncate tblreordertime ");

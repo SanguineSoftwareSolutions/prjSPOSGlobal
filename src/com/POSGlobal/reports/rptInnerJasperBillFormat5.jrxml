@@ -49,6 +49,7 @@
 		<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
 			<parameterDescription><![CDATA[]]></parameterDescription>
 		</parameter>
+		<parameter name="totalQty" class="java.lang.Double"/>
 		<queryString language="SQL">
 			<![CDATA[select * from tblbilldtl;]]>
 		</queryString>
@@ -134,6 +135,7 @@
 	<parameter name="decimalFormaterForDoubleValue" class="java.lang.String">
 		<parameterDescription><![CDATA[]]></parameterDescription>
 	</parameter>
+	<parameter name="totalQty" class="java.lang.Double"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -367,6 +369,9 @@
 						<datasetParameter name="decimalFormaterForDoubleValue">
 							<datasetParameterExpression><![CDATA[$P{decimalFormaterForDoubleValue}]]></datasetParameterExpression>
 						</datasetParameter>
+						<datasetParameter name="totalQty">
+							<datasetParameterExpression><![CDATA[$P{totalQty}]]></datasetParameterExpression>
+						</datasetParameter>
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listOfItemDtl})]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column uuid="699aa6e8-7173-4756-80bb-149d043a40b0" width="30">
@@ -392,13 +397,15 @@
 							<line>
 								<reportElement uuid="143a6a1d-cd77-4f1e-b2ca-96ee704d77d2" x="0" y="0" width="30" height="1"/>
 							</line>
-							<staticText>
-								<reportElement uuid="e456c294-3521-42b0-a94d-bbdfc30609b2" x="0" y="1" width="30" height="21"/>
-								<textElement textAlignment="Right" verticalAlignment="Middle">
-									<font fontName="Trebuchet MS" size="10" isBold="true" isStrikeThrough="false"/>
+							<textField pattern="#.###">
+								<reportElement uuid="06914f88-ab30-4c05-b4aa-eae84be9e674" x="0" y="1" width="30" height="21" isRemoveLineWhenBlank="true">
+									<printWhenExpression><![CDATA[$P{totalQty}>0]]></printWhenExpression>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Trebuchet MS" size="9" isBold="true"/>
 								</textElement>
-								<text><![CDATA[SUB]]></text>
-							</staticText>
+								<textFieldExpression><![CDATA[$P{totalQty}]]></textFieldExpression>
+							</textField>
 						</jr:columnFooter>
 						<jr:detailCell height="15" rowSpan="1">
 							<textField pattern="#.###">
@@ -434,11 +441,11 @@
 								<reportElement uuid="143a6a1d-cd77-4f1e-b2ca-96ee704d77d2" x="0" y="0" width="115" height="1"/>
 							</line>
 							<staticText>
-								<reportElement uuid="b078e4b7-9965-44aa-8883-4ea88915a937" x="0" y="1" width="115" height="21"/>
+								<reportElement uuid="dc9123cc-0aef-453d-a08c-ef87e0086f7f" x="0" y="1" width="115" height="21"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle">
-									<font fontName="Trebuchet MS" size="10" isBold="true"/>
+									<font fontName="Trebuchet MS" size="9" isBold="true"/>
 								</textElement>
-								<text><![CDATA[TOTAL]]></text>
+								<text><![CDATA[  SUBTOTAL]]></text>
 							</staticText>
 						</jr:columnFooter>
 						<jr:detailCell height="15" rowSpan="1">

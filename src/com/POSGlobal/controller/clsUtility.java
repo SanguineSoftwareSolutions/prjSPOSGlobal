@@ -266,6 +266,8 @@ public class clsUtility implements Cloneable
 		    objTaxDtls.setTaxableAmount(taxableAmount);
 		    objTaxDtls.setTaxAmount(taxCalAmt);
 		    objTaxDtls.setTaxCalculationType(taxCal);
+		    objTaxDtls.setIsTaxOnTax(taxOnTax);
+		    objTaxDtls.setStrTaxOnTaxCode(taxOnTaxCode);
 		    arrListTaxDtl.add(objTaxDtls);
 		}
 	    }
@@ -2538,7 +2540,7 @@ public class clsUtility implements Cloneable
 		    clsGlobalVarClass.dbMysql.execute(sql);
 		    clsGlobalVarClass.gShiftEnd = "";
 		    clsGlobalVarClass.gDayEnd = "N";
-		    clsGlobalVarClass.gShiftNo = (shift + 1);
+		    //clsGlobalVarClass.gShiftNo = (shift + 1);
 		    clsGlobalVarClass.setStartDate(newStartDate);
 		    clsGlobalVarClass.funSetPOSDate();
 		    System.out.println("Shift = " + clsGlobalVarClass.gShifts);
@@ -7667,7 +7669,7 @@ public class clsUtility implements Cloneable
 	    long netTotal = 0, grossTotal = 0, totalDisc = 0, totalAPC = 0;
 	    int totalPax = 0;
 
-	    String sqlSettelementBrkUP = "select SUM(a.dblSubTotal) as NetTotal,SUM(a.dblGrandTotal) as GrossSales "
+	    String sqlSettelementBrkUP = "select SUM(a.dblSubTotal)-sum(a.dblDiscountAmt) as NetTotal,SUM(a.dblGrandTotal) as GrossSales "
 		    + ",SUM(a.intBillSeriesPaxNo) as TotalPax,SUM(a.dblSubTotal)/SUM(a.intBillSeriesPaxNo) as APC  "
 		    + "from  tblqbillhd a  "
 		    + "where a.strPOSCode=?  "

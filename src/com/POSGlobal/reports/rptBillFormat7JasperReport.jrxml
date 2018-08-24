@@ -139,28 +139,20 @@
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<pageHeader>
-		<band height="50" splitType="Stretch">
-			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
-				<reportElement uuid="3c6aee81-39cc-44b2-80de-ec0e862e9f87" x="7" y="0" width="186" height="50" isRemoveLineWhenBlank="true"/>
-				<imageExpression><![CDATA[$P{imgBillLogo}]]></imageExpression>
-			</image>
-		</band>
-	</pageHeader>
 	<columnHeader>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="43" splitType="Stretch">
+		<band height="40" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="c6a470e3-2ea5-4e52-bbc2-02cc122b5214" x="8" y="28" width="187" height="15" isRemoveLineWhenBlank="true"/>
+				<reportElement uuid="c6a470e3-2ea5-4e52-bbc2-02cc122b5214" x="8" y="25" width="187" height="15" isRemoveLineWhenBlank="true"/>
 				<textElement textAlignment="Center">
 					<font fontName="Trebuchet MS" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{BillType}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="c6a470e3-2ea5-4e52-bbc2-02cc122b5214" x="8" y="0" width="187" height="15" isRemoveLineWhenBlank="true">
+				<reportElement uuid="c6a470e3-2ea5-4e52-bbc2-02cc122b5214" x="8" y="0" width="187" height="10" isRemoveLineWhenBlank="true">
 					<printWhenExpression><![CDATA[$P{duplicate}!=null]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -169,7 +161,7 @@
 				<textFieldExpression><![CDATA[$P{duplicate}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="8" y="14" width="187" height="15" isRemoveLineWhenBlank="true"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="8" y="11" width="187" height="15" isRemoveLineWhenBlank="true"/>
 				<textElement textAlignment="Center">
 					<font fontName="Trebuchet MS" size="12" isBold="true"/>
 				</textElement>
@@ -178,7 +170,7 @@
 		</band>
 		<band height="5">
 			<componentElement>
-				<reportElement uuid="f6ff2509-a370-4847-b368-98e00c05cd80" stretchType="RelativeToBandHeight" x="6" y="0" width="187" height="5" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<reportElement uuid="f6ff2509-a370-4847-b368-98e00c05cd80" stretchType="RelativeToBandHeight" x="8" y="0" width="187" height="5" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="dsForVatServiceDetail" uuid="81a0e0cd-2e6f-4e56-b2a9-e9c9a840bb6f">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listOfHomeDeliveryDtl})]]></dataSourceExpression>
@@ -470,7 +462,7 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="14">
+		<band height="5">
 			<elementGroup/>
 			<componentElement>
 				<reportElement uuid="f6ff2509-a370-4847-b368-98e00c05cd80" x="7" y="0" width="187" height="5"/>

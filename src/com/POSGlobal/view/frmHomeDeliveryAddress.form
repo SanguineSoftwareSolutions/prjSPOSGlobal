@@ -291,6 +291,7 @@
                                   <Component id="lblLandmark3" min="-2" pref="32" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="txtHomePinCode" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
@@ -302,7 +303,7 @@
                                   <Component id="lblPinCode3" min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -317,11 +318,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtHomeAddress">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtHomeAddressMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHomeAddressActionPerformed"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtHomeAddressKeyPressed"/>
                   </Events>
                 </Component>
@@ -334,9 +333,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtHomeStreetName">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtHomeStreetNameMouseClicked"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtHomeStreetNameKeyPressed"/>
@@ -351,11 +347,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtHomeLandmark">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtHomeLandmarkMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHomeLandmarkActionPerformed"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtHomeLandmarkKeyPressed"/>
                   </Events>
                 </Component>
@@ -369,7 +363,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtHomePinCode">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                   <Events>
@@ -379,21 +372,21 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtHomeCity">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtHomeCityMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHomeCityActionPerformed"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtHomeCityKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtHomeState">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtHomeStateMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHomeStateActionPerformed"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtHomeStateKeyPressed"/>
                   </Events>
                 </Component>
@@ -471,6 +464,7 @@
                                   <Component id="lblHomelLandmark" min="-2" pref="32" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="txtOfficePinCode" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
@@ -482,7 +476,7 @@
                                   <Component id="lblHomelPinCode" min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -497,9 +491,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtOfficeCustAddress">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtOfficeCustAddressMouseClicked"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtOfficeCustAddressKeyPressed"/>
@@ -514,9 +505,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtOfficeStreetName">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtOfficeStreetNameMouseClicked"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtOfficeStreetNameKeyPressed"/>
@@ -531,9 +519,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtOfficeLandmark">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtOfficeLandmarkMouseClicked"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtOfficeLandmarkKeyPressed"/>
@@ -549,7 +534,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtOfficePinCode">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                   <Events>
@@ -559,7 +543,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtOfficeCity">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                   <Events>
@@ -569,7 +552,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtOfficeState">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                   <Events>

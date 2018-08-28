@@ -1,6 +1,7 @@
 package com.POSGlobal.view;
 
 import com.POSGlobal.controller.clsGlobalVarClass;
+import com.POSGlobal.controller.clsUtility;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -14,24 +15,26 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
     private String homeDeliveryAddressType;
     private String strMobileNo;
     private String strCustomerCode;
+    private clsUtility objUtility;
 
     public frmHomeDeliveryAddress(java.awt.Frame parent, boolean modal, String mobileNo)
     {
 
-        super(parent, modal);
-        initComponents();
+	super(parent, modal);
+	initComponents();
 
-        this.setLocationRelativeTo(null);
-        this.strMobileNo = mobileNo;
+	this.objUtility=new clsUtility();
+	this.setLocationRelativeTo(null);
+	this.strMobileNo = mobileNo;
 
-        lblTempLandmark.setVisible(false);
-        txtTempLandmark.setVisible(false);
-        lblTempStreetName.setVisible(false);
-        txtTempStreetName.setVisible(false);
+	lblTempLandmark.setVisible(false);
+	txtTempLandmark.setVisible(false);
+	lblTempStreetName.setVisible(false);
+	txtTempStreetName.setVisible(false);
 
-        funSetAddressDetail(mobileNo);
-        tabbedPaneHomeDeliveryAddress2.setSelectedIndex(0);
-        funSetHomeDeliveryAddress();
+	funSetAddressDetail(mobileNo);
+	tabbedPaneHomeDeliveryAddress2.setSelectedIndex(0);
+	funSetHomeDeliveryAddress();
     }
 
     @SuppressWarnings("unchecked")
@@ -183,12 +186,18 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblCustAddress3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCustAddress3.setText("Address/Flat No. :");
 
-        txtHomeAddress.setEditable(false);
         txtHomeAddress.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
             {
                 txtHomeAddressMouseClicked(evt);
+            }
+        });
+        txtHomeAddress.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtHomeAddressActionPerformed(evt);
             }
         });
         txtHomeAddress.addKeyListener(new java.awt.event.KeyAdapter()
@@ -202,7 +211,6 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblStreetName3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblStreetName3.setText("Street Name      :");
 
-        txtHomeStreetName.setEditable(false);
         txtHomeStreetName.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
@@ -221,12 +229,18 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblLandmark3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblLandmark3.setText("Landmark          :");
 
-        txtHomeLandmark.setEditable(false);
         txtHomeLandmark.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
             {
                 txtHomeLandmarkMouseClicked(evt);
+            }
+        });
+        txtHomeLandmark.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtHomeLandmarkActionPerformed(evt);
             }
         });
         txtHomeLandmark.addKeyListener(new java.awt.event.KeyAdapter()
@@ -240,7 +254,6 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblPinCode3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblPinCode3.setText("Pin Code           :");
 
-        txtHomePinCode.setEditable(false);
         txtHomePinCode.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtHomePinCode.addMouseListener(new java.awt.event.MouseAdapter()
         {
@@ -257,13 +270,19 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
             }
         });
 
-        txtHomeCity.setEditable(false);
         txtHomeCity.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtHomeCity.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
             {
                 txtHomeCityMouseClicked(evt);
+            }
+        });
+        txtHomeCity.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtHomeCityActionPerformed(evt);
             }
         });
         txtHomeCity.addKeyListener(new java.awt.event.KeyAdapter()
@@ -274,13 +293,19 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
             }
         });
 
-        txtHomeState.setEditable(false);
         txtHomeState.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtHomeState.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
             {
                 txtHomeStateMouseClicked(evt);
+            }
+        });
+        txtHomeState.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtHomeStateActionPerformed(evt);
             }
         });
         txtHomeState.addKeyListener(new java.awt.event.KeyAdapter()
@@ -339,6 +364,7 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
                     .addGroup(panelHomeAddress2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(lblLandmark3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelHomeAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelHomeAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtHomePinCode, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,7 +373,7 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
                     .addGroup(panelHomeAddress2Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(lblPinCode3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(191, 191, 191))
+                .addGap(180, 180, 180))
         );
 
         tabbedPaneHomeDeliveryAddress2.addTab("Home Address", panelHomeAddress2);
@@ -357,7 +383,6 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblHomelCustAddress.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblHomelCustAddress.setText("Address/Flat No. :");
 
-        txtOfficeCustAddress.setEditable(false);
         txtOfficeCustAddress.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
@@ -376,7 +401,6 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblHomelStreetName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblHomelStreetName.setText("Street Name      :");
 
-        txtOfficeStreetName.setEditable(false);
         txtOfficeStreetName.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
@@ -395,7 +419,6 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblHomelLandmark.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblHomelLandmark.setText("Landmark          :");
 
-        txtOfficeLandmark.setEditable(false);
         txtOfficeLandmark.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
@@ -414,7 +437,6 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblHomelPinCode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblHomelPinCode.setText("Pin Code           :");
 
-        txtOfficePinCode.setEditable(false);
         txtOfficePinCode.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtOfficePinCode.addMouseListener(new java.awt.event.MouseAdapter()
         {
@@ -431,7 +453,6 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
             }
         });
 
-        txtOfficeCity.setEditable(false);
         txtOfficeCity.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtOfficeCity.addMouseListener(new java.awt.event.MouseAdapter()
         {
@@ -448,7 +469,6 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
             }
         });
 
-        txtOfficeState.setEditable(false);
         txtOfficeState.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtOfficeState.addMouseListener(new java.awt.event.MouseAdapter()
         {
@@ -513,6 +533,7 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
                     .addGroup(panelOfficeAddressLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(lblHomelLandmark, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelOfficeAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelOfficeAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtOfficePinCode, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -521,7 +542,7 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
                     .addGroup(panelOfficeAddressLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(lblHomelPinCode, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(190, 190, 190))
+                .addGap(184, 184, 184))
         );
 
         tabbedPaneHomeDeliveryAddress2.addTab("Office Address", panelOfficeAddress);
@@ -813,78 +834,86 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
 
     private void brnHomeAddressActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_brnHomeAddressActionPerformed
     {//GEN-HEADEREND:event_brnHomeAddressActionPerformed
-        if (tabbedPaneHomeDeliveryAddress2.getSelectedIndex() == 2)//temp address
-        {
-            if (txtTempCustAddress.getText().trim().isEmpty())
-            {
-                new frmOkPopUp(null, "Enter Temp Address.", "Home Delivery Temp Address", 1).setVisible(true);
-                return;
-            }
-            funSetHomeDeliveryAddress();
-            funUpdateCustomerTempAddress();
-            this.dispose();
-        }
-        else
-        {
-            funSetHomeDeliveryAddress();
-            funUpdateCustomerTempAddress();
-            this.dispose();
-        }
+	if (tabbedPaneHomeDeliveryAddress2.getSelectedIndex() == 2)//temp address
+	{
+	    if (txtTempCustAddress.getText().trim().isEmpty())
+	    {
+		new frmOkPopUp(null, "Enter Temp Address.", "Home Delivery Temp Address", 1).setVisible(true);
+		return;
+	    }
+	    funSetHomeDeliveryAddress();
+
+	    funUpdateCustomerHomeAddress();
+	    funUpdateCustomerOfficeAddress();
+	    funUpdateCustomerTempAddress();
+
+	    this.dispose();
+	}
+	else
+	{
+	    funSetHomeDeliveryAddress();
+
+	    funUpdateCustomerHomeAddress();
+	    funUpdateCustomerOfficeAddress();
+	    funUpdateCustomerTempAddress();
+
+	    this.dispose();
+	}
     }//GEN-LAST:event_brnHomeAddressActionPerformed
 
     private void brnHomeAddressKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_brnHomeAddressKeyPressed
     {//GEN-HEADEREND:event_brnHomeAddressKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == 10)
-        {
-            if (tabbedPaneHomeDeliveryAddress2.getSelectedIndex() == 2)//temp address
-            {
-                if (txtTempCustAddress.getText().trim().isEmpty())
-                {
-                    new frmOkPopUp(null, "Enter Temp Address.", "Home Delivery Temp Address", 1).setVisible(true);
-                    return;
-                }
-                funSetHomeDeliveryAddress();
-                funUpdateCustomerTempAddress();
-                this.dispose();
-            }
-            else
-            {
-                funSetHomeDeliveryAddress();
-                funUpdateCustomerTempAddress();
-                this.dispose();
-            }
-        }
+	// TODO add your handling code here:
+	if (evt.getKeyCode() == 10)
+	{
+	    if (tabbedPaneHomeDeliveryAddress2.getSelectedIndex() == 2)//temp address
+	    {
+		if (txtTempCustAddress.getText().trim().isEmpty())
+		{
+		    new frmOkPopUp(null, "Enter Temp Address.", "Home Delivery Temp Address", 1).setVisible(true);
+		    return;
+		}
+		funSetHomeDeliveryAddress();
+		funUpdateCustomerTempAddress();
+		this.dispose();
+	    }
+	    else
+	    {
+		funSetHomeDeliveryAddress();
+		funUpdateCustomerTempAddress();
+		this.dispose();
+	    }
+	}
     }//GEN-LAST:event_brnHomeAddressKeyPressed
 
     private void btnHomeAddressActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnHomeAddressActionPerformed
     {//GEN-HEADEREND:event_btnHomeAddressActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_btnHomeAddressActionPerformed
 
     private void btnHomeAddressKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnHomeAddressKeyPressed
     {//GEN-HEADEREND:event_btnHomeAddressKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_btnHomeAddressKeyPressed
 
     private void btnOfficeAddressActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnOfficeAddressActionPerformed
     {//GEN-HEADEREND:event_btnOfficeAddressActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_btnOfficeAddressActionPerformed
 
     private void btnOfficeAddressKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnOfficeAddressKeyPressed
     {//GEN-HEADEREND:event_btnOfficeAddressKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_btnOfficeAddressKeyPressed
 
     private void btnTempAddressActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnTempAddressActionPerformed
     {//GEN-HEADEREND:event_btnTempAddressActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_btnTempAddressActionPerformed
 
     private void btnTempAddressKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnTempAddressKeyPressed
     {//GEN-HEADEREND:event_btnTempAddressKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_btnTempAddressKeyPressed
 
     private void brnHomeAddressMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_brnHomeAddressMouseClicked
@@ -894,207 +923,317 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
 
     private void btnOfficeAddressMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnOfficeAddressMouseClicked
     {//GEN-HEADEREND:event_btnOfficeAddressMouseClicked
-        tabbedPaneHomeDeliveryAddress2.setSelectedIndex(1);//office address
-        funSetHomeDeliveryAddress();
+	tabbedPaneHomeDeliveryAddress2.setSelectedIndex(1);//office address
+	funSetHomeDeliveryAddress();
     }//GEN-LAST:event_btnOfficeAddressMouseClicked
 
     private void btnTempAddressMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnTempAddressMouseClicked
     {//GEN-HEADEREND:event_btnTempAddressMouseClicked
-        tabbedPaneHomeDeliveryAddress2.setSelectedIndex(2);//temp address
-        funSetHomeDeliveryAddress();
+	tabbedPaneHomeDeliveryAddress2.setSelectedIndex(2);//temp address
+	funSetHomeDeliveryAddress();
     }//GEN-LAST:event_btnTempAddressMouseClicked
 
     private void btnHomeAddressMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnHomeAddressMouseClicked
     {//GEN-HEADEREND:event_btnHomeAddressMouseClicked
-        tabbedPaneHomeDeliveryAddress2.setSelectedIndex(0);//home address
-        funSetHomeDeliveryAddress();
+	tabbedPaneHomeDeliveryAddress2.setSelectedIndex(0);//home address
+	funSetHomeDeliveryAddress();
     }//GEN-LAST:event_btnHomeAddressMouseClicked
 
     private void txtTempLandmarkKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtTempLandmarkKeyPressed
     {//GEN-HEADEREND:event_txtTempLandmarkKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtTempLandmarkKeyPressed
 
     private void txtTempLandmarkMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtTempLandmarkMouseClicked
     {//GEN-HEADEREND:event_txtTempLandmarkMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtTempLandmarkMouseClicked
 
     private void txtTempStreetNameKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtTempStreetNameKeyPressed
     {//GEN-HEADEREND:event_txtTempStreetNameKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtTempStreetNameKeyPressed
 
     private void txtTempStreetNameMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtTempStreetNameMouseClicked
     {//GEN-HEADEREND:event_txtTempStreetNameMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtTempStreetNameMouseClicked
 
     private void txtOfficeStateKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtOfficeStateKeyPressed
     {//GEN-HEADEREND:event_txtOfficeStateKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtOfficeStateKeyPressed
 
     private void txtOfficeStateMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtOfficeStateMouseClicked
     {//GEN-HEADEREND:event_txtOfficeStateMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtOfficeStateMouseClicked
 
     private void txtOfficeCityKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtOfficeCityKeyPressed
     {//GEN-HEADEREND:event_txtOfficeCityKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtOfficeCityKeyPressed
 
     private void txtOfficeCityMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtOfficeCityMouseClicked
     {//GEN-HEADEREND:event_txtOfficeCityMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtOfficeCityMouseClicked
 
     private void txtOfficePinCodeKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtOfficePinCodeKeyPressed
     {//GEN-HEADEREND:event_txtOfficePinCodeKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtOfficePinCodeKeyPressed
 
     private void txtOfficePinCodeMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtOfficePinCodeMouseClicked
     {//GEN-HEADEREND:event_txtOfficePinCodeMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtOfficePinCodeMouseClicked
 
     private void txtOfficeLandmarkKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtOfficeLandmarkKeyPressed
     {//GEN-HEADEREND:event_txtOfficeLandmarkKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtOfficeLandmarkKeyPressed
 
     private void txtOfficeLandmarkMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtOfficeLandmarkMouseClicked
     {//GEN-HEADEREND:event_txtOfficeLandmarkMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtOfficeLandmarkMouseClicked
 
     private void txtOfficeStreetNameKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtOfficeStreetNameKeyPressed
     {//GEN-HEADEREND:event_txtOfficeStreetNameKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtOfficeStreetNameKeyPressed
 
     private void txtOfficeStreetNameMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtOfficeStreetNameMouseClicked
     {//GEN-HEADEREND:event_txtOfficeStreetNameMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtOfficeStreetNameMouseClicked
 
     private void txtOfficeCustAddressKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtOfficeCustAddressKeyPressed
     {//GEN-HEADEREND:event_txtOfficeCustAddressKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtOfficeCustAddressKeyPressed
 
     private void txtOfficeCustAddressMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtOfficeCustAddressMouseClicked
     {//GEN-HEADEREND:event_txtOfficeCustAddressMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtOfficeCustAddressMouseClicked
 
     private void txtHomeStateKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtHomeStateKeyPressed
     {//GEN-HEADEREND:event_txtHomeStateKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeStateKeyPressed
 
     private void txtHomeStateMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtHomeStateMouseClicked
     {//GEN-HEADEREND:event_txtHomeStateMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeStateMouseClicked
 
     private void txtHomeCityKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtHomeCityKeyPressed
     {//GEN-HEADEREND:event_txtHomeCityKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeCityKeyPressed
 
     private void txtHomeCityMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtHomeCityMouseClicked
     {//GEN-HEADEREND:event_txtHomeCityMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeCityMouseClicked
 
     private void txtHomePinCodeKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtHomePinCodeKeyPressed
     {//GEN-HEADEREND:event_txtHomePinCodeKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomePinCodeKeyPressed
 
     private void txtHomePinCodeMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtHomePinCodeMouseClicked
     {//GEN-HEADEREND:event_txtHomePinCodeMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomePinCodeMouseClicked
 
     private void txtHomeLandmarkKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtHomeLandmarkKeyPressed
     {//GEN-HEADEREND:event_txtHomeLandmarkKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeLandmarkKeyPressed
 
     private void txtHomeLandmarkMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtHomeLandmarkMouseClicked
     {//GEN-HEADEREND:event_txtHomeLandmarkMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeLandmarkMouseClicked
 
     private void txtHomeStreetNameKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtHomeStreetNameKeyPressed
     {//GEN-HEADEREND:event_txtHomeStreetNameKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeStreetNameKeyPressed
 
     private void txtHomeStreetNameMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtHomeStreetNameMouseClicked
     {//GEN-HEADEREND:event_txtHomeStreetNameMouseClicked
-        // TODO add your handling code here:
+	 try
+        {
+            if (txtHomeStreetName.getText().length() == 0)
+            {
+                new frmAlfaNumericKeyBoard(null, true, "1", "Enter street name").setVisible(true);
+                txtHomeStreetName.setText(clsGlobalVarClass.gKeyboardValue);
+            }
+            else
+            {
+                new frmAlfaNumericKeyBoard(null, true, txtHomeStreetName.getText(), "1", "Enter street name").setVisible(true);
+                txtHomeStreetName.setText(clsGlobalVarClass.gKeyboardValue);
+            }
+
+        }
+        catch (Exception e)
+        {
+            objUtility.funWriteErrorLog(e);
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_txtHomeStreetNameMouseClicked
 
     private void txtHomeAddressKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtHomeAddressKeyPressed
     {//GEN-HEADEREND:event_txtHomeAddressKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeAddressKeyPressed
 
     private void txtHomeAddressMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtHomeAddressMouseClicked
     {//GEN-HEADEREND:event_txtHomeAddressMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeAddressMouseClicked
 
     private void txtHomeMobileNoKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtHomeMobileNoKeyPressed
     {//GEN-HEADEREND:event_txtHomeMobileNoKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeMobileNoKeyPressed
 
     private void txtHomeMobileNoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtHomeMobileNoActionPerformed
     {//GEN-HEADEREND:event_txtHomeMobileNoActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeMobileNoActionPerformed
 
     private void txtHomeMobileNoMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtHomeMobileNoMouseClicked
     {//GEN-HEADEREND:event_txtHomeMobileNoMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeMobileNoMouseClicked
 
     private void txtHomeMobileNoFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_txtHomeMobileNoFocusLost
     {//GEN-HEADEREND:event_txtHomeMobileNoFocusLost
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeMobileNoFocusLost
 
     private void txtHomeCustomerNameKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtHomeCustomerNameKeyReleased
     {//GEN-HEADEREND:event_txtHomeCustomerNameKeyReleased
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeCustomerNameKeyReleased
 
     private void txtHomeCustomerNameKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtHomeCustomerNameKeyPressed
     {//GEN-HEADEREND:event_txtHomeCustomerNameKeyPressed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeCustomerNameKeyPressed
 
     private void txtHomeCustomerNameMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtHomeCustomerNameMouseClicked
     {//GEN-HEADEREND:event_txtHomeCustomerNameMouseClicked
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtHomeCustomerNameMouseClicked
 
     private void txtTempCustAddressMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtTempCustAddressMouseClicked
     {//GEN-HEADEREND:event_txtTempCustAddressMouseClicked
-        new frmAlfaNumericKeyBoard(null, true, "1", "Enter Address.", true).setVisible(true);
-        String tempAddress = clsGlobalVarClass.gKeyboardValue.trim();
-        if (tempAddress.length() > 0)
-        {
-            txtTempCustAddress.setText(tempAddress);
-        }
-        clsGlobalVarClass.gKeyboardValue="";
+	new frmAlfaNumericKeyBoard(null, true, "1", "Enter Address.", true).setVisible(true);
+	String tempAddress = clsGlobalVarClass.gKeyboardValue.trim();
+	if (tempAddress.length() > 0)
+	{
+	    txtTempCustAddress.setText(tempAddress);
+	}
+	clsGlobalVarClass.gKeyboardValue = "";
     }//GEN-LAST:event_txtTempCustAddressMouseClicked
+
+    private void txtHomeAddressActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtHomeAddressActionPerformed
+    {//GEN-HEADEREND:event_txtHomeAddressActionPerformed
+         try
+        {
+            if (txtHomeAddress.getText().length() == 0)
+            {
+                new frmAlfaNumericKeyBoard(null, true, "1", "Enter address").setVisible(true);
+                txtHomeAddress.setText(clsGlobalVarClass.gKeyboardValue);
+            }
+            else
+            {
+                new frmAlfaNumericKeyBoard(null, true, txtHomeAddress.getText(), "1", "Enter address").setVisible(true);
+                txtHomeAddress.setText(clsGlobalVarClass.gKeyboardValue);
+            }
+
+        }
+        catch (Exception e)
+        {
+            objUtility.funWriteErrorLog(e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txtHomeAddressActionPerformed
+
+    private void txtHomeLandmarkActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtHomeLandmarkActionPerformed
+    {//GEN-HEADEREND:event_txtHomeLandmarkActionPerformed
+        try
+        {
+            if (txtHomeLandmark.getText().length() == 0)
+            {
+                new frmAlfaNumericKeyBoard(null, true, "1", "Enter landmark").setVisible(true);
+                txtHomeLandmark.setText(clsGlobalVarClass.gKeyboardValue);
+            }
+            else
+            {
+                new frmAlfaNumericKeyBoard(null, true, txtHomeLandmark.getText(), "1", "Enter landmark").setVisible(true);
+                txtHomeLandmark.setText(clsGlobalVarClass.gKeyboardValue);
+            }
+
+        }
+        catch (Exception e)
+        {
+            objUtility.funWriteErrorLog(e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txtHomeLandmarkActionPerformed
+
+    private void txtHomeCityActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtHomeCityActionPerformed
+    {//GEN-HEADEREND:event_txtHomeCityActionPerformed
+        try
+        {
+            if (txtHomeCity.getText().length() == 0)
+            {
+                new frmAlfaNumericKeyBoard(null, true, "1", "Enter city").setVisible(true);
+                txtHomeCity.setText(clsGlobalVarClass.gKeyboardValue);
+            }
+            else
+            {
+                new frmAlfaNumericKeyBoard(null, true, txtHomeCity.getText(), "1", "Enter city").setVisible(true);
+                txtHomeCity.setText(clsGlobalVarClass.gKeyboardValue);
+            }
+
+        }
+        catch (Exception e)
+        {
+            objUtility.funWriteErrorLog(e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txtHomeCityActionPerformed
+
+    private void txtHomeStateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtHomeStateActionPerformed
+    {//GEN-HEADEREND:event_txtHomeStateActionPerformed
+         try
+        {
+            if (txtHomeState.getText().length() == 0)
+            {
+                new frmAlfaNumericKeyBoard(null, true, "1", "Enter state").setVisible(true);
+                txtHomeState.setText(clsGlobalVarClass.gKeyboardValue);
+            }
+            else
+            {
+                new frmAlfaNumericKeyBoard(null, true, txtHomeState.getText(), "1", "Enter state").setVisible(true);
+                txtHomeState.setText(clsGlobalVarClass.gKeyboardValue);
+            }
+
+        }
+        catch (Exception e)
+        {
+            objUtility.funWriteErrorLog(e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txtHomeStateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton brnHomeAddress;
@@ -1146,105 +1285,150 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
 
     private void funSetHomeDeliveryAddress()
     {
-        try
-        {
-            int selectedIndex = tabbedPaneHomeDeliveryAddress2.getSelectedIndex();
-            if (selectedIndex == 0)//Home Address
-            {
-                homeDeliveryAddressType = "Home";
-                btnHomeAddress.setForeground(Color.BLACK);
-                btnOfficeAddress.setForeground(Color.WHITE);
-                btnTempAddress.setForeground(Color.WHITE);
-            }
-            else if (selectedIndex == 1)//Office Address
-            {
-                homeDeliveryAddressType = "Office";
-                btnHomeAddress.setForeground(Color.WHITE);
-                btnOfficeAddress.setForeground(Color.BLACK);
-                btnTempAddress.setForeground(Color.WHITE);
-            }
-            else if (selectedIndex == 2)//Temporary Address
-            {
-                homeDeliveryAddressType = "Temporary";
-                btnHomeAddress.setForeground(Color.WHITE);
-                btnOfficeAddress.setForeground(Color.WHITE);
-                btnTempAddress.setForeground(Color.BLACK);
-            }
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+	try
+	{
+	    int selectedIndex = tabbedPaneHomeDeliveryAddress2.getSelectedIndex();
+	    if (selectedIndex == 0)//Home Address
+	    {
+		homeDeliveryAddressType = "Home";
+		btnHomeAddress.setForeground(Color.BLACK);
+		btnOfficeAddress.setForeground(Color.WHITE);
+		btnTempAddress.setForeground(Color.WHITE);
+	    }
+	    else if (selectedIndex == 1)//Office Address
+	    {
+		homeDeliveryAddressType = "Office";
+		btnHomeAddress.setForeground(Color.WHITE);
+		btnOfficeAddress.setForeground(Color.BLACK);
+		btnTempAddress.setForeground(Color.WHITE);
+	    }
+	    else if (selectedIndex == 2)//Temporary Address
+	    {
+		homeDeliveryAddressType = "Temporary";
+		btnHomeAddress.setForeground(Color.WHITE);
+		btnOfficeAddress.setForeground(Color.WHITE);
+		btnTempAddress.setForeground(Color.BLACK);
+	    }
+	}
+	catch (Exception e)
+	{
+	    e.printStackTrace();
+	}
     }
 
     private void funSetAddressDetail(String mobileNo)
     {
-        try
-        {
-            String sql = "select a.strCustomerCode,a.strCustomerName,a.longMobileNo,a.strBuldingCode,a.strCustAddress as strHomeAddress  "
-                    + ",a.strStreetName,a.strLandmark,a.intPinCode,a.strCity,a.strState "
-                    + ",a.strOfficeBuildingCode,a.strOfficeBuildingName as strOfficeAddress,a.strOfficeStreetName,a.strOfficeLandmark,a.intPinCode "
-                    + ",a.strOfficeCity,a.strOfficeState "
-                    + ",a.strTempAddress,a.strTempStreet,a.strTempLandmark "
-                    + "from  tblcustomermaster a "
-                    + "where longMobileNo like '%" + mobileNo + "%' ";
-            ResultSet rsCustomerDtl = clsGlobalVarClass.dbMysql.executeResultSet(sql);
-            if (rsCustomerDtl.next())
-            {
-                strCustomerCode = rsCustomerDtl.getString(1);
-                txtHomeCustomerName.setText(rsCustomerDtl.getString(2));
-                txtHomeMobileNo.setText(rsCustomerDtl.getString(3));
-                txtHomeAddress.setText(rsCustomerDtl.getString(5));
-                txtHomeStreetName.setText(rsCustomerDtl.getString(6));
-                txtHomeLandmark.setText(rsCustomerDtl.getString(7));
-                txtHomePinCode.setText(rsCustomerDtl.getString(8));
-                txtHomeCity.setText(rsCustomerDtl.getString(9));
-                txtHomeState.setText(rsCustomerDtl.getString(10));
+	try
+	{
+	    String sql = "select a.strCustomerCode,a.strCustomerName,a.longMobileNo,a.strBuldingCode,a.strCustAddress as strHomeAddress  "
+		    + ",a.strStreetName,a.strLandmark,a.intPinCode,a.strCity,a.strState "
+		    + ",a.strOfficeBuildingCode,a.strOfficeBuildingName as strOfficeAddress,a.strOfficeStreetName,a.strOfficeLandmark,a.intPinCode "
+		    + ",a.strOfficeCity,a.strOfficeState "
+		    + ",a.strTempAddress,a.strTempStreet,a.strTempLandmark "
+		    + "from  tblcustomermaster a "
+		    + "where longMobileNo like '%" + mobileNo + "%' ";
+	    ResultSet rsCustomerDtl = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+	    if (rsCustomerDtl.next())
+	    {
+		strCustomerCode = rsCustomerDtl.getString(1);
+		txtHomeCustomerName.setText(rsCustomerDtl.getString(2));
+		txtHomeMobileNo.setText(rsCustomerDtl.getString(3));
 
-                txtOfficeCustAddress.setText(rsCustomerDtl.getString(12));
-                txtOfficeStreetName.setText(rsCustomerDtl.getString(13));
-                txtOfficeLandmark.setText(rsCustomerDtl.getString(14));
-                txtOfficePinCode.setText(rsCustomerDtl.getString(15));
-                txtOfficeCity.setText(rsCustomerDtl.getString(16));
-                txtOfficeState.setText(rsCustomerDtl.getString(17));
+		txtHomeAddress.setText(rsCustomerDtl.getString(5));
+		txtHomeStreetName.setText(rsCustomerDtl.getString(6));
+		txtHomeLandmark.setText(rsCustomerDtl.getString(7));
+		txtHomePinCode.setText(rsCustomerDtl.getString(8));
+		txtHomeCity.setText(rsCustomerDtl.getString(9));
+		txtHomeState.setText(rsCustomerDtl.getString(10));
 
-                txtTempCustAddress.setText(rsCustomerDtl.getString(18));
-                txtTempStreetName.setText(rsCustomerDtl.getString(19));
-                txtTempLandmark.setText(rsCustomerDtl.getString(20));
+		txtOfficeCustAddress.setText(rsCustomerDtl.getString(12));
+		txtOfficeStreetName.setText(rsCustomerDtl.getString(13));
+		txtOfficeLandmark.setText(rsCustomerDtl.getString(14));
+		txtOfficePinCode.setText(rsCustomerDtl.getString(15));
+		txtOfficeCity.setText(rsCustomerDtl.getString(16));
+		txtOfficeState.setText(rsCustomerDtl.getString(17));
 
-            }
-            rsCustomerDtl.close();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+		txtTempCustAddress.setText(rsCustomerDtl.getString(18));
+		txtTempStreetName.setText(rsCustomerDtl.getString(19));
+		txtTempLandmark.setText(rsCustomerDtl.getString(20));
+
+	    }
+	    rsCustomerDtl.close();
+	}
+	catch (Exception e)
+	{
+	    e.printStackTrace();
+	}
     }
 
     private void funUpdateCustomerTempAddress()
     {
-        try
-        {
-            String sqlUpdate = "update tblcustomermaster  "
-                    + "set strTempAddress='" + txtTempCustAddress.getText().trim() + "',strTempStreet='" + txtTempStreetName.getText().trim() + "',strTempLandmark='" + txtTempLandmark.getText().trim() + "' "
-                    + "where longMobileNo like '%" + strMobileNo + "%' ";
-            clsGlobalVarClass.dbMysql.execute(sqlUpdate);
+	try
+	{
+	    String sqlUpdate = "update tblcustomermaster  "
+		    + "set strTempAddress='" + txtTempCustAddress.getText().trim() + "'"
+		    + ",strTempStreet='" + txtTempStreetName.getText().trim() + "'"
+		    + ",strTempLandmark='" + txtTempLandmark.getText().trim() + "' "
+		    + "where longMobileNo like '%" + strMobileNo + "%' ";
+	    clsGlobalVarClass.dbMysql.execute(sqlUpdate);
 
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+	}
+	catch (Exception e)
+	{
+	    e.printStackTrace();
+	}
+    }
+
+    private void funUpdateCustomerHomeAddress()
+    {
+	try
+	{
+	    String sqlUpdate = "update tblcustomermaster  "
+		    + "set strCustAddress='" + txtHomeAddress.getText().trim() + "'"
+		    + ",strStreetName='" + txtHomeStreetName.getText().trim() + "'"
+		    + ",strLandmark='" + txtHomeLandmark.getText().trim() + "' "
+		    + ",intPinCode='" + txtHomePinCode.getText().trim() + "'"
+		    + ",strCity='" + txtHomeCity.getText().trim() + "'"
+		    + ",strState='" + txtHomeState.getText().trim() + "' "
+		    + "where longMobileNo like '%" + strMobileNo + "%' ";
+	    clsGlobalVarClass.dbMysql.execute(sqlUpdate);
+
+	}
+	catch (Exception e)
+	{
+	    e.printStackTrace();
+	}
+    }
+
+    private void funUpdateCustomerOfficeAddress()
+    {
+	try
+	{
+	    String sqlUpdate = "update tblcustomermaster  "
+		    + "set strOfficeBuildingName='" + txtOfficeCustAddress.getText().trim() + "'"
+		    + ",strOfficeStreetName='" + txtOfficeStreetName.getText().trim() + "'"
+		    + ",strOfficeLandmark='" + txtOfficeLandmark.getText().trim() + "' "
+		    + ",intPinCode='" + txtOfficePinCode.getText().trim() + "'"
+		    + ",strOfficeCity='" + txtOfficeCity.getText().trim() + "'"
+		    + ",strOfficeState='" + txtOfficeState.getText().trim() + "' "
+		    + "where longMobileNo like '%" + strMobileNo + "%' ";
+	    clsGlobalVarClass.dbMysql.execute(sqlUpdate);
+
+	}
+	catch (Exception e)
+	{
+	    e.printStackTrace();
+	}
     }
 
     public String[] funGetCustomerAddressDetail()
     {
-        String arrCustAddressDtl[] = new String[3];
+	String arrCustAddressDtl[] = new String[3];
 
-        arrCustAddressDtl[0] = this.strCustomerCode;
-        arrCustAddressDtl[1] = this.txtHomeCustomerName.getText();
-        arrCustAddressDtl[2] = this.homeDeliveryAddressType;
+	arrCustAddressDtl[0] = this.strCustomerCode;
+	arrCustAddressDtl[1] = this.txtHomeCustomerName.getText();
+	arrCustAddressDtl[2] = this.homeDeliveryAddressType;
 
-        return arrCustAddressDtl;
+	return arrCustAddressDtl;
     }
 }

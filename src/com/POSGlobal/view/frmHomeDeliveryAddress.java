@@ -39,7 +39,8 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         panelHeader = new javax.swing.JPanel();
         lblModuleName = new javax.swing.JLabel();
@@ -92,9 +93,11 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblCustomerName3 = new javax.swing.JLabel();
         txtHomeMobileNo = new javax.swing.JTextField();
         txtHomeCustomerName = new javax.swing.JTextField();
+        lblBillNote = new javax.swing.JLabel();
+        txtBillNote = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(605, 358));
+        setMinimumSize(new java.awt.Dimension(605, 400));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -158,18 +161,24 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         brnHomeAddress.setText("OK");
         brnHomeAddress.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         brnHomeAddress.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCommonButtonLight.png"))); // NOI18N
-        brnHomeAddress.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        brnHomeAddress.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 brnHomeAddressMouseClicked(evt);
             }
         });
-        brnHomeAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        brnHomeAddress.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 brnHomeAddressActionPerformed(evt);
             }
         });
-        brnHomeAddress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        brnHomeAddress.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 brnHomeAddressKeyPressed(evt);
             }
         });
@@ -179,18 +188,24 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblCustAddress3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCustAddress3.setText("Address/Flat No. :");
 
-        txtHomeAddress.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtHomeAddress.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtHomeAddressMouseClicked(evt);
             }
         });
-        txtHomeAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtHomeAddress.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtHomeAddressActionPerformed(evt);
             }
         });
-        txtHomeAddress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtHomeAddress.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtHomeAddressKeyPressed(evt);
             }
         });
@@ -198,13 +213,17 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblStreetName3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblStreetName3.setText("Street Name      :");
 
-        txtHomeStreetName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtHomeStreetName.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtHomeStreetNameMouseClicked(evt);
             }
         });
-        txtHomeStreetName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtHomeStreetName.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtHomeStreetNameKeyPressed(evt);
             }
         });
@@ -212,18 +231,24 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblLandmark3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblLandmark3.setText("Landmark          :");
 
-        txtHomeLandmark.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtHomeLandmark.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtHomeLandmarkMouseClicked(evt);
             }
         });
-        txtHomeLandmark.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtHomeLandmark.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtHomeLandmarkActionPerformed(evt);
             }
         });
-        txtHomeLandmark.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtHomeLandmark.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtHomeLandmarkKeyPressed(evt);
             }
         });
@@ -232,47 +257,63 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblPinCode3.setText("Pin Code           :");
 
         txtHomePinCode.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtHomePinCode.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtHomePinCode.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtHomePinCodeMouseClicked(evt);
             }
         });
-        txtHomePinCode.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtHomePinCode.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtHomePinCodeKeyPressed(evt);
             }
         });
 
         txtHomeCity.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtHomeCity.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtHomeCity.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtHomeCityMouseClicked(evt);
             }
         });
-        txtHomeCity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtHomeCity.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtHomeCityActionPerformed(evt);
             }
         });
-        txtHomeCity.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtHomeCity.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtHomeCityKeyPressed(evt);
             }
         });
 
         txtHomeState.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtHomeState.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtHomeState.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtHomeStateMouseClicked(evt);
             }
         });
-        txtHomeState.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtHomeState.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtHomeStateActionPerformed(evt);
             }
         });
-        txtHomeState.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtHomeState.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtHomeStateKeyPressed(evt);
             }
         });
@@ -325,6 +366,7 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
                     .addGroup(panelHomeAddress2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(lblLandmark3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelHomeAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelHomeAddress2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtHomePinCode, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -333,7 +375,7 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
                     .addGroup(panelHomeAddress2Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(lblPinCode3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(180, 180, 180))
+                .addGap(174, 174, 174))
         );
 
         tabbedPaneHomeDeliveryAddress2.addTab("Home Address", panelHomeAddress2);
@@ -343,13 +385,17 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblHomelCustAddress.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblHomelCustAddress.setText("Address/Flat No. :");
 
-        txtOfficeCustAddress.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtOfficeCustAddress.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtOfficeCustAddressMouseClicked(evt);
             }
         });
-        txtOfficeCustAddress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtOfficeCustAddress.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtOfficeCustAddressKeyPressed(evt);
             }
         });
@@ -357,13 +403,17 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblHomelStreetName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblHomelStreetName.setText("Street Name      :");
 
-        txtOfficeStreetName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtOfficeStreetName.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtOfficeStreetNameMouseClicked(evt);
             }
         });
-        txtOfficeStreetName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtOfficeStreetName.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtOfficeStreetNameKeyPressed(evt);
             }
         });
@@ -371,13 +421,17 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblHomelLandmark.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblHomelLandmark.setText("Landmark          :");
 
-        txtOfficeLandmark.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtOfficeLandmark.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtOfficeLandmarkMouseClicked(evt);
             }
         });
-        txtOfficeLandmark.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtOfficeLandmark.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtOfficeLandmarkKeyPressed(evt);
             }
         });
@@ -386,37 +440,49 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblHomelPinCode.setText("Pin Code           :");
 
         txtOfficePinCode.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtOfficePinCode.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtOfficePinCode.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtOfficePinCodeMouseClicked(evt);
             }
         });
-        txtOfficePinCode.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtOfficePinCode.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtOfficePinCodeKeyPressed(evt);
             }
         });
 
         txtOfficeCity.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtOfficeCity.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtOfficeCity.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtOfficeCityMouseClicked(evt);
             }
         });
-        txtOfficeCity.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtOfficeCity.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtOfficeCityKeyPressed(evt);
             }
         });
 
         txtOfficeState.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtOfficeState.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtOfficeState.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtOfficeStateMouseClicked(evt);
             }
         });
-        txtOfficeState.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtOfficeState.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtOfficeStateKeyPressed(evt);
             }
         });
@@ -469,6 +535,7 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
                     .addGroup(panelOfficeAddressLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(lblHomelLandmark, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelOfficeAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelOfficeAddressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtOfficePinCode, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -477,7 +544,7 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
                     .addGroup(panelOfficeAddressLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(lblHomelPinCode, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(184, 184, 184))
+                .addGap(173, 173, 173))
         );
 
         tabbedPaneHomeDeliveryAddress2.addTab("Office Address", panelOfficeAddress);
@@ -490,13 +557,17 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblTempStreetName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblTempStreetName.setText("Street Name      :");
 
-        txtTempStreetName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtTempStreetName.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtTempStreetNameMouseClicked(evt);
             }
         });
-        txtTempStreetName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtTempStreetName.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtTempStreetNameKeyPressed(evt);
             }
         });
@@ -504,21 +575,27 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblTempLandmark.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblTempLandmark.setText("Landmark          :");
 
-        txtTempLandmark.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtTempLandmark.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtTempLandmarkMouseClicked(evt);
             }
         });
-        txtTempLandmark.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtTempLandmark.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtTempLandmarkKeyPressed(evt);
             }
         });
 
         txtTempCustAddress.setColumns(20);
         txtTempCustAddress.setRows(5);
-        txtTempCustAddress.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtTempCustAddress.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtTempCustAddressMouseClicked(evt);
             }
         });
@@ -575,18 +652,24 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         btnHomeAddress.setText("HOME");
         btnHomeAddress.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHomeAddress.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCommonButtonLight.png"))); // NOI18N
-        btnHomeAddress.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnHomeAddress.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnHomeAddressMouseClicked(evt);
             }
         });
-        btnHomeAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnHomeAddress.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnHomeAddressActionPerformed(evt);
             }
         });
-        btnHomeAddress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnHomeAddress.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 btnHomeAddressKeyPressed(evt);
             }
         });
@@ -598,18 +681,24 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         btnOfficeAddress.setText("OFFICE");
         btnOfficeAddress.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnOfficeAddress.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCommonButtonLight.png"))); // NOI18N
-        btnOfficeAddress.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnOfficeAddress.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnOfficeAddressMouseClicked(evt);
             }
         });
-        btnOfficeAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnOfficeAddress.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnOfficeAddressActionPerformed(evt);
             }
         });
-        btnOfficeAddress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnOfficeAddress.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 btnOfficeAddressKeyPressed(evt);
             }
         });
@@ -621,18 +710,24 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         btnTempAddress.setText("TEMP");
         btnTempAddress.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnTempAddress.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCommonButtonLight.png"))); // NOI18N
-        btnTempAddress.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnTempAddress.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnTempAddressMouseClicked(evt);
             }
         });
-        btnTempAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTempAddress.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnTempAddressActionPerformed(evt);
             }
         });
-        btnTempAddress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnTempAddress.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 btnTempAddressKeyPressed(evt);
             }
         });
@@ -641,38 +736,70 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         lblCustomerName3.setText("Cust. No & Name");
 
         txtHomeMobileNo.setEditable(false);
-        txtHomeMobileNo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        txtHomeMobileNo.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 txtHomeMobileNoFocusLost(evt);
             }
         });
-        txtHomeMobileNo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtHomeMobileNo.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtHomeMobileNoMouseClicked(evt);
             }
         });
-        txtHomeMobileNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtHomeMobileNo.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtHomeMobileNoActionPerformed(evt);
             }
         });
-        txtHomeMobileNo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtHomeMobileNo.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtHomeMobileNoKeyPressed(evt);
             }
         });
 
-        txtHomeCustomerName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        txtHomeCustomerName.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 txtHomeCustomerNameMouseClicked(evt);
             }
         });
-        txtHomeCustomerName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtHomeCustomerName.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtHomeCustomerNameKeyPressed(evt);
             }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
+            public void keyReleased(java.awt.event.KeyEvent evt)
+            {
                 txtHomeCustomerNameKeyReleased(evt);
+            }
+        });
+
+        lblBillNote.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblBillNote.setText("Bill Note            :");
+
+        txtBillNote.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtBillNote.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                txtBillNoteMouseClicked(evt);
+            }
+        });
+        txtBillNote.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                txtBillNoteKeyPressed(evt);
             }
         });
 
@@ -699,6 +826,11 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtHomeCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(panelTabbedPaneLayout.createSequentialGroup()
+                .addComponent(lblBillNote, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtBillNote, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelTabbedPaneLayout.setVerticalGroup(
             panelTabbedPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -715,12 +847,18 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
                     .addComponent(txtHomeMobileNo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCustomerName3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabbedPaneHomeDeliveryAddress2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(tabbedPaneHomeDeliveryAddress2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelTabbedPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBillNote, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelTabbedPaneLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(lblBillNote, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelTabbedPane);
-        panelTabbedPane.setBounds(0, 30, 600, 320);
+        panelTabbedPane.setBounds(0, 30, 600, 340);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1128,12 +1266,23 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
         }
     }//GEN-LAST:event_txtHomeStateActionPerformed
 
+    private void txtBillNoteMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtBillNoteMouseClicked
+    {//GEN-HEADEREND:event_txtBillNoteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBillNoteMouseClicked
+
+    private void txtBillNoteKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtBillNoteKeyPressed
+    {//GEN-HEADEREND:event_txtBillNoteKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBillNoteKeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton brnHomeAddress;
     private javax.swing.JButton btnHomeAddress;
     private javax.swing.JButton btnOfficeAddress;
     private javax.swing.JButton btnTempAddress;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblBillNote;
     private javax.swing.JLabel lblCustAddress3;
     private javax.swing.JLabel lblCustomerName3;
     private javax.swing.JLabel lblDate;
@@ -1157,6 +1306,7 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
     private javax.swing.JPanel panelTabbedPane;
     private javax.swing.JPanel panelTemporaryAddress;
     private javax.swing.JTabbedPane tabbedPaneHomeDeliveryAddress2;
+    private javax.swing.JTextField txtBillNote;
     private javax.swing.JTextField txtHomeAddress;
     private javax.swing.JTextField txtHomeCity;
     private javax.swing.JTextField txtHomeCustomerName;
@@ -1326,5 +1476,10 @@ public class frmHomeDeliveryAddress extends javax.swing.JDialog
 	arrCustAddressDtl[2] = this.homeDeliveryAddressType;
 
 	return arrCustAddressDtl;
+    }
+    
+    public String funGetBillNote()
+    {	
+	return this.txtBillNote.getText().trim();
     }
 }

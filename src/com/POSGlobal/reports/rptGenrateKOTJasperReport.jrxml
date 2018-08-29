@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="800" columnWidth="593" leftMargin="1" rightMargin="1" topMargin="10" bottomMargin="5" uuid="e06fc829-861a-4097-8acd-d9c65c0d0a3b">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="800" columnWidth="593" leftMargin="1" rightMargin="1" topMargin="10" bottomMargin="20" uuid="e06fc829-861a-4097-8acd-d9c65c0d0a3b">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -266,56 +266,63 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="29" splitType="Stretch">
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="18" y="1" width="197" height="1"/>
+			</line>
 			<componentElement>
-				<reportElement uuid="f6ff2509-a370-4847-b368-98e00c05cd80" x="20" y="2" width="195" height="26"/>
+				<reportElement uuid="f6ff2509-a370-4847-b368-98e00c05cd80" x="20" y="2" width="205" height="20"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="dsKOTDtl" uuid="81a0e0cd-2e6f-4e56-b2a9-e9c9a840bb6f">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listOfItemDtl})]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column uuid="699aa6e8-7173-4756-80bb-149d043a40b0" width="27">
+					<jr:column uuid="699aa6e8-7173-4756-80bb-149d043a40b0" width="34">
 						<jr:tableHeader height="0" rowSpan="1"/>
-						<jr:columnHeader height="20" rowSpan="1">
+						<jr:tableFooter height="2" rowSpan="1">
+							<line>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="1" width="34" height="1"/>
+							</line>
+						</jr:tableFooter>
+						<jr:columnHeader height="16" rowSpan="1">
 							<staticText>
-								<reportElement uuid="2ff3711a-f26d-42c7-bcc7-8913c067b85c" x="1" y="0" width="25" height="18"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Trebuchet MS" size="11" isBold="true"/>
+								<reportElement uuid="2ff3711a-f26d-42c7-bcc7-8913c067b85c" x="0" y="0" width="32" height="15"/>
+								<textElement textAlignment="Right">
+									<font fontName="Trebuchet MS" isBold="true"/>
 								</textElement>
 								<text><![CDATA[Qty]]></text>
 							</staticText>
-							<line>
-								<reportElement uuid="143a6a1d-cd77-4f1e-b2ca-96ee704d77d2" x="0" y="19" width="26" height="1"/>
-							</line>
 						</jr:columnHeader>
-						<jr:detailCell height="19" rowSpan="1">
+						<jr:detailCell height="15" rowSpan="1">
 							<textField pattern="#.###" isBlankWhenNull="true">
-								<reportElement uuid="06914f88-ab30-4c05-b4aa-eae84be9e674" x="0" y="0" width="25" height="18">
+								<reportElement uuid="06914f88-ab30-4c05-b4aa-eae84be9e674" x="0" y="0" width="32" height="15">
 									<printWhenExpression><![CDATA[$F{dblQuantity}>0.0]]></printWhenExpression>
 								</reportElement>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
+								<textElement textAlignment="Right">
 									<font fontName="Trebuchet MS" size="10" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{dblQuantity}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column uuid="55886318-c2f3-4bf7-911f-72caa1809e0f" width="171">
+					<jr:column uuid="55886318-c2f3-4bf7-911f-72caa1809e0f" width="164">
 						<jr:tableHeader height="0" rowSpan="1"/>
-						<jr:columnHeader height="20" rowSpan="1">
-							<staticText>
-								<reportElement uuid="2ff3711a-f26d-42c7-bcc7-8913c067b85c" x="0" y="0" width="171" height="18"/>
-								<textElement textAlignment="Left" verticalAlignment="Middle">
-									<font fontName="Trebuchet MS" size="11" isBold="true"/>
-								</textElement>
-								<text><![CDATA[  Item Name]]></text>
-							</staticText>
+						<jr:tableFooter height="2" rowSpan="1">
 							<line>
-								<reportElement uuid="143a6a1d-cd77-4f1e-b2ca-96ee704d77d2" x="0" y="19" width="171" height="1"/>
+								<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="1" width="164" height="1"/>
 							</line>
+						</jr:tableFooter>
+						<jr:columnHeader height="16" rowSpan="1">
+							<staticText>
+								<reportElement uuid="2ff3711a-f26d-42c7-bcc7-8913c067b85c" x="5" y="0" width="140" height="15"/>
+								<textElement textAlignment="Left">
+									<font fontName="Trebuchet MS" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Item Name]]></text>
+							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell height="19" rowSpan="1">
+						<jr:detailCell height="15" rowSpan="1">
 							<textField isStretchWithOverflow="true">
-								<reportElement uuid="06914f88-ab30-4c05-b4aa-eae84be9e674" x="0" y="0" width="159" height="18"/>
+								<reportElement uuid="06914f88-ab30-4c05-b4aa-eae84be9e674" x="5" y="0" width="140" height="15"/>
 								<textElement textAlignment="Left">
 									<font fontName="Trebuchet MS" size="10" isBold="true"/>
 								</textElement>
@@ -325,9 +332,6 @@
 					</jr:column>
 				</jr:table>
 			</componentElement>
-			<line>
-				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="18" y="1" width="197" height="1"/>
-			</line>
 		</band>
 	</detail>
 </jasperReport>

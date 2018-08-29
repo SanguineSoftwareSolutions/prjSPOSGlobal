@@ -160,7 +160,6 @@
 								<text><![CDATA[Qty]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter height="2" rowSpan="1"/>
 						<jr:detailCell height="15" rowSpan="1">
 							<textField pattern="#.###" isBlankWhenNull="true">
 								<reportElement uuid="06914f88-ab30-4c05-b4aa-eae84be9e674" x="0" y="0" width="32" height="15">
@@ -189,7 +188,6 @@
 								<text><![CDATA[Item Name]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter height="2" rowSpan="1"/>
 						<jr:detailCell height="15" rowSpan="1">
 							<textField isStretchWithOverflow="true">
 								<reportElement uuid="06914f88-ab30-4c05-b4aa-eae84be9e674" x="5" y="0" width="140" height="15"/>

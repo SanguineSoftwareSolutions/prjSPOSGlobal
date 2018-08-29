@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="984" columnWidth="593" leftMargin="1" rightMargin="1" topMargin="5" bottomMargin="5" uuid="e06fc829-861a-4097-8acd-d9c65c0d0a3b">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="104"/>
+	<property name="ireport.y" value="133"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -134,6 +134,7 @@
 		<parameterDescription><![CDATA[]]></parameterDescription>
 	</parameter>
 	<parameter name="decimalFormaterForIntegerValue" class="java.lang.String"/>
+	<parameter name="strBillNote" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -204,7 +205,7 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="204">
+		<band height="219">
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="52" y="80" width="142" height="15"/>
 				<textElement textAlignment="Left">
@@ -283,7 +284,7 @@
 				<text><![CDATA[Date   :]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="6" y="140" width="200" height="1"/>
+				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="140" width="206" height="1"/>
 			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="5b364004-5f52-4f96-a9dc-594ca5b467f4" x="7" y="50" width="187" height="15" isRemoveLineWhenBlank="true"/>
@@ -343,7 +344,7 @@
 				<text><![CDATA[POS    :]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="6" y="203" width="200" height="1"/>
+				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="0" y="218" width="206" height="1"/>
 			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="7" y="0" width="188" height="20" isRemoveLineWhenBlank="true"/>
@@ -358,6 +359,22 @@
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ClientAddress1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="7" y="203" width="57" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{strBillNote}.length()>0]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Trebuchet MS" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bill Note :   :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="64" y="203" width="131" height="15" isRemoveLineWhenBlank="true"/>
+				<textElement>
+					<font fontName="Trebuchet MS" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{strBillNote}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="15">

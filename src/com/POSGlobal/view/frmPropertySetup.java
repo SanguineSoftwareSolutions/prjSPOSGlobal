@@ -2007,8 +2007,7 @@ public class frmPropertySetup extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         panelHeader = new javax.swing.JPanel();
         lblProductName = new javax.swing.JLabel();
@@ -2449,14 +2448,11 @@ public class frmPropertySetup extends javax.swing.JFrame
         setExtendedState(MAXIMIZED_BOTH);
         setMinimumSize(new java.awt.Dimension(800, 600));
         setUndecorated(true);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowClosed(java.awt.event.WindowEvent evt)
-            {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
-            public void windowClosing(java.awt.event.WindowEvent evt)
-            {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
@@ -2522,10 +2518,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         tabbedPane.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         tabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tabbedPane.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tabbedPane.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 tabbedPaneStateChanged(evt);
             }
         });
@@ -2540,10 +2534,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblShopCode.setBounds(10, 15, 113, 29);
 
         txtClientCode.setEnabled(false);
-        txtClientCode.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtClientCode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtClientCodeMouseClicked(evt);
             }
         });
@@ -2551,10 +2543,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         txtClientCode.setBounds(200, 10, 87, 34);
 
         txtClientName.setEditable(false);
-        txtClientName.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtClientName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtClientNameMouseClicked(evt);
             }
         });
@@ -2571,20 +2561,16 @@ public class frmPropertySetup extends javax.swing.JFrame
         panelClientSetup.add(lblShopAddress2);
         lblShopAddress2.setBounds(10, 100, 189, 30);
 
-        txtShopAddressLine2.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtShopAddressLine2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtShopAddressLine2MouseClicked(evt);
             }
         });
         panelClientSetup.add(txtShopAddressLine2);
         txtShopAddressLine2.setBounds(200, 100, 321, 34);
 
-        txtShopAddressLine1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtShopAddressLine1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtShopAddressLine1MouseClicked(evt);
             }
         });
@@ -2596,10 +2582,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         panelClientSetup.add(lblShopAddress3);
         lblShopAddress3.setBounds(10, 140, 189, 40);
 
-        txtShopAddressLine3.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtShopAddressLine3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtShopAddressLine3MouseClicked(evt);
             }
         });
@@ -2611,10 +2595,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         panelClientSetup.add(lblEmail);
         lblEmail.setBounds(10, 350, 113, 29);
 
-        txtEmailAddress.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtEmailAddress.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtEmailAddressMouseClicked(evt);
             }
         });
@@ -2651,10 +2633,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         panelClientSetup.add(lblTelePhoneFax);
         lblTelePhoneFax.setBounds(10, 300, 127, 29);
 
-        txtTelephone.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtTelephone.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtTelephoneMouseClicked(evt);
             }
         });
@@ -2676,10 +2656,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         panelClientSetup.add(cmbNatureOfBusiness);
         cmbNatureOfBusiness.setBounds(200, 450, 190, 35);
 
-        txtPincode.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtPincode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtPincodeMouseClicked(evt);
             }
         });
@@ -2692,10 +2670,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         btnBrowseImagePath1.setText("BROWSE");
         btnBrowseImagePath1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnBrowseImagePath1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn2.png"))); // NOI18N
-        btnBrowseImagePath1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnBrowseImagePath1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBrowseImagePath1MouseClicked(evt);
             }
         });
@@ -2723,10 +2699,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 
         txtBillFooter.setColumns(20);
         txtBillFooter.setRows(5);
-        txtBillFooter.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtBillFooter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtBillFooterMouseClicked(evt);
             }
         });
@@ -2739,10 +2713,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         cmbPrintMode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cmbPrintMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Portrait", "Landscape" }));
         cmbPrintMode.setPreferredSize(new java.awt.Dimension(145, 35));
-        cmbPrintMode.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbPrintMode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbPrintModeActionPerformed(evt);
             }
         });
@@ -2762,10 +2734,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkMultiBillPrint.setText("Multiple Bill Printing      :");
         chkMultiBillPrint.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkMultiBillPrint.setOpaque(false);
-        chkMultiBillPrint.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkMultiBillPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkMultiBillPrintActionPerformed(evt);
             }
         });
@@ -2779,10 +2749,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkEffectOnPSP.setText("Effect On PSP            :");
         chkEffectOnPSP.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkEffectOnPSP.setOpaque(false);
-        chkEffectOnPSP.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkEffectOnPSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkEffectOnPSPActionPerformed(evt);
             }
         });
@@ -2791,18 +2759,14 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintVatNo.setText("Print VAT No.              ");
         chkPrintVatNo.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintVatNo.setOpaque(false);
-        chkPrintVatNo.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintVatNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintVatNoActionPerformed(evt);
             }
         });
 
-        txtVatNo.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtVatNo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtVatNoMouseClicked(evt);
             }
         });
@@ -2811,10 +2775,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkShowBill.setText("Show Docs                 : ");
         chkShowBill.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkShowBill.setOpaque(false);
-        chkShowBill.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkShowBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkShowBillActionPerformed(evt);
             }
         });
@@ -2824,10 +2786,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkServiceTaxNo.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkServiceTaxNo.setOpaque(false);
 
-        txtServiceTaxno.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtServiceTaxno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtServiceTaxnoMouseClicked(evt);
             }
         });
@@ -2836,10 +2796,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkManualBillNo.setText("Manual Bill No.            :");
         chkManualBillNo.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkManualBillNo.setOpaque(false);
-        chkManualBillNo.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkManualBillNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkManualBillNoActionPerformed(evt);
             }
         });
@@ -2851,10 +2809,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintKotForDirectBiller.setText("Enable KOT Printing For Direct Biller   ");
         chkPrintKotForDirectBiller.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintKotForDirectBiller.setOpaque(false);
-        chkPrintKotForDirectBiller.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintKotForDirectBiller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintKotForDirectBillerActionPerformed(evt);
             }
         });
@@ -2874,16 +2830,14 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblBillFormat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblBillFormat.setText("Bill Format ");
 
-        cmbBillFormatType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Text 1", "Text 2", "Text 3", "Text 4", "Text 5", "Text 6", "Text 7", "Text 8", "Text 9", "Text 10", "Text 11", "Text 12", "Text 13", "Text 14", "Text 15", "Text 16", "Text 17", "Text 18", "Text 19", "Text 20", "Text PlayZone", "Jasper 1", "Jasper 2", "Jasper 3", "Jasper 4", "Jasper 5", "Jasper 6", "Jasper 7", "Jasper 8", "Jasper 9", "Jasper 10", "Stationery 1", "Stationery 2", "Stock Transfer Note 1", "Saloon 1" }));
+        cmbBillFormatType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Text 1", "Text 2", "Text 3", "Text 4", "Text 5", "Text 6", "Text 7", "Text 8", "Text 9", "Text 10", "Text 11", "Text 12", "Text 13", "Text 14", "Text 15", "Text 16", "Text 17", "Text 18", "Text 19", "Text 20", "Text 21", "Text PlayZone", "Jasper 1", "Jasper 2", "Jasper 3", "Jasper 4", "Jasper 5", "Jasper 6", "Jasper 7", "Jasper 8", "Jasper 9", "Jasper 10", "Stationery 1", "Stationery 2", "Stock Transfer Note 1", "Saloon 1" }));
 
         chkPrintShortNameOnKOT.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chkPrintShortNameOnKOT.setText("Print Short Name On KOT");
         chkPrintShortNameOnKOT.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintShortNameOnKOT.setOpaque(false);
-        chkPrintShortNameOnKOT.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintShortNameOnKOT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintShortNameOnKOTActionPerformed(evt);
             }
         });
@@ -2917,10 +2871,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintTDHItemsInBill.setText("Print TDH Items In Bill     ");
         chkPrintTDHItemsInBill.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintTDHItemsInBill.setOpaque(false);
-        chkPrintTDHItemsInBill.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintTDHItemsInBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintTDHItemsInBillActionPerformed(evt);
             }
         });
@@ -3117,10 +3069,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 
         txtWebServiceLink.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtWebServiceLink.setText(" ");
-        txtWebServiceLink.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtWebServiceLink.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtWebServiceLinkMouseClicked(evt);
             }
         });
@@ -3134,10 +3084,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 
         cmbChangeTheme.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cmbChangeTheme.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Default", "Tiles", "Color" }));
-        cmbChangeTheme.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbChangeTheme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbChangeThemeActionPerformed(evt);
             }
         });
@@ -3145,10 +3093,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         cmbChangeTheme.setBounds(140, 140, 160, 30);
 
         txtMaxDiscount.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtMaxDiscount.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtMaxDiscount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtMaxDiscountMouseClicked(evt);
             }
         });
@@ -3164,10 +3110,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkEditHomeDelivery.setText("Edit Home Delivery         :  ");
         chkEditHomeDelivery.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkEditHomeDelivery.setOpaque(false);
-        chkEditHomeDelivery.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkEditHomeDelivery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkEditHomeDeliveryActionPerformed(evt);
             }
         });
@@ -3178,10 +3122,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkSlabBasedHomeDelCharges.setText("Slab Based Home Delivery Charges :");
         chkSlabBasedHomeDelCharges.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkSlabBasedHomeDelCharges.setOpaque(false);
-        chkSlabBasedHomeDelCharges.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkSlabBasedHomeDelCharges.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkSlabBasedHomeDelChargesActionPerformed(evt);
             }
         });
@@ -3192,10 +3134,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkSkip_Waiter_Selection.setText("Skip Waiter Selection     :  ");
         chkSkip_Waiter_Selection.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkSkip_Waiter_Selection.setOpaque(false);
-        chkSkip_Waiter_Selection.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkSkip_Waiter_Selection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkSkip_Waiter_SelectionActionPerformed(evt);
             }
         });
@@ -3224,10 +3164,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         panelPOSSetup1.add(lblMaxDiscount);
         lblMaxDiscount.setBounds(500, 100, 90, 31);
 
-        txtCustSeries.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtCustSeries.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtCustSeriesMouseClicked(evt);
             }
         });
@@ -3238,10 +3176,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkActivePromotions.setText("Active Promotions         :  ");
         chkActivePromotions.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkActivePromotions.setOpaque(false);
-        chkActivePromotions.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkActivePromotions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkActivePromotionsActionPerformed(evt);
             }
         });
@@ -3252,10 +3188,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintForVoidBill.setText("Print For Void Bill     :");
         chkPrintForVoidBill.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintForVoidBill.setOpaque(false);
-        chkPrintForVoidBill.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintForVoidBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintForVoidBillActionPerformed(evt);
             }
         });
@@ -3266,10 +3200,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPostSalesDataToMMS.setText("Post Sales Data to MMS  :  ");
         chkPostSalesDataToMMS.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPostSalesDataToMMS.setOpaque(false);
-        chkPostSalesDataToMMS.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPostSalesDataToMMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPostSalesDataToMMSActionPerformed(evt);
             }
         });
@@ -3280,10 +3212,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkAreaMasterCompulsory.setText("Compulsory Customer Area Master :");
         chkAreaMasterCompulsory.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkAreaMasterCompulsory.setOpaque(false);
-        chkAreaMasterCompulsory.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkAreaMasterCompulsory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAreaMasterCompulsoryActionPerformed(evt);
             }
         });
@@ -3304,10 +3234,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrinterErrorMessage.setText("Show Printer Error Message         : ");
         chkPrinterErrorMessage.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrinterErrorMessage.setOpaque(false);
-        chkPrinterErrorMessage.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrinterErrorMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrinterErrorMessageActionPerformed(evt);
             }
         });
@@ -3322,10 +3250,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkChangeQtyForExternalCode.setName(""); // NOI18N
         chkChangeQtyForExternalCode.setOpaque(false);
         chkChangeQtyForExternalCode.setPreferredSize(new java.awt.Dimension(217, 23));
-        chkChangeQtyForExternalCode.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkChangeQtyForExternalCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkChangeQtyForExternalCodeActionPerformed(evt);
             }
         });
@@ -3345,10 +3271,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkShowItemStkColumnInDB.setText("Show Item StK Column in DB       : ");
         chkShowItemStkColumnInDB.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         chkShowItemStkColumnInDB.setOpaque(false);
-        chkShowItemStkColumnInDB.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkShowItemStkColumnInDB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkShowItemStkColumnInDBActionPerformed(evt);
             }
         });
@@ -3389,17 +3313,13 @@ public class frmPropertySetup extends javax.swing.JFrame
 
         dteHOServerDate.setToolTipText("Select From Date");
         dteHOServerDate.setPreferredSize(new java.awt.Dimension(119, 35));
-        dteHOServerDate.addHierarchyListener(new java.awt.event.HierarchyListener()
-        {
-            public void hierarchyChanged(java.awt.event.HierarchyEvent evt)
-            {
+        dteHOServerDate.addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
                 dteHOServerDateHierarchyChanged(evt);
             }
         });
-        dteHOServerDate.addPropertyChangeListener(new java.beans.PropertyChangeListener()
-        {
-            public void propertyChange(java.beans.PropertyChangeEvent evt)
-            {
+        dteHOServerDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 dteHOServerDatePropertyChange(evt);
             }
         });
@@ -3419,24 +3339,18 @@ public class frmPropertySetup extends javax.swing.JFrame
         btnTestWebService.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnTestWebService.setInheritsPopupMenu(true);
         btnTestWebService.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgKeyBoardBackspaceButtonDark.png"))); // NOI18N
-        btnTestWebService.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnTestWebService.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnTestWebServiceMouseClicked(evt);
             }
         });
-        btnTestWebService.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnTestWebService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTestWebServiceActionPerformed(evt);
             }
         });
-        btnTestWebService.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnTestWebService.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnTestWebServiceKeyPressed(evt);
             }
         });
@@ -3458,10 +3372,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPOSWiseItemLinkeUpToMMSProduct.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPOSWiseItemLinkeUpToMMSProduct.setMargin(new java.awt.Insets(0, 2, 2, 2));
         chkPOSWiseItemLinkeUpToMMSProduct.setOpaque(false);
-        chkPOSWiseItemLinkeUpToMMSProduct.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPOSWiseItemLinkeUpToMMSProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPOSWiseItemLinkeUpToMMSProductActionPerformed(evt);
             }
         });
@@ -3472,10 +3384,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkEnableMasterDiscount.setText("Enable Master Discount :");
         chkEnableMasterDiscount.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkEnableMasterDiscount.setOpaque(false);
-        chkEnableMasterDiscount.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkEnableMasterDiscount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkEnableMasterDiscountActionPerformed(evt);
             }
         });
@@ -3488,10 +3398,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkEnableLockTables.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkEnableLockTables.setMargin(new java.awt.Insets(0, 2, 2, 2));
         chkEnableLockTables.setOpaque(false);
-        chkEnableLockTables.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkEnableLockTables.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkEnableLockTablesActionPerformed(evt);
             }
         });
@@ -3509,10 +3417,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintManualAdvOrderOnBill.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkPrintManualAdvOrderOnBill.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintManualAdvOrderOnBill.setOpaque(false);
-        chkPrintManualAdvOrderOnBill.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintManualAdvOrderOnBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintManualAdvOrderOnBillActionPerformed(evt);
             }
         });
@@ -3523,10 +3429,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkManualAdvOrderCompulsory.setText("Manual Advance Order No Compulsory    :");
         chkManualAdvOrderCompulsory.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkManualAdvOrderCompulsory.setOpaque(false);
-        chkManualAdvOrderCompulsory.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkManualAdvOrderCompulsory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkManualAdvOrderCompulsoryActionPerformed(evt);
             }
         });
@@ -3549,10 +3453,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         cmbMenuItemDisSeq.setBounds(160, 110, 190, 30);
 
         cmbMenuItemSortingOn.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--SELECT--", "SUB GROUP WISE", "SUB MENU HEAD WISE" }));
-        cmbMenuItemSortingOn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbMenuItemSortingOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMenuItemSortingOnActionPerformed(evt);
             }
         });
@@ -3568,10 +3470,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkItemQtyNumpad.setText("Item Quantiy Numeric Pad                      :");
         chkItemQtyNumpad.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         chkItemQtyNumpad.setOpaque(false);
-        chkItemQtyNumpad.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkItemQtyNumpad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkItemQtyNumpadActionPerformed(evt);
             }
         });
@@ -3582,10 +3482,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintKOTToLocalPrinter.setText("Print KOT To Local Printer                      :");
         chkPrintKOTToLocalPrinter.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         chkPrintKOTToLocalPrinter.setOpaque(false);
-        chkPrintKOTToLocalPrinter.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintKOTToLocalPrinter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintKOTToLocalPrinterActionPerformed(evt);
             }
         });
@@ -3596,10 +3494,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkEnableSettleBtnForDirectBillerBill.setText("Enable Settle Button For Direct Biller Bill    :");
         chkEnableSettleBtnForDirectBillerBill.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         chkEnableSettleBtnForDirectBillerBill.setOpaque(false);
-        chkEnableSettleBtnForDirectBillerBill.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkEnableSettleBtnForDirectBillerBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkEnableSettleBtnForDirectBillerBillActionPerformed(evt);
             }
         });
@@ -3610,10 +3506,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkDelBoyCompulsoryOnDirectBiller.setText("Delivery Boy Compulsory On Direct Biller    :");
         chkDelBoyCompulsoryOnDirectBiller.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         chkDelBoyCompulsoryOnDirectBiller.setOpaque(false);
-        chkDelBoyCompulsoryOnDirectBiller.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkDelBoyCompulsoryOnDirectBiller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkDelBoyCompulsoryOnDirectBillerActionPerformed(evt);
             }
         });
@@ -3737,10 +3631,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkBoxAllowNewAreaMasterFromCustMaster.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkBoxAllowNewAreaMasterFromCustMaster.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         chkBoxAllowNewAreaMasterFromCustMaster.setOpaque(false);
-        chkBoxAllowNewAreaMasterFromCustMaster.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkBoxAllowNewAreaMasterFromCustMaster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkBoxAllowNewAreaMasterFromCustMasterActionPerformed(evt);
             }
         });
@@ -3781,10 +3673,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkShowPurchaseRateInDirectBiller.setText("Show Purchase Rate in Direct Biller        :  ");
         chkShowPurchaseRateInDirectBiller.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkShowPurchaseRateInDirectBiller.setOpaque(false);
-        chkShowPurchaseRateInDirectBiller.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkShowPurchaseRateInDirectBiller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkShowPurchaseRateInDirectBillerActionPerformed(evt);
             }
         });
@@ -3800,10 +3690,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkAreaWIsePromotions.setText("Area Wise Promotions                          :  ");
         chkAreaWIsePromotions.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkAreaWIsePromotions.setOpaque(false);
-        chkAreaWIsePromotions.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkAreaWIsePromotions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAreaWIsePromotionsActionPerformed(evt);
             }
         });
@@ -3822,10 +3710,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintHomeDeliveryYN.setText("Print Home Delivery Y/N                       : ");
         chkPrintHomeDeliveryYN.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintHomeDeliveryYN.setOpaque(false);
-        chkPrintHomeDeliveryYN.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintHomeDeliveryYN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintHomeDeliveryYNActionPerformed(evt);
             }
         });
@@ -3837,10 +3723,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkScanQRYN.setText("Scan QR Y/N                                           :");
         chkScanQRYN.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkScanQRYN.setOpaque(false);
-        chkScanQRYN.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkScanQRYN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkScanQRYNActionPerformed(evt);
             }
         });
@@ -3864,10 +3748,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPopUpToApplyPromotionsOnBill.setText("Pop Up to Apply Promotions on Bill       : ");
         chkPopUpToApplyPromotionsOnBill.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPopUpToApplyPromotionsOnBill.setOpaque(false);
-        chkPopUpToApplyPromotionsOnBill.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPopUpToApplyPromotionsOnBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPopUpToApplyPromotionsOnBillActionPerformed(evt);
             }
         });
@@ -4132,10 +4014,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkAutoAreaSelectionInMakeKOT.setText("Auto Area Selection In Make KOT                                 ");
         chkAutoAreaSelectionInMakeKOT.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkAutoAreaSelectionInMakeKOT.setOpaque(false);
-        chkAutoAreaSelectionInMakeKOT.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkAutoAreaSelectionInMakeKOT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAutoAreaSelectionInMakeKOTActionPerformed(evt);
             }
         });
@@ -4158,10 +4038,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkShowUnSettlementForm.setText("Show UnSettlement Form                                            ");
         chkShowUnSettlementForm.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkShowUnSettlementForm.setOpaque(false);
-        chkShowUnSettlementForm.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkShowUnSettlementForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkShowUnSettlementFormActionPerformed(evt);
             }
         });
@@ -4174,10 +4052,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintOpenItemsOnBill.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintOpenItemsOnBill.setMargin(new java.awt.Insets(0, 2, 2, 2));
         chkPrintOpenItemsOnBill.setOpaque(false);
-        chkPrintOpenItemsOnBill.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintOpenItemsOnBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintOpenItemsOnBillActionPerformed(evt);
             }
         });
@@ -4213,10 +4089,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkAreaWisePricing.setText("Area Wise Pricing                   :");
         chkAreaWisePricing.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkAreaWisePricing.setOpaque(false);
-        chkAreaWisePricing.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkAreaWisePricing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAreaWisePricingActionPerformed(evt);
             }
         });
@@ -4234,10 +4108,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkRoundOffBillAmount.setText("Round Off Bill Final Amount       :");
         chkRoundOffBillAmount.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkRoundOffBillAmount.setOpaque(false);
-        chkRoundOffBillAmount.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkRoundOffBillAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkRoundOffBillAmountActionPerformed(evt);
             }
         });
@@ -4245,10 +4117,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         txtNoOfDecimalPlaces.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtNoOfDecimalPlaces.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtNoOfDecimalPlaces.setText("2");
-        txtNoOfDecimalPlaces.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtNoOfDecimalPlaces.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNoOfDecimalPlacesActionPerformed(evt);
             }
         });
@@ -4260,10 +4130,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkSendDBBackupOnMail.setText("Send Database Backup On Mail :  ");
         chkSendDBBackupOnMail.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkSendDBBackupOnMail.setOpaque(false);
-        chkSendDBBackupOnMail.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkSendDBBackupOnMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkSendDBBackupOnMailActionPerformed(evt);
             }
         });
@@ -4272,10 +4140,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintOrderNoOnBill.setText("Print Order No On Bill              :  ");
         chkPrintOrderNoOnBill.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintOrderNoOnBill.setOpaque(false);
-        chkPrintOrderNoOnBill.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintOrderNoOnBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintOrderNoOnBillActionPerformed(evt);
             }
         });
@@ -4284,10 +4150,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintDeviceUserDtlOnKOT.setText("Print Device,User Detail on KOT:  ");
         chkPrintDeviceUserDtlOnKOT.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintDeviceUserDtlOnKOT.setOpaque(false);
-        chkPrintDeviceUserDtlOnKOT.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintDeviceUserDtlOnKOT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintDeviceUserDtlOnKOTActionPerformed(evt);
             }
         });
@@ -4299,10 +4163,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkAutoAddKOTToBill.setText("Auto Add KOT To Bill              :  ");
         chkAutoAddKOTToBill.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkAutoAddKOTToBill.setOpaque(false);
-        chkAutoAddKOTToBill.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkAutoAddKOTToBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAutoAddKOTToBillActionPerformed(evt);
             }
         });
@@ -4311,10 +4173,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkAreaWiseCostCenterKOTPrinting.setText("Area Wise Cost Center KOT Printing :");
         chkAreaWiseCostCenterKOTPrinting.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkAreaWiseCostCenterKOTPrinting.setOpaque(false);
-        chkAreaWiseCostCenterKOTPrinting.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkAreaWiseCostCenterKOTPrinting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAreaWiseCostCenterKOTPrintingActionPerformed(evt);
             }
         });
@@ -4323,10 +4183,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkFireCommunication.setText("Fire Communication                 :  ");
         chkFireCommunication.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkFireCommunication.setOpaque(false);
-        chkFireCommunication.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkFireCommunication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkFireCommunicationActionPerformed(evt);
             }
         });
@@ -4337,10 +4195,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         txtUSDCrrencyConverionRate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtUSDCrrencyConverionRate.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtUSDCrrencyConverionRate.setText("0.00");
-        txtUSDCrrencyConverionRate.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtUSDCrrencyConverionRate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUSDCrrencyConverionRateActionPerformed(evt);
             }
         });
@@ -4349,10 +4205,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintItemsOnMoveKOTMoveTable.setText("Print Items On Move KOT,Move Table,Move KOT Items  :");
         chkPrintItemsOnMoveKOTMoveTable.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintItemsOnMoveKOTMoveTable.setOpaque(false);
-        chkPrintItemsOnMoveKOTMoveTable.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintItemsOnMoveKOTMoveTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintItemsOnMoveKOTMoveTableActionPerformed(evt);
             }
         });
@@ -4362,10 +4216,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintMoveTableMoveKOT.setText("Print Move Table,Move KOT  :");
         chkPrintMoveTableMoveKOT.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintMoveTableMoveKOT.setOpaque(false);
-        chkPrintMoveTableMoveKOT.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintMoveTableMoveKOT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintMoveTableMoveKOTActionPerformed(evt);
             }
         });
@@ -4375,10 +4227,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintQtyTotal.setText("Print Quantity Total  :");
         chkPrintQtyTotal.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkPrintQtyTotal.setOpaque(false);
-        chkPrintQtyTotal.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkPrintQtyTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPrintQtyTotalActionPerformed(evt);
             }
         });
@@ -4415,10 +4265,9 @@ public class frmPropertySetup extends javax.swing.JFrame
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPOSSetup4Layout.createSequentialGroup()
                                 .addGap(0, 90, Short.MAX_VALUE)
-                                .addComponent(chkPrintItemsOnMoveKOTMoveTable))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPOSSetup4Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(chkPrintMoveTableMoveKOT))))
+                                .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chkPrintItemsOnMoveKOTMoveTable, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(chkPrintMoveTableMoveKOT, javax.swing.GroupLayout.Alignment.TRAILING)))))
                     .addGroup(panelPOSSetup4Layout.createSequentialGroup()
                         .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chkFireCommunication)
@@ -4505,38 +4354,30 @@ public class frmPropertySetup extends javax.swing.JFrame
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Confirm Password");
 
-        txtSenderEmailId.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtSenderEmailId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtSenderEmailIdMouseClicked(evt);
             }
         });
 
         txtEmailPassword.setText("jPasswordField1");
-        txtEmailPassword.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtEmailPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtEmailPasswordMouseClicked(evt);
             }
         });
 
         txtConfirmEmailPassword.setText("jPasswordField2");
-        txtConfirmEmailPassword.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtConfirmEmailPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtConfirmEmailPasswordMouseClicked(evt);
             }
         });
 
         txtBodyPart.setColumns(20);
         txtBodyPart.setRows(5);
-        txtBodyPart.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtBodyPart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtBodyPartMouseClicked(evt);
             }
         });
@@ -4553,10 +4394,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblReceiverEmailId.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblReceiverEmailId.setText("Receiver Email Id");
 
-        txtReceiverEmailId.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtReceiverEmailId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtReceiverEmailIdMouseClicked(evt);
             }
         });
@@ -4569,24 +4408,18 @@ public class frmPropertySetup extends javax.swing.JFrame
         btnTestEmail.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnTestEmail.setInheritsPopupMenu(true);
         btnTestEmail.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgBackspaceBtn2.png"))); // NOI18N
-        btnTestEmail.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnTestEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnTestEmailMouseClicked(evt);
             }
         });
-        btnTestEmail.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnTestEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTestEmailActionPerformed(evt);
             }
         });
-        btnTestEmail.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnTestEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnTestEmailKeyPressed(evt);
             }
         });
@@ -4594,10 +4427,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblDBBackupReceiverEmailId.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblDBBackupReceiverEmailId.setText("DB Backup Receiver ");
 
-        txtDBBackupReceiverEmailId.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtDBBackupReceiverEmailId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtDBBackupReceiverEmailIdMouseClicked(evt);
             }
         });
@@ -4690,10 +4521,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 
         cmbRFIDSetup.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cmbRFIDSetup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Yes" }));
-        cmbRFIDSetup.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbRFIDSetup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbRFIDSetupActionPerformed(evt);
             }
         });
@@ -4701,33 +4530,25 @@ public class frmPropertySetup extends javax.swing.JFrame
         txtServerName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtServerName.setText(" ");
         txtServerName.setEnabled(false);
-        txtServerName.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtServerName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtServerNameMouseClicked(evt);
             }
         });
-        txtServerName.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        txtServerName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtServerNameKeyPressed(evt);
             }
         });
 
         txtUserName.setEnabled(false);
-        txtUserName.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtUserName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtUserNameMouseClicked(evt);
             }
         });
-        txtUserName.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtUserNameKeyPressed(evt);
             }
         });
@@ -4736,17 +4557,13 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblPassword.setText("Password");
 
         txtPassword.setEnabled(false);
-        txtPassword.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtPasswordMouseClicked(evt);
             }
         });
-        txtPassword.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPasswordKeyPressed(evt);
             }
         });
@@ -4755,17 +4572,13 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblDBName.setText("Database Name");
 
         txtDatabaseName.setEnabled(false);
-        txtDatabaseName.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtDatabaseName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtDatabaseNameMouseClicked(evt);
             }
         });
-        txtDatabaseName.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        txtDatabaseName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDatabaseNameKeyPressed(evt);
             }
         });
@@ -4775,10 +4588,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 
         cmbCardIntfType.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cmbCardIntfType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Customer Card", "Member Card" }));
-        cmbCardIntfType.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbCardIntfType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCardIntfTypeActionPerformed(evt);
             }
         });
@@ -4864,10 +4675,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblPOSID.setText("SQY POS ID :");
 
         cmbCRMType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SQY CRM Interface", "PMAM CRM Interface", "JPOS CRM Interface", "HASH TAG CRM Interface" }));
-        cmbCRMType.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbCRMType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCRMTypeActionPerformed(evt);
             }
         });
@@ -4944,10 +4753,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblSendHomeDelivery.setText("HOME DELIVERY SMS");
 
         cmbSendHomeDelivery.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BILL NO", "CUSTOMER NAME", "DATE", "DELIVERY BOY", "ITEMS", "BILL AMT", "USER", "TIME" }));
-        cmbSendHomeDelivery.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbSendHomeDelivery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbSendHomeDeliveryActionPerformed(evt);
             }
         });
@@ -4958,10 +4765,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         btnShiftSendHomeDelievery.setText(">>");
         btnShiftSendHomeDelievery.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnShiftSendHomeDelievery.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn2.png"))); // NOI18N
-        btnShiftSendHomeDelievery.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnShiftSendHomeDelievery.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnShiftSendHomeDelieveryMouseClicked(evt);
             }
         });
@@ -4971,10 +4776,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblBillSettlementSMS.setText("BILL SETTLEMENT SMS");
 
         cmbBillSettlement.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BILL NO", "CUSTOMER NAME", "DATE", "DELIVERY BOY", "ITEMS", "BILL AMT", "USER", "TIME" }));
-        cmbBillSettlement.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbBillSettlement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbBillSettlementActionPerformed(evt);
             }
         });
@@ -4985,17 +4788,13 @@ public class frmPropertySetup extends javax.swing.JFrame
         btnShiftBillSettlement.setText(">>");
         btnShiftBillSettlement.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnShiftBillSettlement.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn2.png"))); // NOI18N
-        btnShiftBillSettlement.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnShiftBillSettlement.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnShiftBillSettlementMouseClicked(evt);
             }
         });
-        btnShiftBillSettlement.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnShiftBillSettlement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShiftBillSettlementActionPerformed(evt);
             }
         });
@@ -5013,10 +4812,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkHomeDelSMS.setText("Home Delivery SMS  ");
         chkHomeDelSMS.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkHomeDelSMS.setOpaque(false);
-        chkHomeDelSMS.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkHomeDelSMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkHomeDelSMSActionPerformed(evt);
             }
         });
@@ -5025,19 +4822,15 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkBillSettlementSMS.setText("Bill Settlement SMS  ");
         chkBillSettlementSMS.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkBillSettlementSMS.setOpaque(false);
-        chkBillSettlementSMS.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkBillSettlementSMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkBillSettlementSMSActionPerformed(evt);
             }
         });
 
         cmbSMSType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SANGUINE", "SINFINI", "CELLX", "INFYFLYER" }));
-        cmbSMSType.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbSMSType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbSMSTypeActionPerformed(evt);
             }
         });
@@ -5053,10 +4846,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         jButton1.setText("Send Test SMS");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCommonBtnLong2.png"))); // NOI18N
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
@@ -5068,10 +4859,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkDayEndSMSYN.setText("Day End :");
         chkDayEndSMSYN.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkDayEndSMSYN.setOpaque(false);
-        chkDayEndSMSYN.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkDayEndSMSYN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkDayEndSMSYNActionPerformed(evt);
             }
         });
@@ -5080,10 +4869,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkVoidKOTSMSYN.setText("Void KOT :");
         chkVoidKOTSMSYN.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkVoidKOTSMSYN.setOpaque(false);
-        chkVoidKOTSMSYN.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkVoidKOTSMSYN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkVoidKOTSMSYNActionPerformed(evt);
             }
         });
@@ -5092,10 +4879,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkNCKOTSMSYN.setText("NC KOT :");
         chkNCKOTSMSYN.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkNCKOTSMSYN.setOpaque(false);
-        chkNCKOTSMSYN.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkNCKOTSMSYN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkNCKOTSMSYNActionPerformed(evt);
             }
         });
@@ -5104,10 +4889,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkVoidBillSMSYN.setText("Void Bill :");
         chkVoidBillSMSYN.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkVoidBillSMSYN.setOpaque(false);
-        chkVoidBillSMSYN.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkVoidBillSMSYN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkVoidBillSMSYNActionPerformed(evt);
             }
         });
@@ -5116,10 +4899,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkModifyBillSMSYN.setText("Modify Bill :");
         chkModifyBillSMSYN.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkModifyBillSMSYN.setOpaque(false);
-        chkModifyBillSMSYN.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkModifyBillSMSYN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkModifyBillSMSYNActionPerformed(evt);
             }
         });
@@ -5128,10 +4909,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkUnsettleBillSMSYN.setText("Unsettle Bill :");
         chkUnsettleBillSMSYN.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkUnsettleBillSMSYN.setOpaque(false);
-        chkUnsettleBillSMSYN.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkUnsettleBillSMSYN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkUnsettleBillSMSYNActionPerformed(evt);
             }
         });
@@ -5140,10 +4919,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkComplementaryBillSMSYN.setText("Complemetary Bill :");
         chkComplementaryBillSMSYN.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkComplementaryBillSMSYN.setOpaque(false);
-        chkComplementaryBillSMSYN.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkComplementaryBillSMSYN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkComplementaryBillSMSYNActionPerformed(evt);
             }
         });
@@ -5152,10 +4929,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkVoidAdvOrderSMSYN.setText("Void Advance Order :");
         chkVoidAdvOrderSMSYN.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkVoidAdvOrderSMSYN.setOpaque(false);
-        chkVoidAdvOrderSMSYN.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkVoidAdvOrderSMSYN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkVoidAdvOrderSMSYNActionPerformed(evt);
             }
         });
@@ -5286,10 +5061,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 
         jLabel6.setText("FTP SERVER ADDRESS");
 
-        txtFTPAddress.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtFTPAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFTPAddressActionPerformed(evt);
             }
         });
@@ -5380,17 +5153,13 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblCMSPosting.setText("CMS Posting Type :");
 
         cmbCMSPostingType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sanguine CMS", "Others" }));
-        cmbCMSPostingType.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        cmbCMSPostingType.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cmbCMSPostingTypeMouseClicked(evt);
             }
         });
-        cmbCMSPostingType.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbCMSPostingType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCMSPostingTypeActionPerformed(evt);
             }
         });
@@ -5481,8 +5250,7 @@ public class frmPropertySetup extends javax.swing.JFrame
         printerSetupScrollPane.setOpaque(false);
 
         tblPrinterSetup.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -5490,48 +5258,38 @@ public class frmPropertySetup extends javax.swing.JFrame
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 "<Html><b>Cost Center Name</html>", "<html><B>Primary Printer<html>", "<html><B>Secondary Printer</html>", "<html><B>Print On Both Printer Y/N<html>"
             }
-        )
-        {
-            Class[] types = new Class []
-            {
+        ) {
+            Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
-            boolean[] canEdit = new boolean []
-            {
+            boolean[] canEdit = new boolean [] {
                 false, true, true, true
             };
 
-            public Class getColumnClass(int columnIndex)
-            {
+            public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
         tblPrinterSetup.setFillsViewportHeight(true);
         tblPrinterSetup.setRowHeight(30);
         tblPrinterSetup.getTableHeader().setReorderingAllowed(false);
-        tblPrinterSetup.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        tblPrinterSetup.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblPrinterSetupMouseClicked(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt)
-            {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
                 tblPrinterSetupMouseReleased(evt);
             }
         });
         printerSetupScrollPane.setViewportView(tblPrinterSetup);
-        if (tblPrinterSetup.getColumnModel().getColumnCount() > 0)
-        {
+        if (tblPrinterSetup.getColumnModel().getColumnCount() > 0) {
             tblPrinterSetup.getColumnModel().getColumn(0).setResizable(false);
             tblPrinterSetup.getColumnModel().getColumn(0).setPreferredWidth(150);
             tblPrinterSetup.getColumnModel().getColumn(1).setResizable(false);
@@ -5545,39 +5303,29 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblConsolidatedKOTPrinterPort.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblConsolidatedKOTPrinterPort.setText("Consolidated KOT Printer :");
 
-        cmbConsolidatedKOTPrinterPort.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbConsolidatedKOTPrinterPort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbConsolidatedKOTPrinterPortActionPerformed(evt);
             }
         });
-        cmbConsolidatedKOTPrinterPort.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        cmbConsolidatedKOTPrinterPort.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbConsolidatedKOTPrinterPortKeyPressed(evt);
             }
         });
 
-        txtConsolidatedKOTPrinterPort.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        txtConsolidatedKOTPrinterPort.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtConsolidatedKOTPrinterPortMouseClicked(evt);
             }
         });
-        txtConsolidatedKOTPrinterPort.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtConsolidatedKOTPrinterPort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtConsolidatedKOTPrinterPortActionPerformed(evt);
             }
         });
-        txtConsolidatedKOTPrinterPort.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        txtConsolidatedKOTPrinterPort.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtConsolidatedKOTPrinterPortKeyPressed(evt);
             }
         });
@@ -5589,24 +5337,18 @@ public class frmPropertySetup extends javax.swing.JFrame
         btnTestConsolidatedKOTPrinterPort.setToolTipText("Save Cost Center Master");
         btnTestConsolidatedKOTPrinterPort.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnTestConsolidatedKOTPrinterPort.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn2.png"))); // NOI18N
-        btnTestConsolidatedKOTPrinterPort.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnTestConsolidatedKOTPrinterPort.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnTestConsolidatedKOTPrinterPortMouseClicked(evt);
             }
         });
-        btnTestConsolidatedKOTPrinterPort.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnTestConsolidatedKOTPrinterPort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTestConsolidatedKOTPrinterPortActionPerformed(evt);
             }
         });
-        btnTestConsolidatedKOTPrinterPort.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnTestConsolidatedKOTPrinterPort.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnTestConsolidatedKOTPrinterPortKeyPressed(evt);
             }
         });
@@ -5650,10 +5392,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkEnableNFCInterface.setText("Enable NFC Interface       :     ");
         chkEnableNFCInterface.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkEnableNFCInterface.setOpaque(false);
-        chkEnableNFCInterface.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        chkEnableNFCInterface.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkEnableNFCInterfaceActionPerformed(evt);
             }
         });
@@ -5708,10 +5448,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         txtInrestoPOSId.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         txtInrestoPOSKey.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtInrestoPOSKey.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtInrestoPOSKey.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtInrestoPOSKeyActionPerformed(evt);
             }
         });
@@ -5778,10 +5516,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblJioMoneyMID.setText("JioMoney Merchant ID   : ");
 
         txtJioMoneyTID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtJioMoneyTID.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtJioMoneyTID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtJioMoneyTIDActionPerformed(evt);
             }
         });
@@ -5789,10 +5525,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         txtJioMoneyMID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         txtJioActivationCode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtJioActivationCode.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtJioActivationCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtJioActivationCodeActionPerformed(evt);
             }
         });
@@ -5804,26 +5538,20 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblJioMoneyDeviceID.setText("Device ID                     : ");
 
         txtJioDeviceID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtJioDeviceID.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtJioDeviceID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtJioDeviceIDActionPerformed(evt);
             }
         });
 
         btnFetch.setText("Fetch ID");
-        btnFetch.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnFetch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnFetchMouseClicked(evt);
             }
         });
-        btnFetch.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnFetch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFetchActionPerformed(evt);
             }
         });
@@ -5927,10 +5655,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblMerchantCode.setText("Merchant Code              : ");
 
         txtMerchantCode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtMerchantCode.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtMerchantCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMerchantCodeActionPerformed(evt);
             }
         });
@@ -5939,10 +5665,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblAuthenticationKey.setText("Authentication Key        : ");
 
         txtAuthenticationKey.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtAuthenticationKey.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtAuthenticationKey.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAuthenticationKeyActionPerformed(evt);
             }
         });
@@ -5951,10 +5675,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblSalt.setText(" Salt                            : ");
 
         txtSalt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtSalt.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtSalt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSaltActionPerformed(evt);
             }
         });
@@ -5965,19 +5687,15 @@ public class frmPropertySetup extends javax.swing.JFrame
         txtSuperMerchantCode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         btnAuthorize.setText("Authenticate");
-        btnAuthorize.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnAuthorize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAuthorizeMouseClicked(evt);
             }
         });
 
         btnOK.setText("Ok");
-        btnOK.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnOK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnOKMouseClicked(evt);
             }
         });
@@ -6093,10 +5811,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblWeraMerchantCode.setText("Outlet Id/WERA Merchant ");
 
         txtWeraMerchantOutletId.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtWeraMerchantOutletId.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtWeraMerchantOutletId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtWeraMerchantOutletIdActionPerformed(evt);
             }
         });
@@ -6105,10 +5821,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblAuthenticationAPIKey.setText("Authentication API Key   :");
 
         txtWeraAuthenticationAPIKey.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtWeraAuthenticationAPIKey.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtWeraAuthenticationAPIKey.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtWeraAuthenticationAPIKeyActionPerformed(evt);
             }
         });
@@ -6160,21 +5874,16 @@ public class frmPropertySetup extends javax.swing.JFrame
         btnNew.setText("UPDATE");
         btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNew.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn2.png"))); // NOI18N
-        btnNew.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnNew.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnNewMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnNewMouseEntered(evt);
             }
         });
-        btnNew.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
             }
         });
@@ -6185,17 +5894,13 @@ public class frmPropertySetup extends javax.swing.JFrame
         btnExit.setText("CLOSE");
         btnExit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnExit.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn2.png"))); // NOI18N
-        btnExit.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnExitMouseClicked(evt);
             }
         });
-        btnExit.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
@@ -6203,10 +5908,8 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblPOS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblPOS.setText("POS :");
 
-        cmbPOS.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbPOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbPOSActionPerformed(evt);
             }
         });
@@ -6217,17 +5920,13 @@ public class frmPropertySetup extends javax.swing.JFrame
         btnLikePOS.setText("Like POS");
         btnLikePOS.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLikePOS.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/POSGlobal/images/imgCmnBtn2.png"))); // NOI18N
-        btnLikePOS.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnLikePOS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnLikePOSMouseClicked(evt);
             }
         });
-        btnLikePOS.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnLikePOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLikePOSActionPerformed(evt);
             }
         });

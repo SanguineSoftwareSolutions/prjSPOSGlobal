@@ -25,7 +25,6 @@ import com.POSLicence.controller.clsSMSPackDtl;
 import com.POSPrinting.Text.DayEnd.clsDayEndTextReport;
 import com.POSPrinting.Utility.clsPrintingUtility;
 import com.POSPrinting.clsBillGeneration;
-
 import java.awt.Desktop;
 import java.awt.Frame;
 import static java.awt.Frame.ICONIFIED;

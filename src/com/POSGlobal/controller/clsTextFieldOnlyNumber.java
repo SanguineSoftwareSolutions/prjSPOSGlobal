@@ -21,7 +21,7 @@ public class clsTextFieldOnlyNumber extends JTextField {
     private static final char DOT = '.';
     private static final char NEGATIVE = '-';
     private static final String BLANK = "";
-    private static final int DEF_PRECISION = 2;
+    private static final int DEF_PRECISION = 4;
 
     public static final int NUMERIC = 2;
     public static final int DECIMAL = 3;

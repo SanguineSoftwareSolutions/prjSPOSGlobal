@@ -137,7 +137,7 @@ public class clsGlobalVarClass
     public static Vector vArrSearchColumnSize;
 
     public static Logger gLog;
-    public static boolean gNewBillSeriesForNewDay, gAreaWisePromotions, gPrintItemsOnMoveKOTMoveTable,gPrintMoveTableMoveKOT,gPrintQtyTotal;
+    public static boolean gNewBillSeriesForNewDay, gAreaWisePromotions, gPrintItemsOnMoveKOTMoveTable,gPrintMoveTableMoveKOT,gPrintQtyTotal,gShowReportsInUSD;
     public static boolean gShowOnlyLoginPOSReports, gEnableDineIn;
     public static boolean gAutoAreaSelectionInMakeKOT, gShowUnSettletmentForm, gPrintOpenItemsOnBill, gPrintHomeDeliveryYN, gWERAOnlineOrderIntegration;
     public static boolean gShowPurRateInDirectBiller;
@@ -3303,6 +3303,21 @@ public class clsGlobalVarClass
 	    {
 		  gPrintQtyTotal=true; 
 	    }
+	    
+	    gShowReportsInUSD=false; 
+	    if(rs.getString(223).equalsIgnoreCase("Y"))
+	    {
+		  gShowReportsInUSD=true; 
+	    }
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 
 	}
 	else

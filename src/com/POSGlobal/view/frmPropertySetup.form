@@ -29,7 +29,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,116,0,0,3,-105"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-36,0,0,3,-98"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -238,7 +238,7 @@
                       <Component id="cmbPOS" min="-2" pref="245" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="btnLikePOS" min="-2" pref="101" max="-2" attributes="0"/>
-                      <EmptySpace pref="155" max="32767" attributes="0"/>
+                      <EmptySpace pref="156" max="32767" attributes="0"/>
                       <Component id="btnNew" min="-2" pref="90" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnExit" min="-2" pref="90" max="-2" attributes="0"/>
@@ -261,7 +261,7 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tabbedPane" pref="544" max="32767" attributes="0"/>
+                      <Component id="tabbedPane" pref="587" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -457,7 +457,7 @@
                           <Font name="Tahoma" size="11" style="1"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="22">
+                          <StringArray count="23">
                             <StringItem index="0" value="Pune"/>
                             <StringItem index="1" value="Secunderabad"/>
                             <StringItem index="2" value="Hyderabad"/>
@@ -480,6 +480,7 @@
                             <StringItem index="19" value="Seawood"/>
                             <StringItem index="20" value="Muscat"/>
                             <StringItem index="21" value="Salalah"/>
+                            <StringItem index="22" value="Kinshasa"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -508,7 +509,7 @@
                           <Font name="Tahoma" size="11" style="1"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="10">
+                          <StringArray count="11">
                             <StringItem index="0" value="Maharashtra"/>
                             <StringItem index="1" value="Delhi"/>
                             <StringItem index="2" value="Karnataka"/>
@@ -519,6 +520,7 @@
                             <StringItem index="7" value="Rajasthan"/>
                             <StringItem index="8" value="Muscat"/>
                             <StringItem index="9" value="Salalah"/>
+                            <StringItem index="10" value="Congo"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -534,12 +536,13 @@
                           <Font name="Tahoma" size="11" style="1"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="5">
+                          <StringArray count="6">
                             <StringItem index="0" value="India"/>
-                            <StringItem index="1" value="China"/>
-                            <StringItem index="2" value="USA"/>
-                            <StringItem index="3" value="England"/>
-                            <StringItem index="4" value="Oman"/>
+                            <StringItem index="1" value="USA"/>
+                            <StringItem index="2" value="Africa"/>
+                            <StringItem index="3" value="China"/>
+                            <StringItem index="4" value="England"/>
+                            <StringItem index="5" value="Oman"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -3728,7 +3731,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -3762,7 +3765,7 @@
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace min="0" pref="90" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="91" max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="chkPrintItemsOnMoveKOTMoveTable" alignment="1" min="-2" max="-2" attributes="0"/>
                                                   <Component id="chkPrintMoveTableMoveKOT" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -3770,8 +3773,14 @@
                                           </Group>
                                       </Group>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="chkSendDBBackupOnMail" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="chkPrintQtyTotal" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="chkShowReportsInUSD" min="-2" max="-2" attributes="0"/>
                                           <Component id="chkFireCommunication" min="-2" max="-2" attributes="0"/>
                                           <Component id="chkPrintOrderNoOnBill" min="-2" max="-2" attributes="0"/>
                                           <Component id="chkPrintDeviceUserDtlOnKOT" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -3788,11 +3797,6 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="chkSendDBBackupOnMail" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="chkPrintQtyTotal" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -3856,7 +3860,9 @@
                                   <Component id="lblUSDCrrencyConverionRate" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="txtUSDCrrencyConverionRate" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="57" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="chkShowReportsInUSD" min="-2" pref="29" max="-2" attributes="0"/>
+                              <EmptySpace pref="64" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -4107,6 +4113,19 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkPrintQtyTotalActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="javax.swing.JCheckBox" name="chkShowReportsInUSD">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Show Reports in USD              :  "/>
+                        <Property name="horizontalTextPosition" type="int" value="10"/>
+                        <Property name="opaque" type="boolean" value="false"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkShowReportsInUSDActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="panelEmailSetup">
@@ -4199,7 +4218,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" pref="30" max="32767" attributes="0"/>
+                                      <Component id="jLabel9" pref="73" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
@@ -4398,7 +4417,7 @@
                                   <Component id="cmbCardIntfType" alignment="0" max="32767" attributes="0"/>
                                   <Component id="cmbRFIDSetup" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="281" max="32767" attributes="0"/>
+                              <EmptySpace pref="282" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -4435,7 +4454,7 @@
                                   <Component id="lblDBName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="txtDatabaseName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="402" max="32767" attributes="0"/>
+                              <EmptySpace pref="306" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -4638,7 +4657,7 @@
                                       <Component id="lblPOSID" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="445" max="32767" attributes="0"/>
+                              <EmptySpace pref="349" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -5269,7 +5288,7 @@
                                   <Component id="txtFTPServerPass" min="-2" pref="146" max="-2" attributes="0"/>
                                   <Component id="txtFTPServerUserName" min="-2" pref="146" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="248" max="32767" attributes="0"/>
+                              <EmptySpace pref="249" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -5294,7 +5313,7 @@
                                   <Component id="jLabel7" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="txtFTPServerPass" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="535" max="32767" attributes="0"/>
+                              <EmptySpace pref="439" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -5429,7 +5448,7 @@
                                   <Component id="lblCMSPosting" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="cmbCMSPostingType" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="368" max="32767" attributes="0"/>
+                              <EmptySpace pref="272" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -5588,7 +5607,7 @@
                               <Component id="txtConsolidatedKOTPrinterPort" min="-2" pref="216" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnTestConsolidatedKOTPrinterPort" min="-2" pref="63" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -5603,7 +5622,7 @@
                                   <Component id="txtConsolidatedKOTPrinterPort" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="btnTestConsolidatedKOTPrinterPort" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="1" pref="89" max="32767" attributes="0"/>
+                              <EmptySpace min="1" pref="132" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -5746,7 +5765,7 @@
                                       <Component id="cmbPOSForDayEnd" min="-2" pref="226" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="251" max="32767" attributes="0"/>
+                              <EmptySpace pref="252" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -5760,7 +5779,7 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="chkEnableNFCInterface" min="-2" pref="32" max="-2" attributes="0"/>
-                              <EmptySpace pref="561" max="32767" attributes="0"/>
+                              <EmptySpace pref="465" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -5828,7 +5847,7 @@
                                   <Component id="cmbInrestoPOSIntegrationYN" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                                   <Component id="txtInrestoPOSWesServiceURL" alignment="0" min="-2" pref="325" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="77" max="32767" attributes="0"/>
+                              <EmptySpace pref="78" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -5984,7 +6003,7 @@
                                       <Component id="btnFetch" min="-2" pref="87" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="98" max="32767" attributes="0"/>
+                              <EmptySpace pref="99" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -6255,7 +6274,7 @@
                                   <Component id="lblSalt" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                                   <Component id="txtSalt" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="259" max="32767" attributes="0"/>
+                              <EmptySpace pref="302" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -6420,7 +6439,7 @@
                                       <Component id="txtWeraAuthenticationAPIKey" min="-2" pref="350" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="130" max="32767" attributes="0"/>
+                              <EmptySpace pref="131" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -6442,7 +6461,7 @@
                                   <Component id="lblWeraMerchantCode" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                                   <Component id="txtWeraMerchantOutletId" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="394" max="32767" attributes="0"/>
+                              <EmptySpace pref="437" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

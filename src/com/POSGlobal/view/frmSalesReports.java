@@ -160,6 +160,17 @@ public class frmSalesReports extends javax.swing.JFrame
 	    dm.addColumn("Tax");
 	    dm.addColumn("Grand Total");
 
+	    if (clsGlobalVarClass.gUSDConvertionRate == 0)
+	    {
+		lblCurrency.setVisible(false);
+		cmbCurrency.setVisible(false);
+	    }
+	    else
+	    {
+		lblCurrency.setVisible(true);
+		cmbCurrency.setVisible(true);
+	    }
+
 	    funFillComboBox();
 	    funFillComboBoxPayMode();
 	    funSetFormToInDateChosser();
@@ -846,15 +857,33 @@ public class frmSalesReports extends javax.swing.JFrame
 	    String settlementMode = cmbPayMode.getSelectedItem().toString();
 	    DecimalFormat decFormat = new DecimalFormat("0");
 
+	    String subTotal = "ifnull(a.dblSubTotal,0.00)";
+	    String discountAmt = "IFNULL(a.dblDiscountAmt,0.00)";
+	    String taxAmt = "a.dblTaxAmt";
+	    String settlementAmt = "ifnull(c.dblSettlementAmt,0.00)";
+	    String deliveryCharges = "a.dblDeliveryCharges";
+	    String tipAmt = "a.dblTipAmount";
+	    String roundOffAmt = "a.dblRoundOff";
+	    if (cmbCurrency.getSelectedItem().toString().equalsIgnoreCase("USD"))
+	    {
+		subTotal = "ifnull(a.dblSubTotal/a.dblUSDConverionRate,0.00)";
+		discountAmt = "IFNULL(a.dblDiscountAmt/a.dblUSDConverionRate,0.00)";
+		taxAmt = "a.dblTaxAmt/a.dblUSDConverionRate";
+		settlementAmt = "ifnull(c.dblSettlementAmt/a.dblUSDConverionRate,0.00)";
+		deliveryCharges = "a.dblDeliveryCharges/a.dblUSDConverionRate";
+		tipAmt = "a.dblTipAmount/a.dblUSDConverionRate";
+		roundOffAmt = "a.dblRoundOff/a.dblUSDConverionRate";
+	    }
+
 	    sbSqlBillWise.setLength(0);
 	    sbSqlBillWise.append("select a.strBillNo,left(a.dteBillDate,10),left(right(a.dteDateCreated,8),5) as BillTime "
 		    + " ,ifnull(b.strTableName,'') as TableName,f.strPOSName, ifnull(d.strSettelmentDesc,'') as payMode "
-		    + " ,ifnull(a.dblSubTotal,0.00),IFNULL(a.dblDiscountPer,0), IFNULL(a.dblDiscountAmt,0.00),a.dblTaxAmt "
-		    + " ,ifnull(c.dblSettlementAmt,0.00),a.strUserCreated "
+		    + " ," + subTotal + ",IFNULL(a.dblDiscountPer,0)," + discountAmt + "," + taxAmt + " "
+		    + " ," + settlementAmt + ",a.strUserCreated "
 		    + " ,a.strUserEdited,a.dteDateCreated,a.dteDateEdited,a.strClientCode,a.strWaiterNo "
-		    + " ,a.strCustomerCode,a.dblDeliveryCharges,ifnull(c.strRemark,''),ifnull(e.strCustomerName ,'NA') "
-		    + " ,a.dblTipAmount,'" + clsGlobalVarClass.gUserCode + "',a.strDiscountRemark,ifnull(h.strReasonName ,'NA')"
-		    + ",a.intShiftCode,a.dblRoundOff,a.intBillSeriesPaxNo,ifnull(i.dblAdvDeposite,0),ifnull(k.strAdvOrderTypeName,'') "
+		    + " ,a.strCustomerCode," + deliveryCharges + ",ifnull(c.strRemark,''),ifnull(e.strCustomerName ,'NA') "
+		    + " ," + tipAmt + ",'" + clsGlobalVarClass.gUserCode + "',a.strDiscountRemark,ifnull(h.strReasonName ,'NA')"
+		    + ",a.intShiftCode," + roundOffAmt + ",a.intBillSeriesPaxNo,ifnull(i.dblAdvDeposite,0),ifnull(k.strAdvOrderTypeName,'') "
 		    + " from tblbillhd  a "
 		    + " left outer join  tbltablemaster b on a.strTableNo=b.strTableNo "
 		    + " left outer join tblposmaster f on a.strPOSCode=f.strPOSCode "
@@ -905,16 +934,14 @@ public class frmSalesReports extends javax.swing.JFrame
 	    sbSqlBillWise.append(" order by date(a.dteBillDate),a.strBillNo desc ");
 
 	    sbSqlBillWiseQFile.setLength(0);
-	    sbSqlBillWiseQFile.append("select a.strBillNo,left(a.dteBillDate,10),left(right(a.dteDateCreated,8),5) as BillTime"
-		    + " ,ifnull(b.strTableName,'') as TableName,f.strPOSName"
-		    + ""
-		    + ", ifnull(d.strSettelmentDesc,'') as payMode"
-		    + " ,ifnull(a.dblSubTotal,0.00),IFNULL(a.dblDiscountPer,0), IFNULL(a.dblDiscountAmt,0.00),a.dblTaxAmt"
-		    + " ,ifnull(c.dblSettlementAmt,0.00),a.strUserCreated,a.strUserEdited,a.dteDateCreated"
-		    + " ,a.dteDateEdited,a.strClientCode,a.strWaiterNo,a.strCustomerCode,a.dblDeliveryCharges"
-		    + " ,ifnull(c.strRemark,''),ifnull(e.strCustomerName ,'NA')"
-		    + " ,a.dblTipAmount,'" + clsGlobalVarClass.gUserCode + "',a.strDiscountRemark,ifnull(h.strReasonName ,'NA')"
-		    + ",a.intShiftCode,a.dblRoundOff,a.intBillSeriesPaxNo,ifnull(i.dblAdvDeposite,0),ifnull(k.strAdvOrderTypeName,'') "
+	    sbSqlBillWiseQFile.append("select a.strBillNo,left(a.dteBillDate,10),left(right(a.dteDateCreated,8),5) as BillTime "
+		    + " ,ifnull(b.strTableName,'') as TableName,f.strPOSName, ifnull(d.strSettelmentDesc,'') as payMode "
+		    + " ," + subTotal + ",IFNULL(a.dblDiscountPer,0)," + discountAmt + "," + taxAmt + " "
+		    + " ," + settlementAmt + ",a.strUserCreated "
+		    + " ,a.strUserEdited,a.dteDateCreated,a.dteDateEdited,a.strClientCode,a.strWaiterNo "
+		    + " ,a.strCustomerCode," + deliveryCharges + ",ifnull(c.strRemark,''),ifnull(e.strCustomerName ,'NA') "
+		    + " ," + tipAmt + ",'" + clsGlobalVarClass.gUserCode + "',a.strDiscountRemark,ifnull(h.strReasonName ,'NA')"
+		    + ",a.intShiftCode," + roundOffAmt + ",a.intBillSeriesPaxNo,ifnull(i.dblAdvDeposite,0),ifnull(k.strAdvOrderTypeName,'')  "
 		    + " from tblqbillhd a left outer join  tbltablemaster b on a.strTableNo=b.strTableNo "
 		    + " left outer join tblposmaster f on a.strPOSCode=f.strPOSCode "
 		    + " left outer join tblqbillsettlementdtl c on a.strBillNo=c.strBillNo and a.strClientCode=c.strClientCode   and date(a.dteBillDate)=date(c.dteBillDate)  "
@@ -1388,11 +1415,42 @@ public class frmSalesReports extends javax.swing.JFrame
 		String pos = funGetSelectedPosCode();
 		String sqlFilters = "";
 
+		String amount = "sum(a.dblAmount)";
+		String discountAmt = "sum(a.dblDiscountAmt)";
+		String netTotalAmt = "sum(a.dblAmount)-sum(a.dblDiscountAmt)";
+		String taxAmt = "sum(a.dblTaxAmount)";
+		String settlementAmt = "";
+		String deliveryCharges = "";
+		String tipAmt = "";
+		String roundOffAmt = "";
+
+		String mSubTotal = "sum(a.dblAmount)";
+		String mDiscountAmt = "sum(a.dblDiscAmt)";
+		String mNetTotalAmt = "sum(a.dblAmount)-sum(a.dblDiscAmt)";
+		String mTaxAmt = "0";
+
+		if (cmbCurrency.getSelectedItem().toString().equalsIgnoreCase("USD"))
+		{
+		    amount = "sum(a.dblAmount/b.dblUSDConverionRate)";
+		    discountAmt = "sum(a.dblDiscountAmt/b.dblUSDConverionRate)";
+		    netTotalAmt = "sum(a.dblAmount/b.dblUSDConverionRate)-sum(a.dblDiscountAmt/b.dblUSDConverionRate)";
+		    taxAmt = "sum(a.dblTaxAmount/b.dblUSDConverionRate)";
+		    settlementAmt = "";
+		    deliveryCharges = "";
+		    tipAmt = "";
+		    roundOffAmt = "";
+
+		    mSubTotal = "sum(a.dblAmount/b.dblUSDConverionRate)";
+		    mDiscountAmt = "sum(a.dblDiscAmt/b.dblUSDConverionRate)";
+		    mNetTotalAmt = "sum(a.dblAmount/b.dblUSDConverionRate)-sum(a.dblDiscAmt/b.dblUSDConverionRate)";
+		    mTaxAmt = "0";
+		}
+
 		String sqlLive = "select a.strItemCode,a.strItemName,c.strPOSName"
-			+ ",sum(a.dblQuantity),sum(a.dblTaxAmount)\n"
-			+ ",sum(a.dblAmount)-sum(a.dblDiscountAmt),'" + clsGlobalVarClass.gUserCode + "' "
-			+ ",sum(a.dblAmount),sum(a.dblDiscountAmt),DATE_FORMAT(date(b.dteBillDate),'%d-%m-%Y'),b.strPOSCode "
-			+ "from tblbilldtl a,tblbillhd b,tblposmaster c\n"
+			+ ",sum(a.dblQuantity)," + taxAmt + " "
+			+ "," + netTotalAmt + ",'" + clsGlobalVarClass.gUserCode + "' "
+			+ "," + amount + "," + discountAmt + ",DATE_FORMAT(date(b.dteBillDate),'%d-%m-%Y'),b.strPOSCode "
+			+ "from tblbilldtl a,tblbillhd b,tblposmaster c "
 			+ "where a.strBillNo=b.strBillNo "
 			+ "AND DATE(a.dteBillDate)=DATE(b.dteBillDate)  "
 			+ "and b.strPOSCode=c.strPosCode "
@@ -1400,10 +1458,10 @@ public class frmSalesReports extends javax.swing.JFrame
 			+ "and " + field + " BETWEEN '" + DateFrom + "' AND '" + DateTo + "' ";
 
 		String sqlQFile = "select a.strItemCode,a.strItemName,c.strPOSName"
-			+ ",sum(a.dblQuantity),sum(a.dblTaxAmount)\n"
-			+ ",sum(a.dblAmount)-sum(a.dblDiscountAmt),'" + clsGlobalVarClass.gUserCode + "' "
-			+ ",sum(a.dblAmount),sum(a.dblDiscountAmt),DATE_FORMAT(date(b.dteBillDate),'%d-%m-%Y'),b.strPOSCode "
-			+ "from tblqbilldtl a,tblqbillhd b,tblposmaster c\n"
+			+ ",sum(a.dblQuantity)," + taxAmt + " "
+			+ "," + netTotalAmt + ",'" + clsGlobalVarClass.gUserCode + "' "
+			+ "," + amount + "," + discountAmt + ",DATE_FORMAT(date(b.dteBillDate),'%d-%m-%Y'),b.strPOSCode   "
+			+ "from tblqbilldtl a,tblqbillhd b,tblposmaster c "
 			+ "where a.strBillNo=b.strBillNo "
 			+ "AND DATE(a.dteBillDate)=DATE(b.dteBillDate) "
 			+ "and b.strPOSCode=c.strPosCode "
@@ -1411,8 +1469,8 @@ public class frmSalesReports extends javax.swing.JFrame
 			+ "and " + field + " BETWEEN '" + DateFrom + "' AND '" + DateTo + "' ";
 
 		String sqlModLive = "select a.strItemCode,a.strModifierName,c.strPOSName"
-			+ " ,sum(a.dblQuantity),'0',sum(a.dblAmount)-sum(a.dblDiscAmt),'" + clsGlobalVarClass.gUserCode + "' "
-			+ " ,sum(a.dblAmount),sum(a.dblDiscAmt),DATE_FORMAT(date(b.dteBillDate),'%d-%m-%Y'),b.strPOSCode "
+			+ " ,sum(a.dblQuantity),'0'," + mNetTotalAmt + ",'" + clsGlobalVarClass.gUserCode + "' "
+			+ " ," + mSubTotal + "," + mDiscountAmt + ",DATE_FORMAT(date(b.dteBillDate),'%d-%m-%Y'),b.strPOSCode "
 			+ " from tblbillmodifierdtl a,tblbillhd b,tblposmaster c,tblitemmaster d\n"
 			+ " where a.strBillNo=b.strBillNo "
 			+ " AND DATE(a.dteBillDate)=DATE(b.dteBillDate) "
@@ -1423,8 +1481,8 @@ public class frmSalesReports extends javax.swing.JFrame
 			+ " and " + field + " BETWEEN '" + DateFrom + "' AND '" + DateTo + "' ";
 
 		String sqlModQFile = "select a.strItemCode,a.strModifierName,c.strPOSName"
-			+ " ,sum(a.dblQuantity),'0',sum(a.dblAmount)-sum(a.dblDiscAmt),'" + clsGlobalVarClass.gUserCode + "' "
-			+ " ,sum(a.dblAmount),sum(a.dblDiscAmt),DATE_FORMAT(date(b.dteBillDate),'%d-%m-%Y'),b.strPOSCode "
+			+ " ,sum(a.dblQuantity),'0'," + mNetTotalAmt + ",'" + clsGlobalVarClass.gUserCode + "' "
+			+ " ," + mSubTotal + "," + mDiscountAmt + ",DATE_FORMAT(date(b.dteBillDate),'%d-%m-%Y'),b.strPOSCode "
 			+ " from tblqbillmodifierdtl a,tblqbillhd b,tblposmaster c,tblitemmaster d\n"
 			+ " where a.strBillNo=b.strBillNo "
 			+ " AND DATE(a.dteBillDate)=DATE(b.dteBillDate) "
@@ -2935,8 +2993,30 @@ public class frmSalesReports extends javax.swing.JFrame
 		sbSqlQFile.setLength(0);
 		sbSqlFilters.setLength(0);
 
+		String netTotal = "sum(a.dblAmount)-sum(a.dblDiscountAmt)";
+		String rate = "a.dblRate";
+		String amount = "sum(a.dblAmount)";
+		String discountAmt = "sum(a.dblDiscountAmt)";
+
+		String mNetTotal = "sum(a.dblAmount)-sum(a.dblDiscAmt)";
+		String mRate = "a.dblRate";
+		String mAmount = "sum(a.dblAmount)";
+		String mDiscountAmt = "sum(a.dblDiscAmt)";
+		if (cmbCurrency.getSelectedItem().toString().equalsIgnoreCase("USD"))
+		{
+		    netTotal = "sum(a.dblAmount/b.dblUSDConverionRate)-sum(a.dblDiscountAmt/b.dblUSDConverionRate)";
+		    rate = "a.dblRate/b.dblUSDConverionRate";
+		    amount = "sum(a.dblAmount/b.dblUSDConverionRate)";
+		    discountAmt = "sum(a.dblDiscountAmt/b.dblUSDConverionRate)";
+
+		    mNetTotal = "sum(a.dblAmount/b.dblUSDConverionRate)-sum(a.dblDiscAmt/b.dblUSDConverionRate)";
+		    mRate = "a.dblRate/b.dblUSDConverionRate";
+		    mAmount = "sum(a.dblAmount/b.dblUSDConverionRate)";
+		    mDiscountAmt = "sum(a.dblDiscAmt/b.dblUSDConverionRate)";
+		}
+
 		sbSqlQFile.append("SELECT  ifnull(d.strMenuCode,'ND'),ifnull(e.strMenuName,'ND'), sum(a.dblQuantity),\n"
-			+ "sum(a.dblAmount)-sum(a.dblDiscountAmt),f.strPosName,'" + clsGlobalVarClass.gUserCode + "',a.dblRate ,sum(a.dblAmount),sum(a.dblDiscountAmt),b.strPOSCode  "
+			+ "" + netTotal + ",f.strPosName,'" + clsGlobalVarClass.gUserCode + "'," + rate + " ," + amount + "," + discountAmt + ",b.strPOSCode  "
 			+ "FROM tblqbilldtl a\n"
 			+ "left outer join tblqbillhd b on a.strBillNo=b.strBillNo and date(a.dteBillDate)=date(b.dteBillDate) and a.strClientCode=b.strClientCode "
 			+ "left outer join tblposmaster f on b.strposcode=f.strposcode "
@@ -2949,9 +3029,9 @@ public class frmSalesReports extends javax.swing.JFrame
 		sbSqlQFile.append("left outer join tblmenuhd e on d.strMenuCode= e.strMenuCode");
 		sbSqlQFile.append(" where " + field + " BETWEEN '" + DateFrom + "' AND '" + DateTo + "' ");
 
-		sbSqlLive.append("SELECT ifnull(d.strMenuCode,'ND'),ifnull(e.strMenuName,'ND'), sum(a.dblQuantity),\n"
-			+ " sum(a.dblAmount)-sum(a.dblDiscountAmt),f.strPosName,'" + clsGlobalVarClass.gUserCode + "',a.dblRate  ,sum(a.dblAmount),sum(a.dblDiscountAmt),b.strPOSCode  "
-			+ " FROM tblbilldtl a\n"
+		sbSqlLive.append("SELECT  ifnull(d.strMenuCode,'ND'),ifnull(e.strMenuName,'ND'), sum(a.dblQuantity), "
+			+ "" + netTotal + ",f.strPosName,'" + clsGlobalVarClass.gUserCode + "'," + rate + " ," + amount + "," + discountAmt + ",b.strPOSCode  "
+			+ " FROM tblbilldtl a "
 			+ " left outer join tblbillhd b on a.strBillNo=b.strBillNo and date(a.dteBillDate)=date(b.dteBillDate) and a.strClientCode=b.strClientCode "
 			+ " left outer join tblposmaster f on b.strposcode=f.strposcode "
 			+ " left outer join tblmenuitempricingdtl d on a.strItemCode = d.strItemCode "
@@ -2964,7 +3044,7 @@ public class frmSalesReports extends javax.swing.JFrame
 		sbSqlLive.append(" where " + field + " BETWEEN '" + DateFrom + "' AND '" + DateTo + "' ");
 
 		String sqlModLive = "SELECT  ifnull(d.strMenuCode,'ND'),ifnull(e.strMenuName,'ND'), sum(a.dblQuantity),\n"
-			+ "sum(a.dblAmount)-sum(a.dblDiscAmt),f.strPosName,'" + clsGlobalVarClass.gUserCode + "',a.dblRate ,sum(a.dblAmount),sum(a.dblDiscAmt),b.strPOSCode  "
+			+ "" + mNetTotal + ",f.strPosName,'" + clsGlobalVarClass.gUserCode + "'," + mRate + " ," + mAmount + "," + mDiscountAmt + ",b.strPOSCode  "
 			+ "FROM tblbillmodifierdtl a\n"
 			+ "left outer join tblbillhd b on a.strBillNo=b.strBillNo and a.strClientCode=b.strClientCode "
 			+ "left outer join tblposmaster f on b.strposcode=f.strposcode "
@@ -2978,7 +3058,7 @@ public class frmSalesReports extends javax.swing.JFrame
 		sqlModLive += " where " + field + " BETWEEN '" + DateFrom + "' AND '" + DateTo + "' and a.dblAmount>0 ";
 
 		String sqlModQFile = "SELECT  ifnull(d.strMenuCode,'ND'),ifnull(e.strMenuName,'ND'), sum(a.dblQuantity),\n"
-			+ "sum(a.dblAmount)-sum(a.dblDiscAmt),f.strPosName,'" + clsGlobalVarClass.gUserCode + "',a.dblRate ,sum(a.dblAmount),sum(a.dblDiscAmt),b.strPOSCode  "
+			+ "" + mNetTotal + ",f.strPosName,'" + clsGlobalVarClass.gUserCode + "'," + mRate + " ," + mAmount + "," + mDiscountAmt + ",b.strPOSCode  "
 			+ "FROM tblqbillmodifierdtl a\n"
 			+ "left outer join tblqbillhd b on a.strBillNo=b.strBillNo and date(a.dteBillDate)=date(b.dteBillDate) and a.strClientCode=b.strClientCode "
 			+ "left outer join tblposmaster f on b.strposcode=f.strposcode "
@@ -4779,8 +4859,14 @@ public class frmSalesReports extends javax.swing.JFrame
 		sbQFile.setLength(0);
 		sbFilters.setLength(0);
 
+		String settlementAmt = "IFNULL(SUM(a.dblSettlementAmt),0.00)";
+		if (cmbCurrency.getSelectedItem().toString().equalsIgnoreCase("USD"))
+		{
+		    settlementAmt = "IFNULL(SUM(a.dblSettlementAmt/c.dblUSDConverionRate),0.00)";
+		}
+
 		sbLive.append("SELECT d.strPOSCode,b.strSettelmentCode, IFNULL(d.strPOSName,'') AS strPOSName, IFNULL(b.strSettelmentDesc,'') AS strSettelmentDesc "
-			+ " , IFNULL(SUM(a.dblSettlementAmt),0.00) AS dblSettlementAmt,'" + clsGlobalVarClass.gUserCode + "'"
+			+ " ," + settlementAmt + " AS dblSettlementAmt,'" + clsGlobalVarClass.gUserCode + "'"
 			+ " ,b.strSettelmentType "
 			+ " from "
 			+ " tblbillsettlementdtl a "
@@ -4791,7 +4877,7 @@ public class frmSalesReports extends javax.swing.JFrame
 			+ "AND a.dblSettlementAmt>0 ");
 
 		sbQFile.append("SELECT d.strPOSCode,b.strSettelmentCode, IFNULL(d.strPOSName,'') AS strPOSName, IFNULL(b.strSettelmentDesc,'') AS strSettelmentDesc "
-			+ " ,IFNULL(SUM(a.dblSettlementAmt),0.00) AS dblSettlementAmt,'" + clsGlobalVarClass.gUserCode + "' "
+			+ " ," + settlementAmt + " AS dblSettlementAmt,'" + clsGlobalVarClass.gUserCode + "' "
 			+ " ,b.strSettelmentType "
 			+ " from "
 			+ " tblqbillsettlementdtl a "
@@ -7783,6 +7869,8 @@ public class frmSalesReports extends javax.swing.JFrame
         cmbArea = new javax.swing.JComboBox();
         cmbOperationType = new javax.swing.JComboBox();
         lblOperationType = new javax.swing.JLabel();
+        lblCurrency = new javax.swing.JLabel();
+        cmbCurrency = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
@@ -8435,7 +8523,24 @@ public class frmSalesReports extends javax.swing.JFrame
         lblOperationType.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblOperationType.setText("Operation Type :");
         pnlAdvanceFilter.add(lblOperationType);
-        lblOperationType.setBounds(110, 420, 94, 15);
+        lblOperationType.setBounds(110, 410, 94, 30);
+
+        lblCurrency.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblCurrency.setText("Currency          :");
+        pnlAdvanceFilter.add(lblCurrency);
+        lblCurrency.setBounds(110, 460, 92, 30);
+
+        cmbCurrency.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BASE", "USD" }));
+        cmbCurrency.setToolTipText("Select POS");
+        cmbCurrency.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                cmbCurrencyActionPerformed(evt);
+            }
+        });
+        pnlAdvanceFilter.add(cmbCurrency);
+        cmbCurrency.setBounds(210, 460, 170, 30);
 
         pnlSales.addTab("Advance Filter", pnlAdvanceFilter);
 
@@ -8867,6 +8972,11 @@ public class frmSalesReports extends javax.swing.JFrame
 	// TODO add your handling code here:
     }//GEN-LAST:event_cmbOperationTypeActionPerformed
 
+    private void cmbCurrencyActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbCurrencyActionPerformed
+    {//GEN-HEADEREND:event_cmbCurrencyActionPerformed
+	// TODO add your handling code here:
+    }//GEN-LAST:event_cmbCurrencyActionPerformed
+
     /**
      * method Print Bill
      *
@@ -8921,6 +9031,7 @@ public class frmSalesReports extends javax.swing.JFrame
     private javax.swing.JButton btnReport7;
     private javax.swing.JCheckBox chkConsolidatePOS;
     private javax.swing.JComboBox cmbArea;
+    private javax.swing.JComboBox cmbCurrency;
     private javax.swing.JComboBox cmbCustWiseReportType;
     private javax.swing.JComboBox cmbMinute;
     private javax.swing.JComboBox cmbMinute1;
@@ -8941,6 +9052,7 @@ public class frmSalesReports extends javax.swing.JFrame
     private javax.swing.Box.Filler filler6;
     private javax.swing.JLabel lblArea;
     private javax.swing.JLabel lblBackground1;
+    private javax.swing.JLabel lblCurrency;
     private javax.swing.JLabel lblCustomer;
     private javax.swing.JLabel lblCustomerName;
     private javax.swing.JLabel lblDate;
@@ -10354,11 +10466,25 @@ public class frmSalesReports extends javax.swing.JFrame
 
     private void funCreateModifierQuery(String itemCode)
     {
+
+	String mSubTotal = "sum(a.dblAmount)";
+	String mDiscountAmt = "sum(a.dblDiscAmt)";
+	String mNetTotalAmt = "sum(a.dblAmount)-sum(a.dblDiscAmt)";
+	String mTaxAmt = "0";
+
+	if (cmbCurrency.getSelectedItem().toString().equalsIgnoreCase("USD"))
+	{
+	    mSubTotal = "sum(a.dblAmount/b.dblUSDConverionRate)";
+	    mDiscountAmt = "sum(a.dblDiscAmt/b.dblUSDConverionRate)";
+	    mNetTotalAmt = "sum(a.dblAmount/b.dblUSDConverionRate)-sum(a.dblDiscAmt/b.dblUSDConverionRate)";
+	    mTaxAmt = "0";
+	}
+
 	try
 	{
 	    String sqlModLive = "select a.strItemCode,a.strModifierName,c.strPOSName"
-		    + ",sum(a.dblQuantity),'0.0',sum(a.dblAmount)-sum(a.dblDiscAmt),'" + clsGlobalVarClass.gUserCode + "' "
-		    + ",sum(a.dblAmount),sum(a.dblDiscAmt),DATE_FORMAT(date(b.dteBillDate),'%d-%m-%Y'),b.strPOSCode "
+		    + " ,sum(a.dblQuantity),'0'," + mNetTotalAmt + ",'" + clsGlobalVarClass.gUserCode + "' "
+		    + " ," + mSubTotal + "," + mDiscountAmt + ",DATE_FORMAT(date(b.dteBillDate),'%d-%m-%Y'),b.strPOSCode  "
 		    + "from tblbillmodifierdtl a,tblbillhd b,tblposmaster c\n"
 		    + "where a.strBillNo=b.strBillNo and b.strPOSCode=c.strPosCode  \n"
 		    + "and date( b.dteBillDate ) BETWEEN '" + fromDate + "' AND '" + toDate + "' "
@@ -10401,9 +10527,9 @@ public class frmSalesReports extends javax.swing.JFrame
 	    funGenerateItemWiseSales(rs);
 
 	    //qmodifiers
-	    String sqlModQFile = "select a.strItemCode,a.strModifierName,c.strPOSName"
-		    + ",sum(a.dblQuantity),'0.0',sum(a.dblAmount)-sum(a.dblDiscAmt),'" + clsGlobalVarClass.gUserCode + "' "
-		    + ",sum(a.dblAmount),sum(a.dblDiscAmt),DATE_FORMAT(date(b.dteBillDate),'%d-%m-%Y'),b.strPOSCode "
+	    String sqlModQFile = " select a.strItemCode,a.strModifierName,c.strPOSName"
+		    + " ,sum(a.dblQuantity),'0'," + mNetTotalAmt + ",'" + clsGlobalVarClass.gUserCode + "' "
+		    + " ," + mSubTotal + "," + mDiscountAmt + ",DATE_FORMAT(date(b.dteBillDate),'%d-%m-%Y'),b.strPOSCode "
 		    + "from tblqbillmodifierdtl a,tblqbillhd b,tblposmaster c\n"
 		    + "where a.strBillNo=b.strBillNo and b.strPOSCode=c.strPosCode  \n"
 		    + "and date( b.dteBillDate ) BETWEEN '" + fromDate + "' AND '" + toDate + "' "

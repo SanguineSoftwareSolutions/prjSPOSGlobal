@@ -3731,7 +3731,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -3778,22 +3778,42 @@
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="chkPrintQtyTotal" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="chkPrintOrderNoOnBill" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="chkAutoAddKOTToBill" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="chkPrintDeviceUserDtlOnKOT" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="chkFireCommunication" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="chkShowReportsInUSD" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chkFireCommunication" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chkPrintOrderNoOnBill" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chkPrintDeviceUserDtlOnKOT" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chkAutoAddKOTToBill" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="lblRemoveServiceChargeTaxCode" min="-2" pref="187" max="-2" attributes="0"/>
+                                              <Component id="lblRemoveServiceChargeTaxCode" min="-2" pref="114" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="cmbRemoveServiceChargeTaxCode" min="-2" pref="231" max="-2" attributes="0"/>
+                                              <Component id="cmbRemoveServiceChargeTaxCode" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="lblUSDCrrencyConverionRate" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
                                               <Component id="txtUSDCrrencyConverionRate" min="-2" pref="101" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="lblPOSToWebBooksCurrency" pref="203" max="32767" attributes="0"/>
+                                                      <Component id="lblPOSToMMSPostingCurrency" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="lblShowReportsInCurrency" min="-2" pref="174" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="cmbShowReportsInCurrency" min="-2" pref="107" max="-2" attributes="0"/>
+                                                  <Component id="cmbPOSToMMSPostingCurrency" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                                                  <Component id="cmbPOSToWebBooksPostingCurrency" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -3843,26 +3863,44 @@
                                   <Component id="chkPrintQtyTotal" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="chkPrintOrderNoOnBill" min="-2" pref="29" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="chkPrintOrderNoOnBill" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="chkAutoAddKOTToBill" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="chkPrintDeviceUserDtlOnKOT" min="-2" pref="29" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="chkPrintDeviceUserDtlOnKOT" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="chkFireCommunication" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="cmbRemoveServiceChargeTaxCode" alignment="0" max="32767" attributes="0"/>
                                   <Component id="lblRemoveServiceChargeTaxCode" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="chkAutoAddKOTToBill" min="-2" pref="29" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="chkFireCommunication" min="-2" pref="29" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblUSDCrrencyConverionRate" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="txtUSDCrrencyConverionRate" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="chkShowReportsInUSD" min="-2" pref="29" max="-2" attributes="0"/>
-                              <EmptySpace pref="64" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblShowReportsInCurrency" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="cmbShowReportsInCurrency" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblPOSToMMSPostingCurrency" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="cmbPOSToMMSPostingCurrency" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblPOSToWebBooksCurrency" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="cmbPOSToWebBooksPostingCurrency" max="32767" attributes="0"/>
+                                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -4113,18 +4151,59 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkPrintQtyTotalActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="chkShowReportsInUSD">
+                    <Component class="javax.swing.JLabel" name="lblShowReportsInCurrency">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Show Reports in USD              :  "/>
-                        <Property name="horizontalTextPosition" type="int" value="10"/>
-                        <Property name="opaque" type="boolean" value="false"/>
+                        <Property name="text" type="java.lang.String" value="Show Reports In Currency"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkShowReportsInUSDActionPerformed"/>
-                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cmbShowReportsInCurrency">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="2">
+                            <StringItem index="0" value="BASE"/>
+                            <StringItem index="1" value="USD"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblPOSToMMSPostingCurrency">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="POS To MMS Posting Currency"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cmbPOSToMMSPostingCurrency">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="2">
+                            <StringItem index="0" value="BASE"/>
+                            <StringItem index="1" value="USD"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblPOSToWebBooksCurrency">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="POS To WebBooks Posting Currency"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cmbPOSToWebBooksPostingCurrency">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="2">
+                            <StringItem index="0" value="BASE"/>
+                            <StringItem index="1" value="USD"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>

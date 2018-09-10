@@ -1557,16 +1557,10 @@ public class frmPropertySetup extends javax.swing.JFrame
 		    {
 			chkPrintQtyTotal.setSelected(false);
 		    }
-
-		    String showReportsInUSD = rs.getString(223);
-		    if (showReportsInUSD.equalsIgnoreCase("Y"))
-		    {
-			chkShowReportsInUSD.setSelected(true);
-		    }
-		    else
-		    {
-			chkShowReportsInUSD.setSelected(false);
-		    }
+		    
+		    cmbShowReportsInCurrency.setSelectedItem(rs.getString(223));		    
+		    cmbPOSToMMSPostingCurrency.setSelectedItem(rs.getString(224));		    
+		    cmbPOSToWebBooksPostingCurrency.setSelectedItem(rs.getString(225));		    
 
 		}
 		rs.close();
@@ -2286,7 +2280,12 @@ public class frmPropertySetup extends javax.swing.JFrame
         chkPrintItemsOnMoveKOTMoveTable = new javax.swing.JCheckBox();
         chkPrintMoveTableMoveKOT = new javax.swing.JCheckBox();
         chkPrintQtyTotal = new javax.swing.JCheckBox();
-        chkShowReportsInUSD = new javax.swing.JCheckBox();
+        lblShowReportsInCurrency = new javax.swing.JLabel();
+        cmbShowReportsInCurrency = new javax.swing.JComboBox();
+        lblPOSToMMSPostingCurrency = new javax.swing.JLabel();
+        cmbPOSToMMSPostingCurrency = new javax.swing.JComboBox();
+        lblPOSToWebBooksCurrency = new javax.swing.JLabel();
+        cmbPOSToWebBooksPostingCurrency = new javax.swing.JComboBox();
         panelEmailSetup = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -4394,17 +4393,20 @@ public class frmPropertySetup extends javax.swing.JFrame
             }
         });
 
-        chkShowReportsInUSD.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        chkShowReportsInUSD.setText("Show Reports in USD              :  ");
-        chkShowReportsInUSD.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        chkShowReportsInUSD.setOpaque(false);
-        chkShowReportsInUSD.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                chkShowReportsInUSDActionPerformed(evt);
-            }
-        });
+        lblShowReportsInCurrency.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblShowReportsInCurrency.setText("Show Reports In Currency");
+
+        cmbShowReportsInCurrency.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BASE", "USD" }));
+
+        lblPOSToMMSPostingCurrency.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPOSToMMSPostingCurrency.setText("POS To MMS Posting Currency");
+
+        cmbPOSToMMSPostingCurrency.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BASE", "USD" }));
+
+        lblPOSToWebBooksCurrency.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPOSToWebBooksCurrency.setText("POS To WebBooks Posting Currency");
+
+        cmbPOSToWebBooksPostingCurrency.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BASE", "USD" }));
 
         javax.swing.GroupLayout panelPOSSetup4Layout = new javax.swing.GroupLayout(panelPOSSetup4);
         panelPOSSetup4.setLayout(panelPOSSetup4Layout);
@@ -4446,20 +4448,34 @@ public class frmPropertySetup extends javax.swing.JFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(chkPrintQtyTotal))
                     .addGroup(panelPOSSetup4Layout.createSequentialGroup()
-                        .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkShowReportsInUSD)
-                            .addComponent(chkFireCommunication)
-                            .addComponent(chkPrintOrderNoOnBill)
-                            .addComponent(chkPrintDeviceUserDtlOnKOT)
-                            .addComponent(chkAutoAddKOTToBill)
+                        .addComponent(chkPrintOrderNoOnBill)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(chkAutoAddKOTToBill))
+                    .addGroup(panelPOSSetup4Layout.createSequentialGroup()
+                        .addComponent(chkPrintDeviceUserDtlOnKOT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(chkFireCommunication))
+                    .addGroup(panelPOSSetup4Layout.createSequentialGroup()
+                        .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelPOSSetup4Layout.createSequentialGroup()
-                                .addComponent(lblRemoveServiceChargeTaxCode, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblRemoveServiceChargeTaxCode, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(cmbRemoveServiceChargeTaxCode, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cmbRemoveServiceChargeTaxCode, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(panelPOSSetup4Layout.createSequentialGroup()
                                 .addComponent(lblUSDCrrencyConverionRate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtUSDCrrencyConverionRate, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtUSDCrrencyConverionRate, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelPOSSetup4Layout.createSequentialGroup()
+                                .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblPOSToWebBooksCurrency, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                                        .addComponent(lblPOSToMMSPostingCurrency, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(lblShowReportsInCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)
+                                .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbShowReportsInCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbPOSToMMSPostingCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbPOSToWebBooksPostingCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -4496,24 +4512,36 @@ public class frmPropertySetup extends javax.swing.JFrame
                     .addComponent(chkSendDBBackupOnMail, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkPrintQtyTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chkPrintOrderNoOnBill, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkPrintOrderNoOnBill, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkAutoAddKOTToBill, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chkPrintDeviceUserDtlOnKOT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkPrintDeviceUserDtlOnKOT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkFireCommunication, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cmbRemoveServiceChargeTaxCode)
                     .addComponent(lblRemoveServiceChargeTaxCode, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chkAutoAddKOTToBill, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chkFireCommunication, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUSDCrrencyConverionRate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUSDCrrencyConverionRate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chkShowReportsInUSD, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblShowReportsInCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbShowReportsInCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPOSToMMSPostingCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbPOSToMMSPostingCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelPOSSetup4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPOSToWebBooksCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelPOSSetup4Layout.createSequentialGroup()
+                        .addComponent(cmbPOSToWebBooksPostingCurrency)
+                        .addGap(1, 1, 1)))
+                .addGap(37, 37, 37))
         );
 
         tabbedPane.addTab("POS Setup 4", panelPOSSetup4);
@@ -6594,11 +6622,11 @@ public class frmPropertySetup extends javax.swing.JFrame
 		printQtyTotal = "Y";
 	    }
 
-	    String showReportsInUSD = "N";
-	    if (chkShowReportsInUSD.isSelected())
-	    {
-		showReportsInUSD = "Y";
-	    }
+	    String showReportsInCurrency = cmbShowReportsInCurrency.getSelectedItem().toString();	    
+	    String posToMMSPostingCurrency = cmbPOSToMMSPostingCurrency.getSelectedItem().toString();
+	    String posToWebBooksPostingCurrency = cmbPOSToWebBooksPostingCurrency.getSelectedItem().toString();
+	    
+	    
 
 	    /**
 	     *
@@ -7515,7 +7543,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 					+ ",strEnableNFCInterface,strBenowIntegrationYN,strXEmail,strMerchantCode,strAuthenticationKey,strSalt,strEnableLockTable"//204
 					+ ",strHomeDeliveryAreaForDirectBiller,strTakeAwayAreaForDirectBiller,strRoundOffBillFinalAmt,dblNoOfDecimalPlace,strSendDBBackupOnClientMail,strPrintOrderNoOnBillYN,strPrintDeviceAndUserDtlOnKOTYN "//211
 					+ ",strRemoveSCTaxCode,strAutoAddKOTToBill,strAreaWiseCostCenterKOTPrintingYN,strWERAOnlineOrderIntegration,strWERAMerchantOutletId,strWERAAuthenticationAPIKey"//217
-					+ ",strFireCommunication,dblUSDConverionRate,strDBBackupMailReceiver,strPrintMoveTableMoveKOTYN,strPrintQtyTotal,strShowReportsInUSD )"//223
+					+ ",strFireCommunication,dblUSDConverionRate,strDBBackupMailReceiver,strPrintMoveTableMoveKOTYN,strPrintQtyTotal"//222
+					+ ",strShowReportsInCurrency,strPOSToMMSPostingCurrency,strPOSToWebBooksPostingCurrency )"//225
 					+ "values('" + txtClientCode.getText() + "','" + txtClientName.getText() + "','" + txtShopAddressLine1.getText() + "','" + txtShopAddressLine2.getText() + "' "
 					+ ",'" + txtShopAddressLine3.getText() + "','" + txtEmailAddress.getText() + "','" + txtBillFooter.getText() + "','" + longFooter + "','" + cmbBillPaperSize.getSelectedItem().toString() + "' "
 					+ ",'" + negBilling + "','" + dayEnd + "','" + cmbPrintMode.getSelectedItem().toString() + "','" + discount + "','" + cityName + "' "
@@ -7559,7 +7588,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 					+ ",'" + strBenowIntegrationYN + "','" + txtXEmail.getText() + "','" + txtMerchantCode.getText() + "','" + txtAuthenticationKey.getText() + "','" + txtSalt.getText() + "','" + enableLockTables + "'"//204
 					+ ",'" + homeDeliveryAreaForDirectBiller + "','" + takeAwayAreaForDirectBiller + "','" + roundOffFinalBillAmount + "','" + dblNoOfDecimalPlace + "','" + sendDBBackupOnClientMail + "','" + printOrderNoOnBillYN + "','" + printDeviceAndUserDtlOnKOTYN + "'" //211
 					+ ",'" + removeSCTaxCode + "','" + autoAddKOTToBill + "','" + areaWiseCostCenterKOTPrinting + "','" + weraOnlineOrderIntegrationYN + "','" + weraMerchantOutletId + "','" + weraAuthenticationAPIKey + "' "
-					+ ",'" + fireCommunication + "','" + usdCurrencyConvertionRate + "','" + dbBackupMailReceiverMailIds + "','" + printMoveTableMoveKOTYN + "','" + printQtyTotal + "','" + showReportsInUSD + "')";//223
+					+ ",'" + fireCommunication + "','" + usdCurrencyConvertionRate + "','" + dbBackupMailReceiverMailIds + "','" + printMoveTableMoveKOTYN + "','" + printQtyTotal + "'"//222
+					+ ",'" + showReportsInCurrency + "','"+posToMMSPostingCurrency+"','"+posToWebBooksPostingCurrency+"')";//225
 			    }
 
 			    //You should change POS master for this
@@ -7609,7 +7639,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 				    + ",strEnableNFCInterface,strBenowIntegrationYN,strXEmail,strMerchantCode,strAuthenticationKey,strSalt,strEnableLockTable"//204
 				    + ",strHomeDeliveryAreaForDirectBiller,strTakeAwayAreaForDirectBiller,strRoundOffBillFinalAmt,dblNoOfDecimalPlace,strSendDBBackupOnClientMail,strPrintOrderNoOnBillYN,strPrintDeviceAndUserDtlOnKOTYN "//211
 				    + ",strRemoveSCTaxCode,strAutoAddKOTToBill,strAreaWiseCostCenterKOTPrintingYN,strWERAOnlineOrderIntegration,strWERAMerchantOutletId,strWERAAuthenticationAPIKey"//217
-				    + ",strFireCommunication,dblUSDConverionRate,strDBBackupMailReceiver,strPrintMoveTableMoveKOTYN,strPrintQtyTotal,strShowReportsInUSD )"//223
+				    + ",strFireCommunication,dblUSDConverionRate,strDBBackupMailReceiver,strPrintMoveTableMoveKOTYN,strPrintQtyTotal"//222
+				    + ",strShowReportsInCurrency,strPOSToMMSPostingCurrency,strPOSToWebBooksPostingCurrency )"//225
 				    + "values('" + txtClientCode.getText() + "','" + txtClientName.getText().replace("'", "\\'") + "','" + txtShopAddressLine1.getText().replaceAll("'", "\\'") + "','" + txtShopAddressLine2.getText().replaceAll("'", "\\'") + "' "
 				    + ",'" + txtShopAddressLine3.getText().replaceAll("'", "\\'") + "','" + txtEmailAddress.getText() + "','" + txtBillFooter.getText().replaceAll("'", "\\'") + "','" + longFooter + "','" + cmbBillPaperSize.getSelectedItem().toString() + "' "
 				    + ",'" + negBilling + "','" + dayEnd + "','" + cmbPrintMode.getSelectedItem().toString() + "','" + discount + "','" + cityName + "' "
@@ -7652,7 +7683,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 				    + ",'" + enableNFCInterface + "','" + strBenowIntegrationYN + "','" + txtXEmail.getText() + "','" + txtMerchantCode.getText() + "','" + txtAuthenticationKey.getText() + "','" + txtSalt.getText() + "','" + enableLockTables + "'"//204
 				    + ",'" + homeDeliveryAreaForDirectBiller + "','" + takeAwayAreaForDirectBiller + "','" + roundOffFinalBillAmount + "','" + dblNoOfDecimalPlace + "','" + sendDBBackupOnClientMail + "','" + printOrderNoOnBillYN + "','" + printDeviceAndUserDtlOnKOTYN + "' "//211
 				    + ",'" + removeSCTaxCode + "','" + autoAddKOTToBill + "','" + areaWiseCostCenterKOTPrinting + "','" + weraOnlineOrderIntegrationYN + "','" + weraMerchantOutletId + "','" + weraAuthenticationAPIKey + "' "//217
-				    + ",'" + fireCommunication + "','" + usdCurrencyConvertionRate + "','" + dbBackupMailReceiverMailIds + "','" + printMoveTableMoveKOTYN + "','" + printQtyTotal + "','" + showReportsInUSD + "')";//223
+				    + ",'" + fireCommunication + "','" + usdCurrencyConvertionRate + "','" + dbBackupMailReceiverMailIds + "','" + printMoveTableMoveKOTYN + "','" + printQtyTotal + "'"
+				    + ",'" + showReportsInCurrency + "','"+posToMMSPostingCurrency+"','"+posToWebBooksPostingCurrency+"')";//225
 			}
 			//You should change POS master for this
 
@@ -8536,7 +8568,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 				    + ",strEnableNFCInterface,strBenowIntegrationYN,strXEmail,strMerchantCode,strAuthenticationKey,strSalt,strEnableLockTable"//206
 				    + ",strHomeDeliveryAreaForDirectBiller,strTakeAwayAreaForDirectBiller,strRoundOffBillFinalAmt,dblNoOfDecimalPlace,strSendDBBackupOnClientMail,strPrintOrderNoOnBillYN,strPrintDeviceAndUserDtlOnKOTYN "//211
 				    + ",strRemoveSCTaxCode,strAutoAddKOTToBill,strAreaWiseCostCenterKOTPrintingYN,strWERAOnlineOrderIntegration,strWERAMerchantOutletId,strWERAAuthenticationAPIKey"//217
-				    + ",strFireCommunication,dblUSDConverionRate,strDBBackupMailReceiver,strPrintMoveTableMoveKOTYN,strPrintQtyTotal,strShowReportsInUSD )"//223
+				    + ",strFireCommunication,dblUSDConverionRate,strDBBackupMailReceiver,strPrintMoveTableMoveKOTYN,strPrintQtyTotal"//222
+				    + ",strShowReportsInCurrency,strPOSToMMSPostingCurrency,strPOSToWebBooksPostingCurrency  )"//225
 				    + "values('" + rsLikePOS.getString(1) + "','" + rsLikePOS.getString(2) + "','" + rsLikePOS.getString(3) + "','" + rsLikePOS.getString(4) + "' "
 				    + ",'" + rsLikePOS.getString(5) + "','" + rsLikePOS.getString(6) + "','" + rsLikePOS.getString(7) + "','" + rsLikePOS.getString(8) + "','" + rsLikePOS.getString(9) + "' "
 				    + ",'" + rsLikePOS.getString(10) + "','" + rsLikePOS.getString(11) + "','" + rsLikePOS.getString(12) + "','" + rsLikePOS.getString(13) + "','" + rsLikePOS.getString(14) + "' "
@@ -8582,7 +8615,8 @@ public class frmPropertySetup extends javax.swing.JFrame
 				    + ",'" + rsLikePOS.getString(198) + "','" + rsLikePOS.getString(199) + "','" + rsLikePOS.getString(200) + "','" + rsLikePOS.getString(201) + "','" + rsLikePOS.getString(202) + "','" + rsLikePOS.getString(203) + "','" + rsLikePOS.getString(204) + "'"//204
 				    + ",'" + rsLikePOS.getString(205) + "','" + rsLikePOS.getString(206) + "','" + rsLikePOS.getString(207) + "','" + rsLikePOS.getString(208) + "','" + rsLikePOS.getString(209) + "','" + rsLikePOS.getString(210) + "','" + rsLikePOS.getString(211) + "' "//211
 				    + ",'" + rsLikePOS.getString(212) + "','" + rsLikePOS.getString(213) + "','" + rsLikePOS.getString(214) + "','" + rsLikePOS.getString(215) + "','" + rsLikePOS.getString(216) + "','" + rsLikePOS.getString(217) + "'"//217
-				    + ",'" + rsLikePOS.getString(218) + "','" + rsLikePOS.getString(219) + "','" + rsLikePOS.getString(220) + "','" + rsLikePOS.getString(221) + "','" + rsLikePOS.getString(222) + "','" + rsLikePOS.getString(223) + "')";//223
+				    + ",'" + rsLikePOS.getString(218) + "','" + rsLikePOS.getString(219) + "','" + rsLikePOS.getString(220) + "','" + rsLikePOS.getString(221) + "','" + rsLikePOS.getString(222) + "'"//222
+				    + ",'" + rsLikePOS.getString(223) + "','" + rsLikePOS.getString(224) + "','" + rsLikePOS.getString(225) + "')";//225
 			}
 
 			if (cnt > 0)
@@ -8669,7 +8703,7 @@ public class frmPropertySetup extends javax.swing.JFrame
 				+ ",strAutoAddKOTToBill=?,strAreaWiseCostCenterKOTPrintingYN=?"
 				+ ",strWERAOnlineOrderIntegration=?,strWERAMerchantOutletId=?,strWERAAuthenticationAPIKey=? "
 				+ ",strFireCommunication=?,dblUSDConverionRate=?,strDBBackupMailReceiver=?,strPrintMoveTableMoveKOTYN=?,strPrintQtyTotal=? "
-				+ ",strShowReportsInUSD=? "
+				+ ",strShowReportsInCurrency=?,strPOSToMMSPostingCurrency=?,strPOSToWebBooksPostingCurrency=? "
 				+ "WHERE strClientCode =? and strPOSCode=? ;";
 
 			PreparedStatement objPstmt = clsGlobalVarClass.conPrepareStatement.prepareStatement(sqlUpdate);
@@ -8921,10 +8955,12 @@ public class frmPropertySetup extends javax.swing.JFrame
 			objPstmt.setString(213, dbBackupMailReceiverMailIds);
 			objPstmt.setString(214, printMoveTableMoveKOTYN);
 			objPstmt.setString(215, printQtyTotal);
-			objPstmt.setString(216, showReportsInUSD);
+			objPstmt.setString(216, showReportsInCurrency);
+			objPstmt.setString(217, posToMMSPostingCurrency);
+			objPstmt.setString(218, posToWebBooksPostingCurrency);
 
-			objPstmt.setString(217, txtClientCode.getText());
-			objPstmt.setString(218, newPropertyPOSCode);
+			objPstmt.setString(219, txtClientCode.getText());
+			objPstmt.setString(220, newPropertyPOSCode);
 
 			int affected = objPstmt.executeUpdate();
 
@@ -8934,6 +8970,7 @@ public class frmPropertySetup extends javax.swing.JFrame
 			    objSettlmentOptions.funAddSettelementOptions();
 			    objSettlmentOptions = null;
 			    new frmOkPopUp(this, "Updated Successfully", "Successfull", 3).setVisible(true);
+			    //Load data on this form
 			    funFillData();
 			}
 		    }
@@ -10685,10 +10722,6 @@ public class frmPropertySetup extends javax.swing.JFrame
 	// TODO add your handling code here:
     }//GEN-LAST:event_chkPrintQtyTotalActionPerformed
 
-    private void chkShowReportsInUSDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowReportsInUSDActionPerformed
-	// TODO add your handling code here:
-    }//GEN-LAST:event_chkShowReportsInUSDActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAuthorize;
@@ -10805,7 +10838,6 @@ public class frmPropertySetup extends javax.swing.JFrame
     private javax.swing.JCheckBox chkShowOnlyLoginPOSReports;
     private javax.swing.JCheckBox chkShowPopUpForNextItemQuantity;
     private javax.swing.JCheckBox chkShowPurchaseRateInDirectBiller;
-    private javax.swing.JCheckBox chkShowReportsInUSD;
     private javax.swing.JCheckBox chkShowUnSettlementForm;
     private javax.swing.JCheckBox chkSkip_Waiter_Selection;
     private javax.swing.JCheckBox chkSkip_pax_selection;
@@ -10850,6 +10882,8 @@ public class frmPropertySetup extends javax.swing.JFrame
     private javax.swing.JComboBox cmbNatureOfBusiness;
     private javax.swing.JComboBox cmbPOS;
     private javax.swing.JComboBox cmbPOSForDayEnd;
+    private javax.swing.JComboBox cmbPOSToMMSPostingCurrency;
+    private javax.swing.JComboBox cmbPOSToWebBooksPostingCurrency;
     private javax.swing.JComboBox cmbPostMMSSalesEffectCostOrLoc;
     private javax.swing.JComboBox cmbPriceFrom;
     private javax.swing.JComboBox cmbPrintMode;
@@ -10860,6 +10894,7 @@ public class frmPropertySetup extends javax.swing.JFrame
     private javax.swing.JComboBox cmbSendHomeDelivery;
     private javax.swing.JComboBox cmbServerName;
     private javax.swing.JComboBox cmbShowBillsDtlType;
+    private javax.swing.JComboBox cmbShowReportsInCurrency;
     private javax.swing.JComboBox cmbState;
     private javax.swing.JComboBox cmbStockInOption;
     private javax.swing.JComboBox cmbTakeAwayAreaForDirectBiller;
@@ -10976,6 +11011,8 @@ public class frmPropertySetup extends javax.swing.JFrame
     private javax.swing.JLabel lblOutletUID;
     private javax.swing.JLabel lblPOS;
     private javax.swing.JLabel lblPOSID;
+    private javax.swing.JLabel lblPOSToMMSPostingCurrency;
+    private javax.swing.JLabel lblPOSToWebBooksCurrency;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPickSettlementsFromPOSMaster;
     private javax.swing.JLabel lblPosName;
@@ -11010,6 +11047,7 @@ public class frmPropertySetup extends javax.swing.JFrame
     private javax.swing.JLabel lblShowBillsDtlType;
     private javax.swing.JLabel lblShowItemDtlsForChangeCustomerOnBill;
     private javax.swing.JLabel lblShowPopUpForNextItemQuantity;
+    private javax.swing.JLabel lblShowReportsInCurrency;
     private javax.swing.JLabel lblSlipNoForCreditCardBillYN;
     private javax.swing.JLabel lblStateCountry;
     private javax.swing.JLabel lblStkInOptions;

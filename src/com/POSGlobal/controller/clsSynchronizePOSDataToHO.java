@@ -8071,12 +8071,23 @@ public class clsSynchronizePOSDataToHO
 				    + " and date(a.dteBillDate) between '" + posDayEndDate + "' and '" + posDayEndDate + "' and "
 				    + " ( " + costcenterCriteria + " )  ";
 			}
+			
+			String iRate="b.dblRate";
+			String iAmount="sum(b.dblAmount)";
+			String iDiscAmt="sum(b.dblDiscountAmt)";
+			if(clsGlobalVarClass.gPOSToMMSPostingCurrency.equalsIgnoreCase("USD"))
+			{
+			    iRate="b.dblRate/a.dblUSDConverionRate";
+			    iAmount="sum(b.dblAmount/a.dblUSDConverionRate)";
+			    iDiscAmt="sum(b.dblDiscountAmt/a.dblUSDConverionRate)";
+			}
+			
 
 			if (itemType.equals("Both"))
 			{
-			    sql = "select b.strItemCode,b.strItemName,sum(b.dblQuantity),b.dblRate,a.strPOSCode"
+			    sql = "select b.strItemCode,b.strItemName,sum(b.dblQuantity),"+iRate+",a.strPOSCode"
 				    + ",date(a.dteBillDate),'" + gClientCode + "', c.strWSProductCode,d.strPosName"
-				    + ",sum(b.dblAmount),sum(b.dblDiscountPer),sum(b.dblDiscountAmt),h.strItemType "
+				    + ","+iAmount+",sum(b.dblDiscountPer),"+iDiscAmt+",h.strItemType "
 				    + "from tblbillhd a,tblbilldtl b, tblitemmasterlinkupdtl c,tblposmaster d, "
 				    + "tblmenuitempricingdtl f,tblcostcentermaster g,tblitemmaster h "
 				    + "where a.strBillNo=b.strBillNo  "
@@ -8089,9 +8100,9 @@ public class clsSynchronizePOSDataToHO
 				    + filter
 				    + "group by f.strCostCenterCode,b.strItemCode order by f.strCostCenterCode,a.dteBillDate ";
 
-			    qFileSql = "select b.strItemCode,b.strItemName,sum(b.dblQuantity),b.dblRate,a.strPOSCode"
+			    qFileSql = "select b.strItemCode,b.strItemName,sum(b.dblQuantity),"+iRate+",a.strPOSCode"
 				    + ",date(a.dteBillDate),'" + gClientCode + "', c.strWSProductCode,d.strPosName "
-				    + ",sum(b.dblAmount),sum(b.dblDiscountPer),sum(b.dblDiscountAmt),h.strItemType "
+				    + ","+iAmount+",sum(b.dblDiscountPer),"+iDiscAmt+",h.strItemType "
 				    + "from tblqbillhd a,tblqbilldtl b, tblitemmasterlinkupdtl c,tblposmaster d,  "
 				    + "tblmenuitempricingdtl f,tblcostcentermaster g,tblitemmaster h "
 				    + "where a.strBillNo=b.strBillNo  "
@@ -8105,10 +8116,10 @@ public class clsSynchronizePOSDataToHO
 			}
 			else if (itemType.equals("Liquor"))
 			{
-			    sql = "select b.strItemCode,b.strItemName,sum(b.dblQuantity),b.dblRate,a.strPOSCode"
+			    sql = "select b.strItemCode,b.strItemName,sum(b.dblQuantity),"+iRate+",a.strPOSCode"
 				    + ",date(a.dteBillDate),'" + gClientCode + "' ,c.strWSProductCode,e.strPosName, "
 				    + " f.strCostCenterCode,g.strCostCenterName "
-				    + ",sum(b.dblAmount),sum(b.dblDiscountPer),sum(b.dblDiscountAmt),d.strItemType "
+				    + ","+iAmount+",sum(b.dblDiscountPer),"+iDiscAmt+",d.strItemType "
 				    + "from tblbillhd a,tblbilldtl b, tblitemmasterlinkupdtl c,tblitemmaster d,tblposmaster e,  "
 				    + "tblmenuitempricingdtl f,tblcostcentermaster g "
 				    + "where a.strBillNo=b.strBillNo "
@@ -8123,10 +8134,10 @@ public class clsSynchronizePOSDataToHO
 				    + filter
 				    + "group by f.strCostCenterCode,b.strItemCode order by f.strCostCenterCode,a.dteBillDate ";
 
-			    qFileSql = "select b.strItemCode,b.strItemName,sum(b.dblQuantity),b.dblRate,a.strPOSCode"
+			    qFileSql = "select b.strItemCode,b.strItemName,sum(b.dblQuantity),"+iRate+",a.strPOSCode"
 				    + ",date(a.dteBillDate),'" + gClientCode + "' ,c.strWSProductCode,e.strPosName, "
 				    + " f.strCostCenterCode,g.strCostCenterName "
-				    + ",sum(b.dblAmount),sum(b.dblDiscountPer),sum(b.dblDiscountAmt),d.strItemType "
+				    + ","+iAmount+",sum(b.dblDiscountPer),"+iDiscAmt+",d.strItemType "
 				    + "from tblqbillhd a,tblqbilldtl b, tblitemmasterlinkupdtl c,tblitemmaster d,tblposmaster e, "
 				    + "tblmenuitempricingdtl f,tblcostcentermaster g "
 				    + "where a.strBillNo=b.strBillNo "
@@ -8144,10 +8155,10 @@ public class clsSynchronizePOSDataToHO
 			}
 			else
 			{
-			    sql = "select b.strItemCode,b.strItemName,sum(b.dblQuantity),b.dblRate,a.strPOSCode"
+			    sql = "select b.strItemCode,b.strItemName,sum(b.dblQuantity),"+iRate+",a.strPOSCode"
 				    + ",date(a.dteBillDate),'" + gClientCode + "' ,c.strWSProductCode,e.strPosName, "
 				    + " f.strCostCenterCode,g.strCostCenterName "
-				    + ",sum(b.dblAmount),sum(b.dblDiscountPer),sum(b.dblDiscountAmt),d.strItemType "
+				    + ","+iAmount+",sum(b.dblDiscountPer),"+iDiscAmt+",d.strItemType "
 				    + "from tblbillhd a,tblbilldtl b, tblitemmasterlinkupdtl c,tblitemmaster d,tblposmaster e,  "
 				    + "tblmenuitempricingdtl f,tblcostcentermaster g "
 				    + "where a.strBillNo=b.strBillNo "
@@ -8162,10 +8173,10 @@ public class clsSynchronizePOSDataToHO
 				    + filter
 				    + "group by f.strCostCenterCode,b.strItemCode order by f.strCostCenterCode,a.dteBillDate ";
 
-			    qFileSql = "select b.strItemCode,b.strItemName,sum(b.dblQuantity),b.dblRate,a.strPOSCode"
+			    qFileSql = "select b.strItemCode,b.strItemName,sum(b.dblQuantity),"+iRate+",a.strPOSCode"
 				    + ",date(a.dteBillDate),'" + gClientCode + "' ,c.strWSProductCode,e.strPosName, "
 				    + " f.strCostCenterCode,g.strCostCenterName "
-				    + ",sum(b.dblAmount),sum(b.dblDiscountPer),sum(b.dblDiscountAmt),d.strItemType "
+				    + ","+iAmount+",sum(b.dblDiscountPer),"+iDiscAmt+",d.strItemType "
 				    + "from tblqbillhd a,tblqbilldtl b, tblitemmasterlinkupdtl c,tblitemmaster d,tblposmaster e,   "
 				    + "tblmenuitempricingdtl f,tblcostcentermaster g "
 				    + "where a.strBillNo=b.strBillNo "

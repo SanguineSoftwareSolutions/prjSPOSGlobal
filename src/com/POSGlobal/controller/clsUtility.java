@@ -3501,13 +3501,34 @@ public class clsUtility implements Cloneable
 	double roundOff = 0, creditAmt = 0, debitAmt = 0;
 	try
 	{
+
+	    String gAmount = "SUM(b.dblAmount)";
+	    String gTaxAmount = "SUM(b.dblTaxAmount)";
+	    String gDiscAmount = "sum(a.dblDiscountAmt)";
+	    
+	    
+	    String settlementAmount = "IFNULL(SUM(b.dblSettlementAmt),0)";
+	    String cashSettlementAmt = " IFNULL(SUM(b.dblSettlementAmt),0)";
+	    String memberSettlementAmount = "b.dblSettlementAmt";
+	    if (clsGlobalVarClass.gPOSToWebBooksPostingCurrency.equalsIgnoreCase("USD"))
+	    {
+		gAmount = "SUM(b.dblAmount/a.dblUSDConverionRate)";
+		gTaxAmount = "SUM(b.dblTaxAmount/a.dblUSDConverionRate)";
+		gDiscAmount = "sum(a.dblDiscountAmt/a.dblUSDConverionRate)";
+	
+		
+		settlementAmount = "IFNULL(SUM(b.dblSettlementAmt/a.dblUSDConverionRate),0)";
+		cashSettlementAmt = " IFNULL(SUM(b.dblSettlementAmt/a.dblUSDConverionRate),0)";
+		memberSettlementAmount = "b.dblSettlementAmt/a.dblUSDConverionRate";
+	    }
+
 	    JSONObject jObj = new JSONObject();
 
 	    jObj.put("POSCode", posCode);
 	    jObj.put("POSDate", billDate);
 	    jObj.put("User", clsGlobalVarClass.gUserCode);
 
-	    String sql_SubGroupWise = "SELECT a.strPOSCode, IFNULL(d.strSubGroupCode,'NA'), IFNULL(d.strSubGroupName,'NA'), SUM(b.dblAmount), DATE(a.dteBillDate),d.strAccountCode "
+	    String sql_SubGroupWise = "SELECT a.strPOSCode, IFNULL(d.strSubGroupCode,'NA'), IFNULL(d.strSubGroupName,'NA')," + gAmount + ", DATE(a.dteBillDate),d.strAccountCode "
 		    + "FROM tblbillhd a,tblbilldtl b,tblitemmaster c,tblsubgrouphd d  "
 		    + "WHERE a.strPOSCode='" + posCode + "' "
 		    + "and a.strBillNo=b.strBillNo "
@@ -3537,7 +3558,7 @@ public class clsUtility implements Cloneable
 	    rsSubGroupWise.close();
 	    jObj.put("SubGroupwise", arrObjSubGroupwise);
 
-	    String sql_TaxWise = "SELECT a.strPOSCode,c.strTaxCode,c.strTaxDesc, SUM(b.dblTaxAmount), DATE(a.dteBillDate),c.strAccountCode "
+	    String sql_TaxWise = "SELECT a.strPOSCode,c.strTaxCode,c.strTaxDesc," + gTaxAmount + " , DATE(a.dteBillDate),c.strAccountCode "
 		    + "FROM tblbillhd a,tblbilltaxdtl b , tbltaxhd c "
 		    + "where a.strPOSCode='" + posCode + "' "
 		    + "and a.strBillNo=b.strBillNo "
@@ -3566,7 +3587,7 @@ public class clsUtility implements Cloneable
 	    rsTaxWise.close();
 	    jObj.put("Taxwise", arrObjTaxwise);
 
-	    String sql_Discount = "select a.strPOSCode,sum(a.dblDiscountAmt),date(a.dteBillDate),b.strRoundOff,b.strTip,b.strDiscount "
+	    String sql_Discount = "select a.strPOSCode," + gDiscAmount + ",date(a.dteBillDate),b.strRoundOff,b.strTip,b.strDiscount "
 		    + "from tblbillhd a,tblposmaster b "
 		    + "where a.strPOSCode='" + posCode + "' "
 		    + " and a.strPOSCode=b.strPosCode "
@@ -3597,7 +3618,7 @@ public class clsUtility implements Cloneable
 	    rsDiscount.close();
 	    jObj.put("Discountwise", arrObjDiscountwise);
 
-	    String sql_Settlement = "SELECT a.strPOSCode, IFNULL(b.strSettlementCode,''), IFNULL(c.strSettelmentDesc,''), IFNULL(SUM(b.dblSettlementAmt),0), DATE(a.dteBillDate),c.strAccountCode "
+	    String sql_Settlement = "SELECT a.strPOSCode, IFNULL(b.strSettlementCode,''), IFNULL(c.strSettelmentDesc,'')," + settlementAmount + " , DATE(a.dteBillDate),c.strAccountCode "
 		    + "FROM tblbillhd a,tblbillsettlementdtl b ,tblsettelmenthd c  "
 		    + "WHERE  a.strPOSCode='" + posCode + "' and "
 		    //     + " c.strSettelmentType='Member'  "
@@ -3625,7 +3646,7 @@ public class clsUtility implements Cloneable
 	    rsCashSettlement.close();
 	    jObj.put("MemberSettlewise", arrObjMemberSettlewise);
 
-	    sql_Settlement = "SELECT a.strPOSCode, IFNULL(b.strSettlementCode,''), IFNULL(c.strSettelmentDesc,''), IFNULL(SUM(b.dblSettlementAmt),0), DATE(a.dteBillDate),c.strAccountCode "
+	    sql_Settlement = "SELECT a.strPOSCode, IFNULL(b.strSettlementCode,''), IFNULL(c.strSettelmentDesc,'')," + cashSettlementAmt + ", DATE(a.dteBillDate),c.strAccountCode "
 		    + "FROM tblbillhd a,tblbillsettlementdtl b ,tblsettelmenthd c  "
 		    + "WHERE c.strSettelmentType='Cash' "
 		    + "AND a.strPOSCode='" + posCode + "' "
@@ -3654,7 +3675,7 @@ public class clsUtility implements Cloneable
 	    jObj.put("CashSettlewise", arrObjCashSettlewise);
 
 	    String sql_MemberCL = "select left(a.strCustomerCode,8),d.strCustomerName,a.strBillNo,date(a.dteBillDate)"
-		    + ",b.dblSettlementAmt,c.strAccountCode "
+		    + "," + memberSettlementAmount + ",c.strAccountCode "
 		    + "from tblbillhd a,tblbillsettlementdtl b,tblsettelmenthd c,tblcustomermaster d "
 		    + "where a.strBillNo=b.strBillNo "
 		    + "and b.strSettlementCode=c.strSettelmentCode "
@@ -3771,11 +3792,28 @@ public class clsUtility implements Cloneable
 	double roundOff = 0, creditAmt = 0, debitAmt = 0;
 	try
 	{
+
+	    String gAmount="sum(b.dblAmount)";
+	    String taxAmount="sum(b.dblTaxAmount)";
+	    String discAmount="sum(dblDiscountAmt)";
+	    String settlementAmount="ifnull(sum(b.dblSettlementAmt),0)";
+	    String cashSettlementAmount="ifnull(sum(b.dblSettlementAmt),0)";
+	    String memberSettlementAmount="b.dblSettlementAmt";
+	    if (clsGlobalVarClass.gPOSToWebBooksPostingCurrency.equalsIgnoreCase("USD"))
+	    {
+		gAmount="sum(b.dblAmount/a.dblUSDConverionRate)";
+		taxAmount="sum(b.dblTaxAmount/a.dblUSDConverionRate)";
+		discAmount="sum(dblDiscountAmt/a.dblUSDConverionRate)";
+		settlementAmount="ifnull(sum(b.dblSettlementAmt/a.dblUSDConverionRate),0)";
+		cashSettlementAmount="ifnull(sum(b.dblSettlementAmt/a.dblUSDConverionRate),0)";
+		memberSettlementAmount="b.dblSettlementAmt/a.dblUSDConverionRate";
+	    }
+
 	    JSONObject jObj = new JSONObject();
 	    JSONArray arrObj = new JSONArray();
 
 	    String sql_SubGroupWise = "select a.strPOSCode,ifnull(d.strSubGroupCode,'NA'),ifnull(d.strSubGroupName,'NA')"
-		    + ",sum(b.dblAmount),date(a.dteBillDate) "
+		    + ","+gAmount+",date(a.dteBillDate) "
 		    + "from tblbillhd a left outer join tblbilldtl b on a.strBillNo=b.strBillNo "
 		    + "left outer join tblitemmaster c on b.strItemCode=c.strItemCode "
 		    + "left outer join tblsubgrouphd d on c.strSubGroupCode=d.strSubGroupCode "
@@ -3800,7 +3838,7 @@ public class clsUtility implements Cloneable
 	    }
 	    rsSubGroupWise.close();
 
-	    String sql_TaxWise = "select a.strPOSCode,c.strTaxCode,c.strTaxDesc,sum(b.dblTaxAmount),date(a.dteBillDate) "
+	    String sql_TaxWise = "select a.strPOSCode,c.strTaxCode,c.strTaxDesc,"+taxAmount+",date(a.dteBillDate) "
 		    + "from tblbillhd a left outer join tblbilltaxdtl b on a.strBillNo=b.strBillNo "
 		    + "left outer join tbltaxhd c on b.strTaxCode=c.strTaxCode "
 		    + "where a.strPOSCode='" + posCode + "' "
@@ -3825,7 +3863,7 @@ public class clsUtility implements Cloneable
 	    }
 	    rsTaxWise.close();
 
-	    String sql_Discount = "select strPOSCode,sum(dblDiscountAmt),date(dteBillDate) "
+	    String sql_Discount = "select strPOSCode,"+discAmount+",date(dteBillDate) "
 		    + "from tblbillhd "
 		    + "where strPOSCode='" + posCode + "' "
 		    + "group by strPOSCode";
@@ -3846,27 +3884,9 @@ public class clsUtility implements Cloneable
 	    }
 	    rsDiscount.close();
 
-	    /*
-             * String sql_RoundOff="SELECT strPOSCode,sum((dbltaxamt +
-             * dblsubtotal) - dblgrandtotal)" + ",date(dteBillDate) " + "from
-             * tblbillhd where strPOSCode= '"+clsGlobalVarClass.gPOSCode+"'";
-             * ResultSet
-             * rsRoundOff=clsGlobalVarClass.dbMysql.executeResultSet(sql_RoundOff);
-             * while(rsRoundOff.next()) { JSONObject objRoundOff=new
-             * JSONObject();
-             * objRoundOff.put("RVCode",rsRoundOff.getString(1)+"-Roff");
-             * objRoundOff.put("RVName",clsGlobalVarClass.gPOSName+"-Roff");
-             * objRoundOff.put("CRAmt",0);
-             * objRoundOff.put("DRAmt",rsRoundOff.getDouble(2));
-             * objRoundOff.put("ClientCode",clsGlobalVarClass.gClientCode);
-             * objRoundOff.put("BillDate",rsRoundOff.getString(3));
-             * objRoundOff.put("CMSPOSCode",clsGlobalVarClass.gCMSPOSCode);
-             * objRoundOff.put("POSCode",clsGlobalVarClass.gPOSCode);
-             * objRoundOff.put("BillDateTo",rsRoundOff.getString(3));
-             * arrObj.add(objRoundOff); } rsRoundOff.close();
-	     */
+	  
 	    String sql_Settlement = "select a.strPOSCode,ifnull(b.strSettlementCode,'')"
-		    + " ,ifnull(c.strSettelmentDesc,''),ifnull(sum(b.dblSettlementAmt),0),date(a.dteBillDate) "
+		    + " ,ifnull(c.strSettelmentDesc,''),"+settlementAmount+",date(a.dteBillDate) "
 		    + " from tblbillhd a left outer join tblbillsettlementdtl b on a.strBillNo=b.strBillNo "
 		    + " left outer join tblsettelmenthd c on b.strSettlementCode=c.strSettelmentCode "
 		    + " where c.strSettelmentType='Member' and a.strPOSCode='" + posCode + "' "
@@ -3891,7 +3911,7 @@ public class clsUtility implements Cloneable
 	    rsSettlement.close();
 
 	    sql_Settlement = "select a.strPOSCode,ifnull(b.strSettlementCode,'')"
-		    + " ,ifnull(c.strSettelmentDesc,''),ifnull(sum(b.dblSettlementAmt),0),date(a.dteBillDate) "
+		    + " ,ifnull(c.strSettelmentDesc,''),"+cashSettlementAmount+",date(a.dteBillDate) "
 		    + " from tblbillhd a left outer join tblbillsettlementdtl b on a.strBillNo=b.strBillNo "
 		    + " left outer join tblsettelmenthd c on b.strSettlementCode=c.strSettelmentCode "
 		    + " where c.strSettelmentType='Cash' and a.strPOSCode='" + posCode + "' "
@@ -3981,7 +4001,7 @@ public class clsUtility implements Cloneable
                  * strPOSCode='"+clsGlobalVarClass.gPOSCode+"' " + "and
                  * strSettelmentMode='Member'";
 		 */
-		String sql_MemberCL = "select left(a.strCustomerCode,8),d.strCustomerName,a.strBillNo,date(a.dteBillDate),b.dblSettlementAmt "
+		String sql_MemberCL = "select left(a.strCustomerCode,8),d.strCustomerName,a.strBillNo,date(a.dteBillDate),"+memberSettlementAmount+" "
 			+ "from tblbillhd a,tblbillsettlementdtl b,tblsettelmenthd c,tblcustomermaster d "
 			+ "where a.strBillNo=b.strBillNo and b.strSettlementCode=c.strSettelmentCode "
 			+ "and a.strCustomerCode=d.strCustomerCode "

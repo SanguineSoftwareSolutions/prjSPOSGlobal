@@ -137,7 +137,7 @@ public class clsGlobalVarClass
     public static Vector vArrSearchColumnSize;
 
     public static Logger gLog;
-    public static boolean gNewBillSeriesForNewDay, gAreaWisePromotions, gPrintItemsOnMoveKOTMoveTable,gPrintMoveTableMoveKOT,gPrintQtyTotal,gShowReportsInUSD;
+    public static boolean gNewBillSeriesForNewDay, gAreaWisePromotions, gPrintItemsOnMoveKOTMoveTable,gPrintMoveTableMoveKOT,gPrintQtyTotal;
     public static boolean gShowOnlyLoginPOSReports, gEnableDineIn;
     public static boolean gAutoAreaSelectionInMakeKOT, gShowUnSettletmentForm, gPrintOpenItemsOnBill, gPrintHomeDeliveryYN, gWERAOnlineOrderIntegration;
     public static boolean gShowPurRateInDirectBiller;
@@ -149,6 +149,8 @@ public class clsGlobalVarClass
     public static boolean gRoundOffBillFinalAmount, gSendDBBackUpOnClientMail, gPrintOrderNoOnBillYN, gPrintDeviceAndUserDtlOnKOTYN, gAutoAddKOTToBill, gAreaWiseCostCenterKOTPrinting;
     public static int gNoOfDecimalPlace = 2, gNoOfDaysReportsView = 0;
     public static double gUSDConvertionRate;
+    public static String gShowReportsInCurrency,gPOSToMMSPostingCurrency,gPOSToWebBooksPostingCurrency;
+    
 
 // Constructor to initialize property setup parameters.
     public clsGlobalVarClass(String posCode) throws Exception
@@ -3304,11 +3306,10 @@ public class clsGlobalVarClass
 		  gPrintQtyTotal=true; 
 	    }
 	    
-	    gShowReportsInUSD=false; 
-	    if(rs.getString(223).equalsIgnoreCase("Y"))
-	    {
-		  gShowReportsInUSD=true; 
-	    }
+	    gShowReportsInCurrency=rs.getString(223);
+	    gPOSToMMSPostingCurrency=rs.getString(224);
+	    gPOSToWebBooksPostingCurrency=rs.getString(225);
+	    
 	    
 	    
 	    
@@ -3349,20 +3350,7 @@ public class clsGlobalVarClass
     public static DecimalFormat funGetGlobalDecimalFormatter()
     {
 
-	StringBuilder decimalFormatBuilderForDoubleValue = new StringBuilder("0");
-	for (int i = 0; i < clsGlobalVarClass.gNoOfDecimalPlace; i++)
-	{
-	    if (i == 0)
-	    {
-		decimalFormatBuilderForDoubleValue.append(".0");
-	    }
-	    else
-	    {
-		decimalFormatBuilderForDoubleValue.append("0");
-	    }
-	}
-
-	DecimalFormat gDecimalFormat = new DecimalFormat(decimalFormatBuilderForDoubleValue.toString());
+	DecimalFormat gDecimalFormat = new DecimalFormat(funGetGlobalDecimalFormatString());
 
 	return gDecimalFormat;
     }

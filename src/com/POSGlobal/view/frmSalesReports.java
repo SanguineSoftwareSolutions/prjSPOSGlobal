@@ -4573,8 +4573,16 @@ public class frmSalesReports extends javax.swing.JFrame
 		sbSqlFilters.setLength(0);
 		sbSqlDisFilters.setLength(0);
 
+		String gGrandTotal = "sum(d.dblSettlementAmt)";
+		String gDiscAmount="sum(b.dblDiscountAmt)";
+		if (cmbCurrency.getSelectedItem().toString().equalsIgnoreCase("USD"))
+		{
+		    gGrandTotal = "sum(d.dblSettlementAmt/b.dblUSDConverionRate)";
+		    gDiscAmount="sum(b.dblDiscountAmt/b.dblUSDConverionRate)";
+		}
+
 		sbSqlLive.append(" SELECT a.strUserCode, a.strUserName, c.strPOSName,e.strSettelmentDesc "
-			+ " ,sum(d.dblSettlementAmt),'SANGUINE',c.strPosCode, d.strSettlementCode "
+			+ " ,"+gGrandTotal+",'SANGUINE',c.strPosCode, d.strSettlementCode "
 			+ " FROM tbluserhd a "
 			+ " INNER JOIN tblbillhd b ON a.strUserCode = b.strUserEdited "
 			+ " inner join tblposmaster c on b.strPOSCode=c.strPOSCode "
@@ -4583,7 +4591,7 @@ public class frmSalesReports extends javax.swing.JFrame
 			+ " WHERE date( b.dteBillDate ) BETWEEN '" + fromDate + "' AND '" + toDate + "' ");
 
 		sbSqlQFile.append(" SELECT a.strUserCode, a.strUserName, c.strPOSName,e.strSettelmentDesc "
-			+ " ,sum(d.dblSettlementAmt),'SANGUINE',c.strPosCode, d.strSettlementCode "
+			+ " ,"+gGrandTotal+",'SANGUINE',c.strPosCode, d.strSettlementCode "
 			+ " FROM tbluserhd a "
 			+ " INNER JOIN tblqbillhd b ON a.strUserCode = b.strUserEdited "
 			+ " inner join tblposmaster c on b.strPOSCode=c.strPOSCode "
@@ -4714,14 +4722,14 @@ public class frmSalesReports extends javax.swing.JFrame
 		rsOperator.close();
 
 		sbSqlDisLive.append("SELECT a.strUserCode, a.strUserName, c.strPOSName"
-			+ " ,sum(b.dblDiscountAmt),'SANGUINE',c.strPosCode "
+			+ " ,"+gDiscAmount+",'SANGUINE',c.strPosCode "
 			+ " FROM tbluserhd a "
 			+ " INNER JOIN tblbillhd b ON a.strUserCode = b.strUserEdited "
 			+ " inner join tblposmaster c on b.strPOSCode=c.strPOSCode "
 			+ " WHERE date( b.dteBillDate ) BETWEEN '" + fromDate + "' AND '" + toDate + "' ");
 
 		sbSqlQDisFile.append("  SELECT a.strUserCode, a.strUserName, c.strPOSName "
-			+ " ,sum(b.dblDiscountAmt),'SANGUINE',c.strPosCode "
+			+ " ,"+gDiscAmount+",'SANGUINE',c.strPosCode "
 			+ " FROM tbluserhd a "
 			+ " INNER JOIN tblqbillhd b ON a.strUserCode = b.strUserEdited "
 			+ " inner join tblposmaster c on b.strPOSCode=c.strPOSCode "
@@ -7227,14 +7235,20 @@ public class frmSalesReports extends javax.swing.JFrame
 	    sbSqlQFileBill.setLength(0);
 	    sbSqlFilters.setLength(0);
 
+	    String gAmount = "sum(a.dblGrandTotal)";
+	    if (cmbCurrency.getSelectedItem().toString().equalsIgnoreCase("USD"))
+	    {
+		gAmount = "sum(a.dblGrandTotal/a.dblUSDConverionRate)";
+	    }
+
 	    sbSqlLiveBill.append("select b.strCustomerCode,b.strCustomerName "
-		    + " ,a.strBillNo,sum(a.dblGrandTotal),'" + clsGlobalVarClass.gUserCode + "' "
+		    + " ,a.strBillNo," + gAmount + ",'" + clsGlobalVarClass.gUserCode + "' "
 		    + " from tblbillhd a,tblcustomermaster b "
 		    + " where a.strCustomerCode=b.strCustomerCode and a.strCustomerCode='" + txtCustomerCode.getText().trim() + "' "
 		    + " and date(a.dteBillDate) between '" + DateFrom + "' and '" + DateTo + "'");
 
 	    sbSqlQFileBill.append("select b.strCustomerCode,b.strCustomerName "
-		    + " ,a.strBillNo,sum(a.dblGrandTotal),'" + clsGlobalVarClass.gUserCode + "' "
+		    + " ,a.strBillNo," + gAmount + ",'" + clsGlobalVarClass.gUserCode + "' "
 		    + " from tblqbillhd a,tblcustomermaster b "
 		    + " where a.strCustomerCode=b.strCustomerCode and a.strCustomerCode='" + txtCustomerCode.getText().trim() + "' "
 		    + " and date(a.dteBillDate) between '" + DateFrom + "' and '" + DateTo + "'");
@@ -7415,15 +7429,21 @@ public class frmSalesReports extends javax.swing.JFrame
 	    sbSqlQFileBill.setLength(0);
 	    sbSqlFilters.setLength(0);
 
+	    String gGrandTotal = "ifnull(sum(a.dblGrandTotal),'0.00')";
+	    if (cmbCurrency.getSelectedItem().toString().equalsIgnoreCase("USD"))
+	    {
+		gGrandTotal = "ifnull(sum(a.dblGrandTotal/a.dblUSDConverionRate),'0.00')";
+	    }
+
 	    sbSqlLiveBill.append("select ifnull(b.strCustomerCode,'ND'),ifnull(b.strCustomerName,'ND')"
-		    + ",ifnull(count(a.strBillNo),'0'),ifnull(sum(a.dblGrandTotal),'0.00')"
+		    + ",ifnull(count(a.strBillNo),'0')," + gGrandTotal + " "
 		    + ",'" + clsGlobalVarClass.gUserCode + "',b.longMobileNo,b.dteDOB "
 		    + "from tblbillhd a,tblcustomermaster b "
 		    + "where a.strCustomerCode=b.strCustomerCode "
 		    + "and date(a.dteBillDate) between '" + DateFrom + "' and '" + DateTo + "'");
 
 	    sbSqlQFileBill.append("select ifnull(b.strCustomerCode,'ND'),ifnull(b.strCustomerName,'ND')"
-		    + ",ifnull(count(a.strBillNo),'0'),ifnull(sum(a.dblGrandTotal),'0.00')"
+		    + ",ifnull(count(a.strBillNo),'0')," + gGrandTotal + "  "
 		    + ",'" + clsGlobalVarClass.gUserCode + "',b.longMobileNo,b.dteDOB "
 		    + "from tblqbillhd a,tblcustomermaster b "
 		    + "where a.strCustomerCode=b.strCustomerCode "
@@ -7624,9 +7644,15 @@ public class frmSalesReports extends javax.swing.JFrame
 	    sbSqlQFileBill.setLength(0);
 	    sbSqlFilters.setLength(0);
 
+	    String gAmount = "sum(b.dblAmount)";
+	    if (cmbCurrency.getSelectedItem().toString().equalsIgnoreCase("USD"))
+	    {
+		gAmount = "sum(b.dblAmount/a.dblUSDConverionRate)";
+	    }
+
 	    sbSqlLiveBill.append("select a.strBillNo,date(a.dteBillDate)"
 		    + ",c.strCustomerCode,c.strCustomerName,d.strItemName"
-		    + ",sum(b.dblQuantity),sum(b.dblAmount),'" + clsGlobalVarClass.gUserCode + "' "
+		    + ",sum(b.dblQuantity)," + gAmount + ",'" + clsGlobalVarClass.gUserCode + "' "
 		    + "from tblbillhd a,tblbilldtl b,tblcustomermaster c,tblitemmaster d "
 		    + "where a.strBillNo=b.strBillNo and a.strClientCode=b.strClientCode and a.strCustomerCode=c.strCustomerCode "
 		    + "and b.strItemCode=d.strItemCode and a.strCustomerCode='" + txtCustomerCode.getText() + "'"
@@ -7634,7 +7660,7 @@ public class frmSalesReports extends javax.swing.JFrame
 
 	    sbSqlQFileBill.append("select a.strBillNo,date(a.dteBillDate)"
 		    + ",c.strCustomerCode,c.strCustomerName,d.strItemName"
-		    + ",sum(b.dblQuantity),sum(b.dblAmount),'" + clsGlobalVarClass.gUserCode + "' "
+		    + ",sum(b.dblQuantity)," + gAmount + ",'" + clsGlobalVarClass.gUserCode + "' "
 		    + "from tblqbillhd a,tblqbilldtl b,tblcustomermaster c,tblitemmaster d "
 		    + "where a.strBillNo=b.strBillNo and a.strClientCode=b.strClientCode and a.strCustomerCode=c.strCustomerCode "
 		    + "and b.strItemCode=d.strItemCode and a.strCustomerCode='" + txtCustomerCode.getText() + "'"

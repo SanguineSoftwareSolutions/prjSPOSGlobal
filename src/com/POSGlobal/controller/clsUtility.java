@@ -1992,7 +1992,7 @@ public class clsUtility implements Cloneable
 	double debitCardBalance = 0;
 	String sql = "";
 
-	sql = "select a.strCardNo,a.dblRedeemAmt,c.dblcardvaluefixed "
+	sql = "select a.strCardNo,a.dblRedeemAmt,c.dblcardvaluefixed,c.dblDepositAmt "
 		+ " from tbldebitcardmaster a,tbldebitcardtype c "
 		+ " where a.strCardTypeCode=c.strCardTypeCode and a.strCardString='" + clsGlobalVarClass.gDebitCardNo + "'";
 
@@ -2001,6 +2001,7 @@ public class clsUtility implements Cloneable
 	{
 	    String debitCardNo = rsDebitCardNo.getString(1);
 	    debitCardBalance = rsDebitCardNo.getDouble(2) - rsDebitCardNo.getDouble(3);
+	    debitCardBalance = debitCardBalance -rsDebitCardNo.getDouble(4);
 
 	    sql = "select sum(dblAmount),dblTaxAmt "
 		    + " from tblitemrtemp "
@@ -2034,12 +2035,15 @@ public class clsUtility implements Cloneable
 	double debitCardBalance = 0;
 	String sql = "";
 
-	ResultSet rsDebitCardNo = clsGlobalVarClass.dbMysql.executeResultSet("select strCardNo,dblRedeemAmt "
-		+ "from tbldebitcardmaster where strCardString='" + clsGlobalVarClass.gDebitCardNo + "'");
+	ResultSet rsDebitCardNo = clsGlobalVarClass.dbMysql.executeResultSet("SELECT a.strCardNo,a.dblRedeemAmt,c.dblcardvaluefixed,c.dblDepositAmt "
+		+"FROM tbldebitcardmaster a,tbldebitcardtype c "
+		+"WHERE a.strCardTypeCode=c.strCardTypeCode "
+		+ "AND a.strCardString='"+clsGlobalVarClass.gDebitCardNo+"' ");
 	if (rsDebitCardNo.next())
 	{
 	    String debitCardNo = rsDebitCardNo.getString(1);
 	    debitCardBalance = rsDebitCardNo.getDouble(2);
+	    debitCardBalance = debitCardBalance-rsDebitCardNo.getDouble(4);
 
 	    if (!tableNo.trim().isEmpty())
 	    {

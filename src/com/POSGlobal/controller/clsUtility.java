@@ -2001,7 +2001,7 @@ public class clsUtility implements Cloneable
 	{
 	    String debitCardNo = rsDebitCardNo.getString(1);
 	    debitCardBalance = rsDebitCardNo.getDouble(2) - rsDebitCardNo.getDouble(3);
-	    debitCardBalance = debitCardBalance -rsDebitCardNo.getDouble(4);
+	    debitCardBalance = debitCardBalance - rsDebitCardNo.getDouble(4);
 
 	    sql = "select sum(dblAmount),dblTaxAmt "
 		    + " from tblitemrtemp "
@@ -2036,14 +2036,14 @@ public class clsUtility implements Cloneable
 	String sql = "";
 
 	ResultSet rsDebitCardNo = clsGlobalVarClass.dbMysql.executeResultSet("SELECT a.strCardNo,a.dblRedeemAmt,c.dblcardvaluefixed,c.dblDepositAmt "
-		+"FROM tbldebitcardmaster a,tbldebitcardtype c "
-		+"WHERE a.strCardTypeCode=c.strCardTypeCode "
-		+ "AND a.strCardString='"+clsGlobalVarClass.gDebitCardNo+"' ");
+		+ "FROM tbldebitcardmaster a,tbldebitcardtype c "
+		+ "WHERE a.strCardTypeCode=c.strCardTypeCode "
+		+ "AND a.strCardString='" + clsGlobalVarClass.gDebitCardNo + "' ");
 	if (rsDebitCardNo.next())
 	{
 	    String debitCardNo = rsDebitCardNo.getString(1);
 	    debitCardBalance = rsDebitCardNo.getDouble(2);
-	    debitCardBalance = debitCardBalance-rsDebitCardNo.getDouble(4);
+	    debitCardBalance = debitCardBalance - rsDebitCardNo.getDouble(4);
 
 	    if (!tableNo.trim().isEmpty())
 	    {
@@ -3509,8 +3509,7 @@ public class clsUtility implements Cloneable
 	    String gAmount = "SUM(b.dblAmount)";
 	    String gTaxAmount = "SUM(b.dblTaxAmount)";
 	    String gDiscAmount = "sum(a.dblDiscountAmt)";
-	    
-	    
+
 	    String settlementAmount = "IFNULL(SUM(b.dblSettlementAmt),0)";
 	    String cashSettlementAmt = " IFNULL(SUM(b.dblSettlementAmt),0)";
 	    String memberSettlementAmount = "b.dblSettlementAmt";
@@ -3519,8 +3518,7 @@ public class clsUtility implements Cloneable
 		gAmount = "SUM(b.dblAmount/a.dblUSDConverionRate)";
 		gTaxAmount = "SUM(b.dblTaxAmount/a.dblUSDConverionRate)";
 		gDiscAmount = "sum(a.dblDiscountAmt/a.dblUSDConverionRate)";
-	
-		
+
 		settlementAmount = "IFNULL(SUM(b.dblSettlementAmt/a.dblUSDConverionRate),0)";
 		cashSettlementAmt = " IFNULL(SUM(b.dblSettlementAmt/a.dblUSDConverionRate),0)";
 		memberSettlementAmount = "b.dblSettlementAmt/a.dblUSDConverionRate";
@@ -3797,27 +3795,27 @@ public class clsUtility implements Cloneable
 	try
 	{
 
-	    String gAmount="sum(b.dblAmount)";
-	    String taxAmount="sum(b.dblTaxAmount)";
-	    String discAmount="sum(dblDiscountAmt)";
-	    String settlementAmount="ifnull(sum(b.dblSettlementAmt),0)";
-	    String cashSettlementAmount="ifnull(sum(b.dblSettlementAmt),0)";
-	    String memberSettlementAmount="b.dblSettlementAmt";
+	    String gAmount = "sum(b.dblAmount)";
+	    String taxAmount = "sum(b.dblTaxAmount)";
+	    String discAmount = "sum(dblDiscountAmt)";
+	    String settlementAmount = "ifnull(sum(b.dblSettlementAmt),0)";
+	    String cashSettlementAmount = "ifnull(sum(b.dblSettlementAmt),0)";
+	    String memberSettlementAmount = "b.dblSettlementAmt";
 	    if (clsGlobalVarClass.gPOSToWebBooksPostingCurrency.equalsIgnoreCase("USD"))
 	    {
-		gAmount="sum(b.dblAmount/a.dblUSDConverionRate)";
-		taxAmount="sum(b.dblTaxAmount/a.dblUSDConverionRate)";
-		discAmount="sum(dblDiscountAmt/a.dblUSDConverionRate)";
-		settlementAmount="ifnull(sum(b.dblSettlementAmt/a.dblUSDConverionRate),0)";
-		cashSettlementAmount="ifnull(sum(b.dblSettlementAmt/a.dblUSDConverionRate),0)";
-		memberSettlementAmount="b.dblSettlementAmt/a.dblUSDConverionRate";
+		gAmount = "sum(b.dblAmount/a.dblUSDConverionRate)";
+		taxAmount = "sum(b.dblTaxAmount/a.dblUSDConverionRate)";
+		discAmount = "sum(dblDiscountAmt/a.dblUSDConverionRate)";
+		settlementAmount = "ifnull(sum(b.dblSettlementAmt/a.dblUSDConverionRate),0)";
+		cashSettlementAmount = "ifnull(sum(b.dblSettlementAmt/a.dblUSDConverionRate),0)";
+		memberSettlementAmount = "b.dblSettlementAmt/a.dblUSDConverionRate";
 	    }
 
 	    JSONObject jObj = new JSONObject();
 	    JSONArray arrObj = new JSONArray();
 
 	    String sql_SubGroupWise = "select a.strPOSCode,ifnull(d.strSubGroupCode,'NA'),ifnull(d.strSubGroupName,'NA')"
-		    + ","+gAmount+",date(a.dteBillDate) "
+		    + "," + gAmount + ",date(a.dteBillDate) "
 		    + "from tblbillhd a left outer join tblbilldtl b on a.strBillNo=b.strBillNo "
 		    + "left outer join tblitemmaster c on b.strItemCode=c.strItemCode "
 		    + "left outer join tblsubgrouphd d on c.strSubGroupCode=d.strSubGroupCode "
@@ -3842,7 +3840,7 @@ public class clsUtility implements Cloneable
 	    }
 	    rsSubGroupWise.close();
 
-	    String sql_TaxWise = "select a.strPOSCode,c.strTaxCode,c.strTaxDesc,"+taxAmount+",date(a.dteBillDate) "
+	    String sql_TaxWise = "select a.strPOSCode,c.strTaxCode,c.strTaxDesc," + taxAmount + ",date(a.dteBillDate) "
 		    + "from tblbillhd a left outer join tblbilltaxdtl b on a.strBillNo=b.strBillNo "
 		    + "left outer join tbltaxhd c on b.strTaxCode=c.strTaxCode "
 		    + "where a.strPOSCode='" + posCode + "' "
@@ -3867,7 +3865,7 @@ public class clsUtility implements Cloneable
 	    }
 	    rsTaxWise.close();
 
-	    String sql_Discount = "select strPOSCode,"+discAmount+",date(dteBillDate) "
+	    String sql_Discount = "select strPOSCode," + discAmount + ",date(dteBillDate) "
 		    + "from tblbillhd "
 		    + "where strPOSCode='" + posCode + "' "
 		    + "group by strPOSCode";
@@ -3888,9 +3886,8 @@ public class clsUtility implements Cloneable
 	    }
 	    rsDiscount.close();
 
-	  
 	    String sql_Settlement = "select a.strPOSCode,ifnull(b.strSettlementCode,'')"
-		    + " ,ifnull(c.strSettelmentDesc,''),"+settlementAmount+",date(a.dteBillDate) "
+		    + " ,ifnull(c.strSettelmentDesc,'')," + settlementAmount + ",date(a.dteBillDate) "
 		    + " from tblbillhd a left outer join tblbillsettlementdtl b on a.strBillNo=b.strBillNo "
 		    + " left outer join tblsettelmenthd c on b.strSettlementCode=c.strSettelmentCode "
 		    + " where c.strSettelmentType='Member' and a.strPOSCode='" + posCode + "' "
@@ -3915,7 +3912,7 @@ public class clsUtility implements Cloneable
 	    rsSettlement.close();
 
 	    sql_Settlement = "select a.strPOSCode,ifnull(b.strSettlementCode,'')"
-		    + " ,ifnull(c.strSettelmentDesc,''),"+cashSettlementAmount+",date(a.dteBillDate) "
+		    + " ,ifnull(c.strSettelmentDesc,'')," + cashSettlementAmount + ",date(a.dteBillDate) "
 		    + " from tblbillhd a left outer join tblbillsettlementdtl b on a.strBillNo=b.strBillNo "
 		    + " left outer join tblsettelmenthd c on b.strSettlementCode=c.strSettelmentCode "
 		    + " where c.strSettelmentType='Cash' and a.strPOSCode='" + posCode + "' "
@@ -3999,13 +3996,13 @@ public class clsUtility implements Cloneable
 		JSONObject jObjCL = new JSONObject();
 		JSONArray arrObjCL = new JSONArray();
 		/*
-                 * String sql_MemberCL="select
-                 * strCustomerCode,'',strBillNo,date(dteBillDate),dblGrandTotal
-                 * " + "from tblbillhd " + "where
-                 * strPOSCode='"+clsGlobalVarClass.gPOSCode+"' " + "and
-                 * strSettelmentMode='Member'";
+		 * String sql_MemberCL="select
+		 * strCustomerCode,'',strBillNo,date(dteBillDate),dblGrandTotal
+		 * " + "from tblbillhd " + "where
+		 * strPOSCode='"+clsGlobalVarClass.gPOSCode+"' " + "and
+		 * strSettelmentMode='Member'";
 		 */
-		String sql_MemberCL = "select left(a.strCustomerCode,8),d.strCustomerName,a.strBillNo,date(a.dteBillDate),"+memberSettlementAmount+" "
+		String sql_MemberCL = "select left(a.strCustomerCode,8),d.strCustomerName,a.strBillNo,date(a.dteBillDate)," + memberSettlementAmount + " "
 			+ "from tblbillhd a,tblbillsettlementdtl b,tblsettelmenthd c,tblcustomermaster d "
 			+ "where a.strBillNo=b.strBillNo and b.strSettlementCode=c.strSettelmentCode "
 			+ "and a.strCustomerCode=d.strCustomerCode "
@@ -6837,10 +6834,10 @@ public class clsUtility implements Cloneable
 	    StringBuilder Res = new StringBuilder();
 	    String encryptedData = objJio.encrypt(Data, secretKey);
 	    /*
-             * String finalRequest = encryptedData.toString() + "|" +
-             * request.getMid() + "|" + request.getTid() + "|" +
-             * request.getAmount() + "|" + request.getRequestType() + "|" +
-             * "TESTING" + "|" + null;
+	     * String finalRequest = encryptedData.toString() + "|" +
+	     * request.getMid() + "|" + request.getTid() + "|" +
+	     * request.getAmount() + "|" + request.getRequestType() + "|" +
+	     * "TESTING" + "|" + null;
 	     */
 	    String SendData = encryptedData + "|" + mid + "|" + tid + "|" + Amount + "|" + requestType + "|" + Environment + "|" + null;
 	    System.out.println("Request String:" + SendData);
@@ -8018,22 +8015,33 @@ public class clsUtility implements Cloneable
 	}
     }
 
-    public String funCheckSpecialCharacters(String inputString) throws Exception
+    public String funCheckSpecialCharacters(String inputString) 
     {
 	String outputString = inputString;
-	if (null != inputString)
+	try
 	{
-	    if (inputString.contains("\\"))
+	    if (null != inputString)
 	    {
-		outputString = inputString.replace("\\", "\\\\");
+		if (inputString.contains("\\"))
+		{
+		    outputString = inputString.replace("\\", "\\\\");
+		}
+		else if (inputString.contains("'"))
+		{
+		    outputString = inputString.replace("'", "''");
+		}
 	    }
-	    else if (inputString.contains("'"))
-	    {
-		outputString = inputString.replace("'", "''");
-	    }
+
+	}
+	catch (Exception e)
+	{
+	    e.printStackTrace();
+	}
+	finally
+	{
+	    return outputString;
 	}
 
-	return outputString;
     }
 
     public String funIsCardTimeExpire(String debitCardNo)

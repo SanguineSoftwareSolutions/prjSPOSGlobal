@@ -140,7 +140,7 @@ public class clsGlobalVarClass
     public static boolean gNewBillSeriesForNewDay, gAreaWisePromotions, gPrintItemsOnMoveKOTMoveTable,gPrintMoveTableMoveKOT,gPrintQtyTotal;
     public static boolean gShowOnlyLoginPOSReports, gEnableDineIn;
     public static boolean gAutoAreaSelectionInMakeKOT, gShowUnSettletmentForm, gPrintOpenItemsOnBill, gPrintHomeDeliveryYN, gWERAOnlineOrderIntegration;
-    public static boolean gShowPurRateInDirectBiller;
+    public static boolean gShowPurRateInDirectBiller,gLockTableForWaiter;
     public static String gConsolidatedKOTPrinterPort = "", gMMSSalesDataPostEffectCostOrLoc, gEffectOfSales = "No";
     public static double gRoundOffTo = 0.00;
     public static boolean gAutoShowPopItems, gPOSWiseItemToMMSProductLinkUpYN, gEnableMasterDiscount, gEnableNFCInterface, gEnableLockTables, gFireCommunication;
@@ -3310,6 +3310,11 @@ public class clsGlobalVarClass
 	    gPOSToMMSPostingCurrency=rs.getString(224);
 	    gPOSToWebBooksPostingCurrency=rs.getString(225);
 	    
+	    gLockTableForWaiter=false; 
+	    if(rs.getString(226).equalsIgnoreCase("Y"))
+	    {
+		  gLockTableForWaiter=true; 
+	    }
 	    
 	    
 	    

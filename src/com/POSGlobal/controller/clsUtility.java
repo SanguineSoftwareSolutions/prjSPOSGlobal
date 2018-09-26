@@ -1544,6 +1544,7 @@ public class clsUtility implements Cloneable
 			    + " from tbldischd a ,tblposmaster b "
 			    + " where (a.strPOSCode=b.strPosCode or a.strPOSCode='All') "
 			    + " and date(a.dteToDate)>='" + clsGlobalVarClass.gPOSOnlyDateForTransaction + "' "
+			    + " and (a.strPOSCode='"+clsGlobalVarClass.gPOSCode+"' or a.strPOSCode='All')"
 			    + " " + operationTypeFilter + " "
 			    + "order by a.strDiscCode ";
 		    vArrSearchColumnSize.add(40);

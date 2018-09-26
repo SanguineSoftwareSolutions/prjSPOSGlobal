@@ -1452,12 +1452,12 @@ public class clsUtility implements Cloneable
 	    String billSettlement = "tblbillsettlementdtl";
 	    String creditBillReceipthd = "tblcreditbillreceipthd";
 
-	    String dateFilter = filters[0];//date
-	    String tableType = filters[1];//tableType
-	    String areaCodeFilter = filters[2];//areaCode
+	    String filter0 = filters[0];//date
+	    String filter1 = filters[1];//tableType
+	    String filter2 = filters[2];//areaCode
 	    //String customerCodeFilter = filters[3];//customer code
 
-	    if (tableType.equalsIgnoreCase("QFile"))
+	    if (filter1.equalsIgnoreCase("QFile"))
 	    {
 		billhd = "tblqbillhd";
 		billSettlement = "tblqbillsettlementdtl";
@@ -1483,7 +1483,7 @@ public class clsUtility implements Cloneable
 			    + "and a.strCustomerCode=d.strCustomerCode "
 			    + "and c.strSettelmentType='Credit' "
 			    + "and a.strPOSCode='" + clsGlobalVarClass.gPOSCode + "' "
-			    + "and date(a.dteBillDate)='" + dateFilter + "' "
+			    + "and date(a.dteBillDate)='" + filter0 + "' "
 			    + "and (b.dblSettlementAmt>(SELECT sum(c.dblReceiptAmt) from " + creditBillReceipthd + " c where c.strBillNo=a.strBillNo ) or b.dblSettlementAmt>0) "
 			    + "group by a.strBillNo";
 
@@ -1497,7 +1497,7 @@ public class clsUtility implements Cloneable
 		    gQueryForSearch = "select a.strTableNo as Table_No,a.strTableName as Table_Name,a.strStatus as Status "
 			    + "from tbltablemaster a "
 			    + "where (a.strPOSCode='" + clsGlobalVarClass.gPOSCode + "' or a.strPOSCode='All') "
-			    + "and a.strAreaCode='" + areaCodeFilter + "' "
+			    + "and a.strAreaCode='" + filter2 + "' "
 			    + "order by a.strTableName  ";
 		    vArrSearchColumnSize.add(150);
 		    vArrSearchColumnSize.add(150);
@@ -1512,9 +1512,42 @@ public class clsUtility implements Cloneable
 			    + " where a.strBillNo=b.strBillNo and b.strSettlementCode=c.strSettelmentCode and c.strSettelmentType!='Complementary' "
 			    + " and date(a.dteBillDate)=date(b.dteBillDate) "
 			    + " and a.strPOSCode='" + clsGlobalVarClass.gPOSCode + "' "
-			    + " and date(a.dteBillDate)='" + dateFilter + "' "
+			    + " and date(a.dteBillDate)='" + filter0 + "' "
 			    + " group by a.strBillNo ";
 		    vArrSearchColumnSize.add(100);
+		    vArrSearchColumnSize.add(100);
+		    vArrSearchColumnSize.add(100);
+		    break;
+
+		case "DiscountMaster":
+		    
+		    if (filter0 == null)
+		    {
+			filter0 = "";
+		    }
+		    String oprationType = filter0;
+		    String operationTypeFilter = " and a.strDineIn='Y' ";
+		    if (oprationType.equalsIgnoreCase("DineIn") || oprationType.equalsIgnoreCase("DirectBiller"))
+		    {
+			operationTypeFilter = " and a.strDineIn='Y' ";
+		    }
+		    else if (oprationType.equalsIgnoreCase("HomeDelivery"))
+		    {
+			operationTypeFilter = " and a.strHomeDelivery='Y' ";
+		    }
+		    else if (oprationType.equalsIgnoreCase("TakeAway"))
+		    {
+			operationTypeFilter = " and a.strTakeAway='Y' ";
+		    }
+		    clsGlobalVarClass.gSearchMasterFormName = "Discount Master";
+		    gQueryForSearch = " select a.strDiscCode as Discount_Code,a.strDiscName as Description,b.strPosName as POS,a.strDiscOn as Discount_On "
+			    + " from tbldischd a ,tblposmaster b "
+			    + " where (a.strPOSCode=b.strPosCode or a.strPOSCode='All') "
+			    + " and date(a.dteToDate)>='" + clsGlobalVarClass.gPOSOnlyDateForTransaction + "' "
+			    + " " + operationTypeFilter + " "
+			    + "order by a.strDiscCode ";
+		    vArrSearchColumnSize.add(40);
+		    vArrSearchColumnSize.add(150);
 		    vArrSearchColumnSize.add(100);
 		    vArrSearchColumnSize.add(100);
 		    break;
@@ -8015,7 +8048,7 @@ public class clsUtility implements Cloneable
 	}
     }
 
-    public String funCheckSpecialCharacters(String inputString) 
+    public String funCheckSpecialCharacters(String inputString)
     {
 	String outputString = inputString;
 	try

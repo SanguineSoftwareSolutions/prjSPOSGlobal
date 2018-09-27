@@ -2148,4 +2148,122 @@ public class clsUtility2
 	}
     }
 
+    /**
+     * This method is used to get recharge no
+     *
+     * @return string
+     */
+    /*
+     * private long funGetRechargeNo() throws Exception { long lastNo = 1; sql =
+     * "select count(dblLastNo) from tblinternal where
+     * strTransactionType='RechargeNo'"; ResultSet rsRechargeNo =
+     * clsGlobalVarClass.dbMysql.executeResultSet(sql); rsRechargeNo.next(); int
+     * cntRechargeNo = rsRechargeNo.getInt(1); rsRechargeNo.close(); if
+     * (cntRechargeNo > 0) { sql = "select dblLastNo from tblinternal where
+     * strTransactionType='RechargeNo'"; rsRechargeNo =
+     * clsGlobalVarClass.dbMysql.executeResultSet(sql); if(rsRechargeNo.next())
+     * { long code = rsRechargeNo.getLong(1); code = code + 1; lastNo = code;
+     *
+     * String updateSql = "update tblinternal set dblLastNo=" + lastNo + " " +
+     * "where strTransactionType='RechargeNo'";
+     * clsGlobalVarClass.dbMysql.execute(updateSql); } rsRechargeNo.close(); }
+     * else { lastNo = 1; sql = "insert into tblinternal values('RechargeNo'," +
+     * 1 + ")"; clsGlobalVarClass.dbMysql.execute(sql); } return lastNo; }
+     */
+    public String funGetRechargeNo() throws Exception
+    {
+	long lastNo = 0;
+	String rechargeNo = "";
+	String sql = "select right(max(intRechargeNo),7) from tbldebitcardrecharge where strClientCode='" + clsGlobalVarClass.gClientCode + "' ";
+	ResultSet rsOrderCode = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+	if (rsOrderCode.next())
+	{
+	    lastNo = rsOrderCode.getLong(1);
+	}
+	rsOrderCode.close();
+	lastNo = lastNo + 1;
+	rechargeNo = "RC" + String.format("%07d", lastNo);
+	sql = "update tblinternal set dblLastNo='" + lastNo + "' where strTransactionType='RechargeNo'";
+	clsGlobalVarClass.dbMysql.execute(sql);
+
+	return rechargeNo;
+    }
+
+    /**
+     * This method is used to get redeem no
+     *
+     * @return string
+     */
+    public String funGetRedeemNo() throws Exception
+    {
+	long lastNo = 1;
+	String sql = "select count(dblLastNo) from tblinternal where strTransactionType='RedeemNo'";
+	ResultSet rsCustTypeCode = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+	rsCustTypeCode.next();
+	int cntCustType = rsCustTypeCode.getInt(1);
+	rsCustTypeCode.close();
+	if (cntCustType > 0)
+	{
+	    sql = "select dblLastNo from tblinternal where strTransactionType='RedeemNo'";
+	    rsCustTypeCode = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+	    rsCustTypeCode.next();
+	    long code = rsCustTypeCode.getLong(1);
+	    code = code + 1;
+	    lastNo = code;
+	    String updateSql = "update tblinternal set dblLastNo=" + lastNo + " "
+		    + "where strTransactionType='RedeemNo'";
+	    clsGlobalVarClass.dbMysql.execute(updateSql);
+	    rsCustTypeCode.close();
+	}
+	else
+	{
+	    lastNo = 1;
+	    sql = "insert into tblinternal values('RedeemNo'," + 1 + ")";
+	    clsGlobalVarClass.dbMysql.execute(sql);
+	}
+
+	String redeemNoToInsert = "RD" + String.format("%07d", lastNo);
+
+	return redeemNoToInsert;
+    }
+
+    /**
+     * This method is used to get recharge slip no
+     *
+     * @return string
+     */
+    public String funGetRechargeSlipNo() throws Exception
+    {
+	long lastNo = 1;
+	String sql = "select count(dblLastNo) from tblinternal where strTransactionType='SlipNo'";
+	ResultSet rsRechargeSlip = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+	rsRechargeSlip.next();
+	int cntSlip = rsRechargeSlip.getInt(1);
+	rsRechargeSlip.close();
+	if (cntSlip > 0)
+	{
+	    sql = "select dblLastNo from tblinternal where strTransactionType='SlipNo'";
+	    rsRechargeSlip = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+	    rsRechargeSlip.next();
+	    long code = rsRechargeSlip.getLong(1);
+	    code = code + 1;
+	    lastNo = code;
+
+	    String updateSql = "update tblinternal set dblLastNo=" + lastNo + " "
+		    + "where strTransactionType='SlipNo'";
+	    clsGlobalVarClass.dbMysql.execute(updateSql);
+	    rsRechargeSlip.close();
+	}
+	else
+	{
+	    lastNo = 1;
+	    sql = "insert into tblinternal values('SlipNo'," + 1 + ")";
+	    clsGlobalVarClass.dbMysql.execute(sql);
+	}
+
+	String rechargeSlipNoToInsert = "SL" + String.format("%07d", lastNo);
+
+	return rechargeSlipNoToInsert;
+    }
+
 }

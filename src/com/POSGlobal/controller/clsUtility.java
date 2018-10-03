@@ -1434,6 +1434,22 @@ public class clsUtility implements Cloneable
 		    vArrSearchColumnSize.add(30);
 		    vArrSearchColumnSize.add(30);
 		    break;
+		    
+		case "WaiterWiseTableSearch":
+		    clsGlobalVarClass.gSearchMasterFormName = "Item Master";
+		    gQueryForSearch = "select a.strWaiterNo AS Waiter_No,a.strWShortName AS Short_Name,a.strWFullName AS Full_Name,a.strStatus AS STATUS, ifnull(c.strTableName,'') AS Table_Name " 
+				    + " from (SELECT strWaiterNo,strWShortName,strWFullName,strStatus " 
+				    + " FROM tblwaitermaster " 
+				    + " WHERE strOperational='Y') a left outer join " 
+				    + "(select strwaiterno, strtableno from tblitemrtemp group by strwaiterno, strtableno) b " 
+				    + " on a.strWaiterNo = b.strWaiterNo left outer join tbltablemaster c " 
+				    + " on b.strtableno = c.strTableNo " 
+				    + " ORDER BY a.strWShortName ";
+		    vArrSearchColumnSize.add(30);
+		    vArrSearchColumnSize.add(100);
+		    vArrSearchColumnSize.add(100);
+		    vArrSearchColumnSize.add(100);
+		    vArrSearchColumnSize.add(100);
 	    }
 	}
 	catch (Exception e)

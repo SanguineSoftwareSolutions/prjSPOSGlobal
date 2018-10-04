@@ -2920,6 +2920,7 @@ public class frmPropertySetup extends javax.swing.JFrame
 
         chkMultiKOTPrint.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chkMultiKOTPrint.setText("Multiple KOT Printing    :");
+        chkMultiKOTPrint.setEnabled(false);
         chkMultiKOTPrint.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         chkMultiKOTPrint.setOpaque(false);
 

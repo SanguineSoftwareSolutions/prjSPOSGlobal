@@ -48,7 +48,7 @@ public class clsGlobalVarClass
     public static boolean gHomeDelSMSYN, gBillSettleSMSYN, gPrintShortNameOnKOT, gCustHelpOnTrans;
     public static boolean gPrintOnVoidBill, gPostSalesDataToMMS, gCustAreaCompulsory, gShowPrinterErrorMsg;
     public static boolean gChangeQtyForExternalCode, gPointsOnBillPrint, gCompulsoryManualAdvOrderNo, gPrintManualAdvOrderNoOnBill;
-    public static boolean gPrintModQtyOnKOT, gMultipleKOTPrint, gItemQtyNumpad, gTreatMemberAsTable, gPrintKotToLocaPrinter;
+    public static boolean gPrintModQtyOnKOT, gMultipleKOTPrint=true, gItemQtyNumpad, gTreatMemberAsTable, gPrintKotToLocaPrinter;
     public static boolean gEnableSettleBtnForDirectBiller, gDelBoyCompulsoryOnDirectBiller, gDontShowAdvOrderInOtherPOS, gPrintZeroAmtModifierOnBill;
     public static boolean gPrintKOTYN, gCreditCardSlipNo, gCreditCardExpiryDate, gSelectWaiterFromCardSwipe;
     public static boolean gMoveTableToOtherPOS, gMoveKOTToOtherPOS, gCalculateTaxOnMakeKOT, gMultiWaiterSelOnMakeKOT;
@@ -2791,11 +2791,11 @@ public class clsGlobalVarClass
 		gPrintModQtyOnKOT = true;
 	    }
 	    gNoOfLinesInKOTPrint = rs.getString(97);
-	    gMultipleKOTPrint = false;
-	    if (rs.getString(98).equals("Y"))
-	    {
-		gMultipleKOTPrint = true;
-	    }
+	    gMultipleKOTPrint = true;
+//	    if (rs.getString(98).equals("Y"))
+//	    {
+//		gMultipleKOTPrint = true;
+//	    }
 	    gItemQtyNumpad = false;
 	    if (rs.getString(99).equals("Y"))
 	    {

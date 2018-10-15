@@ -1454,6 +1454,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	return vArrSearchColumnSize;
@@ -1572,6 +1573,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	return vArrSearchColumnSize;
@@ -1598,6 +1600,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -1625,6 +1628,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -1655,6 +1659,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -1686,6 +1691,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -1733,6 +1739,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -1770,6 +1777,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -1794,6 +1802,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -1818,6 +1827,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -1923,6 +1933,7 @@ public class clsUtility implements Cloneable
 	    }
 	    catch (Exception e)
 	    {
+		funShowDBConnectionLostErrorMessage(e);
 		e.printStackTrace();
 	    }
 	}
@@ -2020,6 +2031,7 @@ public class clsUtility implements Cloneable
 	    }
 	    catch (Exception e)
 	    {
+		funShowDBConnectionLostErrorMessage(e);
 		e.printStackTrace();
 	    }
 	}
@@ -2179,6 +2191,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	return flgPendingBills;
@@ -2204,6 +2217,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	return flgPendingBills;
@@ -2225,7 +2239,8 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
-	    e.printStackTrace();
+	   funShowDBConnectionLostErrorMessage(e);
+	     e.printStackTrace();
 	}
 	finally
 	{
@@ -2266,6 +2281,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -2670,6 +2686,7 @@ public class clsUtility implements Cloneable
 	catch (Exception ex)
 	{
 	    //clsGlobalVarClass.dbMysql.funRollbackTransaction();
+	    funShowDBConnectionLostErrorMessage(ex);
 	    ex.printStackTrace();
 	}
 	finally
@@ -2795,6 +2812,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	return 1;
@@ -2905,6 +2923,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	return 1;
@@ -3187,6 +3206,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	return 1;
@@ -3520,6 +3540,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 
@@ -3539,6 +3560,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -3828,6 +3850,7 @@ public class clsUtility implements Cloneable
 	catch (Exception e)
 	{
 	    res = 0;
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	    JOptionPane.showMessageDialog(null, "Check CMS Web Service URL and Internet Connection!!!"); // there is this at null postion
 	}
@@ -4118,6 +4141,7 @@ public class clsUtility implements Cloneable
 	catch (Exception e)
 	{
 	    res = 0;
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	    JOptionPane.showMessageDialog(null, "Check CMS Web Service URL and Internet Connection!!!"); // there is this at null postion
 	}
@@ -4142,6 +4166,7 @@ public class clsUtility implements Cloneable
 	catch (Exception e)
 	{
 	    flgResult = false;
+	    funShowDBConnectionLostErrorMessage(e);
 	    JOptionPane.showMessageDialog(null, "Qfile Data Posting failed!!!");
 	    e.printStackTrace();
 	}
@@ -4260,6 +4285,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	return 1;
@@ -4382,6 +4408,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -4418,6 +4445,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -4445,6 +4473,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -4547,6 +4576,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    flg = false;
 	}
 	finally
@@ -4576,6 +4606,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -4598,6 +4629,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	return diff;
@@ -4642,6 +4674,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception ex)
 	{
+	    funShowDBConnectionLostErrorMessage(ex);
 	    ex.printStackTrace();
 	}
 	finally
@@ -4667,6 +4700,7 @@ public class clsUtility implements Cloneable
 	catch (Exception e)
 	{
 	    clsGlobalVarClass.gLog.error(e);
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -4708,6 +4742,15 @@ public class clsUtility implements Cloneable
 	    JOptionPane.showMessageDialog(null, "Access denied for root password. Please change the password!!!");
 	}
 
+    }
+    
+    public void funShowDBConnectionLostErrorMessage(Exception ex)
+    {
+	if (ex.getMessage().startsWith("Communications link failure") || ex.getMessage().startsWith("No operations allowed after connection closed"))
+	{
+	    JOptionPane.showMessageDialog(null, "Connection to Databse is Lost. Check Network Connectivity!!!");
+	}
+	
     }
 
     public String funGetAmtInWords(long amt)
@@ -5215,6 +5258,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    funWriteErrorLog(e);
 	    JOptionPane.showMessageDialog(null, e.getMessage(), "Error Code: BS-69", JOptionPane.ERROR_MESSAGE);
 	    e.printStackTrace();
@@ -5245,6 +5289,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    funWriteErrorLog(e);
 	    JOptionPane.showMessageDialog(null, e.getMessage(), "Error Code: BS-70", JOptionPane.ERROR_MESSAGE);
 	    e.printStackTrace();
@@ -5329,6 +5374,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -5360,6 +5406,7 @@ public class clsUtility implements Cloneable
 	catch (Exception e)
 	{
 	    flgDateValidation = false;
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -5385,6 +5432,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	    minAmount = 0.00;
 	}
@@ -5413,6 +5461,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 
@@ -5529,6 +5578,7 @@ public class clsUtility implements Cloneable
 	catch (Exception ex)
 	{
 	    JOptionPane.showMessageDialog(null, ex.getMessage());
+	    funShowDBConnectionLostErrorMessage(ex);
 	    ex.printStackTrace();
 	}
     }
@@ -5546,6 +5596,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -5636,6 +5687,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -5701,6 +5753,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -5955,6 +6008,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	return transId;
@@ -6018,6 +6072,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -6043,6 +6098,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	gPOSDateForTransaction += " " + currentTime;
@@ -6095,6 +6151,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (JRException e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 
@@ -6212,6 +6269,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -6232,6 +6290,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -6250,6 +6309,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 
 	}
@@ -6279,6 +6339,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -6299,6 +6360,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -6319,6 +6381,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -6477,6 +6540,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -6495,6 +6559,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -6517,6 +6582,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -6539,6 +6605,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -6568,6 +6635,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -6708,6 +6776,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -6866,7 +6935,8 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
-	    e.printStackTrace();
+	    funShowDBConnectionLostErrorMessage(e);
+	     e.printStackTrace();
 	}
     }
 
@@ -6927,6 +6997,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    System.out.println("Exception:" + e);
 	    return null;
 	}
@@ -6947,7 +7018,8 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception ex)
 	{
-
+	    funShowDBConnectionLostErrorMessage(ex);
+	    
 	}
     }
 
@@ -6959,6 +7031,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -6979,6 +7052,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (IOException e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -6993,6 +7067,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -7024,6 +7099,7 @@ public class clsUtility implements Cloneable
 	catch (Exception e)
 	{
 	    //e.printStackTrace();
+	    funShowDBConnectionLostErrorMessage(e);
 	    System.out.println("No LocalArea Network(LAN) Available.");
 	}
 	finally
@@ -7287,6 +7363,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -7357,6 +7434,7 @@ public class clsUtility implements Cloneable
 	catch (Exception e)
 	{
 
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	    JOptionPane.showMessageDialog(null, e.getMessage(), "Error Code - TFG 01", JOptionPane.ERROR_MESSAGE);
 	}
@@ -7391,14 +7469,17 @@ public class clsUtility implements Cloneable
 	}
 	catch (FileNotFoundException ex)
 	{
+	    funShowDBConnectionLostErrorMessage(ex);
 	    ex.printStackTrace();
 	}
 	catch (UnsupportedEncodingException ex)
 	{
+	    funShowDBConnectionLostErrorMessage(ex);
 	    ex.printStackTrace();
 	}
 	catch (IOException ex)
 	{
+	    funShowDBConnectionLostErrorMessage(ex);
 	    ex.printStackTrace();
 	}
 	finally
@@ -7409,6 +7490,7 @@ public class clsUtility implements Cloneable
 	    }
 	    catch (IOException ex)
 	    {
+		funShowDBConnectionLostErrorMessage(ex);
 		ex.printStackTrace();
 	    }
 	}
@@ -7433,6 +7515,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -7536,6 +7619,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (java.net.ConnectException ce)
 	{
+	    funShowDBConnectionLostErrorMessage(ce);
 	    JOptionPane.showMessageDialog(null, "Please Check IP Address And Port And\nMake Sure Web Server Started.", "Connection Refused", JOptionPane.INFORMATION_MESSAGE);
 
 	    flgHOStatus = false;
@@ -7544,6 +7628,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (java.io.FileNotFoundException fne)
 	{
+	    funShowDBConnectionLostErrorMessage(fne);
 	    JOptionPane.showMessageDialog(null, "Please Check URL.", "Connection Refused", JOptionPane.INFORMATION_MESSAGE);
 
 	    flgHOStatus = false;
@@ -7552,6 +7637,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (java.net.UnknownHostException ukhe)
 	{
+	    funShowDBConnectionLostErrorMessage(ukhe);
 	    JOptionPane.showMessageDialog(null, "Please Check URL.", "Unknown HOST", JOptionPane.INFORMATION_MESSAGE);
 
 	    flgHOStatus = false;
@@ -7597,6 +7683,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -7722,6 +7809,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	    return result;
 	}
@@ -7957,6 +8045,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
     }
@@ -7982,6 +8071,7 @@ public class clsUtility implements Cloneable
 	catch (Exception e)
 	{
 	    result = false;
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	return result;
@@ -8057,6 +8147,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -8085,6 +8176,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally
@@ -8130,6 +8222,7 @@ public class clsUtility implements Cloneable
 	}
 	catch (Exception e)
 	{
+	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	}
 	finally

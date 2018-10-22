@@ -2652,7 +2652,7 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblCityPin.setBounds(10, 200, 127, 32);
 
         cmbCity.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        cmbCity.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pune", "Secunderabad", "Hyderabad", "Delhi", "Gurgaon", "Mumbai", "Indore", "Nashik", "Nagpur", "Satara", "Ahmedabad", "Bangalore", "Chennai", "Chandigad", "Rajkot", "Gandhinagar", "Thane", "Vashi", "Kalyan", "Seawood", "Muscat", "Salalah", "Kinshasa" }));
+        cmbCity.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select City", "Agalgaon", "Agartala", "Agra", "Ahmedabad", "Ahmednagar", "Aizawl", "Ajmer", "Akluj", "Akola", "Akot", "Allahabad", "Allepey", "Amalner", "Ambernath", "Amravati", "Amritsar", "Anand", "Arvi", "Asansol", "Ashta", "Aurangabad", "Aziwal", "Baddi", "Bangalore", "Bansarola", "Baramati", "Bareilly", "Baroda", "Barshi", "Beed", "Belgum", "Bellary", "Bhandara", "Bhilai", "Bhivandi", "Bhiwandi", "Bhopal", "Bhubaneshwar", "Bhusawal", "Bikaner", "Bokaro", "Bombay", "Buldhana", "Burhanpur", "Chandigad", "Chandigarh", "Chattisgad", "Chennai", "Chennai(Madras)", "Cochin", "Coimbature", "Dehradun", "Delhi", "Dhanbad", "Dhule", "Dispur", "Faridabad", "Gandhinagar", "Gangtok", "Goa", "Gujrat", "Gurgaon", "Guwahati", "Gwalior", "Hyderabad", "Ichalkaranji", "Imphal", "Indapur", "Indore", "Itanagar", "Jabalpur", "Jaipur", "Jalandhar", "Jalgaon", "Jalna", "Jammu", "Jamshedpur", "Kalamnuri", "Kalyan", "Kanpur", "Karad", "Kinshasa", "Kochi(Cochin)", "Kohima", "Kolhapur", "Kolkata", "Kolkata(Calcutta)", "Kozhikode(Calicut)", "Latur", "Lucknow", "Ludhiana", "Madurai", "Mangalvedha", "Manmad", "Meerut", "Mumbai", "Mumbai(Bombay)", "Muscat", "Mysore", "Nagpur", "Nanded", "Nandurbar", "Nashik", "Orisa", "Osmanabad", "Pachora", "Panaji", "Pandharpur", "Parbhani", "Patna", "Pratapgad", "Pune", "Raipur", "Rajasthan", "Rajkot", "Ranchi", "Ratnagiri", "Salalah", "Salem", "Sangamner", "Sangli", "Satara", "Sawantwadi", "Seawood", "Secunderabad", "Shillong", "Shimla", "Shirdi", "Sindhudurga", "Solapur", "Srinagar", "Surat", "Thane", "Thiruvananthapuram", "Tiruchirapalli", "Vadodara(Baroda)", "Varanasi(Benares)", "Vashi", "Vijayawada", "Visakhapatnam", "Yawatmal", "Other" }));
         panelClientSetup.add(cmbCity);
         cmbCity.setBounds(200, 200, 190, 35);
 
@@ -2662,7 +2662,14 @@ public class frmPropertySetup extends javax.swing.JFrame
         lblStateCountry.setBounds(10, 250, 127, 27);
 
         cmbState.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        cmbState.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Maharashtra", "Delhi", "Karnataka", "Telangana", "TamilNadu", "Gujrat", "Punjab", "Rajasthan", "Muscat", "Salalah", "Congo" }));
+        cmbState.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select State", "Andaman", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Congo", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu & Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Muscat", "Nagaland", "Odisha", "Pondicherry", "Punjab", "Rajasthan", "Salalah", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "Uttaranchal", "West Bengal", "Other" }));
+        cmbState.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                cmbStateActionPerformed(evt);
+            }
+        });
         panelClientSetup.add(cmbState);
         cmbState.setBounds(200, 250, 190, 35);
 
@@ -10774,6 +10781,10 @@ public class frmPropertySetup extends javax.swing.JFrame
     private void chkLockTableForWaiterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLockTableForWaiterActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkLockTableForWaiterActionPerformed
+
+    private void cmbStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbStateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -2424,9 +2424,9 @@ public class clsUtility implements Cloneable
 		    }
 
 		    sql = "insert into tbldayendprocess(strPOSCode,dtePOSDate,strDayEnd,intShiftCode,strShiftEnd"
-			    + ",strUserCreated,dteDateCreated,dteDayEndDateTime) "
+			    + ",strUserCreated,dteDateCreated,dteDayEndDateTime,strClientCode) "
 			    + "values('" + posCode + "','" + newStartDate + "','N'," + shift + ",''"
-			    + ",'" + clsGlobalVarClass.gUserCode + "','" + clsGlobalVarClass.getCurrentDateTime() + "','" + clsGlobalVarClass.getCurrentDateTime() + "')";
+			    + ",'" + clsGlobalVarClass.gUserCode + "','" + clsGlobalVarClass.getCurrentDateTime() + "','" + clsGlobalVarClass.getCurrentDateTime() + "','"+clsGlobalVarClass.gClientCode+"')";
 		    clsGlobalVarClass.dbMysql.execute(sql);
 		    clsGlobalVarClass.gShiftEnd = "";
 		    clsGlobalVarClass.gDayEnd = "N";
@@ -2459,8 +2459,27 @@ public class clsUtility implements Cloneable
 		    }
 		    else if (clsGlobalVarClass.gPostSalesDataToMMS)
 		    {
-			boolean isPosted = clsGlobalVarClass.funPostItemSalesData(posCode, posDate, posDate);
-			String exbillGenCode = clsGlobalVarClass.funPostItemSalesDataExcise(posCode, posDate, posDate);
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(startDate);
+			cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
+			SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+			String firstDate = format1.format(cal.getTime());
+			sql = "select a.dtePOSDate from tbldayendprocess a where  a.strWSStockAdjustmentNo = '' " +
+				" and a.dtePOSDate between '"+firstDate+"' and '"+posDate+"' and a.strPOSCode='"+posCode+"'";
+			ResultSet rsDate = clsGlobalVarClass.dbMysql.executeResultSet(sql);
+			if(rsDate.next()){    
+			    while (rsDate.next())
+			    {
+				//POst All pending Data from first date of month to till
+				boolean isPosted = clsGlobalVarClass.funPostItemSalesData(posCode, rsDate.getString(1), rsDate.getString(1));    
+				String exbillGenCode = clsGlobalVarClass.funPostItemSalesDataExcise(posCode, rsDate.getString(1), rsDate.getString(1));
+			    }
+			}
+			else{
+			    boolean isPosted = clsGlobalVarClass.funPostItemSalesData(posCode, posDate, posDate);    
+			    String exbillGenCode = clsGlobalVarClass.funPostItemSalesDataExcise(posCode, posDate, posDate);	
+			}
+			
 		    }
 
 		    // Transfer Billing Data from Live Tables To QFile Tables.
@@ -2603,9 +2622,9 @@ public class clsUtility implements Cloneable
 			shift = shiftNo;
 		    }
 		    sql = "insert into tbldayendprocess(strPOSCode,dtePOSDate,strDayEnd,intShiftCode,strShiftEnd"
-			    + ",strUserCreated,dteDateCreated) "
+			    + ",strUserCreated,dteDateCreated,strClientCode) "
 			    + "values('" + posCode + "','" + newStartDate + "','N'," + (shift + 1)
-			    + ",'','" + clsGlobalVarClass.gUserCode + "','" + clsGlobalVarClass.getCurrentDateTime() + "')";
+			    + ",'','" + clsGlobalVarClass.gUserCode + "','" + clsGlobalVarClass.getCurrentDateTime() + "','"+clsGlobalVarClass.gClientCode+"')";
 		    clsGlobalVarClass.dbMysql.execute(sql);
 		    clsGlobalVarClass.gShiftEnd = "";
 		    clsGlobalVarClass.gDayEnd = "N";

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptBillFormat6JasperReport" pageWidth="595" pageHeight="984" columnWidth="593" leftMargin="1" rightMargin="1" topMargin="5" bottomMargin="5" resourceBundle="localization_AR" uuid="e06fc829-861a-4097-8acd-d9c65c0d0a3b">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="16"/>
-	<property name="ireport.y" value="103"/>
+	<property name="ireport.y" value="233"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -415,12 +415,11 @@
 								</textElement>
 								<text><![CDATA[SUB]]></text>
 							</staticText>
-							<textField pattern="#.###">
+							<textField pattern="#.###" isBlankWhenNull="true">
 								<reportElement uuid="06914f88-ab30-4c05-b4aa-eae84be9e674" x="0" y="16" width="30" height="16"/>
 								<textElement textAlignment="Right" verticalAlignment="Top">
 									<font fontName="Arial" isBold="true"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$R{arabic.Sub}]]></textFieldExpression>
 							</textField>
 							<line>
 								<reportElement uuid="143a6a1d-cd77-4f1e-b2ca-96ee704d77d2" x="0" y="32" width="30" height="1"/>
@@ -469,12 +468,12 @@
 								</textElement>
 								<text><![CDATA[TOTAL]]></text>
 							</staticText>
-							<textField pattern="#.###">
+							<textField pattern="#.###" isBlankWhenNull="true">
 								<reportElement uuid="06914f88-ab30-4c05-b4aa-eae84be9e674" x="0" y="16" width="115" height="16"/>
 								<textElement textAlignment="Left" verticalAlignment="Top">
 									<font fontName="Arial" isBold="true"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$R{arabic.Total}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$R{arabic.SubTotal}]]></textFieldExpression>
 							</textField>
 							<line>
 								<reportElement uuid="143a6a1d-cd77-4f1e-b2ca-96ee704d77d2" x="0" y="32" width="115" height="1"/>
@@ -640,16 +639,16 @@
 					</datasetRun>
 					<jr:column uuid="699aa6e8-7173-4756-80bb-149d043a40b0" width="122">
 						<jr:tableHeader height="0" rowSpan="1"/>
-						<jr:tableFooter height="16" rowSpan="1">
+						<jr:tableFooter height="18" rowSpan="1">
 							<textField pattern="###0">
-								<reportElement uuid="cc4b6f9f-4f0c-4c5e-b16c-8fdfe8c45bb8" x="0" y="0" width="122" height="15"/>
+								<reportElement uuid="cc4b6f9f-4f0c-4c5e-b16c-8fdfe8c45bb8" x="0" y="0" width="122" height="17"/>
 								<textElement>
-									<font isBold="true"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$R{arabic.Totalomr}]]></textFieldExpression>
 							</textField>
 							<line>
-								<reportElement uuid="19b6fd10-7847-4bf0-a241-bbc4e21a16bd" x="0" y="15" width="122" height="1"/>
+								<reportElement uuid="19b6fd10-7847-4bf0-a241-bbc4e21a16bd" x="0" y="17" width="122" height="1"/>
 							</line>
 						</jr:tableFooter>
 						<jr:columnHeader height="0" rowSpan="1"/>
@@ -665,9 +664,9 @@
 					</jr:column>
 					<jr:column uuid="82281559-16ad-4e40-b061-a52675f97859" width="93">
 						<jr:tableHeader height="0" rowSpan="1"/>
-						<jr:tableFooter height="16" rowSpan="1">
+						<jr:tableFooter height="18" rowSpan="1">
 							<line>
-								<reportElement uuid="19b6fd10-7847-4bf0-a241-bbc4e21a16bd" x="1" y="15" width="92" height="1"/>
+								<reportElement uuid="19b6fd10-7847-4bf0-a241-bbc4e21a16bd" x="1" y="17" width="92" height="1"/>
 							</line>
 						</jr:tableFooter>
 						<jr:columnHeader height="0" rowSpan="1"/>

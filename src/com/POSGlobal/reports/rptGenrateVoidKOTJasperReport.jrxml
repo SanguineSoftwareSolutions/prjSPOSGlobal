@@ -89,101 +89,108 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="126" splitType="Stretch">
+		<band height="146" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="18" y="41" width="70" height="15"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="18" y="61" width="70" height="15"/>
 				<textElement>
 					<font fontName="Trebuchet MS"/>
 				</textElement>
 				<text><![CDATA[KOT NO          :]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="89" y="41" width="123" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="89" y="61" width="123" height="15"/>
 				<textElement>
 					<font fontName="Trebuchet MS" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{KOT}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="89" y="58" width="121" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="89" y="78" width="121" height="15"/>
 				<textElement>
 					<font fontName="Trebuchet MS" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{tableNo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="18" y="58" width="70" height="15"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="18" y="78" width="70" height="15"/>
 				<textElement>
 					<font fontName="Trebuchet MS" isBold="false"/>
 				</textElement>
 				<text><![CDATA[TABLE NAME   : ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="91" y="90" width="123" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="91" y="110" width="123" height="15"/>
 				<textElement>
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{DATE_TIME}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="19" y="90" width="70" height="15"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="19" y="110" width="70" height="15"/>
 				<textElement>
 					<font fontName="Trebuchet MS"/>
 				</textElement>
 				<text><![CDATA[DATE & TIME  :]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="16" y="124" width="208" height="1"/>
+				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="16" y="144" width="208" height="1"/>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="45d4d40a-9a69-43d9-90b5-41983fae1d42" x="72" y="4" width="75" height="15" isRemoveLineWhenBlank="true"/>
+				<reportElement uuid="45d4d40a-9a69-43d9-90b5-41983fae1d42" x="72" y="21" width="75" height="15" isRemoveLineWhenBlank="true"/>
 				<textElement textAlignment="Center">
 					<font fontName="Trebuchet MS" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{KOTorNC}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="91" y="72" width="123" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="91" y="92" width="123" height="15"/>
 				<textElement>
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{waiterName}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="19" y="73" width="70" height="15"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="19" y="93" width="70" height="15"/>
 				<textElement>
 					<font fontName="Trebuchet MS"/>
 				</textElement>
 				<text><![CDATA[WAITER NAME :     :]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="16" y="40" width="208" height="1"/>
+				<reportElement uuid="fd524e29-758d-4800-8bab-59d37b8c0a52" x="16" y="57" width="208" height="1"/>
 			</line>
 			<staticText>
-				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="19" y="105" width="70" height="15"/>
+				<reportElement uuid="66dbe20a-bc13-4c8a-b9c3-bb58ceb459bd" x="19" y="125" width="70" height="15"/>
 				<textElement>
 					<font fontName="Trebuchet MS"/>
 				</textElement>
 				<text><![CDATA[Reason           :]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="91" y="105" width="123" height="15"/>
+				<reportElement uuid="18c1aab8-c8b7-4307-819f-0aba1871b40b" x="91" y="125" width="123" height="15"/>
 				<textElement>
 					<font fontName="Trebuchet MS" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{reason}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="45d4d40a-9a69-43d9-90b5-41983fae1d42" x="72" y="23" width="75" height="15" isRemoveLineWhenBlank="true"/>
+				<reportElement uuid="45d4d40a-9a69-43d9-90b5-41983fae1d42" x="72" y="40" width="75" height="15" isRemoveLineWhenBlank="true"/>
 				<textElement textAlignment="Center">
 					<font fontName="Trebuchet MS" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{KOTTitle}]]></textFieldExpression>
 			</textField>
 			<image onErrorType="Blank">
-				<reportElement uuid="5ea12fd6-6cbd-47f0-87cd-263c311d7cfd" x="15" y="4" width="45" height="36"/>
+				<reportElement uuid="5ea12fd6-6cbd-47f0-87cd-263c311d7cfd" x="15" y="21" width="45" height="36"/>
 				<imageExpression><![CDATA[$P{imagePath}+"\\imgVoid.jpg"]]></imageExpression>
 			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="962d98be-5b2c-4dd6-94e5-3c5856f7f8f1" x="72" y="0" width="75" height="15" isRemoveLineWhenBlank="true"/>
+				<textElement textAlignment="Center">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dublicate}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>

@@ -2504,7 +2504,7 @@ public class clsUtility implements Cloneable
 		    // Post Day End Table Data to HO.    
 		    clsGlobalVarClass.funPostDayEndData(newStartDate, shift);
 
-		    if (clsGlobalVarClass.gTransactionType != null && clsGlobalVarClass.gTransactionType.equalsIgnoreCase("ShiftEnd"))
+		    if (clsGlobalVarClass.gTransactionType != null && clsGlobalVarClass.gTransactionType.equalsIgnoreCase("ShiftEnd") ||clsGlobalVarClass.gTransactionType.equalsIgnoreCase("ShiftEndWithoutDetails") )
 		    {
 			retvalue = funDayEndflash(posCode, billDate, shiftNo);
 		    }
@@ -3589,6 +3589,7 @@ public class clsUtility implements Cloneable
     }
 
 // Function to send bill data to sanguine cms.
+// Function to send bill data to sanguine cms.
     public int funPostSanguineCMSData(String posCode, String billDate)
     {
 	int res = 0;
@@ -3604,6 +3605,8 @@ public class clsUtility implements Cloneable
 	    String settlementAmount = "IFNULL(SUM(b.dblSettlementAmt),0)";
 	    String cashSettlementAmt = " IFNULL(SUM(b.dblSettlementAmt),0)";
 	    String memberSettlementAmount = "b.dblSettlementAmt";
+	    String customerAmt = "a.dblGrandTotal";
+
 	    if (clsGlobalVarClass.gPOSToWebBooksPostingCurrency.equalsIgnoreCase("USD"))
 	    {
 		gAmount = "SUM(b.dblAmount/a.dblUSDConverionRate)";
@@ -3613,6 +3616,7 @@ public class clsUtility implements Cloneable
 		settlementAmount = "IFNULL(SUM(b.dblSettlementAmt/a.dblUSDConverionRate),0)";
 		cashSettlementAmt = " IFNULL(SUM(b.dblSettlementAmt/a.dblUSDConverionRate),0)";
 		memberSettlementAmount = "b.dblSettlementAmt/a.dblUSDConverionRate";
+		customerAmt="a.dblGrandTotal/a.dblUSDConverionRate ";
 	    }
 
 	    JSONObject jObj = new JSONObject();
@@ -3655,7 +3659,7 @@ public class clsUtility implements Cloneable
 		    + "FROM tblbillhd a,tblbilltaxdtl b , tbltaxhd c "
 		    + "where a.strPOSCode='" + posCode + "' "
 		    + "and a.strBillNo=b.strBillNo "
-		    + "and DATE(a.dteBillDate)=DATE(b.dteBillDate)  "
+		    + "and DATE(a.dteBillDate)=DATE(b.dteBillDate) and c.strTaxCalculation<>'Backward' "
 		    + "and b.strTaxCode=c.strTaxCode "
 		    + " GROUP BY a.strPOSCode,c.strTaxCode ";
 
@@ -3713,7 +3717,7 @@ public class clsUtility implements Cloneable
 
 	    String sql_Settlement = "SELECT a.strPOSCode, IFNULL(b.strSettlementCode,''), IFNULL(c.strSettelmentDesc,'')," + settlementAmount + " , DATE(a.dteBillDate),c.strAccountCode "
 		    + "FROM tblbillhd a,tblbillsettlementdtl b ,tblsettelmenthd c  "
-		    + "WHERE  a.strPOSCode='" + posCode + "' and "
+		    + "WHERE  a.strPOSCode='" + posCode + "' "
 		    //     + " c.strSettelmentType='Member'  "
 		    + "and a.strBillNo=b.strBillNo "
 		    + "and b.strSettlementCode=c.strSettelmentCode "
@@ -3739,9 +3743,11 @@ public class clsUtility implements Cloneable
 	    rsCashSettlement.close();
 	    jObj.put("MemberSettlewise", arrObjMemberSettlewise);
 
-	    sql_Settlement = "SELECT a.strPOSCode, IFNULL(b.strSettlementCode,''), IFNULL(c.strSettelmentDesc,'')," + cashSettlementAmt + ", DATE(a.dteBillDate),c.strAccountCode "
+	    
+	    /*sql_Settlement = "SELECT a.strPOSCode, IFNULL(b.strSettlementCode,''), IFNULL(c.strSettelmentDesc,'')," + cashSettlementAmt + ", DATE(a.dteBillDate),c.strAccountCode "
 		    + "FROM tblbillhd a,tblbillsettlementdtl b ,tblsettelmenthd c  "
-		    + "WHERE c.strSettelmentType='Cash' "
+		    + "WHERE "
+//		    + "c.strSettelmentType='Cash' "
 		    + "AND a.strPOSCode='" + posCode + "' "
 		    + "and a.strBillNo=b.strBillNo "
 		    + "and b.strSettlementCode=c.strSettelmentCode "
@@ -3765,16 +3771,16 @@ public class clsUtility implements Cloneable
 		arrObjCashSettlewise.add(objSettlementWise);
 	    }
 	    rsMemberSettlement.close();
-	    jObj.put("CashSettlewise", arrObjCashSettlewise);
-
-	    String sql_MemberCL = "select left(a.strCustomerCode,8),d.strCustomerName,a.strBillNo,date(a.dteBillDate)"
-		    + "," + memberSettlementAmount + ",c.strAccountCode "
+	    jObj.put("Settlewise", arrObjCashSettlewise);
+	    */
+	    String sql_MemberCL = "select d.strDebtorCode,d.strCustomerName,a.strBillNo,date(a.dteBillDate)"
+		    + "," + memberSettlementAmount + ",d.strAccountCode "
 		    + "from tblbillhd a,tblbillsettlementdtl b,tblsettelmenthd c,tblcustomermaster d "
 		    + "where a.strBillNo=b.strBillNo "
 		    + "and b.strSettlementCode=c.strSettelmentCode "
 		    + "and a.strCustomerCode=d.strCustomerCode "
-		    + "and a.strPOSCode='" + posCode + "'  "
-		    + "and c.strSettelmentType='Member'";
+		    + "and a.strPOSCode='" + posCode + "'   "
+		    + "and c.strSettelmentType<>'Cash'";
 	    JSONArray arrObjMemberClData = new JSONArray();
 	    ResultSet rsMemeberCL = clsGlobalVarClass.dbMysql.executeResultSet(sql_MemberCL);
 	    while (rsMemeberCL.next())
@@ -3808,6 +3814,9 @@ public class clsUtility implements Cloneable
 	    rsRF.close();
 
 	    JSONArray arrObjRoundOff = new JSONArray();
+	    
+	    if(roundOff!=0.0)
+	    {
 	    JSONObject objRoundOff = new JSONObject();
 	    objRoundOff.put("RVCode", clsGlobalVarClass.gPOSCode + "-Roff");
 	    objRoundOff.put("RVName", clsGlobalVarClass.gPOSName + "-Roff");
@@ -3831,9 +3840,11 @@ public class clsUtility implements Cloneable
 	    objRoundOff.put("AccountCode", roundOffAccCode);
 	    arrObjRoundOff.add(objRoundOff);
 
-	    jObj.put("RoundOffDtl", arrObjRoundOff);
+	    }
 
-	    String cmsURL = clsGlobalVarClass.gWebBooksWebServiceURL + "/funPostRevenueToCMS";
+	    jObj.put("RoundOffDtl", arrObjRoundOff);
+	    jObj.put("ClientCode", clsGlobalVarClass.gClientCode);
+	    String cmsURL = clsGlobalVarClass.gWebBooksWebServiceURL + "/WebBooksIntegration/funPostRevenueToCMS";
 	    URL url = new URL(cmsURL);
 	    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	    conn.setDoOutput(true);
@@ -3869,7 +3880,6 @@ public class clsUtility implements Cloneable
 	catch (Exception e)
 	{
 	    res = 0;
-	    funShowDBConnectionLostErrorMessage(e);
 	    e.printStackTrace();
 	    JOptionPane.showMessageDialog(null, "Check CMS Web Service URL and Internet Connection!!!"); // there is this at null postion
 	}

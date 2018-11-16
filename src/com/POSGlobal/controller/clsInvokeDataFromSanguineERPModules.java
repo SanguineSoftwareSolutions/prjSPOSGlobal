@@ -525,4 +525,89 @@ public class clsInvokeDataFromSanguineERPModules
 	return strMMSConsectionEstablished;
 
     }
+    
+    public List<clsDebtorDtl> funGetDebtorDtl(String gClientCode) throws Exception
+    {
+	List<clsDebtorDtl> debtorInfo = new ArrayList<clsDebtorDtl>();
+
+	//type = type.replaceAll(" ", "%20");
+	String cmsURL = clsGlobalVarClass.gSanguineWebServiceURL + "/WebBooksIntegration/funGetDebtorMaster?ClientCode=" + gClientCode;
+	//System.out.println(cmsURL);
+	URL url = new URL(cmsURL);
+	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	conn.setRequestMethod("GET");
+	conn.setRequestProperty("Accept", "application/json");
+	BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+	String output = "", op = "";
+	while ((output = br.readLine()) != null)
+	{
+	    op += output;
+	}
+	String jsonString = op;
+	JSONParser parser = new JSONParser();
+	Object obj = parser.parse(jsonString);
+	JSONObject jObj = (JSONObject) obj;
+	JSONArray mJsonArray = (JSONArray) jObj.get("DebtorDtl");
+
+	JSONObject mJsonObject = new JSONObject();
+	for (int i = 0; i < mJsonArray.size(); i++)
+	{
+	    mJsonObject = (JSONObject) mJsonArray.get(i);
+	    if (mJsonObject.get("DebtorCode").toString().equals(""))
+	    {
+		//accountInfo = "no data";
+	    }
+	    else
+	    {
+		clsDebtorDtl objDebtor = new clsDebtorDtl();
+		objDebtor.setStrDebtorCode(mJsonObject.get("DebtorCode").toString());
+		objDebtor.setStrDebtorName(mJsonObject.get("DebtorName").toString());
+		debtorInfo.add(objDebtor);
+	    }
+	}
+	conn.disconnect();
+	return debtorInfo;
+    }
+    
+     public List<clsLinkupDtl> funGetSubGroupDtl(String clientCode) throws Exception
+    {
+	List<clsLinkupDtl> productInfo = new ArrayList<clsLinkupDtl>();
+
+	String cmsURL = clsGlobalVarClass.gSanguineWebServiceURL + "/MMSIntegration/funGetSubGroupMaster?ClientCode=" + clientCode;
+	//System.out.println(cmsURL);
+	URL url = new URL(cmsURL);
+	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	conn.setRequestMethod("GET");
+	conn.setRequestProperty("Accept", "application/json");
+	BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+	String output = "", op = "";
+	while ((output = br.readLine()) != null)
+	{
+	    op += output;
+	}
+	String jsonString = op;
+	JSONParser parser = new JSONParser();
+	Object obj = parser.parse(jsonString);
+	JSONObject jObj = (JSONObject) obj;
+	JSONArray mJsonArray = (JSONArray) jObj.get("SubGroupDtls");
+
+	JSONObject mJsonObject = new JSONObject();
+	for (int i = 0; i < mJsonArray.size(); i++)
+	{
+	    mJsonObject = (JSONObject) mJsonArray.get(i);
+	    if (mJsonObject.get("SubGroupCode").toString().equals(""))
+	    {
+		//accountInfo = "no data";
+	    }
+	    else
+	    {
+		clsLinkupDtl objLinkup = new clsLinkupDtl();
+		objLinkup.setStrLinkupCode(mJsonObject.get("SubGroupCode").toString());
+		objLinkup.setStrLinkupName(mJsonObject.get("SubGroupName").toString());
+		productInfo.add(objLinkup);
+	    }
+	}
+	conn.disconnect();
+	return productInfo;
+    }
 }

@@ -2,6 +2,7 @@ package com.POSGlobal.view;
 
 import com.POSGlobal.controller.clsAccountDtl;
 import com.POSGlobal.controller.clsCreditBillReceipt;
+import com.POSGlobal.controller.clsDebtorDtl;
 import com.POSGlobal.controller.clsGlobalVarClass;
 import static com.POSGlobal.controller.clsGlobalVarClass.gSearchFormName;
 import static com.POSGlobal.controller.clsGlobalVarClass.gSearchMasterFormName;
@@ -30,6 +31,7 @@ public class frmSearchFormDialog extends javax.swing.JDialog
     int currentRow = 0;
     String searchItem = "";
     List<clsAccountDtl> accountData;
+    List<clsDebtorDtl> debtorData;
     List<String> listPrinters;
     List<clsLinkupDtl> listProductDtl;
 
@@ -79,6 +81,19 @@ public class frmSearchFormDialog extends javax.swing.JDialog
 
     }
 
+    //This constuctor used for Searching Debtor list for webBooks
+    public frmSearchFormDialog(List<clsDebtorDtl> debtorList, boolean b,java.awt.Frame parent)
+    {
+	super(parent, "Debtor Master", b);
+        debtorData = debtorList;
+        searchItem = "Debt Code";
+        initComponents();
+        this.setLocationRelativeTo(null);
+        txtSearch.requestFocus();
+        txtSearch.setText(clsGlobalVarClass.gSearchItem);
+        funShowDebtorDtlTable(debtorList);
+    }
+    
     //This constuctor used for Searching Account list for webBooks
     public frmSearchFormDialog(java.awt.Frame parent, List<clsLinkupDtl> listExciseLicense, boolean modal)
     {
@@ -160,6 +175,20 @@ public class frmSearchFormDialog extends javax.swing.JDialog
         am.put(CANCEL_ACTION, new frmSearchFormDialog.CancelAction());
         //btnSearch.setMnemonic('s');
 
+    }
+    
+    public frmSearchFormDialog(java.awt.Frame parent, List<clsLinkupDtl> listObjects, String formName, List<String> listColumns, boolean modal)
+    {
+
+        super(parent, formName, modal);
+        listProductDtl = listObjects;
+        listProdDtlCol = listColumns;
+        searchItem = "SubGroup";
+        initComponents();
+        this.setLocationRelativeTo(null);
+        txtSearch.requestFocus();
+        txtSearch.setText(clsGlobalVarClass.gSearchItem);
+        funShowTable(listProductDtl, listColumns);
     }
 
     private class CancelAction extends AbstractAction
@@ -858,6 +887,45 @@ public class frmSearchFormDialog extends javax.swing.JDialog
             tblSearch.changeSelection(currentRow, 0, false, false);
         }
     }
+    
+    public void funShowDebtorDtlTable(List<clsDebtorDtl> debtorList)
+    {
+        try
+        {
+            DefaultTableModel debtorTable = new DefaultTableModel()
+            {
+                @Override
+                public boolean isCellEditable(int row, int column)
+                {
+                    //all cells false
+                    return false;
+                }
+            };
+            debtorTable.getDataVector().removeAllElements();
+            debtorTable.addColumn("Debtor No.");
+            debtorTable.addColumn("Debtor Name");
+
+            for (clsDebtorDtl debtDtl : debtorList)
+            {
+                Object[] rows =
+                {
+                    debtDtl.getStrDebtorCode(), debtDtl.getStrDebtorName()
+                };
+                debtorTable.addRow(rows);
+            }
+
+            tblSearch.setModel(debtorTable);
+            DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+            rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
+            tblSearch.getColumnModel().getColumn(0).setPreferredWidth(90);
+            tblSearch.getColumnModel().getColumn(1).setPreferredWidth(70);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -956,6 +1024,13 @@ public class frmSearchFormDialog extends javax.swing.JDialog
             public void mouseClicked(java.awt.event.MouseEvent evt)
             {
                 txtSearchMouseClicked(evt);
+            }
+        });
+        txtSearch.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtSearchActionPerformed(evt);
             }
         });
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter()
@@ -1238,6 +1313,11 @@ public class frmSearchFormDialog extends javax.swing.JDialog
     {//GEN-HEADEREND:event_btnCancel1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancel1ActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtSearchActionPerformed
+    {//GEN-HEADEREND:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

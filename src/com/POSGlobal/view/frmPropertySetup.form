@@ -1305,7 +1305,7 @@
                     <Component class="javax.swing.JComboBox" name="cmbBillFormatType">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="37">
+                          <StringArray count="38">
                             <StringItem index="0" value="Text 1"/>
                             <StringItem index="1" value="Text 2"/>
                             <StringItem index="2" value="Text 3"/>
@@ -1327,22 +1327,23 @@
                             <StringItem index="18" value="Text 19"/>
                             <StringItem index="19" value="Text 20"/>
                             <StringItem index="20" value="Text 21"/>
-                            <StringItem index="21" value="Text PlayZone"/>
-                            <StringItem index="22" value="Text Foreign"/>
-                            <StringItem index="23" value="Jasper 1"/>
-                            <StringItem index="24" value="Jasper 2"/>
-                            <StringItem index="25" value="Jasper 3"/>
-                            <StringItem index="26" value="Jasper 4"/>
-                            <StringItem index="27" value="Jasper 5"/>
-                            <StringItem index="28" value="Jasper 6"/>
-                            <StringItem index="29" value="Jasper 7"/>
-                            <StringItem index="30" value="Jasper 8"/>
-                            <StringItem index="31" value="Jasper 9"/>
-                            <StringItem index="32" value="Jasper 10"/>
-                            <StringItem index="33" value="Stationery 1"/>
-                            <StringItem index="34" value="Stationery 2"/>
-                            <StringItem index="35" value="Stock Transfer Note 1"/>
-                            <StringItem index="36" value="Saloon 1"/>
+                            <StringItem index="21" value="Text 22"/>
+                            <StringItem index="22" value="Text PlayZone"/>
+                            <StringItem index="23" value="Text Foreign"/>
+                            <StringItem index="24" value="Jasper 1"/>
+                            <StringItem index="25" value="Jasper 2"/>
+                            <StringItem index="26" value="Jasper 3"/>
+                            <StringItem index="27" value="Jasper 4"/>
+                            <StringItem index="28" value="Jasper 5"/>
+                            <StringItem index="29" value="Jasper 6"/>
+                            <StringItem index="30" value="Jasper 7"/>
+                            <StringItem index="31" value="Jasper 8"/>
+                            <StringItem index="32" value="Jasper 9"/>
+                            <StringItem index="33" value="Jasper 10"/>
+                            <StringItem index="34" value="Stationery 1"/>
+                            <StringItem index="35" value="Stationery 2"/>
+                            <StringItem index="36" value="Stock Transfer Note 1"/>
+                            <StringItem index="37" value="Saloon 1"/>
                           </StringArray>
                         </Property>
                       </Properties>

@@ -715,4 +715,78 @@ public class clsBenowIntegration
 	}
 	
     }
+    
+       public String funUpdateBillNoToBenow(String paidAmount,String txnRefNumber,String strBillNo)
+    {
+	String status = "false";
+	
+
+	String blankBillNo = "";
+	try
+	{
+
+	    String benowURL = "https://mobilepayments.benow.in/merchants/merchant/updateRefNumber";
+
+	    JSONObject jObjInnerPayLoad = new JSONObject();
+	    jObjInnerPayLoad.put("merchantCode", clsGlobalVarClass.gBenowMerchantCode);//from property setup
+	    jObjInnerPayLoad.put("paidAmount", paidAmount);
+	    jObjInnerPayLoad.put("txnRefNumber", txnRefNumber);
+	    jObjInnerPayLoad.put("tr", strBillNo);
+	    // salt from proprty setup "abcd"
+	    String encString = encrypt(clsGlobalVarClass.gBenowSalt, jObjInnerPayLoad.toString());
+
+	    JSONObject jObjPayLoad = new JSONObject();
+	    jObjPayLoad.put("encryptedString", encString);
+	    jObjPayLoad.put("jsonString", jObjInnerPayLoad.toString());
+
+	    System.out.println(jObjPayLoad.toJSONString());
+
+	    URL url = new URL(benowURL);
+	    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	    conn.setDoOutput(true);
+	    conn.setRequestMethod("POST");
+	    conn.setRequestProperty("Content-Type", "application/json");
+	    //get value from property setup for authentication key and xemail
+	    conn.setRequestProperty("AuthorizationKey", clsGlobalVarClass.gBenowAuthenticationKey);
+	    conn.setRequestProperty("X-EMAIL", clsGlobalVarClass.gBenowXEmail);
+
+	    OutputStream os = conn.getOutputStream();
+	    os.write(jObjPayLoad.toJSONString().getBytes());
+	    os.flush();
+	    /*if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED)
+            {
+                throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+            }*/
+	    BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+	    String output = "", op = "";
+
+	    while ((output = br.readLine()) != null)
+	    {
+		op += output;
+	    }
+	    System.out.println("Response=" + op);
+	    JSONObject jobj = (JSONObject)new JSONParser().parse(op);
+	    status = jobj.get("transactionMatched").toString();
+	   
+	    conn.disconnect();
+
+	    try
+	    {
+		String charset = "UTF-8"; // or "ISO-8859-1"
+		Map hintMap = new HashMap();
+		hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+
+	    }
+	    catch (Exception e)
+	    {
+		e.printStackTrace();
+	    }
+
+	}
+	catch (Exception e)
+	{
+	    e.printStackTrace();
+	}
+	return status;
+    }
 }

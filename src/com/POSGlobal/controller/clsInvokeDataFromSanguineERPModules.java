@@ -458,7 +458,7 @@ public class clsInvokeDataFromSanguineERPModules
 	return licenceInfo;
     }
 
-    public String funCreateProductInMMS(String itemCode, String itemName, String clientCode, String createDate, String userCode) throws Exception
+    public String funCreateProductInMMS(String itemCode, String itemName, String clientCode, String createDate, String userCode,String wsProductCode) throws Exception
     {
 	String productInfo = "";
 
@@ -468,6 +468,7 @@ public class clsInvokeDataFromSanguineERPModules
 	rootObject.put("clientCode", clientCode);
 	rootObject.put("createDate", createDate);
 	rootObject.put("userCode", userCode);
+	rootObject.put("wsProductCode", wsProductCode);
 	String hoURL = clsGlobalVarClass.gSanguineWebServiceURL + "/MMSIntegrationAuto/funCreateProductInMMS";
 
 	URL url = new URL(hoURL);
@@ -500,6 +501,7 @@ public class clsInvokeDataFromSanguineERPModules
 
 	return productInfo;
     }
+
 
     public String funMMSConsectionEstablished() throws Exception
     {

@@ -8441,16 +8441,6 @@ public class frmSalesReports extends javax.swing.JFrame
             }
         });
         pnlSalesData.setViewportView(tblSales);
-        if (tblSales.getColumnModel().getColumnCount() > 0)
-        {
-            tblSales.getColumnModel().getColumn(0).setHeaderValue("Bill No");
-            tblSales.getColumnModel().getColumn(1).setHeaderValue("Date");
-            tblSales.getColumnModel().getColumn(2).setHeaderValue("Operator");
-            tblSales.getColumnModel().getColumn(3).setHeaderValue("Settlement Mode");
-            tblSales.getColumnModel().getColumn(4).setHeaderValue("Discount");
-            tblSales.getColumnModel().getColumn(5).setHeaderValue("Tax");
-            tblSales.getColumnModel().getColumn(6).setHeaderValue("Grand Total");
-        }
 
         pnlsalesDetail.add(pnlSalesData);
         pnlSalesData.setBounds(0, 40, 800, 350);

@@ -637,7 +637,7 @@ public class clsBenowIntegration
 
 	    JSONObject jObjInnerPayLoad = new JSONObject();
 	    jObjInnerPayLoad.put("merchantCode", clsGlobalVarClass.gBenowMerchantCode);//from property setup
-	    jObjInnerPayLoad.put("refNumber", billNo);
+	    jObjInnerPayLoad.put("txnCount", 15);
 	    // salt from proprty setup "abcd"
 	    String encString = encrypt(clsGlobalVarClass.gBenowSalt, jObjInnerPayLoad.toString());
 
@@ -686,7 +686,8 @@ public class clsBenowIntegration
 		objUPIBean.setStrReferenceNo(objJSON.get("refNumber").toString());
 		objUPIBean.setStrPaymentStatus(objJSON.get("paymentStatus").toString());
 		objUPIBean.setStrTransactionId(objJSON.get("txnId").toString());
-		objUPIBean.setSttTransactionDate(objJSON.get("transactionDate").toString());		
+		objUPIBean.setSttTransactionDate(objJSON.get("transactionDate").toString());	
+		if(objJSON.get("custRefNumber")!=null)
 		objUPIBean.setStrCustomerRefNo(objJSON.get("custRefNumber").toString());
 		if(objJSON.get("isStatic")==null)
 		{

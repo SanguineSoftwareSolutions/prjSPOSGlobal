@@ -45,7 +45,7 @@ public class clsGlobalVarClass
     public static boolean gNegBilling, gMultiBillPrint, gEnableKOT, gEffectOnPSP, gPrintVatNo, gPrintServiceTaxNo, gShowBill;
     public static boolean gKOTPrintingEnableForDirectBiller, gEditHDCharges, gSlabBasedHDCharges, gHomeDeliveryTable;
     public static boolean gSkipWaiter, gSkipPax, gActivePromotions, gSettleBill;
-    public static boolean gHomeDelSMSYN, gBillSettleSMSYN, gPrintShortNameOnKOT, gCustHelpOnTrans;
+    public static boolean gHomeDelSMSYN, gBillSettleSMSYN, gPrintShortNameOnKOT, gCustHelpOnTrans,gTableReservationSMSYN;
     public static boolean gPrintOnVoidBill, gPostSalesDataToMMS, gCustAreaCompulsory, gShowPrinterErrorMsg;
     public static boolean gChangeQtyForExternalCode, gPointsOnBillPrint, gCompulsoryManualAdvOrderNo, gPrintManualAdvOrderNoOnBill;
     public static boolean gPrintModQtyOnKOT, gMultipleKOTPrint=true, gItemQtyNumpad, gTreatMemberAsTable, gPrintKotToLocaPrinter;
@@ -85,7 +85,7 @@ public class clsGlobalVarClass
     public static String gSearchedItem, gQueryForSearch, gQueryForAdvSearch, gNumerickeyboardValue, gAdvSearchItem, gSearchFormName;
     public static String gEmailServerName, gSenderEmailId, gSenderMailPassword, gEmailMessage, gBillDateTimeType, gShiftEnd;
     public static String gFormNameOnKeyBoard, gCounterCode, gCounterName, gCustomerCode, gSanguineWebServiceURL;
-    public static String gAreaCodeForTrans, gDeliveryBoyCode, gDeliveryTime, gHomeDeliverySMS, gBillSettlementSMS, gDebitCardNo;
+    public static String gAreaCodeForTrans, gDeliveryBoyCode, gDeliveryTime, gHomeDeliverySMS, gBillSettlementSMS, gDebitCardNo,gTableReservedSMS;
     public static String gcardStatus, gLastModifiedDate, gPosCodeForReprintDocs, gPOSCodeForPricing, gHomeDelivery;
     public static String gTableNoForHomeDelivery, gHOPOSType, gPropertyCode, gCustMBNo, gFavoritereason, gReasoncode;
     public static String gDebitCardPayment, gTransactionType, gTheme = "Default", gAreaWisePricing, gMenuItemSortingOn;
@@ -3321,6 +3321,12 @@ public class clsGlobalVarClass
 		  gReprintOnSettleBill=true; 
 	    }
 	    
+	    gTableReservedSMS = rs.getString(228);
+	    gTableReservationSMSYN = false;
+	    if (rs.getString(229).equals("Y"))
+	    {
+		gTableReservationSMSYN = true;
+	    }
 	    
 	    
 	    

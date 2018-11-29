@@ -2675,7 +2675,8 @@ public class frmSalesReports extends javax.swing.JFrame
 			    + " and b.strItemCode=c.strItemCode "
 			    + " and c.strMenuCode=d.strMenuCode "
 			    + " and a.strPOSCode=e.strPosCode "
-			    + " and a.strPOSCode=c.strPosCode ");
+			    + " and a.strPOSCode=c.strPosCode "
+			    + " and c.strHourlyPricing='No' ");
 		    if (clsGlobalVarClass.gAreaWisePricing.equals("Y"))
 		    {
 			sbSql.append(" and a.strAreaCode=c.strAreaCode ");
@@ -2736,7 +2737,8 @@ public class frmSalesReports extends javax.swing.JFrame
 				+ " and a.strPOSCode=c.strPosCode  "
 				+ " and a.strAreaCode=c.strAreaCode "
 				+ " and b.dblAmount>0 and c.strMenuCode='" + saleSet.getString(6) + "' "
-				+ " and date(a.dteBillDate) BETWEEN '" + fromDate + "' and '" + toDate + "' "
+				+ " and date(a.dteBillDate) BETWEEN '" + fromDate + "' and '" + toDate + "'"
+				+ " and c.strHourlyPricing='No'  "
 			);
 			if (clsGlobalVarClass.gEnableShiftYN && (!cmbShift.getSelectedItem().toString().equalsIgnoreCase("All")))
 			{
@@ -2783,7 +2785,8 @@ public class frmSalesReports extends javax.swing.JFrame
 			    + " and b.strItemCode=c.strItemCode "
 			    + " and c.strMenuCode=d.strMenuCode "
 			    + " and a.strPOSCode=e.strPosCode "
-			    + " and a.strPOSCode=c.strPosCode ");
+			    + " and a.strPOSCode=c.strPosCode "
+			    + " and c.strHourlyPricing='No' ");
 		    if (clsGlobalVarClass.gAreaWisePricing.equals("Y"))
 		    {
 			sbSql.append(" and a.strAreaCode=c.strAreaCode ");
@@ -2847,6 +2850,7 @@ public class frmSalesReports extends javax.swing.JFrame
 				+ " and a.strAreaCode=c.strAreaCode "
 				+ " and b.dblAmount>0 and c.strMenuCode='" + saleSet.getString(6) + "' "
 				+ " and date(a.dteBillDate) BETWEEN '" + fromDate + "' and '" + toDate + "' "
+				+ " and c.strHourlyPricing='No' "
 			);
 			if (clsGlobalVarClass.gEnableShiftYN && (!cmbShift.getSelectedItem().toString().equalsIgnoreCase("All")))
 			{
@@ -3054,7 +3058,8 @@ public class frmSalesReports extends javax.swing.JFrame
 			+ "left outer join tblqbillhd b on a.strBillNo=b.strBillNo and date(a.dteBillDate)=date(b.dteBillDate) and a.strClientCode=b.strClientCode "
 			+ "left outer join tblposmaster f on b.strposcode=f.strposcode "
 			+ "left outer join tblmenuitempricingdtl d on a.strItemCode = d.strItemCode "
-			+ " and b.strposcode =d.strposcode ");
+			+ " and b.strposcode =d.strposcode "
+			+ " and d.strHourlyPricing='No' ");
 		if (clsGlobalVarClass.gAreaWisePricing.equals("Y"))
 		{
 		    sbSqlQFile.append("and b.strAreaCode= d.strAreaCode ");
@@ -3068,7 +3073,8 @@ public class frmSalesReports extends javax.swing.JFrame
 			+ " left outer join tblbillhd b on a.strBillNo=b.strBillNo and date(a.dteBillDate)=date(b.dteBillDate) and a.strClientCode=b.strClientCode "
 			+ " left outer join tblposmaster f on b.strposcode=f.strposcode "
 			+ " left outer join tblmenuitempricingdtl d on a.strItemCode = d.strItemCode "
-			+ " and b.strposcode =d.strposcode ");
+			+ " and b.strposcode =d.strposcode "
+			+ " and d.strHourlyPricing='No' ");
 		if (clsGlobalVarClass.gAreaWisePricing.equals("Y"))
 		{
 		    sbSqlLive.append("and b.strAreaCode= d.strAreaCode ");
@@ -3082,7 +3088,8 @@ public class frmSalesReports extends javax.swing.JFrame
 			+ "left outer join tblbillhd b on a.strBillNo=b.strBillNo and a.strClientCode=b.strClientCode "
 			+ "left outer join tblposmaster f on b.strposcode=f.strposcode "
 			+ "left outer join tblmenuitempricingdtl d on LEFT(a.strItemCode,7)= d.strItemCode "
-			+ " and b.strposcode =d.strposcode ";
+			+ " and b.strposcode =d.strposcode "
+			+ " and d.strHourlyPricing='No' ";
 		if (clsGlobalVarClass.gAreaWisePricing.equals("Y"))
 		{
 		    sqlModLive += "and b.strAreaCode= d.strAreaCode ";
@@ -3096,7 +3103,8 @@ public class frmSalesReports extends javax.swing.JFrame
 			+ "left outer join tblqbillhd b on a.strBillNo=b.strBillNo and date(a.dteBillDate)=date(b.dteBillDate) and a.strClientCode=b.strClientCode "
 			+ "left outer join tblposmaster f on b.strposcode=f.strposcode "
 			+ "left outer join tblmenuitempricingdtl d on LEFT(a.strItemCode,7)= d.strItemCode "
-			+ " and b.strposcode =d.strposcode ";
+			+ " and b.strposcode =d.strposcode "
+			+ " and d.strHourlyPricing='No' ";
 
 		if (clsGlobalVarClass.gAreaWisePricing.equals("Y"))
 		{
@@ -3141,6 +3149,9 @@ public class frmSalesReports extends javax.swing.JFrame
 		{
 		    sbSqlFilters.append(" and b.strCustomerCode='" + txtCustomerCode.getText() + "' ");
 
+		}
+		if(clsGlobalVarClass.gAreaWisePricing.equals("Y")){
+		    sbSqlFilters.append(" and Time(b.dteBillDate) between d.tmeTimeFrom and d.dteToDate ");
 		}
 		sbSqlFilters.append(" Group by b.strPoscode, d.strMenuCode,e.strMenuName");
 		sbSqlFilters.append(" order by b.strPoscode, d.strMenuCode,e.strMenuName");
